@@ -1,0 +1,30 @@
+{
+  "MessageId": "a4656030-dfcf-40ee-a888-1a12db0b63c0",
+  "MessageType": "ua-data",
+  "PublisherId": "urn:BlackIce:opcfoundation:iot-toolkit:publisher",
+  "DataSetClassId": "7970a3aa-f55d-426b-943d-11777d9d8ac1",
+  "Messages": {
+    "DataSetWriterId": "1",
+    "SequenceNumber": 46,
+    "MetaDataVersion": {
+      "MajorVersion": 1,
+      "MinorVersion": 1
+    },
+    "Payload": {
+      "Temperature": {
+        "Value": {
+          "Type": 11,
+          "Body": 3
+        },
+        "SourceTimestamp": "2021-03-29T00:52:50.153569Z"
+      },
+      "Setpoint": {
+        "Value": {
+          "Type": 11,
+          "Body": 10
+        },
+        "SourceTimestamp": "2021-03-29T00:52:50.153571Z"
+      }
+    }
+  }
+}

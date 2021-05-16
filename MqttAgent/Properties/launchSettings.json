@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MqttAgent": {
+      "commandName": "Project",
+      "commandLineArgs": "publish -b=mqtt://192.168.1.111:1883"
+    }
+  }
+}

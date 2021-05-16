@@ -1,0 +1,9 @@
+﻿{
+  "Broker": "192.168.143.33",
+  "Topic": "opcua/pubsub/prototype",
+  "ClientId": "opcua-mqtt-client",
+  "UseTls": false,
+  "CredentialType": 1,
+  "CredentialName": "",
+  "CredentialSecret": ""
+}

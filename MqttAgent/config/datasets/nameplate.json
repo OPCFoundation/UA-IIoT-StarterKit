@@ -1,0 +1,58 @@
+{
+  "Name": "identity",
+  "Fields": [
+    {
+      "Name": "Manufacturer",
+      "Description": {
+        "Text": "The maker of the device or application."
+      },
+      "BuiltInType": 12
+    },
+    {
+      "Name": "ManufacturerUri",
+      "Description": {
+        "Text": "A globally unique identifier for the maker of the device or application."
+      },
+      "BuiltInType": 12
+    },
+    {
+      "Name": "ProductInstanceUri",
+      "Description": {
+        "Text": "A globally unique identifier for the device or application instance."
+      },
+      "BuiltInType": 12
+    },
+    {
+      "Name": "Model",
+      "Description": {
+        "Text": "The device model name."
+      },
+      "BuiltInType": 12
+    },
+    {
+      "Name": "SerialNumber",
+      "Description": {
+        "Text": "The device serial number."
+      },
+      "BuiltInType": 12
+    },
+    {
+      "Name": "HardwareRevision",
+      "Description": {
+        "Text": "The device hardware revision number."
+      },
+      "BuiltInType": 12
+    },
+    {
+      "Name": "SoftwareRevision",
+      "Description": {
+        "Text": "The software or firmware revision number."
+      },
+      "BuiltInType": 12
+    }
+  ],
+  "ConfigurationVersion": {
+    "MajorVersion": 1,
+    "MinorVersion": 0
+  }
+}

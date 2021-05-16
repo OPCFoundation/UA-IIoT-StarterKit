@@ -1,0 +1,41 @@
+{
+  "Name": "single.led",
+  "Fields": [
+    {
+      "Name": "LED",
+      "Description": {
+        "Text": "An LED connected to a GPIO pin."
+      },
+      "BuiltInType": 1,
+      "DataSetFieldId": "d275f1ce-02eb-4fb7-af9c-e277711831db",
+      "Properties": [
+        {
+          "Key": {
+            "Name": "TrueState"
+          },
+          "Value": {
+            "Type": 21,
+            "Body": {
+              "Text": "ON"
+            }
+          }
+        },
+        {
+          "Key": {
+            "Name": "FalseState"
+          },
+          "Value": {
+            "Type": 21,
+            "Body": {
+              "Text": "OFF"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "ConfigurationVersion": {
+    "MajorVersion": 1,
+    "MinorVersion": 0
+  }
+}

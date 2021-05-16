@@ -1,0 +1,3 @@
+[submodule "OpcUa"]
+	path = OpcUa
+	url = ./OpcUa

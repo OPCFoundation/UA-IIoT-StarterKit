@@ -1,0 +1,139 @@
+{
+  "Name": "localhost",
+  "Enabled": true,
+  "PublisherId": {
+    "Type": 12,
+    "Body": "[ApplicationName]"
+  },
+  "TransportProfileUri": "http://opcfoundation.org/UA-Profile/Transport/pubsub-mqtt-json",
+  "Address": {
+    "TypeId": { "Id": 15510 },
+    "Body": { "Url": "mqtt://localhost:1883" }
+  },
+  "WriterGroups": [
+    {
+      "Name": "identity",
+      "Enabled": true,
+      "SecurityMode": 1,
+      "SecurityGroupId": "",
+      "MaxNetworkMessageSize": 0,
+      "WriterGroupId": 1,
+      "PublishingInterval": 60000,
+      "KeepAliveTime": 0,
+      "Priority": 0,
+      "TransportSettings": {
+        "TypeId": { "Id": 15667 },
+        "Body": { "RequestedDeliveryGuarantee": 0 }
+      },
+      "MessageSettings": {
+        "TypeId": { "Id": 15657 },
+        "Body": { "NetworkMessageContentMask": 4 }
+      },
+      "DataSetWriters": [
+        {
+          "Name": "identity",
+          "Enabled": true,
+          "DataSetWriterId": 1,
+          "DataSetFieldContentMask": 32,
+          "KeyFrameCount": 1,
+          "DataSetName": "identity",
+          "TransportSettings": {
+            "TypeId": { "Id": 15669 },
+            "Body": {
+              "QueueName": "opcua/[ApplicationName]/identity",
+              "RequestedDeliveryGuarantee": 2
+            }
+          },
+          "MessageSettings": {
+            "TypeId": { "Id": 15664 },
+            "Body": { "DataSetMessageContentMask": 24 }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "minimal.single.led",
+      "Enabled": true,
+      "SecurityMode": 1,
+      "SecurityGroupId": "",
+      "MaxNetworkMessageSize": 0,
+      "WriterGroupId": 1,
+      "PublishingInterval": 1000,
+      "KeepAliveTime": 0,
+      "Priority": 0,
+      "TransportSettings": {
+        "TypeId": { "Id": 15667 },
+        "Body": { "RequestedDeliveryGuarantee": 0 }
+      },
+      "MessageSettings": {
+        "TypeId": { "Id": 15657 },
+        "Body": { "NetworkMessageContentMask": 4 }
+      },
+      "DataSetWriters": [
+        {
+          "Name": "minimal.single.led",
+          "Enabled": true,
+          "DataSetWriterId": 2,
+          "DataSetFieldContentMask": 32,
+          "KeyFrameCount": 1,
+          "DataSetName": "single.led",
+          "TransportSettings": {
+            "TypeId": { "Id": 15669 },
+            "Body": {
+              "QueueName": "opcua/[ApplicationName]/minimal/data/single.led",
+              "RequestedDeliveryGuarantee": 2,
+              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/metadata/single.led",
+              "MetaDataUpdateTime": 0
+            }
+          },
+          "MessageSettings": {
+            "TypeId": { "Id": 15664 },
+            "Body": { "DataSetMessageContentMask": 24 }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "full.single.led",
+      "Enabled": true,
+      "SecurityMode": 1,
+      "SecurityGroupId": "",
+      "MaxNetworkMessageSize": 0,
+      "WriterGroupId": 1,
+      "PublishingInterval": 1000,
+      "KeepAliveTime": 0,
+      "Priority": 0,
+      "TransportSettings": {
+        "TypeId": { "Id": 15667 },
+        "Body": { "RequestedDeliveryGuarantee": 0 }
+      },
+      "MessageSettings": {
+        "TypeId": { "Id": 15657 },
+        "Body": { "NetworkMessageContentMask": 4 }
+      },
+      "DataSetWriters": [
+        {
+          "Name": "full.single.led",
+          "Enabled": true,
+          "DataSetWriterId": 3,
+          "DataSetFieldContentMask": 0,
+          "KeyFrameCount": 1,
+          "DataSetName": "single.led",
+          "TransportSettings": {
+            "TypeId": { "Id": 15669 },
+            "Body": {
+              "QueueName": "opcua/[ApplicationName]/full/data/single.led",
+              "RequestedDeliveryGuarantee": 2,
+              "MetaDataQueueName": "opcua/[ApplicationName]/full/metadata/single.led",
+              "MetaDataUpdateTime": 0
+            }
+          },
+          "MessageSettings": {
+            "TypeId": { "Id": 15664 },
+            "Body": { "DataSetMessageContentMask": 7 }
+          }
+        }
+      ]
+    }
+  ]
+}
