@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MqttAgent", "MqttAgent\MqttAgent.csproj", "{4893E2A6-FF10-4213-8CE0-631215B2343B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.Core", "Opc.Ua.ToolKit\Stack\Opc.Ua.Core\Opc.Ua.Core.csproj", "{54F424CD-C659-476C-A185-FAE097FDE6A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.Core", "OpcUa\Stack\Opc.Ua.Core\Opc.Ua.Core.csproj", "{54F424CD-C659-476C-A185-FAE097FDE6A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.Security.Certificates", "Opc.Ua.ToolKit\Libraries\Opc.Ua.Security.Certificates\Opc.Ua.Security.Certificates.csproj", "{67A20080-F778-457B-B6A1-05BFFBB440F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.Security.Certificates", "OpcUa\Libraries\Opc.Ua.Security.Certificates\Opc.Ua.Security.Certificates.csproj", "{67A20080-F778-457B-B6A1-05BFFBB440F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.PubSub", "Opc.Ua.ToolKit\Libraries\Opc.Ua.PubSub\Opc.Ua.PubSub.csproj", "{5C88B019-8979-48A1-9D06-8B59BC34123D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.PubSub", "OpcUa\Libraries\Opc.Ua.PubSub\Opc.Ua.PubSub.csproj", "{5C88B019-8979-48A1-9D06-8B59BC34123D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

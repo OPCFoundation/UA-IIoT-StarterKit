@@ -29,6 +29,9 @@ namespace MqttAgent
             app.Description = "An application that uses OPC UA PubSub to commicate with MQTT.";
             app.HelpOption("-?|-h|--help");
 
+            Utils.SetTraceMask(Utils.TraceMasks.Error);
+            Utils.SetTraceOutput(Utils.TraceOutput.DebugAndFile);
+
             app.Command("publish", (e) => Publish(e));
             app.Command("create-subscriber", (e) => CreateSubscriber(e));
             app.Command("discover", (e) => Discover(e));
@@ -212,6 +215,23 @@ namespace MqttAgent
             while (true);
         }
 
+        static string GetConnectionUrl(PubSubConnectionDataType connection)
+        {
+            if (connection == null)
+            {
+                return String.Empty;
+            }
+
+            var address = ExtensionObject.ToEncodeable(connection.Address) as NetworkAddressUrlDataType;
+
+            if (address == null)
+            {
+                return String.Empty;
+            }
+
+            return address.Url;
+        }
+
         static void Publish(CommandLineApplication app)
         {
             app.Description = "Publishes I/O data to an MQTT broker.";
@@ -273,6 +293,7 @@ namespace MqttAgent
                 // Create the UA Publisher application using configuration file
                 using (UaPubSubApplication application = UaPubSubApplication.Create(configuration, managers))
                 {
+                    Console.WriteLine($"Connecting to {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
