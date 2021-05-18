@@ -1,147 +1,152 @@
 {
-    "Name": "localhost",
-    "Enabled": true,
-    "PublisherId": {
-        "Type": 12,
-        "Body": "[ApplicationName]"
-    },
-    "TransportProfileUri": "http://opcfoundation.org/UA-Profile/Transport/pubsub-mqtt-json",
-    "Address": {
-        "TypeId": {
-            "Id": 15510
-        },
-        "Body": {
-            "Url": "mqtt://localhost:1883/"
-        }
-    },
-    "ReaderGroups": [
+  "Name": "localhost",
+  "Enabled": true,
+  "PublisherId": {
+    "Type": 12,
+    "Body": "[ApplicationName]"
+  },
+  "TransportProfileUri": "http://opcfoundation.org/UA-Profile/Transport/pubsub-mqtt-json",
+  "Address": {
+    "TypeId": { "Id": 15510 },
+    "Body": { "Url": "mqtt://localhost:1883/" }
+  },
+  "ReaderGroups": [
+    {
+      "Name": "identity",
+      "Enabled": true,
+      "SecurityMode": 1,
+      "SecurityGroupId": "",
+      "MaxNetworkMessageSize": 0,
+      "DataSetReaders": [
         {
+          "Name": "identity",
+          "Enabled": true,
+          "PublisherId": {
+            "Type": 12,
+            "Body": "[ApplicationName]"
+          },
+          "WriterGroupId": 1,
+          "DataSetWriterId": 1,
+          "DataSetMetaData": {
             "Name": "identity",
-            "Enabled": true,
-            "SecurityMode": 1,
-            "SecurityGroupId": "",
-            "MaxNetworkMessageSize": 0,
-            "DataSetReaders": [
-                {
-                    "Name": "identity",
-                    "Enabled": true,
-                    "PublisherId": {
-                        "Type": 12,
-                        "Body": "[ApplicationName]"
-                    },
-                    "WriterGroupId": 1,
-                    "DataSetWriterId": 1,
-                    "DataSetMetaData": {
-                        "ConfigurationVersion": {
-                            "MajorVersion": 0,
-                            "MinorVersion": 0
-                        }
-                    },
-                    "DataSetFieldContentMask": 32,
-                    "MessageReceiveTimeout": 0,
-                    "KeyFrameCount": 1,
-                    "SecurityMode": 1,
-                    "SecurityGroupId": "",
-                    "TransportSettings": {
-                        "Body": {
-                            "QueueName": "opcua/[ApplicationName]/identity",
-                            "RequestedDeliveryGuarantee": 2
-                        }
-                    },
-                    "MessageSettings": {
-                        "Body": {
-                            "NetworkMessageContentMask": 4,
-                            "DataSetMessageContentMask": 24
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "Name": "minimal.single.led",
-            "Enabled": true,
-            "SecurityMode": 1,
-            "SecurityGroupId": "",
-            "MaxNetworkMessageSize": 0,
-            "DataSetReaders": [
-                {
-                    "Name": "minimal.single.led",
-                    "Enabled": true,
-                    "PublisherId": {
-                        "Type": 12,
-                        "Body": "[ApplicationName]"
-                    },
-                    "WriterGroupId": 1,
-                    "DataSetWriterId": 2,
-                    "DataSetMetaData": {
-                        "ConfigurationVersion": {
-                            "MajorVersion": 0,
-                            "MinorVersion": 0
-                        }
-                    },
-                    "DataSetFieldContentMask": 32,
-                    "MessageReceiveTimeout": 0,
-                    "KeyFrameCount": 1,
-                    "SecurityMode": 1,
-                    "SecurityGroupId": "",
-                    "TransportSettings": {
-                        "Body": {
-                            "QueueName": "opcua/[ApplicationName]/minimal/data/single.led",
-                            "RequestedDeliveryGuarantee": 2,
-                            "MetaDataQueueName": "opcua/[ApplicationName]/minimal/metadata/single.led"
-                        }
-                    },
-                    "MessageSettings": {
-                        "Body": {
-                            "NetworkMessageContentMask": 4,
-                            "DataSetMessageContentMask": 24
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "Name": "full.single.led",
-            "Enabled": true,
-            "SecurityMode": 1,
-            "SecurityGroupId": "",
-            "MaxNetworkMessageSize": 0,
-            "DataSetReaders": [
-                {
-                    "Name": "full.single.led",
-                    "Enabled": true,
-                    "PublisherId": {
-                        "Type": 12,
-                        "Body": "[ApplicationName]"
-                    },
-                    "WriterGroupId": 1,
-                    "DataSetWriterId": 3,
-                    "DataSetMetaData": {
-                        "ConfigurationVersion": {
-                            "MajorVersion": 0,
-                            "MinorVersion": 0
-                        }
-                    },
-                    "DataSetFieldContentMask": 0,
-                    "MessageReceiveTimeout": 0,
-                    "KeyFrameCount": 1,
-                    "SecurityMode": 1,
-                    "SecurityGroupId": "",
-                    "TransportSettings": {
-                        "Body": {
-                            "QueueName": "opcua/[ApplicationName]/full/data/single.led",
-                            "RequestedDeliveryGuarantee": 2,
-                            "MetaDataQueueName": "opcua/[ApplicationName]/full/metadata/single.led"
-                        }
-                    },
-                    "MessageSettings": {
-                        "Body": {
-                            "NetworkMessageContentMask": 4,
-                            "DataSetMessageContentMask": 7
-                        }
-                    }
-                }
-            ]
+            "ConfigurationVersion": {
+              "MajorVersion": 1,
+              "MinorVersion": 0
+            }
+          },
+          "DataSetFieldContentMask": 32,
+          "MessageReceiveTimeout": 0,
+          "KeyFrameCount": 1,
+          "SecurityMode": 1,
+          "SecurityGroupId": "",
+          "TransportSettings": {
+            "TypeId": { "Id": 15670 },
+            "Body": {
+              "QueueName": "opcua/#/identity",
+              "RequestedDeliveryGuarantee": 2
+            }
+          },
+          "MessageSettings": {
+            "TypeId": { "Id": 15665 },
+            "Body": {
+              "NetworkMessageContentMask": 4,
+              "DataSetMessageContentMask": 24
+            }
+          }
         }
-    ]
+      ]
+    },
+    {
+      "Name": "minimal.single.led",
+      "Enabled": true,
+      "SecurityMode": 1,
+      "SecurityGroupId": "",
+      "MaxNetworkMessageSize": 0,
+      "DataSetReaders": [
+        {
+          "Name": "minimal.single.led",
+          "Enabled": true,
+          "PublisherId": {
+            "Type": 12,
+            "Body": "[ApplicationName]"
+          },
+          "WriterGroupId": 1,
+          "DataSetWriterId": 2,
+          "DataSetMetaData": {
+            "Name": "single.led",
+            "ConfigurationVersion": {
+              "MajorVersion": 1,
+              "MinorVersion": 0
+            }
+          },
+          "DataSetFieldContentMask": 32,
+          "MessageReceiveTimeout": 0,
+          "KeyFrameCount": 1,
+          "SecurityMode": 1,
+          "SecurityGroupId": "",
+          "TransportSettings": {
+            "TypeId": { "Id": 15670 },
+            "Body": {
+              "QueueName": "opcua/[ApplicationName]/minimal/data/single.led",
+              "RequestedDeliveryGuarantee": 2,
+              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/metadata/single.led"
+            }
+          },
+          "MessageSettings": {
+            "TypeId": { "Id": 15665 },
+            "Body": {
+              "NetworkMessageContentMask": 4,
+              "DataSetMessageContentMask": 24
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "full.single.led",
+      "Enabled": true,
+      "SecurityMode": 1,
+      "SecurityGroupId": "",
+      "MaxNetworkMessageSize": 0,
+      "DataSetReaders": [
+        {
+          "Name": "full.single.led",
+          "Enabled": true,
+          "PublisherId": {
+            "Type": 12,
+            "Body": "[ApplicationName]"
+          },
+          "WriterGroupId": 1,
+          "DataSetWriterId": 3,
+          "DataSetMetaData": {
+            "Name": "single.led",
+            "ConfigurationVersion": {
+              "MajorVersion": 1,
+              "MinorVersion": 0
+            }
+          },
+          "DataSetFieldContentMask": 0,
+          "MessageReceiveTimeout": 0,
+          "KeyFrameCount": 1,
+          "SecurityMode": 1,
+          "SecurityGroupId": "",
+          "TransportSettings": {
+            "TypeId": { "Id": 15670 },
+            "Body": {
+              "QueueName": "opcua/[ApplicationName]/full/data/single.led",
+              "RequestedDeliveryGuarantee": 2,
+              "MetaDataQueueName": "opcua/[ApplicationName]/full/metadata/single.led"
+            }
+          },
+          "MessageSettings": {
+            "TypeId": { "Id": 15665 },
+            "Body": {
+              "NetworkMessageContentMask": 4,
+              "DataSetMessageContentMask": 7
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

@@ -293,7 +293,7 @@ namespace MqttAgent
                 // Create the UA Publisher application using configuration file
                 using (UaPubSubApplication application = UaPubSubApplication.Create(configuration, managers))
                 {
-                    Console.WriteLine($"Connecting to {GetConnectionUrl(connection)}.");
+                    Console.WriteLine($"Publishing to {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
@@ -312,6 +312,7 @@ namespace MqttAgent
             app.OnExecute(() =>
             {
                 var options = GetCommonOptions(app, true);
+                options.ConnectionFilePath = app.GetOption("c", "config/discovery-connection.json");
 
                 List<DataSetMetaDataType> datasets = new List<DataSetMetaDataType>();
 
@@ -322,6 +323,7 @@ namespace MqttAgent
                     if (dataset.Name == "identity")
                     {
                         datasets.Add(dataset);
+                        break;
                     }
                 }
 
@@ -332,6 +334,14 @@ namespace MqttAgent
                     Connections = new PubSubConnectionDataTypeCollection() { connection },
                     PublishedDataSets = new PublishedDataSetDataTypeCollection()
                 };
+
+                foreach (var ii in connection.ReaderGroups)
+                {
+                    if (ii.Name != "identity")
+                    {
+                        ii.Enabled = false;
+                    }
+                }
 
                 foreach (var ii in datasets)
                 {
@@ -347,9 +357,25 @@ namespace MqttAgent
                 {
                     application.DataReceived += (sender, e) =>
                     {
-                        Console.WriteLine("Received Message");
+                        if (e.NetworkMessage.DataSetMessages.Count <= 0)
+                        {
+                            return;
+                        }
+
+                        Console.WriteLine("");
+                        Console.WriteLine($"Detected Publisher ({e.Source}).");
+                        var dataset = e.NetworkMessage.DataSetMessages[0];
+
+                        foreach (var field in dataset.DataSet.Fields)
+                        {
+                            if (field.Value.WrappedValue != Variant.Null)
+                            {
+                                Console.WriteLine($"  {field.FieldMetaData.Name}: {field.Value.WrappedValue}");
+                            }
+                        }
                     };
 
+                    Console.WriteLine($"Discovering Publishers on {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
@@ -367,7 +393,7 @@ namespace MqttAgent
 
             app.OnExecute(() =>
             {
-                var options = GetCommonOptions(app, true);
+                var options = GetCommonOptions(app);
 
                 List<DataSetMetaDataType> datasets = new List<DataSetMetaDataType>();
 
@@ -419,20 +445,24 @@ namespace MqttAgent
                             MessageReceiveTimeout = 0,
                         };
 
-                        reader.MessageSettings = new ExtensionObject(new JsonDataSetReaderMessageDataType()
-                        {
-                            NetworkMessageContentMask = groupMessageSettings?.NetworkMessageContentMask ?? (uint)JsonNetworkMessageContentMask.None,
-                            DataSetMessageContentMask = datasetMessageSettings?.DataSetMessageContentMask ?? (uint)JsonDataSetMessageContentMask.None
-                        });
+                        reader.MessageSettings = new ExtensionObject(
+                            DataTypeIds.JsonDataSetReaderMessageDataType,
+                            new JsonDataSetReaderMessageDataType()
+                            {
+                                NetworkMessageContentMask = groupMessageSettings?.NetworkMessageContentMask ?? (uint)JsonNetworkMessageContentMask.None,
+                                DataSetMessageContentMask = datasetMessageSettings?.DataSetMessageContentMask ?? (uint)JsonDataSetMessageContentMask.None
+                            });
 
-                        reader.TransportSettings = new ExtensionObject(new BrokerDataSetReaderTransportDataType()
-                        {
-                            QueueName = (datasetTransportSettings?.QueueName) ?? groupTransportSettings.QueueName,
-                            MetaDataQueueName = datasetTransportSettings?.MetaDataQueueName ?? null,
-                            RequestedDeliveryGuarantee = datasetTransportSettings?.RequestedDeliveryGuarantee ?? groupTransportSettings.RequestedDeliveryGuarantee,
-                            AuthenticationProfileUri = groupTransportSettings?.AuthenticationProfileUri,
-                            ResourceUri = groupTransportSettings?.ResourceUri
-                        });
+                        reader.TransportSettings = new ExtensionObject(
+                            DataTypeIds.BrokerDataSetReaderTransportDataType, 
+                            new BrokerDataSetReaderTransportDataType()
+                            {
+                                QueueName = (datasetTransportSettings?.QueueName) ?? groupTransportSettings.QueueName,
+                                MetaDataQueueName = datasetTransportSettings?.MetaDataQueueName ?? null,
+                                RequestedDeliveryGuarantee = datasetTransportSettings?.RequestedDeliveryGuarantee ?? groupTransportSettings.RequestedDeliveryGuarantee,
+                                AuthenticationProfileUri = groupTransportSettings?.AuthenticationProfileUri,
+                                ResourceUri = groupTransportSettings?.ResourceUri
+                            });
 
                         readerGroup.DataSetReaders.Add(reader);
                     }
@@ -443,7 +473,9 @@ namespace MqttAgent
                 connection.WriterGroups.Clear();
 
                 var output = Path.GetFileNameWithoutExtension(options.ConnectionFilePath).Replace("publisher-", "");
-                output = $"{Path.GetDirectoryName(output)}/subscriber-{output}.json";
+                var path = Path.GetDirectoryName(output);
+                if (String.IsNullOrEmpty(path)) path = ".";
+                output = $"{path}/subscriber-{output}.json";
 
                 using (StreamWriter writer = new StreamWriter(output))
                 {
