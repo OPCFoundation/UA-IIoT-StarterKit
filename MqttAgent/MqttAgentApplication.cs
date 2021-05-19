@@ -261,7 +261,7 @@ namespace MqttAgent
                     {
                         case "identity":
                         {
-                            m_ioManagers[dataset.Name] = new VendorNameplateManager(id++, dataset, options.NameplateFilePath);
+                            m_ioManagers[dataset.Name] = new VendorNameplateManager(id++, dataset, options.NameplateFilePath, options.ApplicationId);
                             break;
                         }
 

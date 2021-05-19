@@ -21,11 +21,17 @@ namespace MqttAgent
     public class VendorNameplateManager : IIOManager
     {
         private string m_filePath;
+        private string m_applicationId;
         private VendorNameplate m_nameplate;
 
-        public VendorNameplateManager(ushort datasetId, DataSetMetaDataType metadata, string filePath)
+        public VendorNameplateManager(
+            ushort datasetId, 
+            DataSetMetaDataType metadata, 
+            string filePath,
+            string applicationId)
         {
             m_filePath = filePath;
+            m_applicationId = applicationId;
 
             DataSetId = datasetId;
 
@@ -58,6 +64,7 @@ namespace MqttAgent
         public void Start()
         {
             var text = File.ReadAllText(m_filePath ?? "config/nameplate.json");
+            text = text.Replace("[ApplicationId]", m_applicationId ?? System.Net.Dns.GetHostName());
             m_nameplate = JsonConvert.DeserializeObject<VendorNameplate>(text);
         }
 

@@ -1,8 +1,8 @@
 {
-  "Manufacturer": "OPC Foundation",
-  "ManufacturerUri": "https://opcfoundation.org/",
-  "ProductInstanceUri": "urn:raspberrypi:opcfoundation.org:iot-toolkit:123456789",
-  "Model": "OPC UA PubSub IoT ToolKit",
+  "Manufacturer": "Acme Inc",
+  "ManufacturerUri": "https://acme.com/",
+  "ProductInstanceUri": "urn:[ApplicationId]:acme.com:iot-toolkit:123456789",
+  "Model": "Roadrunner Detector",
   "SerialNumber": "123456789",
   "HardwareRevision": "Model B Rev 1.2",
   "SoftwareRevision": "1.00"
