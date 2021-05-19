@@ -33,9 +33,10 @@ namespace MqttAgent
             Utils.SetTraceOutput(Utils.TraceOutput.DebugAndFile);
 
             app.Command("publish", (e) => Publish(e));
-            app.Command("create-subscriber", (e) => CreateSubscriber(e));
             app.Command("discover", (e) => Discover(e));
-            
+            app.Command("subscribe", (e) => Subscribe(e));
+            // app.Command("create-subscriber", (e) => CreateSubscriber(e));
+
             app.OnExecute(() =>
             {
                 app.ShowHelp();
@@ -338,6 +339,82 @@ namespace MqttAgent
                 foreach (var ii in connection.ReaderGroups)
                 {
                     if (ii.Name != "identity")
+                    {
+                        ii.Enabled = false;
+                    }
+                }
+
+                foreach (var ii in datasets)
+                {
+                    configuration.PublishedDataSets.Add(new PublishedDataSetDataType()
+                    {
+                        Name = ii.Name,
+                        DataSetMetaData = ii
+                    });
+                }
+
+                // Create the UA Publisher application using configuration file
+                using (UaPubSubApplication application = UaPubSubApplication.Create(configuration))
+                {
+                    application.DataReceived += (sender, e) =>
+                    {
+                        if (e.NetworkMessage.DataSetMessages.Count <= 0)
+                        {
+                            return;
+                        }
+
+                        Console.WriteLine("");
+                        Console.WriteLine($"Detected Publisher ({e.Source}).");
+                        var dataset = e.NetworkMessage.DataSetMessages[0];
+
+                        foreach (var field in dataset.DataSet.Fields)
+                        {
+                            if (field.Value.WrappedValue != Variant.Null)
+                            {
+                                Console.WriteLine($"  {field.FieldMetaData.Name}: {field.Value.WrappedValue}");
+                            }
+                        }
+                    };
+
+                    Console.WriteLine($"Discovering Publishers on {GetConnectionUrl(connection)}.");
+                    application.Start();
+                    Console.WriteLine("Press [X] to stop the program.");
+                    HandleKeyPress();
+                }
+
+                return 0;
+            });
+        }
+
+        static void Subscribe(CommandLineApplication app)
+        {
+            app.Description = "Subscribes for data from OPC UA publishers.";
+            app.HelpOption("-?|-h|--help");
+            AddCommonOptions(app);
+
+            app.OnExecute(() =>
+            {
+                var options = GetCommonOptions(app, true);
+
+                List<DataSetMetaDataType> datasets = new List<DataSetMetaDataType>();
+
+                foreach (var file in Directory.GetFiles(options.DatasetFilePath, "*.json"))
+                {
+                    var dataset = LoadDataSets(file);
+                    datasets.Add(dataset);
+                }
+
+                var connection = LoadConnection(options, datasets);
+
+                PubSubConfigurationDataType configuration = new PubSubConfigurationDataType()
+                {
+                    Connections = new PubSubConnectionDataTypeCollection() { connection },
+                    PublishedDataSets = new PublishedDataSetDataTypeCollection()
+                };
+
+                foreach (var ii in connection.ReaderGroups)
+                {
+                    if (ii.Name == "identity")
                     {
                         ii.Enabled = false;
                     }
