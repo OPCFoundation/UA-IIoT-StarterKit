@@ -32,26 +32,34 @@ From the ‘Advanced Settings’ for the Windows Firewall, add the following rul
 * Allow Program ‘%ProgramFiles%\mosquitto\mosquitto.exe’
 * Allow Port 1883 
 
-Test the broker by using mqtt-spy:
+Test the broker by using mqtt-spy wchich is in the mqtt-spy [directory](https://github.com/OPCF-Members/UA-IoT-StarterKit/tree/master/mqtt-spy). 
+
+mqtt-spy can also be be downloaded from [here](https://github.com/eclipse/paho.mqtt-spy/releases). 
+
+It requires Java SE 8 which can be downloaded from: [https://www.oracle.com/java/technologies/javase-downloads.html#JDK8](https://www.oracle.com/java/technologies/javase-downloads.html#JDK8) 
+
+The command to run mqtt-spy is:
 ```
 java -jar  mqtt-spy-1.0.0.jar
 ```
 
-To start using mqtt-spy:
+To connect to a broker using mqtt-spy:
 * Create a connection to the broker; 
 * Subscribe to all topic (enter ‘#’ as the topic name); 
 * Publish to a text topic and verify the response was received. 
-
-mqtt-spy can be downloaded from: [https://github.com/eclipse/paho.mqtt-spy/releases](https://github.com/eclipse/paho.mqtt-spy/releases). 
-
-It requires Java SE 8 which can be downloaded from: [https://www.oracle.com/java/technologies/javase-downloads.html#JDK8](https://www.oracle.com/java/technologies/javase-downloads.html#JDK8) 
 
 ### <a name='2'>Setup Development Machine</a>
 These instructions assume the development machine is running Windows 10. 
 
 The process is similar for set up on Linux or Mac. 
 
-The samples require .NET Core 3.1 which can be downloaded from: [https://dotnet.microsoft.com/download/dotnet/3.1](https://dotnet.microsoft.com/download/dotnet/3.1). 
+The development enviroment requires Visual Studio 2019 or Visual Studio Code with .NET 5.0 and .NET Core 3.1 LTS. 
+
+Visual Studio 2019 is recommended. 
+
+Download Visual Studio 2019 from [https://visualstudio.microsoft.com/vs/](https://visualstudio.microsoft.com/vs/). 
+
+When installating ensure the .NET Core cross platform development feature is selected.
 
 Download Visual Studio Code from [https://code.visualstudio.com/](https://code.visualstudio.com/).  
 
@@ -59,14 +67,10 @@ Install the following extensions (select extensions icon on right side toolbar):
 * Remote – SSH
 * C#
 
-The C# extension may require that .NET 5.0 be installed as well. 
-
-Building and running the samples on Windows machines requires Visual Studio. 
-
 ### <a name='3'>Setup Raspberry Pi</a>
 Instructions on setting up a Raspberry Pi vary depending on the choice of hardware and development platform. Many good tutorials can be found on the Internet. 
 
-Example of instructions on how to set up a new Raspberry Pi for headless operation can be found here. 
+Example of instructions on how to set up a new Raspberry Pi for headless operation can be found [here](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html). 
 
 Before proceeding to the next step please ensure you have installed the latest version of Raspberry Pi OS (32-bit) on the device and have network connectivity between the development machine and the Raspberry Pi. 
 
