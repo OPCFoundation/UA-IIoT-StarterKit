@@ -75,9 +75,10 @@ Example of instructions on how to set up a new Raspberry Pi for headless operati
 Before proceeding to the next step please ensure you have installed the latest version of Raspberry Pi OS (32-bit) on the device and have network connectivity between the development machine and the Raspberry Pi. 
 
 ### <a name='4'>Install .NET Core on the Raspberry Pi</a> 
-The samples require .NET Core 3.1 which can be downloaded from: [https://dotnet.microsoft.com/download/dotnet/3.1](https://dotnet.microsoft.com/download/dotnet/3.1]). 
+The samples require .NET Core 3.1 which can be downloaded from: [https://dotnet.microsoft.com/download/dotnet/3.1](https://dotnet.microsoft.com/download/dotnet/3.1). 
 
 Download the latest “Arm32” binaries for the .NET Core 3.1 SDK. 
+Note that if you are not using a Raspberry Pi you must download the image that matches your platform.
 
 The default location for downloads when using the Raspberry Pi web browser is ~/Downloads. 
 
@@ -112,14 +113,25 @@ If everything installed properly the last line prints out ‘Hello World!’.
 These steps are designed for users that have never used SSH keys before. 
 If an SSH key already exists on the development system then that can be used. It is only necessary to register the key with the Raspberry Pi by adding it to the authorized_keys file on the Raspberry Pi. 
 
-Create a SSH key on the Raspberry Pi that can be used for remote login these commands: 
+Create a SSH key on the Raspberry Pi that can be used for remote login this command: 
 ```
+cd ~/
+mkdir .ssh
 ssh-keygen
+```
+This will show this output:
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/pi/.ssh/id_rsa): 
+```
+Do not provide a password and remember the path to the key (e.g. ~/.ssh/id_rsa). 
+
+Using the file name you actually choose, do the following:
+```
 cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
 sudo chown pi:pi ~/.ssh/authorized_keys
 ```
-Do not provide a password and remember the path to the key (e.g. ~/.ssh/id_rsa). 
 
 On the development machine copy the ssh key from the Raspberry Pi to the workspace: 
 ```
@@ -157,13 +169,25 @@ Create and run a simple program on the development machine.
 mkdir remoteworld
 cd remoteworld/
 dotnet new console
+```
+Edit the 'remoteworld.csproj', change
+```
+<TargetFramework>net5.0</TargetFramework>
+```
+to
+```
+<TargetFramework>netcoreapp3.1</TargetFramework>
+```
+Save the file, now test:
+```
 dotnet run
 ```
-Go back to the workspace directory and compile the program for the Raspberry Pi. 
+Verify that "Jello World!" was printed. 
+
+Compile the program for the Raspberry Pi. 
 ```
 dotnet publish -f netcoreapp3.1 -r linux-arm -o ../remotebuild/remoteworld ./remoteworld.csproj
 ```
-
 The binaries are written to the remotebuild/remoteworld directory. 
 
 Copy the binaries to the Raspberry Pi 
