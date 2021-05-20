@@ -32,7 +32,7 @@ From the ‘Advanced Settings’ for the Windows Firewall, add the following rul
 * Allow Program ‘%ProgramFiles%\mosquitto\mosquitto.exe’
 * Allow Port 1883 
 
-Test the broker by using mqtt-spy wchich is in the mqtt-spy [directory](https://github.com/OPCF-Members/UA-IoT-StarterKit/tree/master/mqtt-spy). 
+Test the broker by using mqtt-spy which is in the mqtt-spy [directory](https://github.com/OPCF-Members/UA-IoT-StarterKit/tree/master/mqtt-spy). 
 
 mqtt-spy can also be be downloaded from [here](https://github.com/eclipse/paho.mqtt-spy/releases). 
 
@@ -49,7 +49,7 @@ To connect to a broker using mqtt-spy:
 * Publish to a text topic and verify the response was received. 
 
 ### <a name='2'>Setup Development Machine</a>
-These instructions assume the development machine is running Windows 10. 
+These instructions assume the development machine is running Windows 10 (1709 or later - must support ssh). 
 
 The process is similar for set up on Linux or Mac. 
 
@@ -61,7 +61,7 @@ Download Visual Studio 2019 from [https://visualstudio.microsoft.com/vs/](https:
 
 When installating ensure the .NET Core cross platform development feature is selected.
 
-Download Visual Studio Code from [https://code.visualstudio.com/](https://code.visualstudio.com/).  
+When using Mac or Linux download Visual Studio Code from [https://code.visualstudio.com/](https://code.visualstudio.com/).  
 
 Install the following extensions (select extensions icon on right side toolbar): 
 * Remote – SSH
