@@ -1,7 +1,7 @@
 {
   "Manufacturer": "Acme Inc",
   "ManufacturerUri": "https://acme.com/",
-  "ProductInstanceUri": "urn:[ApplicationId]:acme.com:iot-toolkit:123456789",
+  "ProductInstanceUri": "urn:[ApplicationId]:acme.com:iot-starterkit:123456789",
   "Model": "Roadrunner Detector",
   "SerialNumber": "123456789",
   "HardwareRevision": "Model B Rev 1.2",

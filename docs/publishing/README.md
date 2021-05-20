@@ -1,6 +1,6 @@
-﻿## OPC UA IoT Toolkit – Publishing
+﻿## OPC UA IoT Starter Kit – Publishing
 ### Overview
-This document describes how to publish data with the agent.
+This page describes how to publish data with the agent.
 
 The command line parameters are:
 ```
@@ -22,8 +22,9 @@ Start mqtt-spy and subscribe to all topics.
 On the Raspberry Pi:
 ```
 cd ~/MqttAgent
-dotnet MqttAgent.dll publish -b=mqtt://<broker>:1883
+sudo dotnet MqttAgent.dll publish -b=mqtt://<broker>:1883 -gpio
 ```
 Replace <broker> with the IP address of the machine running the MQTT broker. 
+The -gpio option enables the GPIO pins. Omit it to run in simulator mode. 
 
 Use mqtt-spy to monitor the messages now being published from the Raspberry Pi. 

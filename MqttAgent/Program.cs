@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Text;
-using System.Net;
-using System.IO;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Opc.Ua;
-using MQTTnet.Extensions.ManagedClient;
-using System.Device.Gpio;
 using Microsoft.Extensions.CommandLineUtils;
 
 namespace MqttAgent
@@ -27,8 +19,6 @@ namespace MqttAgent
             {
                 Console.WriteLine($"[{e.GetType().Name}] {e.Message}");
             }
-
-            Console.ReadLine();
         }
     }
 }

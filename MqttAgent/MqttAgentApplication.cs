@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.CommandLineUtils;
+using MqttAgent.Server;
 using Newtonsoft.Json;
 using Opc.Ua;
 using Opc.Ua.PubSub;
@@ -239,6 +240,11 @@ namespace MqttAgent
             app.HelpOption("-?|-h|--help");
             AddCommonOptions(app);
 
+            app.Option(
+                "-g|--gpio",
+                "Use GPIO instead of a software simulator.",
+                CommandOptionType.NoValue);
+
             app.OnExecute(() =>
             {
                 var options = GetCommonOptions(app);
@@ -291,14 +297,24 @@ namespace MqttAgent
 
                 var managers = new DataStore(m_ioManagers.Values);
 
+                var useGPIO = app.Options.Find((ii) => { return ii.ShortName == "g" && ii.HasValue(); }) != null;
+                var server = new GPIO();
+
                 // Create the UA Publisher application using configuration file
                 using (UaPubSubApplication application = UaPubSubApplication.Create(configuration, managers))
                 {
                     Console.WriteLine($"Publishing to {GetConnectionUrl(connection)}.");
                     application.Start();
+
+                    Console.WriteLine("Starting OPC UA server.");
+                    server.Start(useGPIO).Wait();
+
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
                 }
+
+                Console.WriteLine("Stopping OPC UA server.");
+                server.Stop().Wait();
 
                 return 0;
             });

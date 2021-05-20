@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OpcUa\Libraries\Opc.Ua.PubSub\Opc.Ua.PubSub.csproj" />
+    <ProjectReference Include="..\OpcUa\Libraries\Opc.Ua.Server\Opc.Ua.Server.csproj" />
     <ProjectReference Include="..\OpcUa\Stack\Opc.Ua.Core\Opc.Ua.Core.csproj" />
   </ItemGroup>
 
@@ -42,6 +43,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="config\discovery-connection.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="config\server-configuration.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="config\subscriber-connection.json">

@@ -1,4 +1,4 @@
-﻿## OPC UA IoT Toolkit – Information Models
+﻿## OPC UA IoT Starter Kit – Information Models
 ### Overview
 This page describes the information models exposed by the publisher.
 

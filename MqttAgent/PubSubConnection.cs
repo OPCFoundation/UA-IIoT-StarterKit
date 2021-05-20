@@ -125,7 +125,7 @@ namespace MqttAgent
 
             connection.Name = "Local Broker";
             connection.Enabled = true;
-            connection.PublisherId = $"urn:{Dns.GetHostName()}:opcfoundation:iot-toolkit:publisher";
+            connection.PublisherId = $"urn:{Dns.GetHostName()}:opcfoundation:iot-starterkit:publisher";
             connection.TransportProfileUri = "http://opcfoundation.org/UA-Profile/Transport/pubsub-mqtt-json";
             connection.WriterGroups = new WriterGroupDataTypeCollection()
             {

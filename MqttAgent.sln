@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.Security.Certificate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.PubSub", "OpcUa\Libraries\Opc.Ua.PubSub\Opc.Ua.PubSub.csproj", "{5C88B019-8979-48A1-9D06-8B59BC34123D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.Server", "OpcUa\Libraries\Opc.Ua.Server\Opc.Ua.Server.csproj", "{D266A0F8-8118-4B10-92CF-2EEA4134D0B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.Configuration", "OpcUa\Libraries\Opc.Ua.Configuration\Opc.Ua.Configuration.csproj", "{A597C305-5849-4817-8C57-1C3176E95423}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{5C88B019-8979-48A1-9D06-8B59BC34123D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C88B019-8979-48A1-9D06-8B59BC34123D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C88B019-8979-48A1-9D06-8B59BC34123D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D266A0F8-8118-4B10-92CF-2EEA4134D0B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D266A0F8-8118-4B10-92CF-2EEA4134D0B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D266A0F8-8118-4B10-92CF-2EEA4134D0B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D266A0F8-8118-4B10-92CF-2EEA4134D0B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A597C305-5849-4817-8C57-1C3176E95423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A597C305-5849-4817-8C57-1C3176E95423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A597C305-5849-4817-8C57-1C3176E95423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A597C305-5849-4817-8C57-1C3176E95423}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
-﻿## OPC UA IoT Toolkit – Discovery
+﻿## OPC UA IoT Starter Kit – Discovery
 ### Overview
-This document describes how to discover data with the agent.
+This page describes how to discover data with the agent.
 
 The command line parameters are:
 ```
@@ -35,8 +35,8 @@ When the publisher starts the discovery agent will print something like:
 Detected Publisher (opcua/RaspberryPi/identity).
   Manufacturer: OPC Foundation
   ManufacturerUri: https://opcfoundation.org/
-  ProductInstanceUri: urn:raspberrypi:acme.org:iot-toolkit:123456789
-  Model: OPC UA PubSub IoT ToolKit
+  ProductInstanceUri: urn:raspberrypi:acme.org:iot-starterkit:123456789
+  Model: OPC UA PubSub IoT StarterKit
   SerialNumber: 123456789
   HardwareRevision: Model B Rev 1.2
   SoftwareRevision: 1.00

@@ -1,4 +1,4 @@
-﻿## OPC UA IoT Toolkit – Setup Development Environment
+﻿## OPC UA IoT StarterKit – Setup Development Environment
 ### Overview
 
 1. [Install and configure MQTT Broker](#1)

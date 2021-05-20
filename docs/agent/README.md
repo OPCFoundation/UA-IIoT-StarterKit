@@ -1,4 +1,4 @@
-﻿## OPC UA IoT Toolkit – MqttAgent
+﻿## OPC UA IoT Starter Kit – MqttAgent
 ### Overview
 The main application is called MqttAgent. 
 
@@ -32,8 +32,8 @@ The file formats are defined by the OPC UA specification and may be exchanged be
 ### Getting the Code
 Clone the GitHub repository into the workspace directory: 
 ```
-git clone https://github.com/OPCF-Members/UA-IoT-Toolkit.git
-cd UA-IoT-Toolkit
+git clone https://github.com/OPCF-Members/UA-IoT-StarterKit.git
+cd UA-IoT-StarterKit
 git submodule update –init
 ```
 Building the code Windows: 
@@ -44,11 +44,11 @@ Build solution
 
 Building the code for the RaspberryPi: 
 ```
-cd UA-IoT-Toolkit
-dotnet publish -f netcoreapp3.1 -r linux-arm -o ./build/MqttAgent ./ MqttAgent/MqttAgent.csproj
+cd UA-IoT-StarterKit
+dotnet publish -f netcoreapp3.1 -r linux-arm -o ./build/MqttAgent ./MqttAgent/MqttAgent.csproj
 ```
 Copy code to RaspberryPi (based on setup instructions): 
 ```
-cd UA-IoT-Toolkit
+cd UA-IoT-StarterKit
 scp -i ../.ssh/id_rsa -r ./build/MqttAgent pi@raspberrypi:~/
 ```
