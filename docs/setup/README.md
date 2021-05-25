@@ -11,7 +11,7 @@
 ### <a name='1'>Install and configure MQTT Broker</a>
 These steps explain how to set up an insecure broker for testing. A broker used in production applications would need to have TLS enabled and some sort of client authentication. 
 
-Download the Mosquitto Broker from here: [https://mosquitto.org/download/]([https://mosquitto.org/download/). 
+Download the Mosquitto Broker from here: [https://mosquitto.org/download/](https://mosquitto.org/download/). 
 
 Once installed it has to be configured to allow connections from the network. 
 
@@ -19,7 +19,7 @@ Edit ‘mosquitto.conf’ (in C:\Program Files\mosquitto on Windows).
 
 Add a listener for the IP address/hostname where the broker is running:
 ```
-listener 1883 192.168.1.111
+listener 1883 <Insert IP address accessible to Raspberry Pi>
 allow_anonymous true
 ```
 The section for listeners is around line 193 in the default configuration file. 
@@ -105,7 +105,8 @@ Create a simple application.
 mkdir helloworld
 cd helloworld/
 dotnet new console
-dotnet run
+dotnet build
+dotnet bin/Debug/netcoreapp3.1/helloworld.dll 
 ```
 If everything installed properly the last line prints out ‘Hello World!’. 
 
@@ -182,7 +183,7 @@ Save the file, now test:
 ```
 dotnet run
 ```
-Verify that "Jello World!" was printed. 
+Verify that "Hello World!" was printed. 
 
 Compile the program for the Raspberry Pi. 
 ```

@@ -14,10 +14,12 @@ namespace MqttAgent
             catch (CommandParsingException e)
             {
                 Console.WriteLine($"[{e.GetType().Name}] {e.Message} ({e.Command})");
+                Console.ReadLine();
             }
             catch (Exception e)
             {
                 Console.WriteLine($"[{e.GetType().Name}] {e.Message}");
+                Console.ReadLine();
             }
         }
     }

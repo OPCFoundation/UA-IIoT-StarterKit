@@ -17,8 +17,5 @@ namespace MqttAgent
         public string HardwareRevision { get; set; }
         public string SoftwareRevision { get; set; }
         public string DeviceRevision { get; set; }
-
-
-        
     }
 }

@@ -24,16 +24,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OpcUa\Libraries\Opc.Ua.Client\Opc.Ua.Client.csproj" />
     <ProjectReference Include="..\OpcUa\Libraries\Opc.Ua.PubSub\Opc.Ua.PubSub.csproj" />
     <ProjectReference Include="..\OpcUa\Libraries\Opc.Ua.Server\Opc.Ua.Server.csproj" />
     <ProjectReference Include="..\OpcUa\Stack\Opc.Ua.Core\Opc.Ua.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="config\datasets\gate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="config\datasets\nameplate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="config\datasets\single.led.json">
+    <None Update="config\datasets\gate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="config\nameplate.json">
@@ -48,9 +52,16 @@
     <None Update="config\server-configuration.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="config\sources\gate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="config\subscriber-connection.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="config\sources\" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

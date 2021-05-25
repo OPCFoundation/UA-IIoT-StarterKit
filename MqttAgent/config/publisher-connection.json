@@ -52,7 +52,7 @@
       ]
     },
     {
-      "Name": "minimal.single.led",
+      "Name": "minimal.gate",
       "Enabled": true,
       "SecurityMode": 1,
       "SecurityGroupId": "",
@@ -71,18 +71,18 @@
       },
       "DataSetWriters": [
         {
-          "Name": "minimal.single.led",
+          "Name": "minimal.gate",
           "Enabled": true,
           "DataSetWriterId": 2,
           "DataSetFieldContentMask": 32,
-          "KeyFrameCount": 1,
-          "DataSetName": "single.led",
+          "KeyFrameCount": 10,
+          "DataSetName": "gate",
           "TransportSettings": {
             "TypeId": { "Id": 15669 },
             "Body": {
-              "QueueName": "opcua/[ApplicationName]/minimal/data/single.led",
+              "QueueName": "opcua/[ApplicationName]/minimal/data/gate",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/metadata/single.led",
+              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/metadata/gate",
               "MetaDataUpdateTime": 0
             }
           },
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "Name": "full.single.led",
+      "Name": "full.gate",
       "Enabled": true,
       "SecurityMode": 1,
       "SecurityGroupId": "",
@@ -113,18 +113,18 @@
       },
       "DataSetWriters": [
         {
-          "Name": "full.single.led",
+          "Name": "full.gate",
           "Enabled": true,
           "DataSetWriterId": 3,
           "DataSetFieldContentMask": 0,
-          "KeyFrameCount": 1,
-          "DataSetName": "single.led",
+          "KeyFrameCount": 10,
+          "DataSetName": "gate",
           "TransportSettings": {
             "TypeId": { "Id": 15669 },
             "Body": {
-              "QueueName": "opcua/[ApplicationName]/full/data/single.led",
+              "QueueName": "opcua/[ApplicationName]/full/data/gate",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/full/metadata/single.led",
+              "MetaDataQueueName": "opcua/[ApplicationName]/full/metadata/gate",
               "MetaDataUpdateTime": 0
             }
           },

@@ -46,24 +46,24 @@ namespace MqttAgent.Server
 
         public BaseObjectState CreateObject(NodeState parent, string path, string name)
         {
-            BaseObjectState folder = new BaseObjectState(parent);
+            BaseObjectState node = new BaseObjectState(parent);
 
-            folder.SymbolicName = name;
-            folder.ReferenceTypeId = ReferenceTypes.Organizes;
-            folder.TypeDefinitionId = ObjectTypeIds.BaseObjectType;
-            folder.NodeId = new NodeId(path, NamespaceIndex);
-            folder.BrowseName = new QualifiedName(name, NamespaceIndex);
-            folder.DisplayName = folder.BrowseName.Name;
-            folder.WriteMask = AttributeWriteMask.None;
-            folder.UserWriteMask = AttributeWriteMask.None;
-            folder.EventNotifier = EventNotifiers.None;
+            node.SymbolicName = name;
+            node.ReferenceTypeId = ReferenceTypes.Organizes;
+            node.TypeDefinitionId = ObjectTypeIds.BaseObjectType;
+            node.NodeId = new NodeId(path, NamespaceIndex);
+            node.BrowseName = new QualifiedName(name, NamespaceIndex);
+            node.DisplayName = node.BrowseName.Name;
+            node.WriteMask = AttributeWriteMask.None;
+            node.UserWriteMask = AttributeWriteMask.None;
+            node.EventNotifier = EventNotifiers.None;
 
             if (parent != null)
             {
-                parent.AddChild(folder);
+                parent.AddChild(node);
             }
 
-            return folder;
+            return node;
         }
 
         /// <summary>
@@ -111,19 +111,15 @@ namespace MqttAgent.Server
         {
             TwoStateDiscreteState variable = new TwoStateDiscreteState(parent);
 
-            variable.NodeId = new NodeId(path, NamespaceIndex);
-            variable.BrowseName = new QualifiedName(name, NamespaceIndex);
-            variable.DisplayName = new LocalizedText("en", name);
-            variable.WriteMask = AttributeWriteMask.None;
-            variable.UserWriteMask = AttributeWriteMask.None;
-
             variable.Create(
                 SystemContext,
-                null,
-                variable.BrowseName,
-                null,
+                new NodeId(path, NamespaceIndex),
+                new QualifiedName(name, NamespaceIndex),
+                new LocalizedText("en", name),
                 true);
 
+            variable.WriteMask = AttributeWriteMask.None;
+            variable.UserWriteMask = AttributeWriteMask.None;
             variable.SymbolicName = name;
             variable.ReferenceTypeId = ReferenceTypes.Organizes;
             variable.DataType = DataTypeIds.Boolean;
@@ -170,12 +166,11 @@ namespace MqttAgent.Server
                 SystemContext,
                 new NodeId(path, NamespaceIndex),
                 variable.BrowseName,
-                null,
+                new LocalizedText("en", name),
                 true);
 
             variable.NodeId = new NodeId(path, NamespaceIndex);
             variable.SymbolicName = name;
-            variable.DisplayName = new LocalizedText("en", name);
             variable.WriteMask = AttributeWriteMask.None;
             variable.UserWriteMask = AttributeWriteMask.None;
             variable.ReferenceTypeId = ReferenceTypes.Organizes;

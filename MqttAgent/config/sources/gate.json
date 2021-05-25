@@ -1,0 +1,65 @@
+{
+  "PublishedData": [
+    {
+      "PublishedVariable": {
+        "IdType": 1,
+        "Id": "Gate1_State",
+        "Namespace": 2
+      },
+      "AttributeId": 13,
+      "SamplingIntervalHint": 1000,
+      "DeadbandType": 0,
+      "DeadbandValue": 0,
+      "SubstituteValue": {
+        "Type": 1,
+        "Body": false
+      },
+      "MetaDataProperties": [
+        {
+          "Name": "TrueState"
+        },
+        {
+          "Name": "FalseState"
+        }
+      ]
+    },
+    {
+      "PublishedVariable": {
+        "IdType": 1,
+        "Id": "Gate1_CycleCount",
+        "Namespace": 2
+      },
+      "AttributeId": 13,
+      "SamplingIntervalHint": 1000,
+      "DeadbandType": 0,
+      "DeadbandValue": 0,
+      "SubstituteValue": {
+        "Type": 7,
+        "Body": 0
+      }
+    },
+    {
+      "PublishedVariable": {
+        "IdType": 1,
+        "Id": "Gate1.CycleTime",
+        "Namespace": 2
+      },
+      "AttributeId": 13,
+      "SamplingIntervalHint": 1000,
+      "DeadbandType": 0,
+      "DeadbandValue": 0,
+      "SubstituteValue": {
+        "Type": 7,
+        "Body": 0
+      },
+      "MetaDataProperties": [
+        {
+          "Name": "EUInformation"
+        },
+        {
+          "Name": "EURange"
+        }
+      ]
+    }
+  ]
+}

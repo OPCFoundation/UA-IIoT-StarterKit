@@ -58,7 +58,7 @@ namespace MqttAgent.Server
 
         public NodeState CreateAddressSpace(string baseName, NodeFactory factory)
         {
-            BaseObjectState root = factory.CreateObject(null, "", baseName);
+            BaseObjectState root = factory.CreateObject(null, baseName, baseName);
 
             factory.AddRootReference(root, ReferenceTypes.Organizes, true, ObjectIds.ObjectsFolder);
             factory.AddRootNotifier(root);
@@ -69,14 +69,14 @@ namespace MqttAgent.Server
             {
                 m_state = factory.CreateTwoStateDiscreteItemVariable(
                     root,
-                    $"{baseName}.State",
+                    $"{baseName}_State",
                     "State",
                     "On",
                     "Off");
 
                 m_cycleTime = factory.CreateAnalogItemVariable(
                     root,
-                    $"{baseName}.CycleTime",
+                    $"{baseName}_CycleTime",
                     "CycleTime",
                     DataTypeIds.UInt32,
                     ValueRanks.Scalar,
@@ -92,7 +92,7 @@ namespace MqttAgent.Server
 
                 m_cycleCount = factory.CreateVariable(
                     root,
-                    $"{baseName}.CycleCount",
+                    $"{baseName}_CycleCount",
                     "CycleCount",
                     DataTypeIds.UInt32,
                     ValueRanks.Scalar);

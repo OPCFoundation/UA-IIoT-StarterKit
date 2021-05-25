@@ -21,10 +21,6 @@
         {
           "Name": "identity",
           "Enabled": true,
-          "PublisherId": {
-            "Type": 12,
-            "Body": "[ApplicationName]"
-          },
           "WriterGroupId": 1,
           "DataSetWriterId": 1,
           "DataSetMetaData": {
@@ -57,23 +53,19 @@
       ]
     },
     {
-      "Name": "minimal.single.led",
+      "Name": "minimal.gate",
       "Enabled": true,
       "SecurityMode": 1,
       "SecurityGroupId": "",
       "MaxNetworkMessageSize": 0,
       "DataSetReaders": [
         {
-          "Name": "minimal.single.led",
+          "Name": "minimal.gate",
           "Enabled": true,
-          "PublisherId": {
-            "Type": 12,
-            "Body": "[ApplicationName]"
-          },
           "WriterGroupId": 1,
           "DataSetWriterId": 2,
           "DataSetMetaData": {
-            "Name": "single.led",
+            "Name": "gate",
             "ConfigurationVersion": {
               "MajorVersion": 1,
               "MinorVersion": 0
@@ -81,15 +73,15 @@
           },
           "DataSetFieldContentMask": 32,
           "MessageReceiveTimeout": 0,
-          "KeyFrameCount": 1,
+          "KeyFrameCount": 10,
           "SecurityMode": 1,
           "SecurityGroupId": "",
           "TransportSettings": {
             "TypeId": { "Id": 15670 },
             "Body": {
-              "QueueName": "opcua/[ApplicationName]/minimal/data/single.led",
+              "QueueName": "opcua/[PublisherId]/minimal/data/gate",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/metadata/single.led"
+              "MetaDataQueueName": "opcua/[PublisherId]/minimal/metadata/gate"
             }
           },
           "MessageSettings": {
@@ -103,23 +95,19 @@
       ]
     },
     {
-      "Name": "full.single.led",
+      "Name": "full.gate",
       "Enabled": true,
       "SecurityMode": 1,
       "SecurityGroupId": "",
       "MaxNetworkMessageSize": 0,
       "DataSetReaders": [
         {
-          "Name": "full.single.led",
+          "Name": "full.gate",
           "Enabled": true,
-          "PublisherId": {
-            "Type": 12,
-            "Body": "[ApplicationName]"
-          },
           "WriterGroupId": 1,
           "DataSetWriterId": 3,
           "DataSetMetaData": {
-            "Name": "single.led",
+            "Name": "gate",
             "ConfigurationVersion": {
               "MajorVersion": 1,
               "MinorVersion": 0
@@ -127,15 +115,15 @@
           },
           "DataSetFieldContentMask": 0,
           "MessageReceiveTimeout": 0,
-          "KeyFrameCount": 1,
+          "KeyFrameCount": 10,
           "SecurityMode": 1,
           "SecurityGroupId": "",
           "TransportSettings": {
             "TypeId": { "Id": 15670 },
             "Body": {
-              "QueueName": "opcua/[ApplicationName]/full/data/single.led",
+              "QueueName": "opcua/[PublisherId]/full/data/gate",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/full/metadata/single.led"
+              "MetaDataQueueName": "opcua/[PublisherId]/full/metadata/gate"
             }
           },
           "MessageSettings": {

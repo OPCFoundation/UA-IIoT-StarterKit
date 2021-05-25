@@ -19,7 +19,7 @@ Options:
 Verify MQTT broker is running.
 Start mqtt-spy and subscribe to all topics.
 
-Start the discovert MqttAgent on any machine with these arguments:
+Start the discovery MqttAgent on any machine with these arguments:
 ```
 MqttAgent discover -b=mqtt://<broker>:1883
 ```

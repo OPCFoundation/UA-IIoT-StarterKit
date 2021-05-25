@@ -13,7 +13,7 @@ The elements of the VendorNameplate are shown in the following figure:
 
 A complete description of the field in the VendorNameplate can be found [here](https://reference.opcfoundation.org/DI/docs/4.5.2/).
 
-In the samples, the VendorNameplate is published by every subscriber. 
+In the samples, every publisher publishes its VendorNameplate. Subscribers can use wildcard topic subscriptions to detect new publishers.  
 
 ### Single LED
 The Single LED model describes a single LED that periodically turns on and off. The current state of the LED is publsihed.

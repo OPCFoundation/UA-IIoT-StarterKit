@@ -1,10 +1,10 @@
 {
-  "Name": "single.led",
+  "Name": "gate",
   "Fields": [
     {
-      "Name": "LED",
+      "Name": "State",
       "Description": {
-        "Text": "An LED connected to a GPIO pin."
+        "Text": "The current state of the gate."
       },
       "BuiltInType": 1,
       "DataSetFieldId": "d275f1ce-02eb-4fb7-af9c-e277711831db",
@@ -16,7 +16,7 @@
           "Value": {
             "Type": 21,
             "Body": {
-              "Text": "ON"
+              "Text": "Open"
             }
           }
         },
@@ -27,11 +27,19 @@
           "Value": {
             "Type": 21,
             "Body": {
-              "Text": "OFF"
+              "Text": "Closed"
             }
           }
         }
       ]
+    },
+    {
+      "Name": "CycleCount",
+      "Description": {
+        "Text": "How many types the gate has opened or closed."
+      },
+      "BuiltInType": 7,
+      "DataSetFieldId": "e275f1ce-02eb-4fb7-af9c-e277711831db"
     }
   ],
   "ConfigurationVersion": {

@@ -44,11 +44,9 @@ Build solution
 
 Building the code for the RaspberryPi: 
 ```
-cd UA-IoT-StarterKit
 dotnet publish -f netcoreapp3.1 -r linux-arm -o ./build/MqttAgent ./MqttAgent/MqttAgent.csproj
 ```
 Copy code to RaspberryPi (based on setup instructions): 
 ```
-cd UA-IoT-StarterKit
 scp -i ../.ssh/id_rsa -r ./build/MqttAgent pi@raspberrypi:~/
 ```

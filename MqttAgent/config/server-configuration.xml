@@ -71,7 +71,7 @@
     <ChannelLifetime>300000</ChannelLifetime>
     <SecurityTokenLifetime>3600000</SecurityTokenLifetime>
   </TransportQuotas>
-  
+
   <ServerConfiguration>
     <BaseAddresses>
       <ua:String>opc.tcp://localhost:48040</ua:String>
@@ -175,6 +175,18 @@
     <MultiCastDnsEnabled>false</MultiCastDnsEnabled>
    
   </ServerConfiguration>
+
+  <ClientConfiguration>
+    <DefaultSessionTimeout>60000</DefaultSessionTimeout>
+    <WellKnownDiscoveryUrls>
+      <ua:String>opc.tcp://{0}:4840</ua:String>
+      <ua:String>http://{0}:52601/UADiscovery</ua:String>
+      <ua:String>http://{0}/UADiscovery/Default.svc</ua:String>
+    </WellKnownDiscoveryUrls>
+    <DiscoveryServers></DiscoveryServers>
+    <MinSubscriptionLifetime>10000</MinSubscriptionLifetime>
+  </ClientConfiguration>
+  
   <TraceConfiguration>
     <OutputFilePath>logs/gpio-server.txt</OutputFilePath>
     <DeleteOnLoad>true</DeleteOnLoad>
