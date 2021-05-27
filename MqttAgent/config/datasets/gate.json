@@ -1,5 +1,6 @@
 {
   "Name": "gate",
+  "DataSetClassId": "95254774-8145-4DF7-92B5-789E5DCA9A0D",
   "Fields": [
     {
       "Name": "State",

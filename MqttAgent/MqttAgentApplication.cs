@@ -48,12 +48,7 @@ namespace MqttAgent
         {
             app.Description = "Publishes I/O data to an MQTT broker.";
             app.HelpOption("-?|-h|--help");
-            AddCommonOptions(app);
-
-            app.Option(
-                "-g|--gpio",
-                "Use GPIO instead of a software simulator.",
-                CommandOptionType.NoValue);
+            AddCommonOptions(app, false);
 
             app.OnExecute(() =>
             {
@@ -110,7 +105,7 @@ namespace MqttAgent
         {
             app.Description = "Discovers OPC UA publishers.";
             app.HelpOption("-?|-h|--help");
-            AddCommonOptions(app);
+            AddCommonOptions(app, true);
 
             app.OnExecute(() =>
             {
@@ -177,17 +172,11 @@ namespace MqttAgent
         {
             app.Description = "Subscribes for data from OPC UA publishers.";
             app.HelpOption("-?|-h|--help");
-            AddCommonOptions(app);
-
-            app.Option(
-                "-m|--monitor",
-                "The name of the reader group to monitor.",
-                CommandOptionType.SingleValue);
+            AddCommonOptions(app, true);
 
             app.OnExecute(() =>
             {
                 var options = GetCommonOptions(app, true);
-                var groupName = app.GetOption("m", "minimal.gate");
 
                 Dictionary<string, IIOManager> ioManagers = LoadDataSets(options);
 
@@ -201,7 +190,7 @@ namespace MqttAgent
 
                 foreach (var ii in connection.ReaderGroups)
                 {
-                    if (ii.Name != groupName)
+                    if (ii.Name != options.GroupName)
                     {
                         ii.Enabled = false;
                     }
@@ -229,12 +218,12 @@ namespace MqttAgent
                         {
                             if (field.Value.WrappedValue != Variant.Null)
                             {
-                                Console.WriteLine($"  {field.FieldMetaData.Name}: {field.Value.WrappedValue}");
+                                Console.WriteLine($"  {field.FieldMetaData.Name}: {field.Value.WrappedValue.TypeInfo} {field.Value.WrappedValue}");
                             }
                         }
                     };
 
-                    Console.WriteLine($"Monitoring '{groupName}' on {GetConnectionUrl(connection)}.");
+                    Console.WriteLine($"Monitoring '{options.GroupName}' on {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
@@ -248,7 +237,7 @@ namespace MqttAgent
         {
             app.Description = "Create a subscriber connection file from a publisher connection.";
             app.HelpOption("-?|-h|--help");
-            AddCommonOptions(app);
+            AddCommonOptions(app, true);
 
             app.OnExecute(() =>
             {
@@ -469,37 +458,52 @@ namespace MqttAgent
             return connection;
         }
 
-        private static void AddCommonOptions(CommandLineApplication command)
+        private static void AddCommonOptions(CommandLineApplication app, bool subscriber)
         {
-            command.Option(
-                "-b|--broker <BrokerUrl>",
+            app.Option(
+                "-b|--broker",
                 "The MQTT broker URL. Overrides the setting in the connection configuration.",
                 CommandOptionType.SingleValue);
 
-            command.Option(
-                "-a|--application <ApplicationId>",
-                "A unique name for the application instance. Overrides the setting in the connection configuration.",
-                CommandOptionType.SingleValue);
-
-            command.Option(
-                "-p|--publisher <PublisherId>",
-                "The identifier for the publisher.",
-                CommandOptionType.SingleValue);
-
-            command.Option(
-                "-c|--connection <ConnectionFilePath>",
+            app.Option(
+                "-c|--connection",
                 "The file containing the the OPC UA PubSub connection configuration.",
                 CommandOptionType.SingleValue);
 
-            command.Option(
-                "-d|--datasets <DataSetDirectoryPath>",
+            app.Option(
+                "-d|--datasets",
                 "The directory containing the the OPC UA PubSub dataset configurations.",
                 CommandOptionType.SingleValue);
 
-            command.Option(
-                "-n|--nameplate <NameplaceFilePath>",
-                "The file containing the the nameplate information for the device where the agent is running.",
-                CommandOptionType.SingleValue);
+            if (subscriber)
+            {
+                app.Option(
+                    "-p|--publisher",
+                    "The identifier for the publisher to monitor.",
+                    CommandOptionType.SingleValue);
+
+                app.Option(
+                    "-g|--group",
+                    "The name of the reader group to monitor.",
+                    CommandOptionType.SingleValue);
+            }
+            else
+            {
+                app.Option(
+                    "-a|--application",
+                    "A unique name for the application instance. Overrides the setting in the connection configuration.",
+                    CommandOptionType.SingleValue);
+             
+                app.Option(
+                    "-n|--nameplate <NameplaceFilePath>",
+                    "The file containing the the nameplate information provided by the publisher.",
+                    CommandOptionType.SingleValue);
+
+                app.Option(
+                    "-g|--gpio",
+                    "Use GPIO instead of a software simulator.",
+                    CommandOptionType.NoValue);
+            }
         }
 
         class CommonOptions
@@ -510,6 +514,7 @@ namespace MqttAgent
             public string BrokerUrl { get; internal set; }
             public string ApplicationId { get; internal set; }
             public string PublisherId { get; internal set; }
+            public string GroupName { get; internal set; }
         }
 
         private static CommonOptions GetCommonOptions(CommandLineApplication app, bool subscriber = false)
@@ -521,7 +526,8 @@ namespace MqttAgent
                 ConnectionFilePath = app.GetOption("c", $"config/{((subscriber)?"subscriber":"publisher")}-connection.json"),
                 BrokerUrl = app.GetOption("b", "mqtt://localhost:1883"),
                 ApplicationId = app.GetOption("a", Dns.GetHostName()),
-                PublisherId = app.GetOption("p", "")
+                PublisherId = app.GetOption("p", ""),
+                GroupName = app.GetOption("g", "gate.basic")
             };
 
             return options;

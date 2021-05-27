@@ -1,8 +1,8 @@
 ﻿## OPC UA IoT Starter Kit – Information Models
 ### Overview
-This page describes the information models exposed by the publisher.
+This page describes the information models exposed by the publisher and the OPC Server which is part of the publisher.
 
-Information models are the most important feature of OPC UA PubSub because they provide a standard way 
+Information models are the most important feature of OPC UA PubSub because they provide a standard way describe information. This allows subscribers to easily integrate information from different publishers. It is particularily helpful when pushing data to cloud based analytics applications.
 
 ### VendorNameplate
 The VendorNameplate provides informance about the device or application which is the source of data. 
@@ -15,17 +15,18 @@ A complete description of the field in the VendorNameplate can be found [here](h
 
 In the samples, every publisher publishes its VendorNameplate. Subscribers can use wildcard topic subscriptions to detect new publishers.  
 
-### Single LED
-The Single LED model describes a single LED that periodically turns on and off. The current state of the LED is publsihed.
+### Gate Monitor
+The Gate Monitor model describes a conveyor belt gate that periodically opens and closes. The current state of the gate is publsihed.
 
-The elements of the Single LED model are shown in the following figure: 
+The elements of the gate model are shown in the following figure: 
 
-![SingleLED](../images/single-led.png "SingleLED") 
+![gate](../images/single-led.png "gate") 
 
-The single LED builds on standard information model elements. 
+The gate builds on standard information model elements. 
 
-The current state of the LED if represented by a TwoStateDiscreteType which described [here](https://reference.opcfoundation.org/v104/Core/docs/Part8/5.3.3/#5.3.3.2). 
+The current state of the gate if represented by a TwoStateDiscreteType which described [here](https://reference.opcfoundation.org/v104/Core/docs/Part8/5.3.3/#5.3.3.2). 
 
-The cycle time of the LED is represented by an AnalogUnitType which is described [here](https://reference.opcfoundation.org/v104/Core/docs/Part8/5.3.2/#5.3.2.4). 
+The cycle time of the gate is represented by an AnalogUnitType which is described [here](https://reference.opcfoundation.org/v104/Core/docs/Part8/5.3.2/#5.3.2.4). 
 
-The metadatda that is published with the current include the value of the TrueState and FalseState.
+The metadata that is published with the current include the value of the TrueState and FalseState.
+

@@ -38,7 +38,7 @@
           "TransportSettings": {
             "TypeId": { "Id": 15670 },
             "Body": {
-              "QueueName": "opcua/#/identity",
+              "QueueName": "opcua/+/identity",
               "RequestedDeliveryGuarantee": 2
             }
           },
@@ -46,21 +46,21 @@
             "TypeId": { "Id": 15665 },
             "Body": {
               "NetworkMessageContentMask": 4,
-              "DataSetMessageContentMask": 24
+              "DataSetMessageContentMask": 0
             }
           }
         }
       ]
     },
     {
-      "Name": "minimal.gate",
+      "Name": "minimal",
       "Enabled": true,
       "SecurityMode": 1,
       "SecurityGroupId": "",
       "MaxNetworkMessageSize": 0,
       "DataSetReaders": [
         {
-          "Name": "minimal.gate",
+          "Name": "minimal",
           "Enabled": true,
           "WriterGroupId": 1,
           "DataSetWriterId": 2,
@@ -79,30 +79,30 @@
           "TransportSettings": {
             "TypeId": { "Id": 15670 },
             "Body": {
-              "QueueName": "opcua/[PublisherId]/minimal/data/gate",
+              "QueueName": "opcua/[PublisherId]/minimal/gate",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[PublisherId]/minimal/metadata/gate"
+              "MetaDataQueueName": "opcua/[PublisherId]/simple/minimal/$metadata"
             }
           },
           "MessageSettings": {
             "TypeId": { "Id": 15665 },
             "Body": {
               "NetworkMessageContentMask": 4,
-              "DataSetMessageContentMask": 24
+              "DataSetMessageContentMask": 0
             }
           }
         }
       ]
     },
     {
-      "Name": "full.gate",
+      "Name": "full",
       "Enabled": true,
       "SecurityMode": 1,
       "SecurityGroupId": "",
       "MaxNetworkMessageSize": 0,
       "DataSetReaders": [
         {
-          "Name": "full.gate",
+          "Name": "full",
           "Enabled": true,
           "WriterGroupId": 1,
           "DataSetWriterId": 3,
@@ -121,16 +121,16 @@
           "TransportSettings": {
             "TypeId": { "Id": 15670 },
             "Body": {
-              "QueueName": "opcua/[PublisherId]/full/data/gate",
+              "QueueName": "opcua/[PublisherId]/full/gate",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[PublisherId]/full/metadata/gate"
+              "MetaDataQueueName": "opcua/[PublisherId]/full/gate/$metadata"
             }
           },
           "MessageSettings": {
             "TypeId": { "Id": 15665 },
             "Body": {
-              "NetworkMessageContentMask": 4,
-              "DataSetMessageContentMask": 7
+              "NetworkMessageContentMask": 63,
+              "DataSetMessageContentMask": 31
             }
           }
         }

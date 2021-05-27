@@ -26,6 +26,7 @@ The MqttAgent depends on the following configuration files stored in the ‘./co
 | \*-connection.json | A PubSub connection configuration. It specifies the number and the location of topics which the application publishes to/subscribes to.<br/>The contents of the file are described [here](https://reference.opcfoundation.org/v104/Core/docs/Part14/6.2.6/#6.2.6.5.1). |
 | \*-nameplate.json | A JSON file that stores metadata about the host.<br/>It is simple self-describing set of name-value pairs. |
 | datasets/\*.json | A folder containing JSON files that describe datasets that may be published to the MQTT broker.<br/>The contents of a dataset file are described [here](https://reference.opcfoundation.org/v104/Core/docs/Part14/6.2.2/#6.2.2.1.2). | 
+| sources/\*.json | A folder containing JSON files that describe variables .<br/>The contents of a dataset file are described [here](https://reference.opcfoundation.org/v104/Core/docs/Part14/6.2.2/#6.2.2.1.2). | 
 
 The file formats are defined by the OPC UA specification and may be exchanged between applications developed by different vendors.
 
@@ -44,7 +45,7 @@ Build solution
 
 Building the code for the RaspberryPi: 
 ```
-dotnet publish -f netcoreapp3.1 -r linux-arm -o ./build/MqttAgent ./MqttAgent/MqttAgent.csproj
+dotnet publish -f net5.0 -r linux-arm -o ./build/MqttAgent ./MqttAgent/MqttAgent.csproj
 ```
 Copy code to RaspberryPi (based on setup instructions): 
 ```

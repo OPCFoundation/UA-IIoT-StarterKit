@@ -1,7 +1,7 @@
-﻿## OPC UA IoT StarterKit – Setup Development Environment
+﻿## OPC UA IoT StarterKit – Setup Development Environment for Windows and Raspberry Pi
 ### Overview
 
-1. [Install and configure MQTT Broker](#1)
+1. [Install and Configure MQTT Broker](#1)
 2. [Setup Development Machine](#2)
 3. [Setup Raspberry Pi](#3)
 4. [Install .NET Core on the Raspberry Pi](#4)
@@ -53,19 +53,11 @@ These instructions assume the development machine is running Windows 10 (1709 or
 
 The process is similar for set up on Linux or Mac. 
 
-The development enviroment requires Visual Studio 2019 or Visual Studio Code with .NET 5.0 and .NET Core 3.1 LTS. 
-
-Visual Studio 2019 is recommended. 
+The development enviroment requires Visual Studio 2019.
 
 Download Visual Studio 2019 from [https://visualstudio.microsoft.com/vs/](https://visualstudio.microsoft.com/vs/). 
 
 When installating ensure the .NET Core cross platform development feature is selected.
-
-When using Mac or Linux download Visual Studio Code from [https://code.visualstudio.com/](https://code.visualstudio.com/).  
-
-Install the following extensions (select extensions icon on right side toolbar): 
-* Remote – SSH
-* C#
 
 ### <a name='3'>Setup Raspberry Pi</a>
 Instructions on setting up a Raspberry Pi vary depending on the choice of hardware and development platform. Many good tutorials can be found on the Internet. 
@@ -74,10 +66,10 @@ Example of instructions on how to set up a new Raspberry Pi for headless operati
 
 Before proceeding to the next step please ensure you have installed the latest version of Raspberry Pi OS (32-bit) on the device and have network connectivity between the development machine and the Raspberry Pi. 
 
-### <a name='4'>Install .NET Core on the Raspberry Pi</a> 
-The samples require .NET Core 3.1 which can be downloaded from: [https://dotnet.microsoft.com/download/dotnet/3.1](https://dotnet.microsoft.com/download/dotnet/3.1). 
+### <a name='4'>Install .NET on the Raspberry Pi</a> 
+The samples require .NET 5.0 which can be downloaded from: [https://dotnet.microsoft.com/download/dotnet/](https://dotnet.microsoft.com/download/dotnet/). 
 
-Download the latest “Arm32” binaries for the .NET Core 3.1 SDK. 
+Download the latest “Arm32” binaries for the .NET Core 5.0 SDK. 
 Note that if you are not using a Raspberry Pi you must download the image that matches your platform.
 
 The default location for downloads when using the Raspberry Pi web browser is ~/Downloads. 
@@ -85,14 +77,14 @@ The default location for downloads when using the Raspberry Pi web browser is ~/
 Execute the following commands from a shell: 
 ```
 mkdir dotnet
-sudo tar zxf ./Downloads/dotnet-sdk-3.1.115-linux-arm.tar.gz -C ./dotnet/
+sudo tar zxf ./Downloads/dotnet-sdk-5.0.300-linux-arm.tar.gz -C ./dotnet/
 export DOTNET_ROOT=~/dotnet
 export PATH=$PATH:~/dotnet
 dotnet –version
 ```
-If everything installed properly the last line prints out the installed version (‘3.1.115’ in this case). 
+If everything installed properly the last line prints out the installed version (‘5.0.300' in this case). 
 
-The exact TAR file name should match the current version of the .NET Core 3.1 SDK. 
+The exact TAR file name should match the current version of the .NET 5.0 SDK. 
 
 The following lines need to added to ~/.bashrc 
 ```
@@ -106,7 +98,7 @@ mkdir helloworld
 cd helloworld/
 dotnet new console
 dotnet build
-dotnet bin/Debug/netcoreapp3.1/helloworld.dll 
+dotnet bin/Debug/net5.0/helloworld.dll 
 ```
 If everything installed properly the last line prints out ‘Hello World!’. 
 
@@ -170,24 +162,14 @@ Create and run a simple program on the development machine.
 mkdir remoteworld
 cd remoteworld/
 dotnet new console
-```
-Edit the 'remoteworld.csproj', change
-```
-<TargetFramework>net5.0</TargetFramework>
-```
-to
-```
-<TargetFramework>netcoreapp3.1</TargetFramework>
-```
-Save the file, now test:
-```
 dotnet run
 ```
+
 Verify that "Hello World!" was printed. 
 
 Compile the program for the Raspberry Pi. 
 ```
-dotnet publish -f netcoreapp3.1 -r linux-arm -o ../remotebuild/remoteworld ./remoteworld.csproj
+dotnet publish -f net50 -r linux-arm -o ../remotebuild/remoteworld ./remoteworld.csproj
 ```
 The binaries are written to the remotebuild/remoteworld directory. 
 
