@@ -54,7 +54,7 @@ Where
 
 [broker ip] is the the IP address or DNS name of the broker machine; 
 
-"minimal" is the name of the ReaderGroup in subscriber-connection.json file. 
+"full" is the name of the ReaderGroup in subscriber-connection.json file. 
 
 ### <a name='4'>Understanding the Results
 The metadata is published to the topic:
@@ -74,4 +74,4 @@ This field may be included in data messages which allows a subscriber to know wh
 
 The metadata is read from files in the config/dataset directory. 
 
-It is possible to simulate changes to the dataset by editing 'gate.json' on the publisher machine and restarting the publisher. 
+It is possible to simulate changes to the dataset by editing '[gate.json](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json)' on the publisher machine and restarting the publisher. 
