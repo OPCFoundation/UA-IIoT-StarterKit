@@ -10,6 +10,8 @@ namespace MqttAgent.Server
 {
     public class GPIOGateMonitor : IDisposable
     {
+        private const int GPIO_PIN = 17;
+
         private object m_lock;
         private Timer m_simulationTimer;
         private GpioController m_controller;
@@ -71,8 +73,8 @@ namespace MqttAgent.Server
                     root,
                     $"{baseName}_State",
                     "State",
-                    "On",
-                    "Off");
+                    "Closed",
+                    "Open");
 
                 m_cycleTime = factory.CreateAnalogItemVariable(
                     root,
@@ -107,7 +109,7 @@ namespace MqttAgent.Server
                 try
                 {
                     m_controller = new GpioController();
-                    m_controller.OpenPin(17, PinMode.Output);
+                    m_controller.OpenPin(GPIO_PIN, PinMode.Output);
                     Utils.Trace("GPIO initialized.");
                 }
                 catch (Exception e)
@@ -151,7 +153,7 @@ namespace MqttAgent.Server
 
                     if (m_controller != null)
                     {
-                        m_controller.Write(17, (newState) ? PinValue.High : PinValue.Low);
+                        m_controller.Write(GPIO_PIN, (newState) ? PinValue.Low : PinValue.High);
                     }
 
                     m_state.Value = newState;

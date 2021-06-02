@@ -18,7 +18,7 @@ Options:
   -c|--connection  The file containing the the OPC UA PubSub connection configuration.
   -d|--datasets    The directory containing the the OPC UA PubSub dataset configurations.
 ```
-The Starter Kit applications use this topic to publish their identity:
+The StarterKit applications use this topic to publish their identity:
 ```
 opcua/<application>/identity
 ```

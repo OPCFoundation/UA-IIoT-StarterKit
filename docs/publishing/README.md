@@ -21,9 +21,9 @@ Options:
   -n|--nameplate <NameplaceFilePath>  The file containing the the nameplate information provided by the publisher.
   -g|--gpio                           Use GPIO instead of a software simulator.
 ```
-The MQTT topic tree used by the Starter Kit applications have the pattern:
+The MQTT topic tree used by the StarterKit applications have the pattern:
 ```
-opcua/<application>/<group>/<dataset>
+opcua/<application>/<group>/<dataset writer>
 ```
 Where 
 
@@ -31,7 +31,7 @@ Where
 
 &lt;group&gt; the name of the WriterGroup.
 
-&lt;dataset&gt; name of the dataset. 
+&lt;dataset&gt; name of the dataset writer. 
 
 ### <a name='2'>Configuring the Publish
 

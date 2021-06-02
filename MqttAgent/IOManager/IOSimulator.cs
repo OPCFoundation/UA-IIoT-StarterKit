@@ -94,7 +94,7 @@ namespace MqttAgent
                 foreach (var ii in m_metadata.Fields)
                 {
                     DataValue value;
-                    Variant newValue;
+                    Variant newValue = Variant.Null;
 
                     if (m_values.TryGetValue(ii.Name, out value))
                     {
@@ -149,6 +149,10 @@ namespace MqttAgent
         public void WritePublishedDataItem(NodeId nodeId, uint attributeId = 13, DataValue dataValue = null)
         {
             throw new NotImplementedException();
+        }
+
+        public void UpdateMetaData(PublishedDataSetDataType publishedDataSet)
+        {
         }
     }
 }

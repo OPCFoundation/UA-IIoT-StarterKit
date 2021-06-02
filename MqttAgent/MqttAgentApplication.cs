@@ -33,6 +33,7 @@ namespace MqttAgent
             app.Command("publish", (e) => Publish(e));
             app.Command("discover", (e) => Discover(e));
             app.Command("subscribe", (e) => Subscribe(e));
+            app.Command("metadata", (e) => Metadata(e));
             // app.Command("create-subscriber", (e) => CreateSubscriber(e));
 
             app.OnExecute(() =>
@@ -54,7 +55,8 @@ namespace MqttAgent
             {
                 var options = GetCommonOptions(app);
 
-                Dictionary<string, IIOManager> ioManagers = LoadDataSets(options);
+                UAClient client = new UAClient();
+                Dictionary<string, IIOManager> ioManagers = LoadDataSets(options, client);
 
                 var connection = LoadConnection(options, ioManagers.Values);
 
@@ -85,6 +87,8 @@ namespace MqttAgent
                     Console.WriteLine("Starting OPC UA server.");
                     server.Start(useGPIO).Wait();
 
+                    client.StartAsync().Wait();
+
                     foreach (var ii in ioManagers.Values)
                     {
                         ii.Start();
@@ -112,7 +116,7 @@ namespace MqttAgent
                 var options = GetCommonOptions(app, true);
                 options.ConnectionFilePath = app.GetOption("c", "config/discovery-connection.json");
 
-                Dictionary<string, IIOManager> ioManagers = LoadDataSets(options, "identity");
+                Dictionary<string, IIOManager> ioManagers = LoadDataSets(options, null, "identity");
 
                 var connection = LoadConnection(options, ioManagers.Values);
 
@@ -220,6 +224,64 @@ namespace MqttAgent
                             {
                                 Console.WriteLine($"  {field.FieldMetaData.Name}: {field.Value.WrappedValue.TypeInfo} {field.Value.WrappedValue}");
                             }
+                        }
+                    };
+
+                    Console.WriteLine($"Monitoring '{options.GroupName}' on {GetConnectionUrl(connection)}.");
+                    application.Start();
+                    Console.WriteLine("Press [X] to stop the program.");
+                    HandleKeyPress();
+                }
+
+                return 0;
+            });
+        }
+
+        private static void Metadata(CommandLineApplication app)
+        {
+            app.Description = "Subscribes for data from OPC UA publishers.";
+            app.HelpOption("-?|-h|--help");
+            AddCommonOptions(app, true);
+
+            app.OnExecute(() =>
+            {
+                var options = GetCommonOptions(app, true);
+
+                Dictionary<string, IIOManager> ioManagers = LoadDataSets(options);
+
+                var connection = LoadConnection(options, ioManagers.Values);
+
+                PubSubConfigurationDataType configuration = new PubSubConfigurationDataType()
+                {
+                    Connections = new PubSubConnectionDataTypeCollection() { connection },
+                    PublishedDataSets = new PublishedDataSetDataTypeCollection()
+                };
+
+                foreach (var ii in connection.ReaderGroups)
+                {
+                    if (ii.Name != options.GroupName)
+                    {
+                        ii.Enabled = false;
+                    }
+                }
+
+                foreach (var ii in ioManagers.Values)
+                {
+                    configuration.PublishedDataSets.Add(ii.DataSet);
+                }
+
+                using (UaPubSubApplication application = UaPubSubApplication.Create(configuration))
+                {
+                    application.MetaDataReceived += (sender, e) =>
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine($"Received MetaData From ({e.Source}).");
+
+                        var metadata = e.NetworkMessage.DataSetMetaData;
+
+                        foreach (var field in metadata.Fields)
+                        {
+                            Console.WriteLine($"  {field.Name}: {(BuiltInType)field.BuiltInType}{((field.ValueRank == ValueRanks.Scalar) ? "" : "[]")} {field.Description}");
                         }
                     };
 
@@ -372,7 +434,7 @@ namespace MqttAgent
             return metadata;
         }
 
-        private static Dictionary<string, IIOManager> LoadDataSets(CommonOptions options, string dataSetName = null)
+        private static Dictionary<string, IIOManager> LoadDataSets(CommonOptions options, UAClient client = null, string dataSetName = null)
         {
             Dictionary<string, IIOManager> ioManagers = new Dictionary<string, IIOManager>();
 
@@ -397,7 +459,15 @@ namespace MqttAgent
 
                     default:
                     {
-                        ioManagers[dataset.Name] = new IOUAClient(id++, dataset);
+                        if (client != null)
+                        {
+                            ioManagers[dataset.Name] = new IOUAClient(id++, dataset, client);
+                        }
+                        else
+                        {
+                            ioManagers[dataset.Name] = new IOSimulator(id++, dataset);
+                        }
+
                         break;
                     }
                 }

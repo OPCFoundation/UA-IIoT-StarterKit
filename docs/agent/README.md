@@ -1,4 +1,4 @@
-﻿## OPC UA IoT Starter Kit – MqttAgent
+﻿## OPC UA IoT StarterKit – MqttAgent
 ### Overview
 The main application is called MqttAgent. 
 

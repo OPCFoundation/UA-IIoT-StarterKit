@@ -60,7 +60,7 @@
       "MaxNetworkMessageSize": 0,
       "DataSetReaders": [
         {
-          "Name": "minimal",
+          "Name": "Gate1",
           "Enabled": true,
           "WriterGroupId": 1,
           "DataSetWriterId": 2,
@@ -79,9 +79,9 @@
           "TransportSettings": {
             "TypeId": { "Id": 15670 },
             "Body": {
-              "QueueName": "opcua/[PublisherId]/minimal/gate",
+              "QueueName": "opcua/[PublisherId]/minimal/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[PublisherId]/simple/minimal/$metadata"
+              "MetaDataQueueName": "opcua/[PublisherId]/minimal/Gate1/$metadata"
             }
           },
           "MessageSettings": {
@@ -102,7 +102,7 @@
       "MaxNetworkMessageSize": 0,
       "DataSetReaders": [
         {
-          "Name": "full",
+          "Name": "Gate1",
           "Enabled": true,
           "WriterGroupId": 1,
           "DataSetWriterId": 3,
@@ -121,9 +121,9 @@
           "TransportSettings": {
             "TypeId": { "Id": 15670 },
             "Body": {
-              "QueueName": "opcua/[PublisherId]/full/gate",
+              "QueueName": "opcua/[PublisherId]/full/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[PublisherId]/full/gate/$metadata"
+              "MetaDataQueueName": "opcua/[PublisherId]/full/Gate1/$metadata"
             }
           },
           "MessageSettings": {

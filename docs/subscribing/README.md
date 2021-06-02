@@ -20,9 +20,9 @@ Options:
   -p|--publisher  The identifier for the publisher to monitor.
   -g|--group      The name of the reader group to monitor.
 ```
-The MQTT topic tree used by the Starter Kit applications have the pattern:
+The MQTT topic tree used by the StarterKit applications have the pattern:
 ```
-opcua/<publisher>/<group>/<dataset>
+opcua/<publisher>/<group>/<dataset reader>
 ```
 Where 
 
@@ -30,7 +30,7 @@ Where
 
 &lt;group&gt; is the value passed with the --group option. 
 
-&lt;dataset&gt; name of the dataset. 
+&lt;dataset&gt; name of the dataset reader. 
 
 ### <a name='2'>Configuring the Subscriber
 

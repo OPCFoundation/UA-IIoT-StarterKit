@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>net50;netcoreapp3.1</TargetFrameworks>
     <IntermediateOutputPath>..\build\obj\Net45\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
     <StartupObject>MqttAgent.Program</StartupObject>
   </PropertyGroup>

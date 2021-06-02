@@ -51,5 +51,9 @@ namespace MqttAgent
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateMetaData(PublishedDataSetDataType publishedDataSet)
+        {
+        }
     }
 }

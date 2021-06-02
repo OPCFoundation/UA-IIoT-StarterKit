@@ -71,7 +71,7 @@
       },
       "DataSetWriters": [
         {
-          "Name": "minimal",
+          "Name": "Gate1",
           "Enabled": true,
           "DataSetWriterId": 2,
           "DataSetFieldContentMask": 32,
@@ -80,10 +80,10 @@
           "TransportSettings": {
             "TypeId": { "Id": 15669 },
             "Body": {
-              "QueueName": "opcua/[ApplicationName]/minimal/gate",
+              "QueueName": "opcua/[ApplicationName]/minimal/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/gate/$metadata",
-              "MetaDataUpdateTime": 0
+              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/Gate1/$metadata",
+              "MetaDataUpdateTime": 30000
             }
           },
           "MessageSettings": {
@@ -113,7 +113,7 @@
       },
       "DataSetWriters": [
         {
-          "Name": "full",
+          "Name": "Gate1",
           "Enabled": true,
           "DataSetWriterId": 3,
           "DataSetFieldContentMask": 0,
@@ -122,9 +122,9 @@
           "TransportSettings": {
             "TypeId": { "Id": 15669 },
             "Body": {
-              "QueueName": "opcua/[ApplicationName]/full/gate",
+              "QueueName": "opcua/[ApplicationName]/full/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/full/gate/$metadata",
+              "MetaDataQueueName": "opcua/[ApplicationName]/full/Gate1/$metadata",
               "MetaDataUpdateTime": 0
             }
           },
