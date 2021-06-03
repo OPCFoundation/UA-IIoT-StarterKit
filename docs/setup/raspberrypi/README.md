@@ -1,4 +1,4 @@
-﻿## OPC UA IoT StarterKit – Setup Development Environment for Windows and Raspberry Pi
+﻿## OPC UA IIoT StarterKit – Setup Development Environment for Windows and Raspberry Pi
 ### Overview
 
 1. [Install and Configure MQTT Broker](#1)
@@ -32,7 +32,7 @@ From the ‘Advanced Settings’ for the Windows Firewall, add the following rul
 * Allow Program ‘%ProgramFiles%\mosquitto\mosquitto.exe’
 * Allow Port 1883 
 
-Test the broker by using mqtt-spy which is in the mqtt-spy [directory](https://github.com/OPCF-Members/UA-IoT-StarterKit/tree/master/mqtt-spy). 
+Test the broker by using mqtt-spy which is in the mqtt-spy [directory](https://github.com/OPCF-Members/UA-IIoT-StarterKit/tree/master/mqtt-spy). 
 
 mqtt-spy can also be be downloaded from [here](https://github.com/eclipse/paho.mqtt-spy/releases). 
 

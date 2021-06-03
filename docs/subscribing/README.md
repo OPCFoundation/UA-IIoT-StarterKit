@@ -1,4 +1,4 @@
-## OPC UA IoT StarterKit – Subscribing To Data
+## OPC UA IIoT StarterKit – Subscribing To Data
 ### Overview
 
 1. [Command Line Arguments](#1)
@@ -30,7 +30,7 @@ Where
 
 &lt;group&gt; is the value passed with the --group option. 
 
-&lt;dataset&gt; name of the dataset reader. 
+&lt;dataset reader&gt; name of the dataset reader. 
 
 ### <a name='2'>Configuring the Subscriber
 
@@ -42,7 +42,7 @@ There are 2 ways to process UA PubSub messages:
 
 mqtt-spy can be used too monitor the raw JSON. 
 
-The subscriber configuration [file](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/subscriber-connection.json) is used to configure the UA PubSub subscriber. The structure of the file: 
+The subscriber configuration [file](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/subscriber-connection.json) is used to configure the UA PubSub subscriber. The structure of the file: 
 
     ReaderGroups []
         DataSetReaders []
@@ -52,9 +52,9 @@ The subscriber configuration [file](https://github.com/OPCF-Members/UA-IoT-Start
             TransportSettings
                 QueueName: <MQTT Topic Name>
 
-In the StarterKit examples, the "Name" of the "DataSetMetaData" in the DataSetReader is used to locate the current DataSet metadata [file](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json). The ConfigurationVersion something that can be sent in a UA PubSub message and allows the subscriber to know if the DataSet metadata has changed. The complete definition of the file structure is [here](https://reference.opcfoundation.org/v104/Core/docs/Part14/6.2.6/#6.2.6.5.1).
+In the StarterKit examples, the "Name" of the "DataSetMetaData" in the DataSetReader is used to locate the current DataSet metadata [file](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json). The ConfigurationVersion something that can be sent in a UA PubSub message and allows the subscriber to know if the DataSet metadata has changed. The complete definition of the file structure is [here](https://reference.opcfoundation.org/v104/Core/docs/Part14/6.2.6/#6.2.6.5.1).
 
-An example [dataset](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json) represents a conveyor belt gate with two sensors. The structure of the file: 
+An example [dataset](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json) represents a conveyor belt gate with two sensors. The structure of the file: 
 
     Fields []
         Name : <The Field Name>
@@ -67,7 +67,7 @@ The "Fields" array specifies the name and order of elements that appear in the U
 
 Before running the subcriber, a publisher needs to be running. It can be started with the following command:
 ```
-dotnet MqttAgent.dll publish -b=mqtt://[broker ip]:1883 -a=MyPublisher
+dotnet MqttAgent.dll publish -b=mqtt://[broker ip]:1883 -a=mydevice:one
 ```
 Where 
 
@@ -75,7 +75,7 @@ Where
 
 The subscriber can be started with the following command:
 ```
-dotnet MqttAgent.dll subscribe -b==mqtt://[broker ip]:1883 -p=MyPublisher -g=minimal
+dotnet MqttAgent.dll subscribe -b==mqtt://[broker ip]:1883 -p=mydevice:one -g=minimal
 ```
 
 Where 
@@ -96,7 +96,7 @@ An sample of the message produced is:
     "State": false
 }
 ```
-The JSON message has 2 fields which are defined in the [metadata](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json). 
+The JSON message has 2 fields which are defined in the [metadata](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json). 
 
 The metadata also specifies that the "State" field is "The current state of the gate." and has a label "Closed" for TRUE and "Open" when FALSE. 
 

@@ -1,4 +1,4 @@
-﻿## OPC UA IoT StarterKit – Setup Ubuntu Environment
+﻿## OPC UA IIoT StarterKit – Setup Ubuntu Environment
 ### Overview
 
 1. [Install and Configure MQTT Broker](#1)
@@ -67,20 +67,20 @@ Hello World!
 Fetch code from GitHub:
 ```
 cd ~/
-git clone https://github.com/OPCF-Members/UA-IoT-StarterKit.git
-cd UA-IoT-StarterKit
+git clone https://github.com/OPCF-Members/UA-IIoT-StarterKit.git
+cd UA-IIoT-StarterKit
 git submodule update --init
 ```
 
 Build code:
 ```
-cd ~/UA-IoT-StarterKit
+cd ~/UA-IIoT-StarterKit
 dotnet build MqttAgent/MqttAgent.csproj 
 ```
 
 Run code
 ```
-cd ~/UA-IoT-StarterKit/build/bin/Debug/net50/
+cd ~/UA-IIoT-StarterKit/build/bin/Debug/net50/
 dotnet MqttAgent.dll --help
 ```
 

@@ -1,4 +1,4 @@
-## OPC UA IoT StarterKit – Subscribing To Data
+## OPC UA IIoT StarterKit – Subscribing To Data
 ### Overview
 
 1. [Command Line Arguments](#1)
@@ -40,7 +40,7 @@ See [subscribing](../subscribing/#2).
 
 Before running the subcriber, a publisher needs to be running. It can be started with the following command:
 ```
-dotnet MqttAgent.dll publish -b=mqtt://[broker ip]:1883 -a=MyPublisher
+dotnet MqttAgent.dll publish -b=mqtt://[broker ip]:1883 -a=mydevice:one
 ```
 Where 
 
@@ -48,7 +48,7 @@ Where
 
 The subscriber can be started with the following command:
 ```
-dotnet MqttAgent.dll metadata -b==mqtt://[broker ip]:1883 -p=MyPublisher -g=full
+dotnet MqttAgent.dll metadata -b==mqtt://[broker ip]:1883 -p=mydevice:one -g=full
 ```
 Where 
 
@@ -59,7 +59,7 @@ Where
 ### <a name='4'>Understanding the Results
 The metadata is published to the topic:
 ```
-opcua/<publisher>/<group>/<dataset>/$metdata
+opcua/<publisher>/<group>/<dataset reader>/$metdata
 ```
 The retain flag is set to true so whenever a subscriber starts a new subscription it get a current metadata. 
 
@@ -74,4 +74,4 @@ This field may be included in data messages which allows a subscriber to know wh
 
 The metadata is read from files in the config/dataset directory. 
 
-It is possible to simulate changes to the dataset by editing '[gate.json](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json)' on the publisher machine and restarting the publisher. 
+It is possible to simulate changes to the dataset by editing '[gate.json](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/datasets/gate.json)' on the publisher machine and restarting the publisher. 

@@ -1,4 +1,4 @@
-﻿## OPC UA IoT StarterKit – Discovering Publishers
+﻿## OPC UA IIoT StarterKit – Discovering Publishers
 ### Overview
 
 1. [Command Line Arguments](#1)
@@ -26,13 +26,13 @@ Where
 
 &lt;application&gt; is the publisher application name.
 
-The [identity](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/datasets/nameplate.json) is a special DataSet which provides metadata about the publisher. The contents of the DataSet are fully described by the [IVendorNameplate](https://reference.opcfoundation.org/v104/DI/v102/docs/5.5.2/) interface.
+The [identity](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/datasets/nameplate.json) is a special DataSet which provides metadata about the publisher. The contents of the DataSet are fully described by the [IVendorNameplate](https://reference.opcfoundation.org/v104/DI/v102/docs/5.5.2/) interface.
 
 ### <a name='2'>Configuring the Subscriber
 
 The discovery capability makes used of a DataSetReader with a MQTT wildcard specified as the QueueName. 
 
-The subscriber connetion file is [here](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/subscriber-connection.json). 
+The subscriber connetion file is [here](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/subscriber-connection.json). 
 
 The QueueName for identity ReaderGroup is:
 ```
@@ -50,20 +50,20 @@ Where
 
 The publisher can be started with the command:
 ```
-dotnet MqttAgent.dll publish -b=mqtt://[broker ip]:1883 -a=MyPublisher
+dotnet MqttAgent.dll publish -b=mqtt://[broker ip]:1883 -a=mydevice:one
 ```
 The subscriber should print out the following:
 ```
-Detected Publisher (opcua/MyPublisher/identity).
+Detected Publisher (opcua/mydevice:one/identity).
   Manufacturer: Arbutus Widgets Inc
   ManufacturerUri: https://arbutus-widgets.com/
-  ProductInstanceUri: urn:MyPublisher:arbutus-widgets.com:iot-starterkit:123456789
+  ProductInstanceUri: urn:mydevice:one:arbutus-widgets.com:iot-starterkit:123456789
   Model: Roadrunner Detector
   SerialNumber: 123456789
   HardwareRevision: Model B Rev 1.2
   SoftwareRevision: 1.00
 ```
-Most of the information comes from the [nameplate.json](https://github.com/OPCF-Members/UA-IoT-StarterKit/blob/master/MqttAgent/config/nameplate.json) file which used by the publisher. Some parts are overriden by command line parameters.
+Most of the information comes from the [nameplate.json](https://github.com/OPCF-Members/UA-IIoT-StarterKit/blob/master/MqttAgent/config/nameplate.json) file which used by the publisher. Some parts are overriden by command line parameters.
 
 Restart the publisher with a different application name:
 

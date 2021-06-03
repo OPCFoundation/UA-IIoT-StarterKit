@@ -1,4 +1,4 @@
-﻿## OPC UA IoT StarterKit – MqttAgent
+﻿## OPC UA IIoT StarterKit – MqttAgent
 ### Overview
 The main application is called MqttAgent. 
 
@@ -33,8 +33,8 @@ The file formats are defined by the OPC UA specification and may be exchanged be
 ### Getting the Code
 Clone the GitHub repository into the workspace directory: 
 ```
-git clone https://github.com/OPCF-Members/UA-IoT-StarterKit.git
-cd UA-IoT-StarterKit
+git clone https://github.com/OPCF-Members/UA-IIoT-StarterKit.git
+cd UA-IIoT-StarterKit
 git submodule update –init
 ```
 Building the code Windows: 

@@ -1,4 +1,4 @@
-﻿## OPC UA IoT StarterKit – Information Models
+﻿## OPC UA IIoT StarterKit – Information Models
 ### Overview
 This page describes the information models exposed by the publisher and the OPC Server which is part of the publisher.
 

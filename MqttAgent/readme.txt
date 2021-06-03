@@ -1,4 +1,4 @@
-The OPC UA IoT StarterKit is an implementation of OPC UA PubSub over MQTT using the JSON encoding. It is designed to illustrate how a fully compliant OPC UA PubSub implementation can be developed quickly using freely available MQTT and JSON libraries.
+The OPC UA IIoT StarterKit is an implementation of OPC UA PubSub over MQTT using the JSON encoding. It is designed to illustrate how a fully compliant OPC UA PubSub implementation can be developed quickly using freely available MQTT and JSON libraries.
 
 This package includes JSON files which accompany the code (to be published soon).
 
