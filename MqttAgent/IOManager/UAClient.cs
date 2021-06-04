@@ -112,7 +112,7 @@ namespace MqttAgent
                 30 * 60 * 1000,
                 new UserIdentity(),
                 null
-            );
+            ).ConfigureAwait(false);
 
             if (session != null && session.Connected)
             {

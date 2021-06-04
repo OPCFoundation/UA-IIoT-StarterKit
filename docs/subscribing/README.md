@@ -75,7 +75,7 @@ Where
 
 The subscriber can be started with the following command:
 ```
-dotnet MqttAgent.dll subscribe -b==mqtt://[broker ip]:1883 -p=mydevice:one -g=minimal
+dotnet MqttAgent.dll subscribe -b=mqtt://[broker ip]:1883 -p=mydevice:one -g=minimal
 ```
 
 Where 

@@ -491,7 +491,7 @@ namespace MqttAgent
                     throw new ArgumentException("Broker URL is not a valid URL.", "brokerUrl");
                 }
 
-                json = json.Replace("mqtt://localhost:1883", url.ToString());
+                json = json.Replace("mqtt://localhost:1883/", url.ToString());
             }
 
             json = json.Replace("[ApplicationName]", options.ApplicationId);

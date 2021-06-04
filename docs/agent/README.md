@@ -35,7 +35,7 @@ Clone the GitHub repository into the workspace directory:
 ```
 git clone https://github.com/OPCF-Members/UA-IIoT-StarterKit.git
 cd UA-IIoT-StarterKit
-git submodule update –init
+git submodule update --init
 ```
 Building the code Windows: 
 ```
@@ -45,7 +45,7 @@ Build solution
 
 Building the code for the RaspberryPi: 
 ```
-dotnet publish -f net5.0 -r linux-arm -o ./build/MqttAgent ./MqttAgent/MqttAgent.csproj
+dotnet publish -f net50 -r linux-arm -o ./build/MqttAgent ./MqttAgent/MqttAgent.csproj
 ```
 Copy code to RaspberryPi (based on setup instructions): 
 ```

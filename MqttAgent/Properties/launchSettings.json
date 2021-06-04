@@ -2,7 +2,7 @@
   "profiles": {
     "MqttAgent": {
       "commandName": "Project",
-      "commandLineArgs": "metadata -b=mqtt://192.168.1.111:1883 -p=mydevice:one -g=full"
+      "commandLineArgs": "metadata -b=mqtt://192.168.1.111:1883 -p=raspberrypi:one -g=full"
     }
   }
 }
