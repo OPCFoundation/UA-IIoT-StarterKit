@@ -33,7 +33,7 @@ An MQTT broker is required. [Eclipse Mosquitto](https://mosquitto.org/) is used 
 
 A MQTT monitoring application, such as [MQTT Spy](https://www.eclipse.org/paho/index.php?page=components/mqtt-spy/index.php), is also helpful. 
 
-All of the code and documentation can be found on [GitHub](https://github.com/OPCF-Members/UA-IIoT-StarterKit). 
+All of the code and documentation can be found on [GitHub](https://github.com/OPCFoundation/UA-IIoT-StarterKit). 
 
 ### Next Steps
 
