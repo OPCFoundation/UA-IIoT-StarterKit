@@ -1,6 +1,6 @@
 ## OPC UA IIoT StarterKit
 ### Overview
-OPC UA PubSub is an extension to OPC UA that enables communication between OPC UA applications using a Publish-Subscribe message patten instead of the Request-Response message pattern. The Publish-Subscribe message patten decouples senders of messages from their receivers which allows for the development if systems based on middleware such as an MQTT broker.  The difference between the two patterns is illustrated in the following figure:
+OPC UA PubSub is an extension to OPC UA that enables communication between OPC UA applications using a Publish-Subscribe message pattern instead of the Request-Response message pattern. The Publish-Subscribe message pattern decouples senders of messages from their receivers which allows for the development if systems based on middleware such as an MQTT broker.  The difference between the two patterns is illustrated in the following figure:
 
 ![PubSub Overview](docs/images/image001.png "OPC UA IIoT StarterKit Context")
 
@@ -8,7 +8,7 @@ The Publish-Subscribe message pattern is a powerful tool for factory owners that
 
 The purpose of this starter is to provide a bare bones implementation of OPC UA PubSub which illustrates the following:
 1) Implementing OPC UA PubSub is easy to do using standard Open-source libraries;
-2) OPC UA Pub Sub allows factory owners to take advantage of the MQTT infrastructure to visualize their factory;
+2) OPC UA Pub Sub allows factory owners to take advantage of the MQTT infrastructure to discover publishers in the factory;
 3) Using OPC UA Information Models to configure applications and define the contents of messages. 
 
 ### Licence and Usage Model
