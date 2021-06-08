@@ -16,7 +16,7 @@ The code is this respository has been developed as a teaching tool and is not in
 
 The code in this repository is covered under the [MIT license](https://opcfoundation.org/license/mit.html), however, it requries code from an development branch of the [UA-.NETStandard](https://github.com/OPCFoundation/UA-.NETStandard) project which is has a [dual license model](https://opcfoundation.github.io/UA-.NETStandard/). 
 
-The once the changes in the development branch are merged into the main branch the code will linked to the UA-.NETStandard NuGet packages which are covered under the [redistributabies license agreement](https://opcfoundation.org/license/redistributables/1.3/index.html). 
+The once the changes in the development branch are merged into the main branch, the StarterKit code will link to the UA-.NETStandard NuGet packages which are covered under the [redistributabies license agreement](https://opcfoundation.org/license/redistributables/1.3/index.html). 
 
 ### Requirements
 This StarterKit contains software designed to run on a [Raspberry Pi](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) or other Linux device with GPIO ports.  
