@@ -82,7 +82,7 @@
             "Body": {
               "QueueName": "opcua/[ApplicationName]/minimal/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/Gate1/$metadata",
+              "MetaDataQueueName": "opcua/[ApplicationName]/minimal/Gate1/$Metadata",
               "MetaDataUpdateTime": 30000
             }
           },
@@ -124,7 +124,7 @@
             "Body": {
               "QueueName": "opcua/[ApplicationName]/full/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[ApplicationName]/full/Gate1/$metadata",
+              "MetaDataQueueName": "opcua/[ApplicationName]/full/Gate1/$Metadata",
               "MetaDataUpdateTime": 0
             }
           },

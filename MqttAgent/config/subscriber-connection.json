@@ -81,7 +81,7 @@
             "Body": {
               "QueueName": "opcua/[PublisherId]/minimal/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[PublisherId]/minimal/Gate1/$metadata"
+              "MetaDataQueueName": "opcua/[PublisherId]/minimal/Gate1/$Metadata"
             }
           },
           "MessageSettings": {
@@ -123,7 +123,7 @@
             "Body": {
               "QueueName": "opcua/[PublisherId]/full/Gate1",
               "RequestedDeliveryGuarantee": 2,
-              "MetaDataQueueName": "opcua/[PublisherId]/full/Gate1/$metadata"
+              "MetaDataQueueName": "opcua/[PublisherId]/full/Gate1/$Metadata"
             }
           },
           "MessageSettings": {

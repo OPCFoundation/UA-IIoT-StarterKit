@@ -81,6 +81,6 @@ opcua/<PublisherId>/<WriterGroup.Name>/<DataSetWriter.Name>
 ```
 The metadata for the DataSet published by the DataSetWriter has the following topic:
 ```
-opcua/<PublisherId>/<WriterGroup.Name>/<DataSetWriter.Name>/$metadata
+opcua/<PublisherId>/<WriterGroup.Name>/<DataSetWriter.Name>/$Metadata
 ```
 While the topic in the StarterKey are examples, the 1.05 version of the OPC UA specification will introduce a standard topic tree.
