@@ -214,9 +214,9 @@ namespace MqttAgent
                             return;
                         }
 
-                        Console.WriteLine("");
-                        Console.WriteLine($"Received Update From ({e.Source}).");
                         var dataset = e.NetworkMessage.DataSetMessages[0];
+                        Console.WriteLine("");
+                        Console.WriteLine($"Received SequenceNumber '{((dataset.SequenceNumber == 0)?"[Not In Message]":dataset.SequenceNumber.ToString())}' From ({e.Source}).");
 
                         foreach (var field in dataset.DataSet.Fields)
                         {
@@ -227,7 +227,7 @@ namespace MqttAgent
                         }
                     };
 
-                    Console.WriteLine($"Monitoring '{options.GroupName}' on {GetConnectionUrl(connection)}.");
+                    Console.WriteLine($"Monitoring '{options.PublisherId}/{options.GroupName}' on {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
@@ -274,10 +274,11 @@ namespace MqttAgent
                 {
                     application.MetaDataReceived += (sender, e) =>
                     {
-                        Console.WriteLine("");
-                        Console.WriteLine($"Received MetaData From ({e.Source}).");
-
                         var metadata = e.NetworkMessage.DataSetMetaData;
+
+                        // note the MajorVersion/MinorVersions are reported as 'seconds since 2000-01-01'.
+                        Console.WriteLine("");
+                        Console.WriteLine($"Received MetaData Version ({metadata.ConfigurationVersion.MajorVersion}.{metadata.ConfigurationVersion.MinorVersion}) From ({e.Source}).");
 
                         foreach (var field in metadata.Fields)
                         {
@@ -285,7 +286,7 @@ namespace MqttAgent
                         }
                     };
 
-                    Console.WriteLine($"Monitoring '{options.GroupName}' on {GetConnectionUrl(connection)}.");
+                    Console.WriteLine($"Monitoring '{options.PublisherId}/{options.GroupName}' on {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
@@ -596,8 +597,8 @@ namespace MqttAgent
                 ConnectionFilePath = app.GetOption("c", $"config/{((subscriber)?"subscriber":"publisher")}-connection.json"),
                 BrokerUrl = app.GetOption("b", "mqtt://localhost:1883"),
                 ApplicationId = app.GetOption("a", Dns.GetHostName()),
-                PublisherId = app.GetOption("p", ""),
-                GroupName = app.GetOption("g", "gate.basic")
+                PublisherId = app.GetOption("p", "raspberrypi:one"),
+                GroupName = app.GetOption("g", "minimal")
             };
 
             return options;

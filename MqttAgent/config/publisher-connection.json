@@ -8,7 +8,7 @@
   "TransportProfileUri": "http://opcfoundation.org/UA-Profile/Transport/pubsub-mqtt-json",
   "Address": {
     "TypeId": { "Id": 15510 },
-    "Body": { "Url": "mqtt://localhost:1883" }
+    "Body": { "Url": "mqtt://localhost:1883/" }
   },
   "WriterGroups": [
     {
