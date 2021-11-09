@@ -18,7 +18,7 @@ Options:
   -c|--connection The file containing the the OPC UA PubSub connection configuration.
   -d|--datasets   The directory containing the the OPC UA PubSub dataset configurations.
   -p|--publisher  The identifier for the publisher to monitor.
-  -g|--group      The name of the reader group to monitor.
+  -g|--dataset    The name of the dataset reader to monitor.
 ```
 The MQTT topic tree used by the StarterKit applications have the pattern:
 ```
@@ -75,7 +75,7 @@ Where
 
 The subscriber can be started with the following command:
 ```
-dotnet MqttAgent.dll subscribe -b=mqtt://[broker ip]:1883 -p=mydevice:one -g=minimal
+dotnet MqttAgent.dll subscribe -b=mqtt://[broker ip]:1883 -p=mydevice:one -g=Gate1-Minimal
 ```
 
 Where 

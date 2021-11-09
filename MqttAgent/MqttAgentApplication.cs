@@ -192,11 +192,15 @@ namespace MqttAgent
                     PublishedDataSets = new PublishedDataSetDataTypeCollection()
                 };
 
+                // disable all but the selected group to avoid reporting too many updates.
                 foreach (var ii in connection.ReaderGroups)
                 {
-                    if (ii.Name != options.GroupName)
+                    foreach (var jj in ii.DataSetReaders)
                     {
-                        ii.Enabled = false;
+                        if (jj.Name != options.DataSetReaderName)
+                        {
+                            jj.Enabled = false;
+                        }
                     }
                 }
 
@@ -227,7 +231,7 @@ namespace MqttAgent
                         }
                     };
 
-                    Console.WriteLine($"Monitoring '{options.PublisherId}/{options.GroupName}' on {GetConnectionUrl(connection)}.");
+                    Console.WriteLine($"Monitoring '{options.PublisherId}/{options.DataSetReaderName}' on {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
@@ -259,9 +263,12 @@ namespace MqttAgent
 
                 foreach (var ii in connection.ReaderGroups)
                 {
-                    if (ii.Name != options.GroupName)
+                    foreach (var jj in ii.DataSetReaders)
                     {
-                        ii.Enabled = false;
+                        if (jj.Name != options.DataSetReaderName)
+                        {
+                            jj.Enabled = false;
+                        }
                     }
                 }
 
@@ -286,7 +293,7 @@ namespace MqttAgent
                         }
                     };
 
-                    Console.WriteLine($"Monitoring '{options.PublisherId}/{options.GroupName}' on {GetConnectionUrl(connection)}.");
+                    Console.WriteLine($"Monitoring '{options.PublisherId}/{options.DataSetReaderName}' on {GetConnectionUrl(connection)}.");
                     application.Start();
                     Console.WriteLine("Press [X] to stop the program.");
                     HandleKeyPress();
@@ -554,8 +561,8 @@ namespace MqttAgent
                     CommandOptionType.SingleValue);
 
                 app.Option(
-                    "-g|--group",
-                    "The name of the reader group to monitor.",
+                    "-g|--dataset",
+                    "The name of the dataset reader to monitor.",
                     CommandOptionType.SingleValue);
             }
             else
@@ -585,7 +592,7 @@ namespace MqttAgent
             public string BrokerUrl { get; internal set; }
             public string ApplicationId { get; internal set; }
             public string PublisherId { get; internal set; }
-            public string GroupName { get; internal set; }
+            public string DataSetReaderName { get; internal set; }
         }
 
         private static CommonOptions GetCommonOptions(CommandLineApplication app, bool subscriber = false)
@@ -598,7 +605,7 @@ namespace MqttAgent
                 BrokerUrl = app.GetOption("b", "mqtt://localhost:1883"),
                 ApplicationId = app.GetOption("a", Dns.GetHostName()),
                 PublisherId = app.GetOption("p", "raspberrypi:one"),
-                GroupName = app.GetOption("g", "minimal")
+                DataSetReaderName = app.GetOption("g", "Gate1-Minimal")
             };
 
             return options;

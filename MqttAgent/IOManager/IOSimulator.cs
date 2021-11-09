@@ -124,7 +124,7 @@ namespace MqttAgent
             return StatusCodes.Good;
         }
 
-        public DataValue ReadPublishedDataItem(NodeId nodeId, uint attributeId = 13, bool deltaFrame = false)
+        public DataValue ReadPublishedDataItem(NodeId nodeId, uint attributeId = 13)
         {
             var name = nodeId?.Identifier as string;
 
@@ -146,7 +146,7 @@ namespace MqttAgent
             }
         }
 
-        public void WritePublishedDataItem(NodeId nodeId, uint attributeId = 13, DataValue dataValue = null)
+        public void WritePublishedDataItem(NodeId nodeId, uint attributeId = 13, DataValue value = null)
         {
             throw new NotImplementedException();
         }

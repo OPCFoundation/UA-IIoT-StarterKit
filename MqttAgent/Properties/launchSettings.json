@@ -2,7 +2,7 @@
   "profiles": {
     "MqttAgent": {
       "commandName": "Project",
-      "commandLineArgs": "subscribe -b=mqtt://192.168.1.111:1883 -p=mydevice -g=full"
+      "commandLineArgs": "subscribe -b=mqtt://192.168.1.18:1883 -p=mydevice:one -g=Gate1-Full"
     }
   }
 }

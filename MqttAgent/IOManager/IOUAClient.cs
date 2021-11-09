@@ -20,9 +20,9 @@ namespace MqttAgent
         {
         }
 
-        public DataValue ReadPublishedDataItem(NodeId nodeId, uint attributeId = 13, bool deltaFrame = false)
+        public DataValue ReadPublishedDataItem(NodeId nodeId, uint attributeId = 13)
         {
-            return m_client.ReadPublishedDataItem(nodeId, attributeId, deltaFrame);
+            return m_client.ReadPublishedDataItem(nodeId, attributeId);
         }
 
         public void WritePublishedDataItem(NodeId nodeId, uint attributeId = 13, DataValue dataValue = null)

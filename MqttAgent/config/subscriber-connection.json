@@ -53,14 +53,14 @@
       ]
     },
     {
-      "Name": "minimal",
+      "Name": "Machine",
       "Enabled": true,
       "SecurityMode": 1,
       "SecurityGroupId": "",
       "MaxNetworkMessageSize": 0,
       "DataSetReaders": [
         {
-          "Name": "Gate1",
+          "Name": "Gate1-Minimal",
           "Enabled": true,
           "WriterGroupId": 1,
           "DataSetWriterId": 2,
@@ -91,18 +91,9 @@
               "DataSetMessageContentMask": 0
             }
           }
-        }
-      ]
-    },
-    {
-      "Name": "full",
-      "Enabled": true,
-      "SecurityMode": 1,
-      "SecurityGroupId": "",
-      "MaxNetworkMessageSize": 0,
-      "DataSetReaders": [
+        },
         {
-          "Name": "Gate1",
+          "Name": "Gate1-Full",
           "Enabled": true,
           "WriterGroupId": 1,
           "DataSetWriterId": 3,

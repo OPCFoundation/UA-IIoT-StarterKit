@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Iot.Device.Bindings" Version="1.4.0" />
+    <PackageReference Include="Iot.Device.Bindings" Version="1.5.0" />
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
-    <PackageReference Include="MQTTnet" Version="3.0.15" />
-    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="3.0.15" />
+    <PackageReference Include="MQTTnet" Version="3.1.0" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="3.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.Device.Gpio" Version="1.4.0" />
+    <PackageReference Include="System.Device.Gpio" Version="1.5.0" />
   </ItemGroup>
 
   <ItemGroup>

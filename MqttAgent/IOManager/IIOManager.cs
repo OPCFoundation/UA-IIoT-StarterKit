@@ -35,7 +35,7 @@ namespace MqttAgent
             }
         }
 
-        public DataValue ReadPublishedDataItem(NodeId nodeId, uint attributeId = 13, bool isDeltaFrame = false)
+        public DataValue ReadPublishedDataItem(NodeId nodeId, uint attributeId = 13)
         {
             IIOManager ioManager;
 
@@ -44,7 +44,7 @@ namespace MqttAgent
                 return null;
             }
 
-            return ioManager.ReadPublishedDataItem(nodeId, attributeId, isDeltaFrame);
+            return ioManager.ReadPublishedDataItem(nodeId, attributeId);
         }
 
         public void WritePublishedDataItem(NodeId nodeId, uint attributeId = 13, DataValue dataValue = null)
