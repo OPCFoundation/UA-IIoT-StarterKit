@@ -11,6 +11,12 @@ The purpose of this starter is to provide a bare bones implementation of OPC UA 
 2) OPC UA Pub Sub allows factory owners to take advantage of the MQTT infrastructure to discover publishers in the factory;
 3) Using OPC UA Information Models to configure applications and define the contents of messages. 
 
+### Changes
+
+|Date|Changes|
+|--|--|
+|2021-12-01|Added command line arguments to set MQTT broker username/password.|
+
 ### Licence and Usage Model
 The code is this respository has been developed as a teaching tool and is not intended for immediate inclusion in a commercial product. 
 

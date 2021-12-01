@@ -387,7 +387,7 @@ namespace MqttAgent
                 var output = Path.GetFileNameWithoutExtension(options.ConnectionFilePath).Replace("publisher-", "");
                 var path = Path.GetDirectoryName(output);
                 if (String.IsNullOrEmpty(path)) path = ".";
-                output = $"{path}/subscriber-{output}.json";
+                output = $"{path}/subscriber2-{output}.json";
 
                 using (StreamWriter writer = new StreamWriter(output))
                 {
@@ -505,11 +505,45 @@ namespace MqttAgent
             json = json.Replace("[ApplicationName]", options.ApplicationId);
             json = json.Replace("[PublisherId]", (String.IsNullOrEmpty(options.PublisherId)) ? options.ApplicationId : options.PublisherId);
 
+
             PubSubConnectionDataType connection = new PubSubConnectionDataType();
 
             using (var decoder = new JsonDecoder(json, ServiceMessageContext.GlobalContext))
             {
                 connection.Decode(decoder);
+            }
+
+            if (!String.IsNullOrEmpty(options.UserName))
+            {
+                var properties = connection.ConnectionProperties ?? new KeyValuePairCollection();
+
+                var property = properties.Find(x => x.Key.Name == "UserName");
+
+                if (property == null)
+                {
+                    property = new Opc.Ua.KeyValuePair()
+                    {
+                        Key = new QualifiedName("UserName")
+                    };
+                    properties.Add(property);
+                }
+
+                property.Value = options.UserName;
+
+                property = properties.Find(x => x.Key.Name == "Password");
+
+                if (property == null)
+                {
+                    property = new Opc.Ua.KeyValuePair()
+                    {
+                        Key = new QualifiedName("Password")
+                    };
+                    properties.Add(property);
+                }
+
+                property.Value = options.Password;
+
+                connection.ConnectionProperties = properties;
             }
 
             // replace intial datasets with the last version cached.
@@ -541,6 +575,16 @@ namespace MqttAgent
             app.Option(
                 "-b|--broker",
                 "The MQTT broker URL. Overrides the setting in the connection configuration.",
+                CommandOptionType.SingleValue);
+
+            app.Option(
+                "-u|--user",
+                "The MQTT broker user name.",
+                CommandOptionType.SingleValue);
+
+            app.Option(
+                "-p|--password",
+                "The MQTT broker user password.",
                 CommandOptionType.SingleValue);
 
             app.Option(
@@ -590,6 +634,8 @@ namespace MqttAgent
             public string NameplateFilePath { get; internal set; }
             public string ConnectionFilePath { get; internal set; }
             public string BrokerUrl { get; internal set; }
+            public string UserName { get; internal set; }
+            public string Password { get; internal set; }
             public string ApplicationId { get; internal set; }
             public string PublisherId { get; internal set; }
             public string DataSetReaderName { get; internal set; }
@@ -603,6 +649,8 @@ namespace MqttAgent
                 NameplateFilePath = app.GetOption("n", "config/nameplate.json"),
                 ConnectionFilePath = app.GetOption("c", $"config/{((subscriber)?"subscriber":"publisher")}-connection.json"),
                 BrokerUrl = app.GetOption("b", "mqtt://localhost:1883"),
+                UserName = app.GetOption("u", ""),
+                Password = app.GetOption("p", ""),
                 ApplicationId = app.GetOption("a", Dns.GetHostName()),
                 PublisherId = app.GetOption("p", "raspberrypi:one"),
                 DataSetReaderName = app.GetOption("g", "Gate1-Minimal")
