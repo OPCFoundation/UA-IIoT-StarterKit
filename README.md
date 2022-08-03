@@ -1,4 +1,12 @@
 ## OPC UA IIoT StarterKit
+**This repository is based on the 1.05.1 version of the specification.**
+
+The member only version of the [UA-IIoT-StarterKit](https://github.com/OPCF-Members/UA-IIoT-StarterKit/) has code that implements the DRAFT specification which includes:
+* Support for standard MQTT topics, including a Will message;
+* Support for Actions (request-reply);
+
+Instructions to access the member only respository can be found [here](https://opcf-members.github.io/Help/).
+
 ### Overview
 OPC UA PubSub is an extension to OPC UA that enables communication between OPC UA applications using a Publish-Subscribe message pattern instead of the Request-Response message pattern. The Publish-Subscribe message pattern decouples senders of messages from their receivers which allows for the development if systems based on middleware such as an MQTT broker.  The difference between the two patterns is illustrated in the following figure:
 
