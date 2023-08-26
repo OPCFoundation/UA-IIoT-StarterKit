@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net50;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net6.0;netcoreapp3.1</TargetFrameworks>
     <IntermediateOutputPath>..\build\obj\Net45\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
     <StartupObject>MqttAgent.Program</StartupObject>
   </PropertyGroup>
@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Iot.Device.Bindings" Version="1.5.0" />
+    <PackageReference Include="Iot.Device.Bindings" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
-    <PackageReference Include="MQTTnet" Version="3.1.0" />
-    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="3.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.Device.Gpio" Version="1.5.0" />
+    <PackageReference Include="MQTTnet" Version="4.2.1.781" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="4.2.1.781" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Device.Gpio" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>

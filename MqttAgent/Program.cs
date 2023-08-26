@@ -9,7 +9,9 @@ namespace MqttAgent
         {
             try
             {
-                MqttAgentApplication.Run(args);
+                var args2 = new string[] { "publish", "-b=mqtt://127.0.0.1:1883", "-a=mydevice:one" };
+
+                MqttAgentApplication.Run(args2);
             }
             catch (CommandParsingException e)
             {
