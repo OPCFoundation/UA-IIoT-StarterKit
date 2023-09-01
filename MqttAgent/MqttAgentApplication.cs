@@ -578,12 +578,12 @@ namespace MqttAgent
                 CommandOptionType.SingleValue);
 
             app.Option(
-                "-u|--user",
+                "--user",
                 "The MQTT broker user name.",
                 CommandOptionType.SingleValue);
 
             app.Option(
-                "-p|--password",
+                "--password",
                 "The MQTT broker user password.",
                 CommandOptionType.SingleValue);
 
