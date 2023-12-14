@@ -1,4 +1,0 @@
-
-[submodule "OpcUa"]
-	path = OpcUa
-	url = https://github.com/OPCFoundation/UA-.NETStandard.git
