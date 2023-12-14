@@ -27,6 +27,18 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 
+using System.Net;
+using System.Reflection;
+using System.Security.Authentication;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Formatter;
+using Opc.Ua;
+using UaMqttCommon;
+using UaMqttPublisher.Server;
+
 namespace UaMqttPublisher
 {
     internal class Publisher : IDisposable
