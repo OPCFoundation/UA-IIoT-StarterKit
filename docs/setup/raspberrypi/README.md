@@ -32,7 +32,7 @@ From the ‘Advanced Settings’ for the Windows Firewall, add the following rul
 * Allow Program ‘%ProgramFiles%\mosquitto\mosquitto.exe’
 * Allow Port 1883 
 
-Test the broker by using mqtt-spy which is in the mqtt-spy [directory](https://github.com/OPCF-Members/UA-IIoT-StarterKit/tree/master/mqtt-spy). 
+Test the broker by using mqtt-spy which is in the mqtt-spy [directory](https://github.com/OPCFoundation/UA-IIoT-StarterKit/tree/master/mqtt-spy). 
 
 mqtt-spy can also be be downloaded from [here](https://github.com/eclipse/paho.mqtt-spy/releases). 
 
@@ -53,9 +53,9 @@ These instructions assume the development machine is running Windows 10 (1709 or
 
 The process is similar for set up on Linux or Mac. 
 
-The development enviroment requires Visual Studio 2019.
+The development enviroment requires Visual Studio 2022.
 
-Download Visual Studio 2019 from [https://visualstudio.microsoft.com/vs/](https://visualstudio.microsoft.com/vs/). 
+Download Visual Studio 2022 from [https://visualstudio.microsoft.com/vs/](https://visualstudio.microsoft.com/vs/). 
 
 When installating ensure the .NET Core cross platform development feature is selected.
 
@@ -64,12 +64,14 @@ Instructions on setting up a Raspberry Pi vary depending on the choice of hardwa
 
 Example of instructions on how to set up a new Raspberry Pi for headless operation can be found [here](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html). 
 
-Before proceeding to the next step please ensure you have installed the latest version of Raspberry Pi OS (32-bit) on the device and have network connectivity between the development machine and the Raspberry Pi. 
+Before proceeding to the next step please ensure you have installed the latest version of Raspberry Pi OS (32-bit) on the device and have network connectivity between the development machine and the Raspberry Pi.
+
+The examples below assume the admin account name is 'piadmin' and host is 'raspberrypi'.
 
 ### <a name='4'>Install .NET on the Raspberry Pi</a> 
-The samples require .NET 5.0 which can be downloaded from: [https://dotnet.microsoft.com/download/dotnet/](https://dotnet.microsoft.com/download/dotnet/). 
+The samples require .NET 6.0 which can be downloaded from: [https://dotnet.microsoft.com/download/dotnet/](https://dotnet.microsoft.com/download/dotnet/). 
 
-Download the latest “Arm32” binaries for the .NET Core 5.0 SDK. 
+Download the latest “Arm32” binaries for the .NET 6.0 SDK. 
 Note that if you are not using a Raspberry Pi you must download the image that matches your platform.
 
 The default location for downloads when using the Raspberry Pi web browser is ~/Downloads. 
@@ -77,14 +79,14 @@ The default location for downloads when using the Raspberry Pi web browser is ~/
 Execute the following commands from a shell: 
 ```
 mkdir dotnet
-sudo tar zxf ./Downloads/dotnet-sdk-5.0.300-linux-arm.tar.gz -C ./dotnet/
+sudo tar zxf ./Downloads/dotnet-sdk-6.0.107-linux-arm.tar.gz -C ./dotnet/
 export DOTNET_ROOT=~/dotnet
 export PATH=$PATH:~/dotnet
-dotnet –version
+dotnet --version
 ```
-If everything installed properly the last line prints out the installed version (‘5.0.300' in this case). 
+If everything installed properly the last line prints out the installed version (‘6.0.107' in this case). 
 
-The exact TAR file name should match the current version of the .NET 5.0 SDK. 
+The exact TAR file name should match the current version of the .NET 6.0 SDK. 
 
 The following lines need to added to ~/.bashrc 
 ```
@@ -98,7 +100,7 @@ mkdir helloworld
 cd helloworld/
 dotnet new console
 dotnet build
-dotnet bin/Debug/net5.0/helloworld.dll 
+dotnet bin/Debug/net6.0/helloworld.dll 
 ```
 If everything installed properly the last line prints out ‘Hello World!’. 
 
@@ -115,7 +117,7 @@ ssh-keygen
 This will show this output:
 ```
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/pi/.ssh/id_rsa): 
+Enter file in which to save the key (/home/piadmin/.ssh/id_rsa): 
 ```
 Do not provide a password and remember the path to the key (e.g. ~/.ssh/id_rsa). 
 
@@ -123,13 +125,13 @@ Using the file name you actually choose, do the following:
 ```
 cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
-sudo chown pi:pi ~/.ssh/authorized_keys
+sudo chown piadmin:piadmin ~/.ssh/authorized_keys
 ```
 
 On the development machine copy the ssh key from the Raspberry Pi to the workspace: 
 ```
 mkdir .ssh
-scp pi@raspberrypi:~/.ssh/id_pi ./.ssh/
+scp piadmin@raspberrypi:~/.ssh/id_rsa ./.ssh/
 ```
 
 Enter the Raspberry Pi account password when prompted. 
@@ -149,7 +151,7 @@ It is now necessary to remove permissions from the local .ssh folder:
 
 Go to a command prompt and run: 
 ```
-ssh -i ./.ssh/id_rsa pi@raspberrypi
+ssh -i ./.ssh/id_rsa piadmin@raspberrypi
 ```
 
 If the remote login succeeds without being prompted to enter a password, then everything has been set up correctly. 
@@ -169,18 +171,18 @@ Verify that "Hello World!" was printed.
 
 Compile the program for the Raspberry Pi. 
 ```
-dotnet publish -f net50 -r linux-arm -o ../remotebuild/remoteworld ./remoteworld.csproj
+dotnet publish -f net6.0 -r linux-arm --no-self-contained -o ../remotebuild/remoteworld ./remoteworld.csproj
 ```
 The binaries are written to the remotebuild/remoteworld directory. 
 
 Copy the binaries to the Raspberry Pi 
 ```
-scp -i ./.ssh/id_rsa -r ../remotebuild/remoteworld pi@raspberrypi:~/
+scp -i ./.ssh/id_rsa -r ../remotebuild/remoteworld piadmin@raspberrypi:~/
 ```
 Go to the Raspberry Pi (remote login or via a remote desktop). 
 ```
 cd ~/remoteworld
-dotnet remoteworld.dll
+dotnet remoteworld.dll 
 ```
 The program should print “Hello World!”. 
 

@@ -1,0 +1,132 @@
+{
+  "Brokers": [
+    {
+      "Name": "LocalHost",
+      "BrokerUrl": "192.168.1.162",
+      "TopicPrefix": "opcua"
+    },
+    {
+      "Name": "IopGateway",
+      "BrokerUrl": "iop-gateway.germanywestcentral.cloudapp.azure.com:1884",
+      "TopicPrefix": "opcua",
+      "UserName": "iopuser",
+      "Password": "iop-opc",
+      "DoNotUseTls": true
+    },
+    {
+      "Name": "HiveMQ",
+      "BrokerUrl": "broker.hivemq.com",
+      "TopicPrefix": "opcua",
+      "IgnoreCertificateErrors": true
+    }
+  ],
+  "Connections": [
+    {
+      "Name": "InternalServer",
+      "Enabled": true,
+      "ServerUrl": "opc.tcp://localhost:48040",
+      "NoSecurity": true,
+      "Groups": [
+        {
+          "Name": "Gate1",
+          "Enabled": true,
+          "Description": "A gate.",
+          "Writers": [
+            {
+              "Name": "Operations",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "CycleCount",
+                  "Description": "The number of times the gate has opened.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_CycleCount"
+                },
+                {
+                  "Name": "CycleTime",
+                  "Description": "The fraction of the calculation period when the date.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_CycleTime",
+                  "Properties": [
+                    {
+                      "Name": "EngineeringUnits",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_CycleTime_EngineeringUnits"
+                    }
+                  ]
+                },
+                {
+                  "Name": "State",
+                  "Description": "Whether the gate is open or closed.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_State",
+                  "Properties": [
+                    {
+                      "Name": "TrueState",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_State_TrueState"
+                    },
+                    {
+                      "Name": "FalseState",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_State_FalseState"
+                    }
+                  ]
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 5,
+              "TopicForData": "change-this-root/gates/gate1"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 10,
+          "KeepAliveCount": 1,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-Minimal"
+        }
+      ]
+    },
+    {
+      "Name": "ReferenceServer",
+      "Enabled": true,
+      "ServerUrl": "opc.tcp://greycat:62541/Quickstarts/ReferenceServer",
+      "NoSecurity": true,
+      "Groups": [
+        {
+          "Name": "Conveyor",
+          "Enabled": true,
+          "Description": "A conveyor belt.",
+          "Writers": [
+            {
+              "Name": "MotorEnergyMetrics",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "Consumption",
+                  "Description": "The energy consumed by the device during the calculation period.",
+                  "Source": "nsu=http://opcfoundation.org/UA/Boiler/;i=1272",
+                  "Properties": [
+                    {
+                      "Name": "EngineeringUnits",
+                      "Source": "nsu=http://opcfoundation.org/Quickstarts/ReferenceServer;s=DataAccess_AnalogType_DataAccess_AnalogType_Double_EngineeringUnits"
+                    }
+                  ]
+                },
+                {
+                  "Name": "DutyCycle",
+                  "Description": "The fraction of the calulation period where the device is consuming power.",
+                  "Source": "nsu=http://opcfoundation.org/UA/Boiler/;i=1242"
+                },
+                {
+                  "Name": "CalculationPeriod",
+                  "Description": "The period, in ms, over which power calculations are computed.",
+                  "Source": "nsu=http://opcfoundation.org/Quickstarts/ReferenceServer;s=DataAccess_AnalogType_Double"
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        }
+      ]
+    }
+  ]
+}

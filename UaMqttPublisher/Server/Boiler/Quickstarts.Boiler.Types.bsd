@@ -1,0 +1,36 @@
+<opc:TypeDictionary
+  xmlns:opc="http://opcfoundation.org/BinarySchema/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ua="http://opcfoundation.org/UA/"
+  xmlns:tns="tag:opcua.org,2023-11:iot-starterkit:boiler"
+  DefaultByteOrder="LittleEndian"
+  TargetNamespace="tag:opcua.org,2023-11:iot-starterkit:boiler"
+>
+  <opc:Import Namespace="http://opcfoundation.org/UA/" Location="Opc.Ua.BinarySchema.bsd"/>
+
+  <opc:StructuredType Name="ControllerDataType" BaseType="ua:ExtensionObject">
+    <opc:Field Name="Setpoint" TypeName="opc:Double" />
+    <opc:Field Name="ControllerOut" TypeName="opc:Double" />
+    <opc:Field Name="ProcessVariable" TypeName="opc:Double" />
+  </opc:StructuredType>
+
+  <opc:EnumeratedType Name="SetPointMask" LengthInBits="8" IsOptionSet="true">
+    <opc:EnumeratedValue Name="None" Value="0" />
+    <opc:EnumeratedValue Name="Level" Value="1" />
+    <opc:EnumeratedValue Name="Flow" Value="2" />
+  </opc:EnumeratedType>
+
+  <opc:StructuredType Name="ChangeSetPointsRequest" BaseType="ua:ExtensionObject">
+    <opc:Field Name="SelectedValues" TypeName="tns:SetPointMask" />
+    <opc:Field Name="LevelSetPoint" TypeName="opc:Double" />
+    <opc:Field Name="FlowSetPoint" TypeName="opc:Double" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="ChangeSetPointsResponse" BaseType="ua:ExtensionObject">
+    <opc:Field Name="LevelSetPoint" TypeName="opc:Double" />
+    <opc:Field Name="LevelMeasurement" TypeName="opc:Double" />
+    <opc:Field Name="FlowSetPoint" TypeName="opc:Double" />
+    <opc:Field Name="FlowMeasurement" TypeName="opc:Double" />
+  </opc:StructuredType>
+
+</opc:TypeDictionary>

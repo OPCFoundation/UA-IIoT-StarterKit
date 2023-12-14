@@ -54,7 +54,7 @@ mkdir helloworld
 cd helloworld/
 dotnet new console
 dotnet build
-dotnet bin/Debug/net5.0/helloworld.dll 
+dotnet bin/Debug/net6.0/helloworld.dll 
 ```
 
 If all is good the following output should be printed:
@@ -67,26 +67,24 @@ Hello World!
 Fetch code from GitHub:
 ```
 cd ~/
-git clone https://github.com/OPCF-Members/UA-IIoT-StarterKit.git
-cd UA-IIoT-StarterKit
-git submodule update --init
+git clone --recursive https://github.com/OPCFoundation/UA-IIoT-StarterKit.git
 ```
 
 Build code:
 ```
 cd ~/UA-IIoT-StarterKit
-dotnet build MqttAgent/MqttAgent.csproj 
+dotnet build UaMqttConsole/UaMqttConsole.csproj 
 ```
 
 Run code
 ```
-cd ~/UA-IIoT-StarterKit/build/bin/Debug/net50/
-dotnet MqttAgent.dll --help
+cd ~/UA-IIoT-StarterKit/build/bin/Debug/net6.0/
+dotnet UaMqttConsole.dll --help
 ```
 
 The following output should be produced:
 ```
-Usage: MqttAgent [options] [command]
+Usage: UaMqttConsole [options] [command]
 
 Options:
   -?|-h|--help  Show help information
@@ -96,7 +94,7 @@ Commands:
   publish    Publishes I/O data to an MQTT broker.
   subscribe  Subscribes for data from OPC UA publishers.
 
-Use "MqttAgent [command] --help" for more information about a command.
+Use "UaMqttConsole [command] --help" for more information about a command.
 ```
 
 
