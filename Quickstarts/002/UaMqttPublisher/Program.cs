@@ -28,6 +28,7 @@
  * ======================================================================*/
 using System.Security.Authentication;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Formatter;
@@ -285,12 +286,13 @@ internal class Publisher
         var payload = new JsonDataSetMetaDataMessage()
         {
             MessageId = Guid.NewGuid().ToString(),
+            MessageType = "ua-metadata",
             PublisherId = PublisherId,
             DataSetWriterId = DataSetWriterId,
             MetaData = metadata
         };
 
-        var json = JsonSerializer.Serialize(payload);
+        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)

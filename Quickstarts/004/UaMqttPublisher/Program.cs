@@ -28,6 +28,7 @@
  * ======================================================================*/
 using System.Security.Authentication;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Formatter;
@@ -98,7 +99,7 @@ internal class Publisher
                 Status = (int)PubSubState.Error
             };
 
-            var json = JsonSerializer.Serialize(willPayload);
+            var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
             var options = new MqttClientOptionsBuilder()
                 .WithProtocolVersion(MqttProtocolVersion.V500)
@@ -217,7 +218,7 @@ internal class Publisher
             Status = (int)state
         };
 
-        var json = JsonSerializer.Serialize(payload);
+        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -315,6 +316,7 @@ internal class Publisher
         JsonEncoder encoder = new(MessageContext, true);
 
         encoder.WriteGuid("MessageId", Guid.NewGuid());
+        encoder.WriteString("MessageType","ua-metadata");
         encoder.WriteString("PublisherId", PublisherId);
         encoder.WriteUInt16("DataSetWriterId", DataSetWriterId);
         encoder.WriteEncodeable("MetaData", metadata, typeof(DataSetMetaDataType));
@@ -428,6 +430,7 @@ internal class Publisher
         JsonEncoder encoder = new(MessageContext, true);
 
         encoder.WriteGuid("MessageId", Guid.NewGuid());
+        encoder.WriteString("MessageType", "ua-connection");
         encoder.WriteString("PublisherId", PublisherId);
         encoder.WriteDateTime("Timestamp", DateTime.UtcNow);
         encoder.WriteEncodeable("Connection", connection, typeof(PubSubConnectionDataType));

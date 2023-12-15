@@ -157,7 +157,7 @@ PubSubConnectionMessage payload = new PubSubConnectionMessage()
     Connection = connection
 };
 
-var json = JsonSerializer.Serialize(payload);
+var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
 var applicationMessage = new MqttApplicationMessageBuilder()
     .WithTopic(topic)

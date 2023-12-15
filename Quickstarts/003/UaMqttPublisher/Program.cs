@@ -28,6 +28,7 @@
  * ======================================================================*/
 using System.Security.Authentication;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Formatter;
@@ -89,7 +90,7 @@ internal class Publisher
                 Status = (int)PubSubState.Error
             };
 
-            var json = JsonSerializer.Serialize(willPayload);
+            var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
             var options = new MqttClientOptionsBuilder()
                 .WithProtocolVersion(MqttProtocolVersion.V500)
@@ -155,7 +156,7 @@ internal class Publisher
             Status = (int)state
         };
 
-        var json = JsonSerializer.Serialize(payload);
+        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -291,12 +292,13 @@ internal class Publisher
         var payload = new JsonDataSetMetaDataMessage()
         {
             MessageId = Guid.NewGuid().ToString(),
+            MessageType = "ua-metadata",
             PublisherId = PublisherId,
             DataSetWriterId = dataSetWriterId,
             MetaData = metadata
         };
 
-        var json = JsonSerializer.Serialize(payload);
+        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -446,12 +448,13 @@ internal class Publisher
         JsonPubSubConnectionMessage payload = new()
         {
             MessageId = Guid.NewGuid().ToString(),
+            MessageType = "ua-connection",
             PublisherId = PublisherId,
             Timestamp = DateTime.UtcNow,
             Connection = connection
         };
 
-        var json = JsonSerializer.Serialize(payload);
+        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -544,7 +547,7 @@ internal class Publisher
                 case 2: { nm.Messages = new List<JsonDataSetMessage>() { message2 }; count2++; break; }
             }
 
-            var json = JsonSerializer.Serialize(nm);
+            var json = JsonSerializer.Serialize(nm, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
             var topic = new Topic()
             {

@@ -32,6 +32,11 @@ namespace UaMqttCommon
 {
     public class JsonDataSetMetaDataMessage
     {
+        public JsonDataSetMetaDataMessage()
+        {
+            MessageType = "ua-metadata";
+        }
+
         public string MessageId { get; set; }
         public string MessageType { get; set; }
         public string PublisherId { get; set; }
@@ -39,10 +44,6 @@ namespace UaMqttCommon
         public string DataSetWriterName { get; set; }
         public DateTime? Timestamp { get; set; }
         public DataSetMetaDataType MetaData { get; set; }
-        public JsonDataSetMetaDataMessage()
-        {
-            MessageType = "ua-metadata";
-        }
 
         public static JsonDataSetMetaDataMessage Decode(IServiceMessageContext context, string json)
         {

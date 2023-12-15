@@ -134,9 +134,9 @@ namespace UaMqttCommon
 
         public NodeId(object id, int idType = 0, int ns = 0)
         {
-            IdType = idType;
-            Id = id;
-            Namespace = ns;
+            IdType = (idType == 0) ? null : idType;
+            Id = (id == null || (id is uint number && number == 0)) ? null : id;
+            Namespace = (ns == 0) ? null : ns;
         }
 
         #region Parsing
