@@ -30,6 +30,11 @@ namespace UaMqttCommon
 {
     public class JsonDataSetMetaDataMessage
     {
+        public JsonDataSetMetaDataMessage()
+        {
+            MessageType = "ua-metadata";
+        }
+
         public string? MessageId { get; set; }
         public string? MessageType { get; set; }
         public string? PublisherId { get; set; }

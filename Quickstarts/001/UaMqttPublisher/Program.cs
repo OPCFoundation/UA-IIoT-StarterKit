@@ -28,6 +28,7 @@
  * ======================================================================*/
 using System.Security.Authentication;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Formatter;
@@ -67,7 +68,7 @@ internal class Publisher
                 Status = (int)PubSubState.Error
             };
 
-            var json = JsonSerializer.Serialize(willPayload);
+            var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
             var options = new MqttClientOptionsBuilder()
                 .WithProtocolVersion(MqttProtocolVersion.V500)
@@ -128,7 +129,7 @@ internal class Publisher
             Status = (int)state
         };
 
-        var json = JsonSerializer.Serialize(payload);
+        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -177,7 +178,7 @@ internal class Publisher
                 DutyCycle = random.NextDouble()
             };
 
-            var json = JsonSerializer.Serialize(data);
+            var json = JsonSerializer.Serialize(data, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
             var dataMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)

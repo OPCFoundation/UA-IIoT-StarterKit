@@ -130,13 +130,16 @@ namespace UaMqttCommon
 
         public NodeId()
         {
+            IdType = 0;
+            Id = 0U;
+            Namespace = 0;
         }
 
         public NodeId(object id, int idType = 0, int ns = 0)
         {
-            IdType = (idType == 0) ? null : idType;
-            Id = (id == null || (id is uint number && number == 0)) ? null : id;
-            Namespace = (ns == 0) ? null : ns;
+            IdType = (idType == 0) ? 0 : idType;
+            Id = (id == null || (id is uint number && number == 0)) ? 0U : id;
+            Namespace = (ns == 0) ? 0 : ns;
         }
 
         #region Parsing
@@ -151,6 +154,10 @@ namespace UaMqttCommon
                     nodeId.IdType = idTypeValue;
                 }
             }
+            else
+            {
+                nodeId.IdType = 0;
+            }
 
             if (element.TryGetProperty(nameof(Id), out var id))
             {
@@ -163,6 +170,10 @@ namespace UaMqttCommon
                     nodeId.Id = id.ToString();
                 }
             }
+            else
+            {
+                nodeId.Id = (uint)0;
+            }
 
             if (element.TryGetProperty(nameof(Namespace), out var ns))
             {
@@ -170,6 +181,10 @@ namespace UaMqttCommon
                 {
                     nodeId.Namespace = nsValue;
                 }
+            }
+            else
+            {
+                nodeId.Namespace = 0;
             }
 
             return nodeId;
