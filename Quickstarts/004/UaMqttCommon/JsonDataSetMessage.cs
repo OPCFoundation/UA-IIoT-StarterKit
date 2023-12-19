@@ -97,6 +97,11 @@ namespace UaMqttCommon
 
     public class NetworkMessage
     {
+        public NetworkMessage()
+        {
+            MessageType = "ua-data";
+        }
+
         public string? MessageId { get; set; }
         public string? MessageType { get; set; }
         public string? PublisherId { get; set; }
