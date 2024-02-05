@@ -22,6 +22,498 @@
   ],
   "Connections": [
     {
+      "Name": "BoilerServer1",
+      "PublisherId": "Site_Springfield:ProcessCell_West",
+      "Enabled": true,
+      "ServerUrl": "opc.tcp://localhost:48040",
+      "NoSecurity": true,
+      "Groups": [
+        {
+          "Name": "Unit1_Boiler1",
+          "Enabled": true,
+          "Description": "A boiler with a feed forward control loop.",
+          "Writers": [
+            {
+              "Name": "Current",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "Drum1001/LI1001/Output",
+                  "Description": "The fluid level in the drum.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=156",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=159"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1001/FTX1001/Output",
+                  "Description": "The current flow of fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=141",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=144"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1001/Value1001/Input",
+                  "Description": "The target flow rate for fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=177",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=151"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1002/LI1002/Output",
+                  "Description": "The energy consumed by the device during the calculation period.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=164",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=167"
+                    }
+                  ]
+                },
+                {
+                  "Name": "LC1001/SetPoint",
+                  "Description": "The set point for fluid flow through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=176"
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0,
+              "TopicForData": "Site_Springfield/ProcessCell_West/Unit1_Boiler1"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        },
+        {
+          "Name": "Unit1_Boiler2",
+          "Enabled": true,
+          "Description": "A boiler with a feed forward control loop.",
+          "Writers": [
+            {
+              "Name": "Current",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "Drum2001/LI2001/Output",
+                  "Description": "The fluid level in the drum.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=156",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=159"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2001/FT2001/Output",
+                  "Description": "The current flow of fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=141",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=144"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2001/Value2001/Input",
+                  "Description": "The target flow rate for fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=177",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=151"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2002/LI2002/Output",
+                  "Description": "The energy consumed by the device during the calculation period.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=164",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=167"
+                    }
+                  ]
+                },
+                {
+                  "Name": "FC2001/SetPoint",
+                  "Description": "The set point for fluid flow through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=176"
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0,
+              "TopicForData": "Site_Springfield/ProcessCell_West/Unit1_Boiler2"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        }
+      ]
+    },
+    {
+      "Name": "BoilerServer2",
+      "PublisherId": "Site_Riverdale:ProcessCell_West",
+      "Enabled": true,
+      "ServerUrl": "opc.tcp://localhost:48040",
+      "NoSecurity": true,
+      "Groups": [
+        {
+          "Name": "Unit1_Boiler1",
+          "Enabled": true,
+          "Description": "A boiler with a feed forward control loop.",
+          "Writers": [
+            {
+              "Name": "Current",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "Drum1001/LI1001/Output",
+                  "Description": "The fluid level in the drum.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=156",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=159"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1001/FTX1001/Output",
+                  "Description": "The current flow of fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=141",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=144"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1001/Value1001/Input",
+                  "Description": "The target flow rate for fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=177",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=151"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1002/LI1002/Output",
+                  "Description": "The energy consumed by the device during the calculation period.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=164",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=167"
+                    }
+                  ]
+                },
+                {
+                  "Name": "FC1001/SetPoint",
+                  "Description": "The set point for fluid flow through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=176"
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0,
+              "TopicForData": "Site_Riverdale/ProcessCell_South/Unit1_Boiler1"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        },
+        {
+          "Name": "Unit1_Boiler2",
+          "Enabled": true,
+          "Description": "A boiler with a feed forward control loop.",
+          "Writers": [
+            {
+              "Name": "Current",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "Drum2001/LI2001/Output",
+                  "Description": "The fluid level in the drum.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=156",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=159"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2001/FTX2001/Output",
+                  "Description": "The current flow of fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=141",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=144"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2001/Value2001/Input",
+                  "Description": "The target flow rate for fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=177",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=151"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2002/LI2002/Output",
+                  "Description": "The energy consumed by the device during the calculation period.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=164",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=167"
+                    }
+                  ]
+                },
+                {
+                  "Name": "FC2001/SetPoint",
+                  "Description": "The set point for fluid flow through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=176"
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0,
+              "TopicForData": "Site_Riverdale/ProcessCell_South/Unit1_Boiler2"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        }
+      ]
+    },
+    {
+      "Name": "BoilerServer3",
+      "PublisherId": "Site_Riverdale:ProcessCell_West",
+      "Enabled": true,
+      "ServerUrl": "opc.tcp://localhost:48040",
+      "NoSecurity": true,
+      "Groups": [
+        {
+          "Name": "Unit1_Boiler1",
+          "Enabled": true,
+          "Description": "A boiler with a feed forward control loop.",
+          "Writers": [
+            {
+              "Name": "Current",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "Drum1001/LI1001/Output",
+                  "Description": "The fluid level in the drum.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=156",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=159"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1001/FTX1001/Output",
+                  "Description": "The current flow of fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=141",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=144"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1001/Value1001/Input",
+                  "Description": "The target flow rate for fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=177",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=151"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe1002/LI1002/Output",
+                  "Description": "The energy consumed by the device during the calculation period.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=164",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=167"
+                    }
+                  ]
+                },
+                {
+                  "Name": "FC1001/SetPoint",
+                  "Description": "The set point for fluid flow through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=176"
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0,
+              "TopicForData": "Site_Riverdale/ProcessCell_South/Unit1_Boiler1"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        },
+        {
+          "Name": "Unit1_Boiler2",
+          "Enabled": true,
+          "Description": "A boiler with a feed forward control loop.",
+          "Writers": [
+            {
+              "Name": "Current",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "Drum2001/LI2001/Output",
+                  "Description": "The fluid level in the drum.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=156",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=159"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2001/FTX2001/Output",
+                  "Description": "The current flow of fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=141",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=144"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2001/Value2001/Input",
+                  "Description": "The target flow rate for fluid through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=177",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=151"
+                    }
+                  ]
+                },
+                {
+                  "Name": "Pipe2002/LI2002/Output",
+                  "Description": "The energy consumed by the device during the calculation period.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=164",
+                  "Properties": [
+                    {
+                      "Name": "EURange",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=167"
+                    }
+                  ]
+                },
+                {
+                  "Name": "FC2001/SetPoint",
+                  "Description": "The set point for fluid flow through the input pipe.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=176"
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0,
+              "TopicForData": "Site_Riverdale/ProcessCell_South/Unit1_Boiler2/Gateway"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        },
+        {
+          "Name": "Unit1_Conveyor",
+          "Enabled": true,
+          "Description": "A conveyor bringing raw material to the boiler.",
+          "Writers": [
+            {
+              "Name": "Current",
+              "Enabled": true,
+              "Fields": [
+                {
+                  "Name": "CycleCount",
+                  "Description": "The number of times the gate has opened.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_CycleCount"
+                },
+                {
+                  "Name": "CycleTime",
+                  "Description": "The fraction of the calculation period when the date.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_CycleTime",
+                  "Properties": [
+                    {
+                      "Name": "EngineeringUnits",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_CycleTime_EngineeringUnits"
+                    }
+                  ]
+                },
+                {
+                  "Name": "State",
+                  "Description": "Whether the gate is open or closed.",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_State",
+                  "Properties": [
+                    {
+                      "Name": "TrueState",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_State_TrueState"
+                    },
+                    {
+                      "Name": "FalseState",
+                      "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:gpio;s=Gate1_State_FalseState"
+                    }
+                  ]
+                }
+              ],
+              "KeyFrameCount": 12,
+              "FieldMasks": 0,
+              "TopicForData": "Site_Riverdale/ProcessCell_South/Unit2_Conveyor"
+            }
+          ],
+          "PublishingInterval": 5000,
+          "MetaDataPublishingCount": 12,
+          "KeepAliveCount": 3,
+          "HeaderProfile": "http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage"
+        }
+      ]
+    },
+    {
       "Name": "InternalServer",
       "Enabled": true,
       "ServerUrl": "opc.tcp://localhost:48040",
@@ -98,7 +590,7 @@
                 {
                   "Name": "Consumption",
                   "Description": "The energy consumed by the device during the calculation period.",
-                  "Source": "nsu=http://opcfoundation.org/UA/Boiler/;i=1272",
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=1272",
                   "Properties": [
                     {
                       "Name": "EngineeringUnits",
@@ -109,7 +601,7 @@
                 {
                   "Name": "DutyCycle",
                   "Description": "The fraction of the calulation period where the device is consuming power.",
-                  "Source": "nsu=http://opcfoundation.org/UA/Boiler/;i=1242"
+                  "Source": "nsu=tag:opcua.org,2023-11:iot-starterkit:boiler;i=1242"
                 },
                 {
                   "Name": "CalculationPeriod",

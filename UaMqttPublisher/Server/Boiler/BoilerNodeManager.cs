@@ -314,7 +314,7 @@ namespace Quickstarts.Boiler.Server
             boiler.FlowController.SetPoint.Value = UpdateDouble(boiler.FlowController.SetPoint.Value);
             boiler.LevelController.ControlOut.Value = UpdateDouble(boiler.LevelController.ControlOut.Value);
             boiler.LevelController.Measurement.Value = UpdateDouble(boiler.LevelController.Measurement.Value);
-            boiler.LevelController.SetPoint.Value = UpdateDouble(boiler.LevelController.SetPoint.Value);
+            // boiler.LevelController.SetPoint.Value = UpdateDouble(boiler.LevelController.SetPoint.Value);
             boiler.InputPipe.FlowTransmitter1.Output.Value = UpdateDouble(boiler.InputPipe.FlowTransmitter1.Output.Value);
             boiler.InputPipe.Valve.Input.Value = UpdateDouble(boiler.InputPipe.Valve.Input.Value);
             boiler.OutputPipe.FlowTransmitter2.Output.Value = UpdateDouble(boiler.OutputPipe.FlowTransmitter2.Output.Value);

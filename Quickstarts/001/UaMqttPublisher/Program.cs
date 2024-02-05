@@ -65,7 +65,8 @@ internal class Publisher
             {
                 MessageId = Guid.NewGuid().ToString(),
                 PublisherId = PublisherId,
-                Status = (int)PubSubState.Error
+                Status = (int)PubSubState.Error,
+                IsCyclic = false
             };
 
             var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
@@ -126,7 +127,8 @@ internal class Publisher
         {
             MessageId = Guid.NewGuid().ToString(),
             PublisherId = PublisherId,
-            Status = (int)state
+            Status = (int)state,
+            IsCyclic = false
         };
 
         var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });

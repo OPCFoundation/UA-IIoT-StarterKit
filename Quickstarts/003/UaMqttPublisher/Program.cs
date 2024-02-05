@@ -69,6 +69,7 @@ internal class Publisher
 
     private MqttFactory? m_factory;
     private IMqttClient? m_client;
+    private readonly HashSet<string> m_retainedTopics = new();
 
     public async Task Connect()
     {
@@ -87,7 +88,8 @@ internal class Publisher
             {
                 MessageId = Guid.NewGuid().ToString(),
                 PublisherId = PublisherId,
-                Status = (int)PubSubState.Error
+                Status = (int)PubSubState.Error,
+                IsCyclic = false
             };
 
             var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
@@ -127,9 +129,36 @@ internal class Publisher
             }
 
             await PublishStatus(PubSubState.Paused);
+            await CleanupRetainedMessages();
+
             var disconnectOptions = m_factory.CreateClientDisconnectOptionsBuilder().Build();
             await m_client.DisconnectAsync(disconnectOptions, CancellationToken.None);
             Console.WriteLine("Publisher Disconnected!");
+        }
+    }
+
+    private async Task CleanupRetainedMessages()
+    {
+        if (m_client == null || m_factory == null) throw new InvalidOperationException();
+
+        foreach (var topic in m_retainedTopics)
+        {
+            var applicationMessage = new MqttApplicationMessageBuilder()
+                .WithTopic(topic)
+                .WithPayload("")
+                .WithRetainFlag(true)
+                .Build();
+
+            var result = await m_client.PublishAsync(applicationMessage, CancellationToken.None);
+
+            if (!result.IsSuccess)
+            {
+                Console.WriteLine($"Error: {result.ReasonCode} {result.ReasonString}");
+            }
+            else
+            {
+                Console.WriteLine($"Retained Message Removed from '{topic}'.");
+            }
         }
     }
 
@@ -153,7 +182,8 @@ internal class Publisher
         {
             MessageId = Guid.NewGuid().ToString(),
             PublisherId = PublisherId,
-            Status = (int)state
+            Status = (int)state,
+            IsCyclic = false
         };
 
         var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
@@ -161,7 +191,6 @@ internal class Publisher
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
             .WithPayload(json)
-            .WithMessageExpiryInterval(7200)
             .WithRetainFlag(true)
             .Build();
 
@@ -303,7 +332,6 @@ internal class Publisher
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
             .WithPayload(json)
-            .WithMessageExpiryInterval(7200)
             .WithRetainFlag(true)
             .Build();
 
@@ -316,6 +344,7 @@ internal class Publisher
         else
         {
             Console.WriteLine("DataSetMetaData Message Sent.");
+            m_retainedTopics.Add(topic);
         }
     }
 
@@ -459,7 +488,6 @@ internal class Publisher
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
             .WithPayload(json)
-            .WithMessageExpiryInterval(7200)
             .WithRetainFlag(true)
             .Build();
 
@@ -472,6 +500,7 @@ internal class Publisher
         else
         {
             Console.WriteLine("Connection Message Sent!");
+            m_retainedTopics.Add(topic);
         }
     }
 

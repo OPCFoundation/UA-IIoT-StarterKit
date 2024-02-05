@@ -42,9 +42,11 @@ try
             "--config",
             "config\\uapublisher-config.json",
             "--broker",
-            "IopGateway",
+            "HiveMQ",
             "--connection",
-            "InternalServer"
+            "BoilerServer1",
+            "--port",
+            "11111"
         };
     }
 
@@ -97,7 +99,7 @@ public static partial class Application
         {
             var options = GetOptions(app);
             Publisher publisher = new();
-            await publisher.Start(options.ConfigFilePath, options.BrokerName, options.ConnectionName);
+            await publisher.Start(options.ConfigFilePath, options.BrokerName, options.ConnectionName, options.Port);
         });
     }
 
@@ -127,12 +129,12 @@ public static partial class Application
 
     static class OptionsNames
     {
-
         public const string LogFilePath = "log";
         public const string ConfigFilePath = "config";
         public const string BrokerName = "broker";
         public const string ConnectionName = "connection";
         public const string GroupName = "group";
+        public const string Port = "port";
     }
 
     class Options
@@ -142,6 +144,7 @@ public static partial class Application
         public string BrokerName { get; internal set; }
         public string ConnectionName { get; internal set; }
         public string GroupName { get; internal set; }
+        public string Port { get; internal set; }
     }
 
     private static void AddOptions(CommandLineApplication app)
@@ -170,6 +173,11 @@ public static partial class Application
             $"--{OptionsNames.GroupName}",
             "The name of the dataset group configuration to use.",
             CommandOptionType.SingleValue);
+
+        app.Option(
+            $"--{OptionsNames.Port}",
+            "The port the internal server users.",
+            CommandOptionType.SingleValue);
     }
 
     private static Options GetOptions(CommandLineApplication app)
@@ -181,6 +189,7 @@ public static partial class Application
             BrokerName = app.GetOption(OptionsNames.BrokerName, null),
             ConnectionName = app.GetOption(OptionsNames.ConnectionName, null),
             GroupName = app.GetOption(OptionsNames.GroupName, null),
+            Port = app.GetOption(OptionsNames.Port, null)
         };
 
         return options;

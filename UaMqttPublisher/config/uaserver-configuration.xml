@@ -4,8 +4,8 @@
   xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
   xmlns="http://opcfoundation.org/UA/SDK/Configuration.xsd"
 >
-  <ApplicationName>GPIO Collector</ApplicationName>
-  <ApplicationUri>urn:localhost:opcua-iot-starterkit:gpio-collector</ApplicationUri>
+  <ApplicationName>GPIO Collector (48040)</ApplicationName>
+  <ApplicationUri>urn:localhost:opcua-iot-starterkit:gpio-collector:48040</ApplicationUri>
   <ProductUri>uri:opcfoundation.org:opcua-iot-starterkit:gpio-collector</ProductUri>
   <ApplicationType>ClientAndServer_2</ApplicationType>
 

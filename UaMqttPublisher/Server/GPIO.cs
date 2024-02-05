@@ -27,6 +27,7 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 using System.Reflection;
+using System.Text;
 using Opc.Ua;
 using Opc.Ua.Configuration;
 
@@ -43,7 +44,7 @@ namespace UaMqttPublisher.Server
 
         public EndpointDescriptionCollection PublisherEndpoints { get; private set; }
 
-        public async Task Start(bool useGPIO)
+        public async Task Start(bool useGPIO, string port)
         {
             m_application = new ApplicationInstance
             {
@@ -55,7 +56,16 @@ namespace UaMqttPublisher.Server
             // load the application configuration.
             string folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var configurationFile = Path.Combine(folder, "config", "uaserver-configuration.xml");
-            var config = await m_application.LoadApplicationConfiguration("config/uaserver-configuration.xml", false).ConfigureAwait(false);
+            var xml = File.ReadAllText(configurationFile);
+
+            if (!String.IsNullOrEmpty(port))
+            {
+                xml = xml.Replace("48040", port);
+            }
+
+            var istrm = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+            var config = await m_application.LoadApplicationConfiguration(istrm, false).ConfigureAwait(false);
+            istrm.Close();
 
             // check the application certificate.
             bool haveAppCertificate = await m_application.CheckApplicationInstanceCertificate(

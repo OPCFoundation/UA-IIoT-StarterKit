@@ -30,8 +30,10 @@
 using System.Net;
 using System.Reflection;
 using System.Security.Authentication;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Formatter;
@@ -43,7 +45,6 @@ namespace UaMqttPublisher
 {
     internal class Publisher : IDisposable
     {
-        private string BrokerUrl => m_broker.BrokerUrl;
         private string TopicPrefix => m_broker.TopicPrefix;
         private string PublisherId => m_connection.PublisherId;
 
@@ -57,6 +58,7 @@ namespace UaMqttPublisher
         private readonly Dictionary<string, SubscribedValue> m_cache = new();
         private readonly Queue<MqttApplicationMessage> m_messageQueue = new();
         private readonly CancellationTokenSource m_shutdown = new();
+        private readonly HashSet<string> m_retainedTopics = new();
 
         private IServiceMessageContext MessageContext => m_uaClient?.Session?.MessageContext ?? ServiceMessageContext.GlobalContext;
 
@@ -84,7 +86,7 @@ namespace UaMqttPublisher
         }
         #endregion
 
-        private async Task LoadConfiguration(string configurationFile, string brokerName, string connectionName)
+        private async Task LoadConfiguration(string configurationFile, string brokerName, string connectionName, string port)
         {
             if (configurationFile == null)
             {
@@ -92,7 +94,14 @@ namespace UaMqttPublisher
                 configurationFile = Path.Combine(folder, "config", "uapublisher-config.json");
             }
 
-            using (var istrm = File.OpenRead(configurationFile))
+            var json = File.ReadAllText(configurationFile);
+
+            if (!String.IsNullOrEmpty(port))
+            {
+                json = json.Replace("48040", port);
+            }
+
+            using (var istrm = new MemoryStream(Encoding.UTF8.GetBytes(json)))
             {
                 var configuration = await JsonSerializer.DeserializeAsync<PublisherConfiguration>(istrm);
 
@@ -142,10 +151,11 @@ namespace UaMqttPublisher
             {
                 MessageId = Guid.NewGuid().ToString(),
                 PublisherId = PublisherId,
-                Status = PubSubState.Error
+                Status = PubSubState.Error,
+                IsCyclic = false
             };
 
-            var json = JsonSerializer.Serialize(willPayload);
+            var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
             var url = new Uri("mqtt://" + m_broker.BrokerUrl);
 
@@ -193,22 +203,31 @@ namespace UaMqttPublisher
             }
         }
 
-        public async Task Start(string configurationFile, string brokerName, string connectionName)
+        public async Task Start(string configurationFile, string brokerName, string connectionName, string port)
         {
             m_mqttFactory = new MqttFactory();
             m_metadataVersion = GetVersionTime();
 
             Console.WriteLine("Starting OPC UA Server.");
             var server = new GPIO();
-            await server.Start(false).ConfigureAwait(false);
+            await server.Start(false, port).ConfigureAwait(false);
 
-            await LoadConfiguration(configurationFile, brokerName, connectionName);
+            await LoadConfiguration(configurationFile, brokerName, connectionName, port);
             m_uaClient = await UAClient.Run(m_connection, m_cache);
 
             var task = Task.Run(() => ProcessQueuedMessages());
 
             await Publish();
-            await PublishStatus(PubSubState.Paused, sendNow: true);
+            var statusTopic = await PublishStatus(PubSubState.Paused, sendNow: true);
+
+            // clear out all retained messages except for the status message.
+            foreach (var topic in m_retainedTopics)
+            {
+                if (statusTopic != topic)
+                {
+                    await SendMessage(topic, "", true, true);
+                }
+            }
 
             m_shutdown.Cancel();
             await task;
@@ -234,8 +253,16 @@ namespace UaMqttPublisher
 
             if (retain)
             {
+                if (!String.IsNullOrEmpty(topic))
+                {
+                    m_retainedTopics.Add(topic);
+                }
+                else
+                {
+                    m_retainedTopics.Remove(topic);
+                }
+
                 builder = builder
-                    .WithMessageExpiryInterval(7200)
                     .WithRetainFlag(true)
                     .WithQualityOfServiceLevel(MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce);
             }
@@ -344,7 +371,7 @@ namespace UaMqttPublisher
             return (uint)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
         }
 
-        private async Task PublishStatus(PubSubState state, bool sendNow = false)
+        private async Task<string> PublishStatus(PubSubState state, bool sendNow = false)
         {
             var topic = new Topic()
             {
@@ -357,12 +384,15 @@ namespace UaMqttPublisher
             {
                 MessageId = Guid.NewGuid().ToString(),
                 PublisherId = PublisherId,
-                Status = state
+                Status = state,
+                IsCyclic = false
             };
 
-            var json = JsonSerializer.Serialize(payload);
+            var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
 
             await SendMessage(topic, json, true, sendNow);
+
+            return topic;
         }
 
         private async Task PublishDataSetMetaData(
