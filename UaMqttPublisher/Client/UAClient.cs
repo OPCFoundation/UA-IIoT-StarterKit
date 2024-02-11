@@ -89,9 +89,7 @@ namespace UaMqttPublisher
         public int ReconnectPeriodExponentialBackoff { get; set; } = 15000;
         #endregion
 
-        public static async Task<UAClient> Run(
-            ConnectionConfiguration pubSubConnection,
-            IDictionary<string, SubscribedValue> cache)
+        public static async Task<UAClient> Run(ConnectionConfiguration pubSubConnection)
         {
             try
             {
@@ -127,7 +125,7 @@ namespace UaMqttPublisher
 
                 var uaClient = new UAClient(configuration, pubSubConnection);
 
-                bool connected = await uaClient.ConnectAsync(cache).ConfigureAwait(false);
+                bool connected = await uaClient.ConnectAsync().ConfigureAwait(false);
 
                 if (connected)
                 {
@@ -156,137 +154,154 @@ namespace UaMqttPublisher
         /// <summary>
         /// Creates a session with the UA server
         /// </summary>
-        public async Task<bool> ConnectAsync(IDictionary<string, SubscribedValue> cache)
+        public async Task<bool> ConnectAsync()
         {
             try
             {
                 if (m_session != null && m_session.Connected == true)
                 {
                     Log.Warning("Session already connected!");
+                    return true;
                 }
-                else
+
+                ITransportWaitingConnection connection = null;
+                Log.Info("Connecting to... {0}", m_pubSubConnection.ServerUrl);
+
+                var endpointDescription = CoreClientUtils.SelectEndpoint(
+                    m_configuration,
+                    m_pubSubConnection.ServerUrl,
+                    !m_pubSubConnection.NoSecurity ?? false);
+
+                var endpointConfiguration = EndpointConfiguration.Create(m_configuration);
+                var endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
+                var sessionFactory = TraceableSessionFactory.Instance;
+
+                // set user identity
+                if (!String.IsNullOrEmpty(m_pubSubConnection.UserName))
                 {
-                    // initialize cache.
-                    foreach (var group in m_pubSubConnection.Groups)
-                    {
-                        foreach (var dataset in group.Writers)
-                        {
-                            foreach (var field in dataset.Fields)
-                            {
-                                var value = new SubscribedValue(field, cache);
-                                value.StatusCode = StatusCodes.BadWaitingForInitialData;
-                                value.Timestamp = DateTime.UtcNow;
-                                cache[$"{group.Name}.{dataset.Name}.{field.Name}"] = value;
-
-                                if (field.Properties?.Count > 0)
-                                {
-                                    value.Properties = new();
-
-                                    foreach (var property in field.Properties)
-                                    {
-                                        var subvalue = new SubscribedValue(property, cache);
-                                        subvalue.StatusCode = StatusCodes.BadWaitingForInitialData;
-                                        subvalue.Timestamp = DateTime.UtcNow;
-                                        value.Properties.Add(subvalue);
-                                        cache[$"{group.Name}.{dataset.Name}.{field.Name}.{property.Name}"] = subvalue;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    ITransportWaitingConnection connection = null;
-                    Log.Info("Connecting to... {0}", m_pubSubConnection.ServerUrl);
-
-                    var endpointDescription = CoreClientUtils.SelectEndpoint(
-                        m_configuration,
-                        m_pubSubConnection.ServerUrl,
-                        !m_pubSubConnection.NoSecurity ?? false);
-
-                    var endpointConfiguration = EndpointConfiguration.Create(m_configuration);
-                    var endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
-                    var sessionFactory = TraceableSessionFactory.Instance;
-
-                    // set user identity
-                    if (!String.IsNullOrEmpty(m_pubSubConnection.UserName))
-                    {
-                        UserIdentity = new UserIdentity(m_pubSubConnection.UserName, m_pubSubConnection.Password ?? string.Empty);
-                    }
-
-                    var session = await sessionFactory.CreateAsync(
-                        m_configuration,
-                        connection,
-                        endpoint,
-                        connection == null,
-                        false,
-                        m_configuration.ApplicationName,
-                        m_pubSubConnection.SessionTimeout ?? 600_000,
-                        UserIdentity,
-                        null,
-                        CancellationToken.None
-                    ).ConfigureAwait(false);
-
-                    // Assign the created session
-                    if (session != null && session.Connected)
-                    {
-                        m_session = session;
-
-                        // support transfer
-                        m_session.DeleteSubscriptionsOnClose = false;
-                        m_session.TransferSubscriptionsOnReconnect = true;
-
-                        // set up keep alive callback.
-                        m_session.KeepAlive += Session_KeepAlive;
-
-                        // prepare a reconnect handler
-                        m_reconnectHandler = new SessionReconnectHandler(true, ReconnectPeriodExponentialBackoff);
-
-                        foreach (var group in m_pubSubConnection.Groups)
-                        {
-                            // Define Subscription parameters
-                            Subscription subscription = new(session.DefaultSubscription)
-                            {
-                                DisplayName = group.Name,
-                                PublishingEnabled = group.Enabled ?? true,
-                                PublishingInterval = group.PublishingInterval ?? 1000,
-                                LifetimeCount = 0,
-                                MinLifetimeInterval = 60_000,
-                                KeepAliveCount = group.KeepAliveCount ?? 1
-                            };
-
-                            session.AddSubscription(subscription);
-
-                            // Create the subscription on Server side
-                            subscription.Create();
-                            Log.Info("Subscription ({0}) created for Group '{1}'", subscription.Id, group.Name);
-
-                            foreach (var dataset in group.Writers)
-                            {
-                                foreach (var field in dataset.Fields)
-                                {
-                                    var value = cache[$"{group.Name}.{dataset.Name}.{field.Name}"];
-                                    value.CreateItem(subscription);
-
-                                    if (field.Properties?.Count > 0)
-                                    {
-                                        foreach (var property in field.Properties)
-                                        {
-                                            var subvalue = cache[$"{group.Name}.{dataset.Name}.{field.Name}.{property.Name}"];
-                                            subvalue.CreateItem(subscription);
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Create the monitored items on Server side
-                            subscription.ApplyChanges();
-                        }
-                    }
-
-                    // Session created successfully.
-                    Log.Info("New Session Created with SessionName = {0}", m_session?.SessionName);
+                    UserIdentity = new UserIdentity(m_pubSubConnection.UserName, m_pubSubConnection.Password ?? string.Empty);
                 }
 
+                var session = await sessionFactory.CreateAsync(
+                    m_configuration,
+                    connection,
+                    endpoint,
+                    connection == null,
+                    false,
+                    m_configuration.ApplicationName,
+                    m_pubSubConnection.SessionTimeout ?? 600_000,
+                    UserIdentity,
+                    null,
+                    CancellationToken.None
+                ).ConfigureAwait(false);
+
+                // Assign the created session
+                if (session != null && session.Connected)
+                {
+                    m_session = session;
+
+                    // support transfer
+                    m_session.DeleteSubscriptionsOnClose = false;
+                    m_session.TransferSubscriptionsOnReconnect = true;
+
+                    // set up keep alive callback.
+                    m_session.KeepAlive += Session_KeepAlive;
+
+                    // prepare a reconnect handler
+                    m_reconnectHandler = new SessionReconnectHandler(true, ReconnectPeriodExponentialBackoff);
+                }
+
+                // Session created successfully.
+                Log.Info("New Session Created with SessionName = {0}", m_session?.SessionName);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log Error
+                Log.Error("Create Session Error : {0}", ex.Message);
+                return false;
+            }
+        }
+
+        public bool Subscribe(IDictionary<string, SubscribedValue> cache)
+        {
+            try
+            {
+                if (m_session == null || m_session.Connected == false)
+                {
+                    Log.Warning("Session already connected!");
+                    return false;
+                }
+
+                foreach (var group in m_pubSubConnection.Groups)
+                {
+                    foreach (var dataset in group.Writers)
+                    {
+                        foreach (var field in dataset.Fields)
+                        {
+                            var value = new SubscribedValue(field, cache);
+                            value.StatusCode = StatusCodes.BadWaitingForInitialData;
+                            value.Timestamp = DateTime.UtcNow;
+                            cache[$"{group.Name}.{dataset.Name}.{field.Name}"] = value;
+
+                            if (field.Properties?.Count > 0)
+                            {
+                                value.Properties = new();
+
+                                foreach (var property in field.Properties)
+                                {
+                                    var subvalue = new SubscribedValue(property, cache);
+                                    subvalue.StatusCode = StatusCodes.BadWaitingForInitialData;
+                                    subvalue.Timestamp = DateTime.UtcNow;
+                                    value.Properties.Add(subvalue);
+                                    cache[$"{group.Name}.{dataset.Name}.{field.Name}.{property.Name}"] = subvalue;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                foreach (var group in m_pubSubConnection.Groups)
+                {
+                    Subscription subscription = new(m_session.DefaultSubscription)
+                    {
+                        DisplayName = group.Name,
+                        PublishingEnabled = group.Enabled ?? true,
+                        PublishingInterval = group.PublishingInterval ?? 1000,
+                        LifetimeCount = 0,
+                        MinLifetimeInterval = 60_000,
+                        KeepAliveCount = group.KeepAliveCount ?? 1
+                    };
+
+                    m_session.AddSubscription(subscription);
+
+                    subscription.Create();
+                    Log.Info("Subscription ({0}) created for Group '{1}'", subscription.Id, group.Name);
+
+                    foreach (var dataset in group.Writers)
+                    {
+                        foreach (var field in dataset.Fields)
+                        {
+                            var value = cache[$"{group.Name}.{dataset.Name}.{field.Name}"];
+                            value.CreateItem(subscription);
+
+                            if (field.Properties?.Count > 0)
+                            {
+                                foreach (var property in field.Properties)
+                                {
+                                    var subvalue = cache[$"{group.Name}.{dataset.Name}.{field.Name}.{property.Name}"];
+                                    subvalue.CreateItem(subscription);
+                                }
+                            }
+                        }
+                    }
+
+                    subscription.ApplyChanges();
+
+
+                }
+
+                Log.Info("Subscriptions created for SessionName = {0}", m_session?.SessionName);
                 return true;
             }
             catch (Exception ex)

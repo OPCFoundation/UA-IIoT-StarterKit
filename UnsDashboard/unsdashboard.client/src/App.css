@@ -1,0 +1,18 @@
+﻿#root {
+    margin: 0;
+    padding: 0;
+    max-width: 4000px;
+}
+
+tr:nth-child(even) {
+    background: #F2F2F2;
+}
+
+tr:nth-child(odd) {
+    background: #FFF;
+}
+
+th, td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

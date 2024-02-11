@@ -27,7 +27,7 @@
       <opc:Field Name="ProcessVariable" DataType="ua:Double" />
     </opc:Fields>
   </opc:DataType>
-  
+
   <!--
   Define specialized reference types used in the model.
   -->
@@ -56,14 +56,71 @@
   <opc:ObjectType SymbolicName="GenericSensorType" BaseType="ua:BaseObjectType">
     <opc:Description>A generic sensor that read a process value.</opc:Description>
     <opc:Children>
-      <opc:Variable SymbolicName="Output" DataType="ua:Double" ValueRank="Scalar" TypeDefinition="ua:AnalogItemType" />
+      <opc:Variable SymbolicName="Output" DataType="ua:Double" ValueRank="Scalar" TypeDefinition="ua:AnalogUnitRangeType">
+        <opc:Children>
+          <opc:Property SymbolicName="ua:EURange">
+            <opc:DefaultValue>
+              <uax:ExtensionObject>
+                <uax:TypeId>
+                  <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                  <uax:Range>
+                    <uax:Low>0</uax:Low>
+                    <uax:High>100</uax:High>
+                  </uax:Range>
+                </uax:Body>
+              </uax:ExtensionObject>
+            </opc:DefaultValue>
+          </opc:Property>
+          <opc:Property SymbolicName="ua:EngineeringUnits" AccessLevel="ReadWrite">
+            <opc:DefaultValue>
+              <uax:ExtensionObject>
+                <uax:TypeId>
+                  <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                  <uax:EUInformation>
+                    <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                    <uax:UnitId>5067859</uax:UnitId>
+                    <uax:DisplayName>
+                      <uax:Text>m/s</uax:Text>
+                    </uax:DisplayName>
+                    <uax:Description>
+                      <uax:Text>metre per second</uax:Text>
+                    </uax:Description>
+                  </uax:EUInformation>
+                </uax:Body>
+              </uax:ExtensionObject>
+            </opc:DefaultValue>
+          </opc:Property>
+        </opc:Children>
+      </opc:Variable>
     </opc:Children>
   </opc:ObjectType>
 
   <opc:ObjectType SymbolicName="GenericActuatorType" BaseType="ua:BaseObjectType">
     <opc:Description>Represents a piece of equipment that causes some action to occur.</opc:Description>
     <opc:Children>
-      <opc:Variable SymbolicName="Input" DataType="ua:Double" ValueRank="Scalar" TypeDefinition="ua:AnalogItemType" AccessLevel="Write" />
+      <opc:Variable SymbolicName="Input" DataType="ua:Double" ValueRank="Scalar" TypeDefinition="ua:AnalogItemType" AccessLevel="Write">
+        <opc:Children>
+          <opc:Property SymbolicName="ua:EURange">
+            <opc:DefaultValue>
+              <uax:ExtensionObject>
+                <uax:TypeId>
+                  <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                  <uax:Range>
+                    <uax:Low>0</uax:Low>
+                    <uax:High>10</uax:High>
+                  </uax:Range>
+                </uax:Body>
+              </uax:ExtensionObject>
+            </opc:DefaultValue>
+          </opc:Property>
+        </opc:Children>
+      </opc:Variable>
     </opc:Children>
   </opc:ObjectType>
 
@@ -109,6 +166,48 @@
     <opc:Children>
       <opc:Object SymbolicName="FlowTransmitter1" TypeDefinition="FlowTransmitterType" SupportsEvents="true">
         <opc:BrowseName>FTX001</opc:BrowseName>
+        <opc:Children>
+          <opc:Variable SymbolicName="Output">
+            <opc:Children>
+              <opc:Property SymbolicName="ua:EURange">
+                <opc:DefaultValue>
+                  <uax:ExtensionObject>
+                    <uax:TypeId>
+                      <uax:Identifier>i=885</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                      <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>20</uax:High>
+                      </uax:Range>
+                    </uax:Body>
+                  </uax:ExtensionObject>
+                </opc:DefaultValue>
+              </opc:Property>
+              <opc:Property SymbolicName="ua:EngineeringUnits">
+                <opc:DefaultValue>
+                  <uax:ExtensionObject>
+                    <uax:TypeId>
+                      <uax:Identifier>i=888</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                      <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>4666673</uax:UnitId>
+                        <uax:DisplayName>
+                          <uax:Text>l/s</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                          <uax:Text>litre per second</uax:Text>
+                        </uax:Description>
+                      </uax:EUInformation>
+                    </uax:Body>
+                  </uax:ExtensionObject>
+                </opc:DefaultValue>
+              </opc:Property>
+            </opc:Children>
+          </opc:Variable>
+        </opc:Children>
       </opc:Object>
       <opc:Object SymbolicName="Valve" TypeDefinition="ValveType" SupportsEvents="true">
         <opc:BrowseName>ValveX001</opc:BrowseName>
@@ -131,6 +230,48 @@
     <opc:Children>
       <opc:Object SymbolicName="LevelIndicator" TypeDefinition="LevelIndicatorType" SupportsEvents="true">
         <opc:BrowseName>LIX001</opc:BrowseName>
+        <opc:Children>
+          <opc:Variable SymbolicName="Output">
+            <opc:Children>
+              <opc:Property SymbolicName="ua:EURange">
+                <opc:DefaultValue>
+                  <uax:ExtensionObject>
+                    <uax:TypeId>
+                      <uax:Identifier>i=885</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                      <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>300</uax:High>
+                      </uax:Range>
+                    </uax:Body>
+                  </uax:ExtensionObject>
+                </opc:DefaultValue>
+              </opc:Property>
+              <opc:Property SymbolicName="ua:EngineeringUnits">
+                <opc:DefaultValue>
+                  <uax:ExtensionObject>
+                    <uax:TypeId>
+                      <uax:Identifier>i=888</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                      <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>4410708</uax:UnitId>
+                        <uax:DisplayName>
+                          <uax:Text>cm</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                          <uax:Text>centimetre</uax:Text>
+                        </uax:Description>
+                      </uax:EUInformation>
+                    </uax:Body>
+                  </uax:ExtensionObject>
+                </opc:DefaultValue>
+              </opc:Property>
+            </opc:Children>
+          </opc:Variable>
+        </opc:Children>
       </opc:Object>
     </opc:Children>
     <opc:References>
@@ -145,6 +286,48 @@
     <opc:Children>
       <opc:Object SymbolicName="FlowTransmitter2" TypeDefinition="FlowTransmitterType" SupportsEvents="true">
         <opc:BrowseName>FTX002</opc:BrowseName>
+        <opc:Children>
+          <opc:Variable SymbolicName="Output">
+            <opc:Children>
+              <opc:Property SymbolicName="ua:EURange">
+                <opc:DefaultValue>
+                  <uax:ExtensionObject>
+                    <uax:TypeId>
+                      <uax:Identifier>i=885</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                      <uax:Range>
+                        <uax:Low>100</uax:Low>
+                        <uax:High>10000</uax:High>
+                      </uax:Range>
+                    </uax:Body>
+                  </uax:ExtensionObject>
+                </opc:DefaultValue>
+              </opc:Property>
+              <opc:Property SymbolicName="ua:EngineeringUnits">
+                <opc:DefaultValue>
+                  <uax:ExtensionObject>
+                    <uax:TypeId>
+                      <uax:Identifier>i=888</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                      <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>5259596</uax:UnitId>
+                        <uax:DisplayName>
+                          <uax:Text>Pa</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                          <uax:Text>pascal</uax:Text>
+                        </uax:Description>
+                      </uax:EUInformation>
+                    </uax:Body>
+                  </uax:ExtensionObject>
+                </opc:DefaultValue>
+              </opc:Property>
+            </opc:Children>
+          </opc:Variable>
+        </opc:Children>
       </opc:Object>
     </opc:Children>
     <opc:References>
@@ -161,7 +344,7 @@
       <opc:Field Name="Flow" BitMask="0002"></opc:Field>
     </opc:Fields>
   </opc:DataType>
-  
+
   <opc:DataType SymbolicName="ChangeSetPointsRequest" BaseType="ua:Structure">
     <opc:Fields>
       <opc:Field Name="SelectedValues" DataType="SetPointMask" />
@@ -169,7 +352,7 @@
       <opc:Field Name="FlowSetPoint" DataType="ua:Double" />
     </opc:Fields>
   </opc:DataType>
-  
+
   <opc:DataType SymbolicName="ChangeSetPointsResponse" BaseType="ua:Structure">
     <opc:Fields>
       <opc:Field Name="LevelSetPoint" DataType="ua:Double" />
@@ -178,7 +361,7 @@
       <opc:Field Name="FlowMeasurement" DataType="ua:Double" />
     </opc:Fields>
   </opc:DataType>
-  
+
   <opc:Method SymbolicName="ChangeSetPointsMethodType" PartNo="5">
     <opc:InputArguments>
       <opc:Argument Name="Changes" DataType="ChangeSetPointsRequest" />
@@ -227,7 +410,9 @@
         <opc:Children>
           <opc:Object SymbolicName="FlowTransmitter1">
             <opc:Children>
-              <opc:Variable SymbolicName="Output" />
+              <opc:Variable SymbolicName="Output">
+                <opc:Description>The flow of water through the input pipe.</opc:Description>
+              </opc:Variable>
             </opc:Children>
           </opc:Object>
           <opc:Object SymbolicName="Valve">
@@ -241,19 +426,21 @@
         added automatically unless the IsOneWay attribute is set to True.
         -->
         <opc:References>
-          <opc:Reference > 
+          <opc:Reference >
             <opc:ReferenceType>FlowTo</opc:ReferenceType>
             <opc:TargetId>BoilerType_Drum</opc:TargetId>
           </opc:Reference>
         </opc:References>
       </opc:Object>
-      
+
       <opc:Object SymbolicName="Drum" TypeDefinition="BoilerDrumType" SupportsEvents="true">
         <opc:BrowseName>DrumX001</opc:BrowseName>
         <opc:Children>
           <opc:Object SymbolicName="LevelIndicator">
             <opc:Children>
-              <opc:Variable SymbolicName="Output" />
+              <opc:Variable SymbolicName="Output">
+                <opc:Description>The level of water of in the drum.</opc:Description>
+              </opc:Variable>
             </opc:Children>
           </opc:Object>
         </opc:Children>
@@ -264,18 +451,20 @@
           </opc:Reference>
         </opc:References>
       </opc:Object>
-      
+
       <opc:Object SymbolicName="OutputPipe" TypeDefinition="BoilerOutputPipeType" SupportsEvents="true">
         <opc:BrowseName>PipeX002</opc:BrowseName>
         <opc:Children>
           <opc:Object SymbolicName="FlowTransmitter2">
             <opc:Children>
-              <opc:Variable SymbolicName="Output" />
+              <opc:Variable SymbolicName="Output">
+                <opc:Description>The flow of steam through the output pipe.</opc:Description>
+              </opc:Variable>
             </opc:Children>
           </opc:Object>
         </opc:Children>
       </opc:Object>
-      
+
       <opc:Object SymbolicName="FlowController" TypeDefinition="FlowControllerType">
         <opc:BrowseName>FCX001</opc:BrowseName>
         <opc:Children>
@@ -289,6 +478,7 @@
           </opc:Property>
           <opc:Property SymbolicName="SetPoint" />
           <opc:Property SymbolicName="ControlOut">
+            <opc:Description>The control signal used to adjuct the valve on the input pipe.</opc:Description>
             <opc:References>
               <opc:Reference>
                 <opc:ReferenceType>SignalTo</opc:ReferenceType>
@@ -309,7 +499,9 @@
               </opc:Reference>
             </opc:References>
           </opc:Property>
-          <opc:Property SymbolicName="SetPoint" />
+          <opc:Property SymbolicName="SetPoint">
+            <opc:Description>The set point for the level of the water in the drum.</opc:Description>
+          </opc:Property>
           <opc:Property SymbolicName="ControlOut">
             <opc:References>
               <opc:Reference>
@@ -350,13 +542,13 @@
           </opc:Property>
         </opc:Children>
       </opc:Object>
-      
+
       <opc:Method SymbolicName="ChangeSetPoints" TypeDefinition="ChangeSetPointsMethodType" ModellingRule="Mandatory" />
       <opc:Method SymbolicName="EmergencyShutdown" TypeDefinition="EmergencyShutdownMethodType" ModellingRule="Mandatory" />
       <opc:Method SymbolicName="Restart" TypeDefinition="RestartMethodType" ModellingRule="Mandatory" />
 
     </opc:Children>
-    
+
     <opc:References>
       <opc:Reference>
         <opc:ReferenceType>ua:HasNotifier</opc:ReferenceType>
@@ -371,7 +563,7 @@
         <opc:TargetId>BoilerType_OutputPipe</opc:TargetId>
       </opc:Reference>
     </opc:References>
-    
+
   </opc:ObjectType>
 
   <!--

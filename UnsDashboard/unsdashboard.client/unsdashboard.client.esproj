@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.127-alpha">
+  <PropertyGroup>
+    <StartupCommand>npm run dev</StartupCommand>
+    <JavaScriptTestRoot>src\</JavaScriptTestRoot>
+    <JavaScriptTestFramework>Jest</JavaScriptTestFramework>
+    <!-- Allows the build (or compile) script located on package.json to run on Build -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <!-- Folder where production build objects will be placed -->
+    <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist</PublishAssetsDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="src\opcua-utils.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="public\opcfoundation-org-opcua-rest-api-1.0.0-swagger.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptConfiguration Remove="src\opcua\apis\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\opcua\apis\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\opcua\apis\index.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\opcua\apis\DefaultApi.ts" />
+  </ItemGroup>
+</Project>

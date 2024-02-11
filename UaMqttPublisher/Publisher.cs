@@ -28,12 +28,14 @@
  * ======================================================================*/
 
 using System.Net;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Security.Authentication;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using Microsoft.VisualBasic;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Formatter;
@@ -122,17 +124,175 @@ namespace UaMqttPublisher
                 {
                     throw new InvalidDataException($"Connection '{connectionName}' configuration is missing.");
                 }
+            }
+        }
 
-                HashSet<ushort> assignedIds = new();
+        private async Task UpdateConfiguration()
+        {
+            HashSet<ushort> assignedIds = new();
 
-                foreach (var group in m_connection.Groups)
+            foreach (var group in m_connection.Groups)
+            {
+                foreach (var writer in group.Writers)
                 {
-                    foreach (var writer in group.Writers)
+                    if (writer.DataSetName == null)
                     {
-                        writer.WriterId = GetWriterId(assignedIds, writer);
-                        writer.SequenceNumber = 1;
+                        writer.DataSetName = writer.Name;
                     }
+                    else if (writer.InstanceId != null)
+                    {
+                        var dataset = m_connection.DataSets.Where(x => x.Name == writer.DataSetName).FirstOrDefault();
+                        await CreateFields(group, dataset, writer);
+                        writer.DataSetName = writer.DataSetName.Replace(" ", "_");
+                    }
+
+                    writer.WriterId = GetWriterId(assignedIds, writer);
+                    writer.SequenceNumber = 1;
+                }
+            };
+        }
+
+        private async Task CreateFields(GroupConfiguration group, DataSetConfiguration dataset, WriterConfiguration writer)
+        {
+            NodeId rootId = ExpandedNodeId.ToNodeId(writer.InstanceId, m_uaClient.Session.NamespaceUris);
+
+            Dictionary<string, ReferenceDescription> nodes = new();
+            await CollectVariables(dataset.Fields, rootId, null, nodes);
+
+            writer.Fields = new();
+
+            foreach (var ii in nodes.OrderBy(x =>x.Key))
+            {
+                if (ii.Value.TypeDefinition == Opc.Ua.VariableTypeIds.PropertyType)
+                {
+                    if (nodes.Keys.Where(x => ii.Key.StartsWith(x) && ii.Key != x).Any())
+                    {
+                        continue;
+                    }
+                }
+
+                var field = new DataSetField()
+                {
+                    Name = ii.Key,
+                    Source = ii.Value.NodeId.ToString(),
+                    SamplingInterval = group.DefaultSamplingInterval ?? 1000,
+                    Properties = new()
                 };
+
+                await ReadMetadata((NodeId)ii.Value.NodeId, ii.Key, field);
+
+                var properties = nodes
+                    .Where(x => 
+                        x.Key.StartsWith(ii.Key) && 
+                        ii.Key != x.Key &&
+                        x.Value.TypeDefinition == Opc.Ua.VariableTypeIds.PropertyType
+                    );
+
+                foreach (var property in properties)
+                {
+                    var propertyField = new DataSetFieldBase()
+                    {
+                        Name = property.Value.BrowseName.ToString(),
+                        Source = property.Value.NodeId.ToString(),
+                        SamplingInterval = group.PropertySamplingInterval ?? 1000,
+                    };
+
+                    await ReadMetadata((NodeId)property.Value.NodeId, property.Key, propertyField);
+                    field.Properties.Add(propertyField);
+                }
+
+                writer.Fields.Add(field);
+            }
+
+            writer.Fields = writer.Fields.OrderBy(x => x.Name).ToList();
+        }
+
+        private async Task ReadMetadata(
+            NodeId parentId,
+            string path,
+            DataSetFieldBase field)
+        {
+            var request = new ReadValueIdCollection()
+            {
+                new ReadValueId() { NodeId = parentId, AttributeId = Attributes.Description },
+                new ReadValueId() { NodeId = parentId, AttributeId = Attributes.DataType },
+                new ReadValueId() { NodeId = parentId, AttributeId = Attributes.ValueRank },
+                new ReadValueId() { NodeId = parentId, AttributeId = Attributes.ArrayDimensions }
+            };
+
+            var response = await m_uaClient.Session.ReadAsync(
+                null,
+                0,
+                TimestampsToReturn.Neither,
+                request,
+                CancellationToken.None
+            );
+
+            var results = response.Results;
+            var diagnostics = response.DiagnosticInfos;
+            ClientBase.ValidateResponse(results, request);
+            ClientBase.ValidateDiagnosticInfos(diagnostics, request);
+
+            var dataTypeId = results[1].Value as NodeId ?? DataTypeIds.BaseDataType;
+
+            field.BuiltInType = Opc.Ua.TypeInfo.GetBuiltInType(dataTypeId, m_uaClient.Session.TypeTree);
+            field.DataType = NodeId.ToExpandedNodeId(dataTypeId, m_uaClient.MessageContext.NamespaceUris).ToString();
+            field.ValueRank = results[2].Value as int? ?? ValueRanks.Scalar;
+            field.Description = (results[0].Value as LocalizedText)?.Text;
+        }
+
+        private async Task CollectVariables(
+            List<string> includedPaths,
+            NodeId parentId,
+            string path,
+            Dictionary<string, ReferenceDescription> nodes)
+        {
+            var request = new BrowseDescriptionCollection()
+            {
+                new BrowseDescription()
+                {
+                    NodeId = parentId,
+                    BrowseDirection = BrowseDirection.Forward,
+                    ReferenceTypeId = ReferenceTypeIds.HasChild,
+                    IncludeSubtypes = true,
+                    NodeClassMask = (uint)(NodeClass.Variable | NodeClass.Object),
+                    ResultMask = (uint)BrowseResultMask.All
+                }
+            };
+
+            var response = await m_uaClient.Session.BrowseAsync(
+                null,
+                null,
+                1000,
+                request,
+                CancellationToken.None
+            );
+
+            var results = response.Results;
+            var diagnostics = response.DiagnosticInfos;
+            ClientBase.ValidateResponse(results, request);
+            ClientBase.ValidateDiagnosticInfos(diagnostics, request);
+
+            foreach (var reference in results[0].References)
+            {
+                if (reference.NodeId?.IsAbsolute == false)
+                {
+                    var childPath = $"{path}{((path != null) ? "/" : "")}{reference.BrowseName.Name}";
+
+                    if (includedPaths.Where(x => childPath.StartsWith(x)).Any())
+                    {
+                        if (reference.NodeClass == NodeClass.Variable)
+                        {
+                            nodes.Add(childPath, reference);
+                        }
+
+                        await CollectVariables(includedPaths, (NodeId)reference.NodeId, childPath, nodes);
+                    }
+                    else if (includedPaths.Where(x => x.StartsWith(childPath)).Any())
+                    {
+                        await CollectVariables(includedPaths, (NodeId)reference.NodeId, childPath, nodes);
+                    }
+                }
             }
         }
 
@@ -201,6 +361,16 @@ namespace UaMqttPublisher
             {
                 Log.Info($"Publisher Connected to '{url}'");
             }
+
+            // clear out old retained messages
+            //var builder = new MqttApplicationMessageBuilder()
+            //    .WithTopic("opcua/json/status/Site_SpringField:ProcessCell_West")
+            //    .WithPayload("")
+            //    .WithRetainFlag(true)
+            //    .WithQualityOfServiceLevel(MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce);
+
+            //var message = builder.Build();
+            //await m_mqttClient.PublishAsync(message, m_shutdown.Token);
         }
 
         public async Task Start(string configurationFile, string brokerName, string connectionName, string port)
@@ -213,7 +383,9 @@ namespace UaMqttPublisher
             await server.Start(false, port).ConfigureAwait(false);
 
             await LoadConfiguration(configurationFile, brokerName, connectionName, port);
-            m_uaClient = await UAClient.Run(m_connection, m_cache);
+            m_uaClient = await UAClient.Run(m_connection);
+            await UpdateConfiguration();
+            m_uaClient.Subscribe(m_cache);
 
             var task = Task.Run(() => ProcessQueuedMessages());
 
@@ -473,7 +645,7 @@ namespace UaMqttPublisher
             var metadata = new DataSetMetaDataType()
             {
                 Name = writer.DataSetName,
-                Description = new LocalizedText("A set of energy consumption metrics for a device."),
+                Description = writer.Description,
                 Fields = fields
             };
 

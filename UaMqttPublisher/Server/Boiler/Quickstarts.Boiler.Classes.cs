@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2024 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -27,12 +27,17 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml;
+using System.Runtime.Serialization;
 using Opc.Ua;
 
 namespace Quickstarts.Boiler
 {
     #region GenericControllerState Class
-#if (!OPCUA_EXCLUDE_GenericControllerState)
+    #if (!OPCUA_EXCLUDE_GenericControllerState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -50,7 +55,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.GenericControllerType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -80,7 +85,7 @@ namespace Quickstarts.Boiler
            "AAgAAABTZXRQb2ludAEBBQAALgBEBQAAAAAL/////wMD/////wAAAAAVYIkKAgAAAAEACgAAAENvbnRy" +
            "b2xPdXQBAQYAAC4ARAYAAAAAC/////8BAf////8AAAAA";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -165,7 +170,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -261,11 +266,11 @@ namespace Quickstarts.Boiler
         private PropertyState<double> m_controlOut;
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region GenericSensorState Class
-#if (!OPCUA_EXCLUDE_GenericSensorState)
+    #if (!OPCUA_EXCLUDE_GenericSensorState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -283,7 +288,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.GenericSensorType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -309,15 +314,18 @@ namespace Quickstarts.Boiler
         private const string InitializationString =
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQAZAAAAR2VuZXJpY1NlbnNvclR5cGVJbnN0YW5jZQEBBwABAQcABwAAAP////8BAAAAFWCJCgIA" +
-           "AAABAAYAAABPdXRwdXQBAQgAAC8BAEAJCAAAAAAL/////wEB/////wEAAAAVYIkKAgAAAAAABwAAAEVV" +
-           "UmFuZ2UBAQsAAC4ARAsAAAABAHQD/////wEB/////wAAAAA=";
+           "AAABAAYAAABPdXRwdXQBAQgAAC8BAKJECAAAAAAL/////wEB/////wIAAAAVYKkKAgAAAAAABwAAAEVV" +
+           "UmFuZ2UBAQsAAC4ARAsAAAAWAQB2AwEQAAAAAAAAAAAAAAAAAAAAAABZQAEAdAP/////AQH/////AAAA" +
+           "ABVgqQoCAAAAAAAQAAAARW5naW5lZXJpbmdVbml0cwEBDQAALgBEDQAAABYBAHkDAVQAAAAvAAAAaHR0" +
+           "cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3RTVE0AAgMAAABtL3MCEAAA" +
+           "AG1ldHJlIHBlciBzZWNvbmQBAHcD/////wMD/////wAAAAA=";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
         /// <remarks />
-        public AnalogItemState<double> Output
+        public AnalogUnitRangeState<double> Output
         {
             get
             {
@@ -349,7 +357,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -374,11 +382,11 @@ namespace Quickstarts.Boiler
                         {
                             if (replacement == null)
                             {
-                                Output = new AnalogItemState<double>(this);
+                                Output = new AnalogUnitRangeState<double>(this);
                             }
                             else
                             {
-                                Output = (AnalogItemState<double>)replacement;
+                                Output = (AnalogUnitRangeState<double>)replacement;
                             }
                         }
                     }
@@ -398,14 +406,14 @@ namespace Quickstarts.Boiler
         #endregion
 
         #region Private Fields
-        private AnalogItemState<double> m_output;
+        private AnalogUnitRangeState<double> m_output;
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region GenericActuatorState Class
-#if (!OPCUA_EXCLUDE_GenericActuatorState)
+    #if (!OPCUA_EXCLUDE_GenericActuatorState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -423,7 +431,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.GenericActuatorType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -449,10 +457,11 @@ namespace Quickstarts.Boiler
         private const string InitializationString =
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQAbAAAAR2VuZXJpY0FjdHVhdG9yVHlwZUluc3RhbmNlAQEOAAEBDgAOAAAA/////wEAAAAVYIkK" +
-           "AgAAAAEABQAAAElucHV0AQEPAAAvAQBACQ8AAAAAC/////8CAv////8BAAAAFWCJCgIAAAAAAAcAAABF" +
-           "VVJhbmdlAQESAAAuAEQSAAAAAQB0A/////8BAf////8AAAAA";
+           "AgAAAAEABQAAAElucHV0AQEPAAAvAQBACQ8AAAAAC/////8CAv////8BAAAAFWCpCgIAAAAAAAcAAABF" +
+           "VVJhbmdlAQESAAAuAEQSAAAAFgEAdgMBEAAAAAAAAAAAAAAAAAAAAAAAJEABAHQD/////wEB/////wAA" +
+           "AAA=";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -489,7 +498,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -541,11 +550,11 @@ namespace Quickstarts.Boiler
         private AnalogItemState<double> m_input;
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region CustomControllerState Class
-#if (!OPCUA_EXCLUDE_CustomControllerState)
+    #if (!OPCUA_EXCLUDE_CustomControllerState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -563,7 +572,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.CustomControllerType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -594,7 +603,7 @@ namespace Quickstarts.Boiler
            "RBgAAAAAC/////8CAv////8AAAAAFWCJCgIAAAABAAoAAABDb250cm9sT3V0AQEZAAAuAEQZAAAAAAv/" +
            "////AQH/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -703,7 +712,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -821,11 +830,11 @@ namespace Quickstarts.Boiler
         private PropertyState<double> m_controlOut;
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region ValveState Class
-#if (!OPCUA_EXCLUDE_ValveState)
+    #if (!OPCUA_EXCLUDE_ValveState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -843,7 +852,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.ValveType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -869,10 +878,10 @@ namespace Quickstarts.Boiler
         private const string InitializationString =
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQARAAAAVmFsdmVUeXBlSW5zdGFuY2UBARoAAQEaABoAAAD/////AQAAABVgiQoCAAAAAQAFAAAA" +
-           "SW5wdXQCAQBBQg8AAC8BAEAJQUIPAAAL/////wIC/////wEAAAAVYIkKAgAAAAAABwAAAEVVUmFuZ2UC" +
-           "AQBFQg8AAC4AREVCDwABAHQD/////wEB/////wAAAAA=";
+           "SW5wdXQCAQBBQg8AAC8BAEAJQUIPAAAL/////wIC/////wEAAAAVYKkKAgAAAAAABwAAAEVVUmFuZ2UC" +
+           "AQBFQg8AAC4AREVCDwAWAQB2AwEQAAAAAAAAAAAAAAAAAAAAAAAkQAEAdAP/////AQH/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -884,11 +893,11 @@ namespace Quickstarts.Boiler
         #region Private Fields
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region LevelControllerState Class
-#if (!OPCUA_EXCLUDE_LevelControllerState)
+    #if (!OPCUA_EXCLUDE_LevelControllerState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -906,7 +915,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.LevelControllerType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -936,7 +945,7 @@ namespace Quickstarts.Boiler
            "AQAIAAAAU2V0UG9pbnQCAQBIQg8AAC4AREhCDwAAC/////8DA/////8AAAAAFWCJCgIAAAABAAoAAABD" +
            "b250cm9sT3V0AgEASUIPAAAuAERJQg8AAAv/////AQH/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -948,11 +957,11 @@ namespace Quickstarts.Boiler
         #region Private Fields
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region FlowControllerState Class
-#if (!OPCUA_EXCLUDE_FlowControllerState)
+    #if (!OPCUA_EXCLUDE_FlowControllerState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -970,7 +979,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.FlowControllerType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1000,7 +1009,7 @@ namespace Quickstarts.Boiler
            "AAgAAABTZXRQb2ludAIBAEtCDwAALgBES0IPAAAL/////wMD/////wAAAAAVYIkKAgAAAAEACgAAAENv" +
            "bnRyb2xPdXQCAQBMQg8AAC4ARExCDwAAC/////8BAf////8AAAAA";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -1012,11 +1021,11 @@ namespace Quickstarts.Boiler
         #region Private Fields
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region LevelIndicatorState Class
-#if (!OPCUA_EXCLUDE_LevelIndicatorState)
+    #if (!OPCUA_EXCLUDE_LevelIndicatorState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1034,7 +1043,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.LevelIndicatorType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1060,10 +1069,13 @@ namespace Quickstarts.Boiler
         private const string InitializationString =
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQAaAAAATGV2ZWxJbmRpY2F0b3JUeXBlSW5zdGFuY2UBASkAAQEpACkAAAD/////AQAAABVgiQoC" +
-           "AAAAAQAGAAAAT3V0cHV0AgEATUIPAAAvAQBACU1CDwAAC/////8BAf////8BAAAAFWCJCgIAAAAAAAcA" +
-           "AABFVVJhbmdlAgEAUUIPAAAuAERRQg8AAQB0A/////8BAf////8AAAAA";
+           "AAAAAQAGAAAAT3V0cHV0AgEATUIPAAAvAQCiRE1CDwAAC/////8BAf////8CAAAAFWCpCgIAAAAAAAcA" +
+           "AABFVVJhbmdlAgEAUUIPAAAuAERRQg8AFgEAdgMBEAAAAAAAAAAAAAAAAAAAAAAAWUABAHQD/////wEB" +
+           "/////wAAAAAVYKkKAgAAAAAAEAAAAEVuZ2luZWVyaW5nVW5pdHMCAQBSQg8AAC4ARFJCDwAWAQB5AwFU" +
+           "AAAALwAAAGh0dHA6Ly93d3cub3BjZm91bmRhdGlvbi5vcmcvVUEvdW5pdHMvdW4vY2VmYWN0U1RNAAID" +
+           "AAAAbS9zAhAAAABtZXRyZSBwZXIgc2Vjb25kAQB3A/////8DA/////8AAAAA";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -1075,11 +1087,11 @@ namespace Quickstarts.Boiler
         #region Private Fields
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region FlowTransmitterState Class
-#if (!OPCUA_EXCLUDE_FlowTransmitterState)
+    #if (!OPCUA_EXCLUDE_FlowTransmitterState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1097,7 +1109,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.FlowTransmitterType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1123,10 +1135,13 @@ namespace Quickstarts.Boiler
         private const string InitializationString =
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQAbAAAARmxvd1RyYW5zbWl0dGVyVHlwZUluc3RhbmNlAQEwAAEBMAAwAAAA/////wEAAAAVYIkK" +
-           "AgAAAAEABgAAAE91dHB1dAIBAFNCDwAALwEAQAlTQg8AAAv/////AQH/////AQAAABVgiQoCAAAAAAAH" +
-           "AAAARVVSYW5nZQIBAFdCDwAALgBEV0IPAAEAdAP/////AQH/////AAAAAA==";
+           "AgAAAAEABgAAAE91dHB1dAIBAFNCDwAALwEAokRTQg8AAAv/////AQH/////AgAAABVgqQoCAAAAAAAH" +
+           "AAAARVVSYW5nZQIBAFdCDwAALgBEV0IPABYBAHYDARAAAAAAAAAAAAAAAAAAAAAAAFlAAQB0A/////8B" +
+           "Af////8AAAAAFWCpCgIAAAAAABAAAABFbmdpbmVlcmluZ1VuaXRzAgEAWEIPAAAuAERYQg8AFgEAeQMB" +
+           "VAAAAC8AAABodHRwOi8vd3d3Lm9wY2ZvdW5kYXRpb24ub3JnL1VBL3VuaXRzL3VuL2NlZmFjdFNUTQAC" +
+           "AwAAAG0vcwIQAAAAbWV0cmUgcGVyIHNlY29uZAEAdwP/////AwP/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -1138,11 +1153,11 @@ namespace Quickstarts.Boiler
         #region Private Fields
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region BoilerInputPipeState Class
-#if (!OPCUA_EXCLUDE_BoilerInputPipeState)
+    #if (!OPCUA_EXCLUDE_BoilerInputPipeState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1160,7 +1175,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.BoilerInputPipeType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1187,13 +1202,16 @@ namespace Quickstarts.Boiler
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQAbAAAAQm9pbGVySW5wdXRQaXBlVHlwZUluc3RhbmNlAQFJAAEBSQBJAAAAAQAAAAAwAAEBSgAC" +
            "AAAAhGDACgEAAAAQAAAARmxvd1RyYW5zbWl0dGVyMQEABgAAAEZUWDAwMQEBSgAALwEBMABKAAAAAQEA" +
-           "AAAAMAEBAUkAAQAAABVgiQoCAAAAAQAGAAAAT3V0cHV0AQFLAAAvAQBACUsAAAAAC/////8BAf////8B" +
-           "AAAAFWCJCgIAAAAAAAcAAABFVVJhbmdlAQFOAAAuAEROAAAAAQB0A/////8BAf////8AAAAAhGDACgEA" +
+           "AAAAMAEBAUkAAQAAABVgiQoCAAAAAQAGAAAAT3V0cHV0AQFLAAAvAQCiREsAAAAAC/////8BAf////8C" +
+           "AAAAFWCpCgIAAAAAAAcAAABFVVJhbmdlAQFOAAAuAEROAAAAFgEAdgMBEAAAAAAAAAAAAAAAAAAAAAAA" +
+           "NEABAHQD/////wEB/////wAAAAAVYKkKAgAAAAAAEAAAAEVuZ2luZWVyaW5nVW5pdHMBAVAAAC4ARFAA" +
+           "AAAWAQB5AwFUAAAALwAAAGh0dHA6Ly93d3cub3BjZm91bmRhdGlvbi5vcmcvVUEvdW5pdHMvdW4vY2Vm" +
+           "YWN0MTVHAAIDAAAAbC9zAhAAAABsaXRyZSBwZXIgc2Vjb25kAQB3A/////8DA/////8AAAAAhGDACgEA" +
            "AAAFAAAAVmFsdmUBAAkAAABWYWx2ZVgwMDEBAVEAAC8BARoAUQAAAAH/////AQAAABVgiQoCAAAAAQAF" +
-           "AAAASW5wdXQBAVIAAC8BAEAJUgAAAAAL/////wIC/////wEAAAAVYIkKAgAAAAAABwAAAEVVUmFuZ2UB" +
-           "AVUAAC4ARFUAAAABAHQD/////wEB/////wAAAAA=";
+           "AAAASW5wdXQBAVIAAC8BAEAJUgAAAAAL/////wIC/////wEAAAAVYKkKAgAAAAAABwAAAEVVUmFuZ2UB" +
+           "AVUAAC4ARFUAAAAWAQB2AwEQAAAAAAAAAAAAAAAAAAAAAAAkQAEAdAP/////AQH/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -1254,7 +1272,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -1328,11 +1346,11 @@ namespace Quickstarts.Boiler
         private ValveState m_valve;
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region BoilerDrumState Class
-#if (!OPCUA_EXCLUDE_BoilerDrumState)
+    #if (!OPCUA_EXCLUDE_BoilerDrumState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1350,7 +1368,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.BoilerDrumType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1377,10 +1395,13 @@ namespace Quickstarts.Boiler
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQAWAAAAQm9pbGVyRHJ1bVR5cGVJbnN0YW5jZQEBWAABAVgAWAAAAAEAAAAAMAABAVkAAQAAAIRg" +
            "wAoBAAAADgAAAExldmVsSW5kaWNhdG9yAQAGAAAATElYMDAxAQFZAAAvAQEpAFkAAAABAQAAAAAwAQEB" +
-           "WAABAAAAFWCJCgIAAAABAAYAAABPdXRwdXQBAVoAAC8BAEAJWgAAAAAL/////wEB/////wEAAAAVYIkK" +
-           "AgAAAAAABwAAAEVVUmFuZ2UBAV0AAC4ARF0AAAABAHQD/////wEB/////wAAAAA=";
+           "WAABAAAAFWCJCgIAAAABAAYAAABPdXRwdXQBAVoAAC8BAKJEWgAAAAAL/////wEB/////wIAAAAVYKkK" +
+           "AgAAAAAABwAAAEVVUmFuZ2UBAV0AAC4ARF0AAAAWAQB2AwEQAAAAAAAAAAAAAAAAAAAAAMByQAEAdAP/" +
+           "////AQH/////AAAAABVgqQoCAAAAAAAQAAAARW5naW5lZXJpbmdVbml0cwEBXwAALgBEXwAAABYBAHkD" +
+           "AU0AAAAvAAAAaHR0cDovL3d3dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3RUTUMA" +
+           "AgIAAABjbQIKAAAAY2VudGltZXRyZQEAdwP/////AwP/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -1417,7 +1438,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -1469,11 +1490,11 @@ namespace Quickstarts.Boiler
         private LevelIndicatorState m_levelIndicator;
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region BoilerOutputPipeState Class
-#if (!OPCUA_EXCLUDE_BoilerOutputPipeState)
+    #if (!OPCUA_EXCLUDE_BoilerOutputPipeState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1491,7 +1512,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.BoilerOutputPipeType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1518,10 +1539,13 @@ namespace Quickstarts.Boiler
            "AQAAACsAAAB0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0ZXJraXQ6Ym9pbGVy/////wRggAIB" +
            "AAAAAQAcAAAAQm9pbGVyT3V0cHV0UGlwZVR5cGVJbnN0YW5jZQEBYAABAWAAYAAAAAEAAAAAMAABAWEA" +
            "AQAAAIRgwAoBAAAAEAAAAEZsb3dUcmFuc21pdHRlcjIBAAYAAABGVFgwMDIBAWEAAC8BATAAYQAAAAEB" +
-           "AAAAADABAQFgAAEAAAAVYIkKAgAAAAEABgAAAE91dHB1dAEBYgAALwEAQAliAAAAAAv/////AQH/////" +
-           "AQAAABVgiQoCAAAAAAAHAAAARVVSYW5nZQEBZQAALgBEZQAAAAEAdAP/////AQH/////AAAAAA==";
+           "AAAAADABAQFgAAEAAAAVYIkKAgAAAAEABgAAAE91dHB1dAEBYgAALwEAokRiAAAAAAv/////AQH/////" +
+           "AgAAABVgqQoCAAAAAAAHAAAARVVSYW5nZQEBZQAALgBEZQAAABYBAHYDARAAAAAAAAAAAABZQAAAAAAA" +
+           "iMNAAQB0A/////8BAf////8AAAAAFWCpCgIAAAAAABAAAABFbmdpbmVlcmluZ1VuaXRzAQFnAAAuAERn" +
+           "AAAAFgEAeQMBSQAAAC8AAABodHRwOi8vd3d3Lm9wY2ZvdW5kYXRpb24ub3JnL1VBL3VuaXRzL3VuL2Nl" +
+           "ZmFjdExBUAACAgAAAFBhAgYAAABwYXNjYWwBAHcD/////wMD/////wAAAAA=";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -1558,7 +1582,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -1610,11 +1634,11 @@ namespace Quickstarts.Boiler
         private FlowTransmitterState m_flowTransmitter2;
         #endregion
     }
-#endif
+    #endif
     #endregion
 
     #region ChangeSetPointsMethodState Class
-#if (!OPCUA_EXCLUDE_ChangeSetPointsMethodState)
+    #if (!OPCUA_EXCLUDE_ChangeSetPointsMethodState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1632,7 +1656,7 @@ namespace Quickstarts.Boiler
             return new ChangeSetPointsMethodState(parent);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1657,7 +1681,7 @@ namespace Quickstarts.Boiler
            "//8AAAAAAAEAKgEBHgAAAA0AAABDdXJyZW50VmFsdWVzAQHdAP////8AAAAAAAEAKAEBAAAAAQAAAAIA" +
            "AAABAf////8AAAAA";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Event Callbacks
@@ -1719,11 +1743,11 @@ namespace Quickstarts.Boiler
         ChangeSetPointsRequest changes,
         ref StatusCode operationResult,
         ref ChangeSetPointsResponse currentValues);
-#endif
+    #endif
     #endregion
 
     #region EmergencyShutdownMethodState Class
-#if (!OPCUA_EXCLUDE_EmergencyShutdownMethodState)
+    #if (!OPCUA_EXCLUDE_EmergencyShutdownMethodState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1741,7 +1765,7 @@ namespace Quickstarts.Boiler
             return new EmergencyShutdownMethodState(parent);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1765,7 +1789,7 @@ namespace Quickstarts.Boiler
            "dEFyZ3VtZW50cwEBRwAALgBERwAAAJYBAAAAAQAqAQEeAAAADQAAAEVzdGltYXRlZFRpbWUBACIB////" +
            "/wAAAAAAAQAoAQEAAAABAAAAAQAAAAEB/////wAAAAA=";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Event Callbacks
@@ -1823,11 +1847,11 @@ namespace Quickstarts.Boiler
         NodeId _objectId,
         string reason,
         ref double estimatedTime);
-#endif
+    #endif
     #endregion
 
     #region RestartMethodState Class
-#if (!OPCUA_EXCLUDE_RestartMethodState)
+    #if (!OPCUA_EXCLUDE_RestartMethodState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1845,7 +1869,7 @@ namespace Quickstarts.Boiler
             return new RestartMethodState(parent);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1869,7 +1893,7 @@ namespace Quickstarts.Boiler
            "AQHHAAAuAETHAAAAlgEAAAABACoBAR4AAAANAAAARXN0aW1hdGVkVGltZQEAIgH/////AAAAAAABACgB" +
            "AQAAAAEAAAABAAAAAQH/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Event Callbacks
@@ -1927,11 +1951,11 @@ namespace Quickstarts.Boiler
         NodeId _objectId,
         string reason,
         ref double estimatedTime);
-#endif
+    #endif
     #endregion
 
     #region BoilerState Class
-#if (!OPCUA_EXCLUDE_BoilerState)
+    #if (!OPCUA_EXCLUDE_BoilerState)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -1949,7 +1973,7 @@ namespace Quickstarts.Boiler
             return Opc.Ua.NodeId.Create(Quickstarts.Boiler.ObjectTypes.BoilerType, Quickstarts.Boiler.Namespaces.Boiler, namespaceUris);
         }
 
-#if (!OPCUA_EXCLUDE_InitializationStrings)
+        #if (!OPCUA_EXCLUDE_InitializationStrings)
         /// <remarks />
         protected override void Initialize(ISystemContext context)
         {
@@ -1977,49 +2001,63 @@ namespace Quickstarts.Boiler
            "AAAAAQASAAAAQm9pbGVyVHlwZUluc3RhbmNlAQE3AAEBNwA3AAAAAQMAAAAAMAABATgAADAAAQE5AAAw" +
            "AAEBQQAJAAAAhGDACgEAAAAJAAAASW5wdXRQaXBlAQAIAAAAUGlwZVgwMDEBATgAAC8BAUkAOAAAAAED" +
            "AAAAADABAQE3AAAwAAEBaAABAQEAAAEBOQACAAAAhGDACgEAAAAQAAAARmxvd1RyYW5zbWl0dGVyMQEA" +
-           "BgAAAEZUWDAwMQEBaAAALwEBMABoAAAAAQEAAAAAMAEBATgAAQAAABVgiQoCAAAAAQAGAAAAT3V0cHV0" +
-           "AQFpAAAvAQBACWkAAAAAC/////8BAQIAAAABAQIAAAEBfgABAQIAAAEBhwABAAAAFWCJCgIAAAAAAAcA" +
-           "AABFVVJhbmdlAQFsAAAuAERsAAAAAQB0A/////8BAf////8AAAAAhGDACgEAAAAFAAAAVmFsdmUBAAkA" +
-           "AABWYWx2ZVgwMDEBAW8AAC8BARoAbwAAAAH/////AQAAABVgiQoCAAAAAQAFAAAASW5wdXQBAXAAAC8B" +
-           "AEAJcAAAAAAL/////wICAQAAAAEBAgABAQGAAAEAAAAVYIkKAgAAAAAABwAAAEVVUmFuZ2UBAXMAAC4A" +
-           "RHMAAAABAHQD/////wEB/////wAAAACEYMAKAQAAAAQAAABEcnVtAQAIAAAARHJ1bVgwMDEBATkAAC8B" +
-           "AVgAOQAAAAEEAAAAADABAQE3AAEBAQABAQE4AAAwAAEBOgABAQEAAAEBQQABAAAAhGDACgEAAAAOAAAA" +
-           "TGV2ZWxJbmRpY2F0b3IBAAYAAABMSVgwMDEBAToAAC8BASkAOgAAAAEBAAAAADABAQE5AAEAAAAVYIkK" +
-           "AgAAAAEABgAAAE91dHB1dAEBOwAALwEAQAk7AAAAAAv/////AQEBAAAAAQECAAABAYIAAQAAABVgiQoC" +
-           "AAAAAAAHAAAARVVSYW5nZQEBPgAALgBEPgAAAAEAdAP/////AQH/////AAAAAIRgwAoBAAAACgAAAE91" +
-           "dHB1dFBpcGUBAAgAAABQaXBlWDAwMgEBQQAALwEBYABBAAAAAQMAAAAAMAEBATcAAQEBAAEBATkAADAA" +
-           "AQF2AAEAAACEYMAKAQAAABAAAABGbG93VHJhbnNtaXR0ZXIyAQAGAAAARlRYMDAyAQF2AAAvAQEwAHYA" +
-           "AAABAQAAAAAwAQEBQQABAAAAFWCJCgIAAAABAAYAAABPdXRwdXQBAXcAAC8BAEAJdwAAAAAL/////wEB" +
-           "AQAAAAEBAgAAAQGIAAEAAAAVYIkKAgAAAAAABwAAAEVVUmFuZ2UBAXoAAC4ARHoAAAABAHQD/////wEB" +
-           "/////wAAAAAEYMAKAQAAAA4AAABGbG93Q29udHJvbGxlcgEABgAAAEZDWDAwMQEBfQAALwEBJQB9AAAA" +
-           "/////wMAAAAVYIkKAgAAAAEACwAAAE1lYXN1cmVtZW50AQF+AAAuAER+AAAAAAv/////AQEBAAAAAQEC" +
-           "AAEBAWkAAAAAABVgiQoCAAAAAQAIAAAAU2V0UG9pbnQBAX8AAC4ARH8AAAAAC/////8DAwEAAAABAQIA" +
-           "AQEBiQAAAAAAFWCJCgIAAAABAAoAAABDb250cm9sT3V0AQGAAAAuAESAAAAAAAv/////AQEBAAAAAQEC" +
-           "AAABAXAAAAAAAARgwAoBAAAADwAAAExldmVsQ29udHJvbGxlcgEABgAAAExDWDAwMQEBgQAALwEBIQCB" +
-           "AAAA/////wMAAAAVYIkKAgAAAAEACwAAAE1lYXN1cmVtZW50AQGCAAAuAESCAAAAAAv/////AQEBAAAA" +
-           "AQECAAEBATsAAAAAABVgiQoCAAAAAQAIAAAAU2V0UG9pbnQBAYMAAC4ARIMAAAAAC/////8DA/////8A" +
-           "AAAAFWCJCgIAAAABAAoAAABDb250cm9sT3V0AQGEAAAuAESEAAAAAAv/////AQEBAAAAAQECAAABAYYA" +
-           "AAAAAARgwAoBAAAAEAAAAEN1c3RvbUNvbnRyb2xsZXIBAAYAAABDQ1gwMDEBAYUAAC8BARUAhQAAAP//" +
-           "//8EAAAAFWCJCgIAAAABAAYAAABJbnB1dDEBAYYAAC4ARIYAAAAAC/////8CAgEAAAABAQIAAQEBhAAA" +
-           "AAAAFWCJCgIAAAABAAYAAABJbnB1dDIBAYcAAC4ARIcAAAAAC/////8CAgEAAAABAQIAAQEBaQAAAAAA" +
-           "FWCJCgIAAAABAAYAAABJbnB1dDMBAYgAAC4ARIgAAAAAC/////8CAgEAAAABAQIAAQEBdwAAAAAAFWCJ" +
-           "CgIAAAABAAoAAABDb250cm9sT3V0AQGJAAAuAESJAAAAAAv/////AQEBAAAAAQECAAABAX8AAAAAAARh" +
-           "ggoEAAAAAQAPAAAAQ2hhbmdlU2V0UG9pbnRzAQHIAAAvAQHIAMgAAAABAf////8CAAAAF2CpCgIAAAAA" +
-           "AA4AAABJbnB1dEFyZ3VtZW50cwEByQAALgBEyQAAAJYBAAAAAQAqAQEYAAAABwAAAENoYW5nZXMBAdwA" +
-           "/////wAAAAAAAQAoAQEAAAABAAAAAQAAAAEB/////wAAAAAXYKkKAgAAAAAADwAAAE91dHB1dEFyZ3Vt" +
-           "ZW50cwEBygAALgBEygAAAJYCAAAAAQAqAQEeAAAADwAAAE9wZXJhdGlvblJlc3VsdAAT/////wAAAAAA" +
-           "AQAqAQEeAAAADQAAAEN1cnJlbnRWYWx1ZXMBAd0A/////wAAAAAAAQAoAQEAAAABAAAAAgAAAAEB////" +
-           "/wAAAAAEYYIKBAAAAAEAEQAAAEVtZXJnZW5jeVNodXRkb3duAQHLAAAvAQHLAMsAAAABAf////8CAAAA" +
-           "F2CpCgIAAAAAAA4AAABJbnB1dEFyZ3VtZW50cwEBzAAALgBEzAAAAJYBAAAAAQAqAQEVAAAABgAAAFJl" +
-           "YXNvbgAM/////wAAAAAAAQAoAQEAAAABAAAAAQAAAAEB/////wAAAAAXYKkKAgAAAAAADwAAAE91dHB1" +
-           "dEFyZ3VtZW50cwEBzQAALgBEzQAAAJYBAAAAAQAqAQEeAAAADQAAAEVzdGltYXRlZFRpbWUBACIB////" +
-           "/wAAAAAAAQAoAQEAAAABAAAAAQAAAAEB/////wAAAAAEYYIKBAAAAAEABwAAAFJlc3RhcnQBAc4AAC8B" +
-           "Ac4AzgAAAAEB/////wIAAAAXYKkKAgAAAAAADgAAAElucHV0QXJndW1lbnRzAQHPAAAuAETPAAAAlgEA" +
-           "AAABACoBARUAAAAGAAAAUmVhc29uAAz/////AAAAAAABACgBAQAAAAEAAAABAAAAAQH/////AAAAABdg" +
-           "qQoCAAAAAAAPAAAAT3V0cHV0QXJndW1lbnRzAQHQAAAuAETQAAAAlgEAAAABACoBAR4AAAANAAAARXN0" +
-           "aW1hdGVkVGltZQEAIgH/////AAAAAAABACgBAQAAAAEAAAABAAAAAQH/////AAAAAA==";
+           "BgAAAEZUWDAwMQEBaAAALwEBMABoAAAAAQEAAAAAMAEBATgAAQAAADVgiQoCAAAAAQAGAAAAT3V0cHV0" +
+           "AQFpAAMAAAAAKQAAAFRoZSBmbG93IG9mIHdhdGVyIHRocm91Z2ggdGhlIGlucHV0IHBpcGUuAC8BAKJE" +
+           "aQAAAAAL/////wEBAgAAAAEBAgAAAQF+AAEBAgAAAQGHAAIAAAAVYKkKAgAAAAAABwAAAEVVUmFuZ2UB" +
+           "AWwAAC4ARGwAAAAWAQB2AwEQAAAAAAAAAAAAAAAAAAAAAAA0QAEAdAP/////AQH/////AAAAABVgqQoC" +
+           "AAAAAAAQAAAARW5naW5lZXJpbmdVbml0cwEBbgAALgBEbgAAABYBAHkDAVQAAAAvAAAAaHR0cDovL3d3" +
+           "dy5vcGNmb3VuZGF0aW9uLm9yZy9VQS91bml0cy91bi9jZWZhY3QxNUcAAgMAAABsL3MCEAAAAGxpdHJl" +
+           "IHBlciBzZWNvbmQBAHcD/////wMD/////wAAAACEYMAKAQAAAAUAAABWYWx2ZQEACQAAAFZhbHZlWDAw" +
+           "MQEBbwAALwEBGgBvAAAAAf////8BAAAAFWCJCgIAAAABAAUAAABJbnB1dAEBcAAALwEAQAlwAAAAAAv/" +
+           "////AgIBAAAAAQECAAEBAYAAAQAAABVgqQoCAAAAAAAHAAAARVVSYW5nZQEBcwAALgBEcwAAABYBAHYD" +
+           "ARAAAAAAAAAAAAAAAAAAAAAAACRAAQB0A/////8BAf////8AAAAAhGDACgEAAAAEAAAARHJ1bQEACAAA" +
+           "AERydW1YMDAxAQE5AAAvAQFYADkAAAABBAAAAAAwAQEBNwABAQEAAQEBOAAAMAABAToAAQEBAAABAUEA" +
+           "AQAAAIRgwAoBAAAADgAAAExldmVsSW5kaWNhdG9yAQAGAAAATElYMDAxAQE6AAAvAQEpADoAAAABAQAA" +
+           "AAAwAQEBOQABAAAANWCJCgIAAAABAAYAAABPdXRwdXQBATsAAwAAAAAiAAAAVGhlIGxldmVsIG9mIHdh" +
+           "dGVyIG9mIGluIHRoZSBkcnVtLgAvAQCiRDsAAAAAC/////8BAQEAAAABAQIAAAEBggACAAAAFWCpCgIA" +
+           "AAAAAAcAAABFVVJhbmdlAQE+AAAuAEQ+AAAAFgEAdgMBEAAAAAAAAAAAAAAAAAAAAADAckABAHQD////" +
+           "/wEB/////wAAAAAVYKkKAgAAAAAAEAAAAEVuZ2luZWVyaW5nVW5pdHMBAUAAAC4AREAAAAAWAQB5AwFN" +
+           "AAAALwAAAGh0dHA6Ly93d3cub3BjZm91bmRhdGlvbi5vcmcvVUEvdW5pdHMvdW4vY2VmYWN0VE1DAAIC" +
+           "AAAAY20CCgAAAGNlbnRpbWV0cmUBAHcD/////wMD/////wAAAACEYMAKAQAAAAoAAABPdXRwdXRQaXBl" +
+           "AQAIAAAAUGlwZVgwMDIBAUEAAC8BAWAAQQAAAAEDAAAAADABAQE3AAEBAQABAQE5AAAwAAEBdgABAAAA" +
+           "hGDACgEAAAAQAAAARmxvd1RyYW5zbWl0dGVyMgEABgAAAEZUWDAwMgEBdgAALwEBMAB2AAAAAQEAAAAA" +
+           "MAEBAUEAAQAAADVgiQoCAAAAAQAGAAAAT3V0cHV0AQF3AAMAAAAAKgAAAFRoZSBmbG93IG9mIHN0ZWFt" +
+           "IHRocm91Z2ggdGhlIG91dHB1dCBwaXBlLgAvAQCiRHcAAAAAC/////8BAQEAAAABAQIAAAEBiAACAAAA" +
+           "FWCpCgIAAAAAAAcAAABFVVJhbmdlAQF6AAAuAER6AAAAFgEAdgMBEAAAAAAAAAAAAFlAAAAAAACIw0AB" +
+           "AHQD/////wEB/////wAAAAAVYKkKAgAAAAAAEAAAAEVuZ2luZWVyaW5nVW5pdHMBAXwAAC4ARHwAAAAW" +
+           "AQB5AwFJAAAALwAAAGh0dHA6Ly93d3cub3BjZm91bmRhdGlvbi5vcmcvVUEvdW5pdHMvdW4vY2VmYWN0" +
+           "TEFQAAICAAAAUGECBgAAAHBhc2NhbAEAdwP/////AwP/////AAAAAARgwAoBAAAADgAAAEZsb3dDb250" +
+           "cm9sbGVyAQAGAAAARkNYMDAxAQF9AAAvAQElAH0AAAD/////AwAAABVgiQoCAAAAAQALAAAATWVhc3Vy" +
+           "ZW1lbnQBAX4AAC4ARH4AAAAAC/////8BAQEAAAABAQIAAQEBaQAAAAAAFWCJCgIAAAABAAgAAABTZXRQ" +
+           "b2ludAEBfwAALgBEfwAAAAAL/////wMDAQAAAAEBAgABAQGJAAAAAAA1YIkKAgAAAAEACgAAAENvbnRy" +
+           "b2xPdXQBAYAAAwAAAAA+AAAAVGhlIGNvbnRyb2wgc2lnbmFsIHVzZWQgdG8gYWRqdWN0IHRoZSB2YWx2" +
+           "ZSBvbiB0aGUgaW5wdXQgcGlwZS4ALgBEgAAAAAAL/////wEBAQAAAAEBAgAAAQFwAAAAAAAEYMAKAQAA" +
+           "AA8AAABMZXZlbENvbnRyb2xsZXIBAAYAAABMQ1gwMDEBAYEAAC8BASEAgQAAAP////8DAAAAFWCJCgIA" +
+           "AAABAAsAAABNZWFzdXJlbWVudAEBggAALgBEggAAAAAL/////wEBAQAAAAEBAgABAQE7AAAAAAA1YIkK" +
+           "AgAAAAEACAAAAFNldFBvaW50AQGDAAMAAAAANQAAAFRoZSBzZXQgcG9pbnQgZm9yIHRoZSBsZXZlbCBv" +
+           "ZiB0aGUgd2F0ZXIgaW4gdGhlIGRydW0uAC4ARIMAAAAAC/////8DA/////8AAAAAFWCJCgIAAAABAAoA" +
+           "AABDb250cm9sT3V0AQGEAAAuAESEAAAAAAv/////AQEBAAAAAQECAAABAYYAAAAAAARgwAoBAAAAEAAA" +
+           "AEN1c3RvbUNvbnRyb2xsZXIBAAYAAABDQ1gwMDEBAYUAAC8BARUAhQAAAP////8EAAAAFWCJCgIAAAAB" +
+           "AAYAAABJbnB1dDEBAYYAAC4ARIYAAAAAC/////8CAgEAAAABAQIAAQEBhAAAAAAAFWCJCgIAAAABAAYA" +
+           "AABJbnB1dDIBAYcAAC4ARIcAAAAAC/////8CAgEAAAABAQIAAQEBaQAAAAAAFWCJCgIAAAABAAYAAABJ" +
+           "bnB1dDMBAYgAAC4ARIgAAAAAC/////8CAgEAAAABAQIAAQEBdwAAAAAAFWCJCgIAAAABAAoAAABDb250" +
+           "cm9sT3V0AQGJAAAuAESJAAAAAAv/////AQEBAAAAAQECAAABAX8AAAAAAARhggoEAAAAAQAPAAAAQ2hh" +
+           "bmdlU2V0UG9pbnRzAQHIAAAvAQHIAMgAAAABAf////8CAAAAF2CpCgIAAAAAAA4AAABJbnB1dEFyZ3Vt" +
+           "ZW50cwEByQAALgBEyQAAAJYBAAAAAQAqAQEYAAAABwAAAENoYW5nZXMBAdwA/////wAAAAAAAQAoAQEA" +
+           "AAABAAAAAQAAAAEB/////wAAAAAXYKkKAgAAAAAADwAAAE91dHB1dEFyZ3VtZW50cwEBygAALgBEygAA" +
+           "AJYCAAAAAQAqAQEeAAAADwAAAE9wZXJhdGlvblJlc3VsdAAT/////wAAAAAAAQAqAQEeAAAADQAAAEN1" +
+           "cnJlbnRWYWx1ZXMBAd0A/////wAAAAAAAQAoAQEAAAABAAAAAgAAAAEB/////wAAAAAEYYIKBAAAAAEA" +
+           "EQAAAEVtZXJnZW5jeVNodXRkb3duAQHLAAAvAQHLAMsAAAABAf////8CAAAAF2CpCgIAAAAAAA4AAABJ" +
+           "bnB1dEFyZ3VtZW50cwEBzAAALgBEzAAAAJYBAAAAAQAqAQEVAAAABgAAAFJlYXNvbgAM/////wAAAAAA" +
+           "AQAoAQEAAAABAAAAAQAAAAEB/////wAAAAAXYKkKAgAAAAAADwAAAE91dHB1dEFyZ3VtZW50cwEBzQAA" +
+           "LgBEzQAAAJYBAAAAAQAqAQEeAAAADQAAAEVzdGltYXRlZFRpbWUBACIB/////wAAAAAAAQAoAQEAAAAB" +
+           "AAAAAQAAAAEB/////wAAAAAEYYIKBAAAAAEABwAAAFJlc3RhcnQBAc4AAC8BAc4AzgAAAAEB/////wIA" +
+           "AAAXYKkKAgAAAAAADgAAAElucHV0QXJndW1lbnRzAQHPAAAuAETPAAAAlgEAAAABACoBARUAAAAGAAAA" +
+           "UmVhc29uAAz/////AAAAAAABACgBAQAAAAEAAAABAAAAAQH/////AAAAABdgqQoCAAAAAAAPAAAAT3V0" +
+           "cHV0QXJndW1lbnRzAQHQAAAuAETQAAAAlgEAAAABACoBAR4AAAANAAAARXN0aW1hdGVkVGltZQEAIgH/" +
+           "////AAAAAAABACgBAQAAAAEAAAABAAAAAQH/////AAAAAA==";
         #endregion
-#endif
+        #endif
         #endregion
 
         #region Public Properties
@@ -2248,7 +2286,7 @@ namespace Quickstarts.Boiler
 
             base.GetChildren(context, children);
         }
-
+            
         /// <remarks />
         protected override BaseInstanceState FindChild(
             ISystemContext context,
@@ -2476,6 +2514,6 @@ namespace Quickstarts.Boiler
         private RestartMethodState m_restartMethod;
         #endregion
     }
-#endif
+    #endif
     #endregion
 }

@@ -42,7 +42,7 @@ try
             "--config",
             "config\\uasubscriber-config.json",
             "--broker",
-            "IopGateway"
+            "HiveMQ"
         };
     }
 

@@ -52,7 +52,7 @@ namespace Quickstarts.Boiler.Server
             // set one namespace for the type model and one names for dynamically created nodes.
             string[] namespaceUrls = new string[2];
             namespaceUrls[0] = Namespaces.Boiler;
-            namespaceUrls[1] = Namespaces.Boiler + "/Instance";
+            namespaceUrls[1] = Namespaces.Boiler + ":instance";
             SetNamespaces(namespaceUrls);
         }
         #endregion
@@ -165,8 +165,8 @@ namespace Quickstarts.Boiler.Server
                     TypeTree = Server.TypeTree
                 };
 
-                SetInitialValues(m_boiler1);
-                SetInitialValues(m_boiler2);
+                UpdateValues(m_boiler1, 100, 0);
+                UpdateValues(m_boiler2, 200, 0);
 
                 m_boiler1.Handle = true;
                 m_boiler2.Handle = true;
@@ -268,31 +268,62 @@ namespace Quickstarts.Boiler.Server
             }
         }
 
-        private void SetInitialValues(BoilerState boiler)
+        private void UpdateValues(BoilerState boiler, double setPoint, double delta)
         {
-            boiler.CustomController.ControlOut.Value = 20;
-            boiler.CustomController.Input1.Value = 30;
-            boiler.CustomController.Input2.Value = 40;
-            boiler.CustomController.Input3.Value = 50;
-            boiler.Drum.LevelIndicator.Output.Value = 10;
-            boiler.Drum.LevelIndicator.Output.EURange.Value = new Opc.Ua.Range() { High = 100, Low = 1 };
-            boiler.FlowController.ControlOut.Value = 60;
-            boiler.FlowController.Measurement.Value = 70;
-            boiler.FlowController.SetPoint.Value = 80;
-            boiler.LevelController.ControlOut.Value = 90;
-            boiler.LevelController.Measurement.Value = 10;
-            boiler.LevelController.SetPoint.Value = 20;
-            boiler.InputPipe.FlowTransmitter1.Output.Value = 30;
-            boiler.InputPipe.FlowTransmitter1.Output.EURange.Value = new Opc.Ua.Range() { High = 100, Low = 1 };
-            boiler.InputPipe.Valve.Input.Value = 40;
-            boiler.InputPipe.Valve.Input.EURange.Value = new Opc.Ua.Range() { High = 100, Low = 1 };
-            boiler.OutputPipe.FlowTransmitter2.Output.Value = 50;
-            boiler.OutputPipe.FlowTransmitter2.Output.EURange.Value = new Opc.Ua.Range() { High = 100, Low = 1 };
+            // set by user (0, 300)
+            boiler.LevelController.SetPoint.Value = setPoint;
+
+            if (boiler.Drum.LevelIndicator.Output.WrappedValue == Variant.Null)
+            {
+                boiler.Drum.LevelIndicator.Output.Value = setPoint;
+            }
+
+            var ratio = (boiler.Drum.LevelIndicator.Output.Value + delta)/300.0;
+
+            // sets CustomController.Input1 (1, 100)
+            boiler.LevelController.ControlOut.Value = NewValue(ratio, 1, 100);
+
+            // set by LevelController.ControlOut (1, 100)
+            boiler.CustomController.Input1.Value = boiler.LevelController.ControlOut.Value;
+
+            // sets FlowController.SetPoint (1, 100)
+            boiler.CustomController.ControlOut.Value = NewValue(ratio, 1, 100);
+
+            // set by CustomController.ControlOut (1, 100)
+            boiler.FlowController.SetPoint.Value = boiler.CustomController.ControlOut.Value;
+
+            // sets InputPipe.Valve.Input (0, 10)
+            boiler.FlowController.ControlOut.Value = NewValue(ratio, 0, 10);
+
+            // set by FlowController.ControlOut (0, 10)
+            boiler.InputPipe.Valve.Input.Value = boiler.FlowController.ControlOut.Value;
+
+            // sets FlowController.Measurement (0, 20)
+            // sets CustomController.Input2 (0, 20)
+            boiler.InputPipe.FlowTransmitter1.Output.Value = NewValue(ratio, 0, 20); 
+
+            // set by InputPipe.FlowTransmitter1.Output (0, 20)
+            boiler.FlowController.Measurement.Value = boiler.InputPipe.FlowTransmitter1.Output.Value;
+
+            // set by InputPipe.FlowTransmitter1.Output (0, 20)
+            boiler.CustomController.Input2.Value = boiler.InputPipe.FlowTransmitter1.Output.Value;
+
+            // sets LevelController.Measurement (0, 300)
+            boiler.Drum.LevelIndicator.Output.Value = NewValue(ratio, 0, 300);
+
+            // set by Drum.LevelIndicator.Output (0, 300)
+            boiler.LevelController.Measurement.Value = boiler.Drum.LevelIndicator.Output.Value;
+
+            // sets CustomController.Input3 (100, 10000)
+            boiler.OutputPipe.FlowTransmitter2.Output.Value =  NewValue(ratio, 100, 10000); 
+
+            // set by OutputPipe.FlowTransmitter2.Output (100, 10000)
+            boiler.CustomController.Input3.Value = boiler.OutputPipe.FlowTransmitter2.Output.Value;
         }
 
-        private double UpdateDouble(double value)
+        private double NewValue(double value, double low, double high)
         {
-            return (value + m_random.NextDouble() * 5) % 100;
+            return Math.Round(((value * (high - low) + low) + ((m_random.NextDouble() - 0.5) * ((high-low) * 0.01))), 2);
         }
 
         private void UpdateValues(BoilerState boiler)
@@ -304,20 +335,8 @@ namespace Quickstarts.Boiler.Server
                 return;
             }
 
-            boiler.CustomController.ControlOut.Value = UpdateDouble(boiler.CustomController.ControlOut.Value);
-            boiler.CustomController.Input1.Value = UpdateDouble(boiler.CustomController.Input1.Value);
-            boiler.CustomController.Input2.Value = UpdateDouble(boiler.CustomController.Input2.Value);
-            boiler.CustomController.Input3.Value = UpdateDouble(boiler.CustomController.Input3.Value);
-            boiler.Drum.LevelIndicator.Output.Value = UpdateDouble(boiler.Drum.LevelIndicator.Output.Value);
-            boiler.FlowController.ControlOut.Value = UpdateDouble(boiler.FlowController.ControlOut.Value);
-            boiler.FlowController.Measurement.Value = UpdateDouble(boiler.FlowController.Measurement.Value);
-            boiler.FlowController.SetPoint.Value = UpdateDouble(boiler.FlowController.SetPoint.Value);
-            boiler.LevelController.ControlOut.Value = UpdateDouble(boiler.LevelController.ControlOut.Value);
-            boiler.LevelController.Measurement.Value = UpdateDouble(boiler.LevelController.Measurement.Value);
-            // boiler.LevelController.SetPoint.Value = UpdateDouble(boiler.LevelController.SetPoint.Value);
-            boiler.InputPipe.FlowTransmitter1.Output.Value = UpdateDouble(boiler.InputPipe.FlowTransmitter1.Output.Value);
-            boiler.InputPipe.Valve.Input.Value = UpdateDouble(boiler.InputPipe.Valve.Input.Value);
-            boiler.OutputPipe.FlowTransmitter2.Output.Value = UpdateDouble(boiler.OutputPipe.FlowTransmitter2.Output.Value);
+            var delta = (boiler.LevelController.SetPoint.Value - boiler.Drum.LevelIndicator.Output.Value) * 0.10;
+            UpdateValues(boiler, boiler.LevelController.SetPoint.Value, delta);
         }
 
         public ServiceResult OnEmergencyShutdown(
@@ -335,7 +354,7 @@ namespace Quickstarts.Boiler.Server
 
             var boiler = (objectId == m_boiler2.NodeId) ? m_boiler2 : m_boiler1;
             boiler.Handle = false;
-            SetInitialValues(boiler);
+            UpdateValues(boiler, 0, 0);
             outputArguments[0] = 1000.0;
 
             return ServiceResult.Good;

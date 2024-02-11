@@ -62,6 +62,7 @@ namespace UaMqttPublisher
         public string Password { get; set; }
         public uint? SessionTimeout { get; set; }
         public List<GroupConfiguration> Groups { get; set; }
+        public List<DataSetConfiguration> DataSets { get; set; }
     }
 
     public static class HeaderProfiles
@@ -73,6 +74,12 @@ namespace UaMqttPublisher
         public const string JsonNetworkMessage = "http://opcfoundation.org/UA/PubSub-Layouts/JSON-NetworkMessage";
     }
 
+    public class DataSetConfiguration
+    {
+        public string Name { get; set; }
+        public List<string> Fields { get; set; }
+    }
+
     public class GroupConfiguration
     {
         public string Name { get; set; }
@@ -80,6 +87,8 @@ namespace UaMqttPublisher
         public string Description { get; set; }
         public List<WriterConfiguration> Writers { get; set; }
         public int? PublishingInterval { get; set; } = 5000;
+        public int? DefaultSamplingInterval { get; set; } = 1000;
+        public int? PropertySamplingInterval { get; set; } = 10000;
         public string DataSetClassId { get; set; }
         public int? MetaDataPublishingCount { get; set; } = 10;
         public uint? KeepAliveCount { get; set; } = 1;
@@ -101,6 +110,7 @@ namespace UaMqttPublisher
         public string Name { get; set; }
         public ushort? WriterId { get; set; }
         public string DataSetName { get; set; }
+        public string InstanceId { get; set; }
         public bool? Enabled { get; set; } = true;
         public string Description { get; set; }
         public List<DataSetField> Fields { get; set; }

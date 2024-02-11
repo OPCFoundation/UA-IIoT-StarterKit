@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2023-11-22T19:43:24.7596601Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2024-02-09T10:42:44.4619821Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
   <NamespaceUris>
     <Uri>tag:opcua.org,2023-11:iot-starterkit:boiler</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri="tag:opcua.org,2023-11:iot-starterkit:boiler" Version="1.0.0" PublicationDate="2023-11-22T19:43:24.7596601Z" ModelVersion="1.0.0">
+    <Model ModelUri="tag:opcua.org,2023-11:iot-starterkit:boiler" Version="1.0.0" PublicationDate="2024-02-09T10:42:44.4619821Z" ModelVersion="1.0.0">
       <RequiredModel ModelUri="http://opcfoundation.org/UA/" XmlSchemaUri="http://opcfoundation.org/UA/2008/02/Types.xsd" />
     </Model>
   </Models>
@@ -129,7 +129,8 @@
     <DisplayName>Output</DisplayName>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=11</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=13</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=7</Reference>
     </References>
@@ -141,6 +142,46 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=8</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>100</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=13" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=8" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=8</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5067859</UnitId>
+            <DisplayName>
+              <Text>m/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>metre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=14" BrowseName="1:GenericActuatorType">
     <DisplayName>GenericActuatorType</DisplayName>
@@ -166,6 +207,19 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=21" BrowseName="1:CustomControllerType">
     <DisplayName>CustomControllerType</DisplayName>
@@ -267,7 +321,8 @@
     <DisplayName>Output</DisplayName>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=78</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=80</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=74</Reference>
     </References>
@@ -279,6 +334,46 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=75</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>20</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=80" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=75" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=75</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4666673</UnitId>
+            <DisplayName>
+              <Text>l/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>litre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=81" BrowseName="1:ValveX001" SymbolicName="Valve" ParentNodeId="ns=1;i=73" EventNotifier="1">
     <DisplayName>ValveX001</DisplayName>
@@ -305,6 +400,19 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=82</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=88" BrowseName="1:BoilerDrumType">
     <DisplayName>BoilerDrumType</DisplayName>
@@ -327,7 +435,8 @@
     <DisplayName>Output</DisplayName>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=93</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=95</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=89</Reference>
     </References>
@@ -339,6 +448,46 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=90</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>300</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=95" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=90" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=90</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4410708</UnitId>
+            <DisplayName>
+              <Text>cm</Text>
+            </DisplayName>
+            <Description>
+              <Text>centimetre</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=96" BrowseName="1:BoilerOutputPipeType">
     <DisplayName>BoilerOutputPipeType</DisplayName>
@@ -361,7 +510,8 @@
     <DisplayName>Output</DisplayName>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=101</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=103</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=97</Reference>
     </References>
@@ -373,6 +523,46 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=98</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>100</Low>
+            <High>10000</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=103" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=98" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=98</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Text>pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UADataType NodeId="ns=1;i=218" BrowseName="1:SetPointMask">
     <DisplayName>SetPointMask</DisplayName>
@@ -468,11 +658,13 @@
   </UAObject>
   <UAVariable NodeId="ns=1;i=105" BrowseName="1:Output" ParentNodeId="ns=1;i=104" DataType="Double">
     <DisplayName>Output</DisplayName>
+    <Description>The flow of water through the input pipe.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=108</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=110</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=126</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=135</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=104</Reference>
     </References>
@@ -484,6 +676,46 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=105</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>20</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=110" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=105" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=105</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4666673</UnitId>
+            <DisplayName>
+              <Text>l/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>litre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=111" BrowseName="1:ValveX001" SymbolicName="Valve" ParentNodeId="ns=1;i=56" EventNotifier="1">
     <DisplayName>ValveX001</DisplayName>
@@ -511,6 +743,19 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=112</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=57" BrowseName="1:DrumX001" SymbolicName="Drum" ParentNodeId="ns=1;i=55" EventNotifier="1">
     <DisplayName>DrumX001</DisplayName>
@@ -536,10 +781,12 @@
   </UAObject>
   <UAVariable NodeId="ns=1;i=59" BrowseName="1:Output" ParentNodeId="ns=1;i=58" DataType="Double">
     <DisplayName>Output</DisplayName>
+    <Description>The level of water of in the drum.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=62</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=64</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=130</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=58</Reference>
     </References>
@@ -551,6 +798,46 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=59</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>300</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=64" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=59" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=59</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4410708</UnitId>
+            <DisplayName>
+              <Text>cm</Text>
+            </DisplayName>
+            <Description>
+              <Text>centimetre</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=65" BrowseName="1:PipeX002" SymbolicName="OutputPipe" ParentNodeId="ns=1;i=55" EventNotifier="1">
     <DisplayName>PipeX002</DisplayName>
@@ -575,10 +862,12 @@
   </UAObject>
   <UAVariable NodeId="ns=1;i=119" BrowseName="1:Output" ParentNodeId="ns=1;i=118" DataType="Double">
     <DisplayName>Output</DisplayName>
+    <Description>The flow of steam through the output pipe.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=122</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=124</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=136</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=118</Reference>
     </References>
@@ -590,6 +879,46 @@
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=119</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>100</Low>
+            <High>10000</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=124" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=119" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=119</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Text>pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=125" BrowseName="1:FCX001" SymbolicName="FlowController" ParentNodeId="ns=1;i=55">
     <DisplayName>FCX001</DisplayName>
@@ -622,6 +951,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=128" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=125" DataType="Double">
     <DisplayName>ControlOut</DisplayName>
+    <Description>The control signal used to adjuct the valve on the input pipe.</Description>
     <References>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=112</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -651,6 +981,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=131" BrowseName="1:SetPoint" ParentNodeId="ns=1;i=129" DataType="Double" AccessLevel="3">
     <DisplayName>SetPoint</DisplayName>
+    <Description>The set point for the level of the water in the drum.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -960,11 +1291,13 @@
   </UAObject>
   <UAVariable NodeId="ns=1;i=141" BrowseName="1:Output" ParentNodeId="ns=1;i=140" DataType="Double">
     <DisplayName>Output</DisplayName>
+    <Description>The flow of water through the input pipe.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=144</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=146</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=171</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=180</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=140</Reference>
     </References>
   </UAVariable>
@@ -974,6 +1307,45 @@
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=141</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>20</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=146" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=141" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=141</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4666673</UnitId>
+            <DisplayName>
+              <Text>l/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>litre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=147" BrowseName="1:ValveX001" SymbolicName="Valve" ParentNodeId="ns=1;i=139" EventNotifier="1">
     <DisplayName>ValveX001</DisplayName>
@@ -998,6 +1370,19 @@
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=148</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=154" BrowseName="1:DrumX001" SymbolicName="Drum" ParentNodeId="ns=1;i=138" EventNotifier="1">
     <DisplayName>Drum1001</DisplayName>
@@ -1022,10 +1407,12 @@
   </UAObject>
   <UAVariable NodeId="ns=1;i=156" BrowseName="1:Output" ParentNodeId="ns=1;i=155" DataType="Double">
     <DisplayName>Output</DisplayName>
+    <Description>The level of water of in the drum.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=159</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=161</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=175</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=155</Reference>
     </References>
   </UAVariable>
@@ -1035,6 +1422,45 @@
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=156</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>300</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=161" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=156" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=156</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4410708</UnitId>
+            <DisplayName>
+              <Text>cm</Text>
+            </DisplayName>
+            <Description>
+              <Text>centimetre</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=162" BrowseName="1:PipeX002" SymbolicName="OutputPipe" ParentNodeId="ns=1;i=138" EventNotifier="1">
     <DisplayName>Pipe1002</DisplayName>
@@ -1058,10 +1484,12 @@
   </UAObject>
   <UAVariable NodeId="ns=1;i=164" BrowseName="1:Output" ParentNodeId="ns=1;i=163" DataType="Double">
     <DisplayName>Output</DisplayName>
+    <Description>The flow of steam through the output pipe.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=167</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=169</Reference>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=181</Reference>
-      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=163</Reference>
     </References>
   </UAVariable>
@@ -1071,6 +1499,45 @@
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=164</Reference>
     </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>100</Low>
+            <High>10000</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=169" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=164" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=164</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Text>pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
   </UAVariable>
   <UAObject NodeId="ns=1;i=170" BrowseName="1:FCX001" SymbolicName="FlowController" ParentNodeId="ns=1;i=138">
     <DisplayName>FC1001</DisplayName>
@@ -1100,6 +1567,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=173" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=170" DataType="Double">
     <DisplayName>ControlOut</DisplayName>
+    <Description>The control signal used to adjuct the valve on the input pipe.</Description>
     <References>
       <Reference ReferenceType="ns=1;i=2">ns=1;i=148</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1126,6 +1594,7 @@
   </UAVariable>
   <UAVariable NodeId="ns=1;i=176" BrowseName="1:SetPoint" ParentNodeId="ns=1;i=174" DataType="Double" AccessLevel="3">
     <DisplayName>SetPoint</DisplayName>
+    <Description>The set point for the level of the water in the drum.</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=174</Reference>
@@ -1538,7 +2007,7 @@ aWxlciINCiAgdGFyZ2V0TmFtZXNwYWNlPSJ0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0
 ZXJraXQ6Ym9pbGVyIg0KICBlbGVtZW50Rm9ybURlZmF1bHQ9InF1YWxpZmllZCINCj4NCiAgPHhz
 OmFubm90YXRpb24+DQogICAgPHhzOmFwcGluZm8+DQogICAgICA8dWE6TW9kZWwgTW9kZWxVcmk9
 InRhZzpvcGN1YS5vcmcsMjAyMy0xMTppb3Qtc3RhcnRlcmtpdDpib2lsZXIiIFZlcnNpb249IjEu
-MC4wIiBQdWJsaWNhdGlvbkRhdGU9IjIwMjMtMTEtMjJUMTk6NDM6MjQuNzU5NjYwMVoiIC8+DQog
+MC4wIiBQdWJsaWNhdGlvbkRhdGU9IjIwMjQtMDItMDlUMTA6NDI6NDQuNDYxOTgyMVoiIC8+DQog
 ICAgPC94czphcHBpbmZvPg0KICA8L3hzOmFubm90YXRpb24+DQogIA0KICA8eHM6aW1wb3J0IG5h
 bWVzcGFjZT0iaHR0cDovL29wY2ZvdW5kYXRpb24ub3JnL1VBLzIwMDgvMDIvVHlwZXMueHNkIiAv
 Pg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJDb250cm9sbGVyRGF0YVR5cGUiPg0KICAgIDx4

@@ -7,7 +7,7 @@
 >
   <xs:annotation>
     <xs:appinfo>
-      <ua:Model ModelUri="tag:opcua.org,2023-11:iot-starterkit:boiler" Version="1.0.0" PublicationDate="2023-11-22T19:43:24.7596601Z" />
+      <ua:Model ModelUri="tag:opcua.org,2023-11:iot-starterkit:boiler" Version="1.0.0" PublicationDate="2024-02-09T10:42:44.4619821Z" />
     </xs:appinfo>
   </xs:annotation>
   

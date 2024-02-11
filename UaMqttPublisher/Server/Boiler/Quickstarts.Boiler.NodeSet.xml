@@ -455,7 +455,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -474,6 +474,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=11</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=13</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -543,7 +552,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>100</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -553,6 +572,86 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=13</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=8</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=37</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>5067859</UnitId>
+                <DisplayName>
+                  <Text>m/s</Text>
+                </DisplayName>
+                <Description>
+                  <Text>metre per second</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -733,7 +832,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>10</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -1645,7 +1754,10 @@
         <Locale></Locale>
         <Text>Output</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The level of water of in the drum.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -1667,7 +1779,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -1695,6 +1807,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=62</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=64</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -1764,7 +1885,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>300</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -1774,6 +1905,86 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=64</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=59</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=37</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>4410708</UnitId>
+                <DisplayName>
+                  <Text>cm</Text>
+                </DisplayName>
+                <Description>
+                  <Text>centimetre</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -2008,7 +2219,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -2027,6 +2238,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=80</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -2096,7 +2316,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>20</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -2106,6 +2336,86 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=80</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=75</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=37</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>4666673</UnitId>
+                <DisplayName>
+                  <Text>l/s</Text>
+                </DisplayName>
+                <Description>
+                  <Text>litre per second</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -2292,7 +2602,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>10</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -2450,7 +2770,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -2469,6 +2789,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=93</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=95</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -2538,7 +2867,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>300</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -2548,6 +2887,86 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=95</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=90</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=37</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>4410708</UnitId>
+                <DisplayName>
+                  <Text>cm</Text>
+                </DisplayName>
+                <Description>
+                  <Text>centimetre</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -2696,7 +3115,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -2715,6 +3134,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=101</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=103</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -2784,7 +3212,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>100</Low>
+                <High>10000</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -2794,6 +3232,86 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=103</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=98</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=37</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>5259596</UnitId>
+                <DisplayName>
+                  <Text>Pa</Text>
+                </DisplayName>
+                <Description>
+                  <Text>pascal</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -2879,7 +3397,10 @@
         <Locale></Locale>
         <Text>Output</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The flow of water through the input pipe.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -2901,7 +3422,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -2938,6 +3459,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=108</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=110</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -3007,7 +3537,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>20</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -3017,6 +3557,86 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=110</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=105</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=37</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>4666673</UnitId>
+                <DisplayName>
+                  <Text>l/s</Text>
+                </DisplayName>
+                <Description>
+                  <Text>litre per second</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -3212,7 +3832,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>10</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -3307,7 +3937,10 @@
         <Locale></Locale>
         <Text>Output</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The flow of steam through the output pipe.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -3329,7 +3962,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -3357,6 +3990,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=122</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=124</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -3426,7 +4068,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>100</Low>
+                <High>10000</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -3436,6 +4088,86 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=124</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=119</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=37</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=78</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>5259596</UnitId>
+                <DisplayName>
+                  <Text>Pa</Text>
+                </DisplayName>
+                <Description>
+                  <Text>pascal</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -3676,7 +4408,10 @@
         <Locale></Locale>
         <Text>ControlOut</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The control signal used to adjuct the valve on the input pipe.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -3899,7 +4634,10 @@
         <Locale></Locale>
         <Text>SetPoint</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The set point for the level of the water in the drum.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -4708,7 +5446,10 @@
         <Locale></Locale>
         <Text>Output</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The flow of water through the input pipe.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -4730,7 +5471,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -4758,6 +5499,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=144</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=146</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -4818,7 +5568,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>20</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -4828,6 +5588,77 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=146</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=141</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>4666673</UnitId>
+                <DisplayName>
+                  <Text>l/s</Text>
+                </DisplayName>
+                <Description>
+                  <Text>litre per second</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -4996,7 +5827,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>10</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -5168,7 +6009,10 @@
         <Locale></Locale>
         <Text>Output</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The level of water of in the drum.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -5190,7 +6034,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -5209,6 +6053,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=159</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=161</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -5269,7 +6122,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>0</Low>
+                <High>300</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -5279,6 +6142,77 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=161</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=156</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>4410708</UnitId>
+                <DisplayName>
+                  <Text>cm</Text>
+                </DisplayName>
+                <Description>
+                  <Text>centimetre</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -5432,7 +6366,10 @@
         <Locale></Locale>
         <Text>Output</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The flow of steam through the output pipe.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -5454,7 +6391,7 @@
           </ReferenceTypeId>
           <IsInverse>false</IsInverse>
           <TargetId>
-            <Identifier>i=2368</Identifier>
+            <Identifier>i=17570</Identifier>
           </TargetId>
         </ReferenceNode>
         <ReferenceNode>
@@ -5473,6 +6410,15 @@
           <IsInverse>false</IsInverse>
           <TargetId>
             <Identifier>ns=1;i=167</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=169</Identifier>
           </TargetId>
         </ReferenceNode>
       </References>
@@ -5533,7 +6479,17 @@
       </References>
       <Value>
         <Value>
-          <Null xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=885</Identifier>
+            </TypeId>
+            <Body>
+              <Range>
+                <Low>100</Low>
+                <High>10000</High>
+              </Range>
+            </Body>
+          </ExtensionObject>
         </Value>
       </Value>
       <DataType>
@@ -5543,6 +6499,77 @@
       <ArrayDimensions />
       <AccessLevel>1</AccessLevel>
       <UserAccessLevel>1</UserAccessLevel>
+      <MinimumSamplingInterval>0</MinimumSamplingInterval>
+      <Historizing>false</Historizing>
+      <AccessLevelEx>0</AccessLevelEx>
+    </Node>
+    <Node i:type="VariableNode">
+      <NodeId>
+        <Identifier>ns=1;i=169</Identifier>
+      </NodeId>
+      <NodeClass>Variable_2</NodeClass>
+      <BrowseName>
+        <NamespaceIndex>0</NamespaceIndex>
+        <Name>EngineeringUnits</Name>
+      </BrowseName>
+      <DisplayName>
+        <Locale></Locale>
+        <Text>EngineeringUnits</Text>
+      </DisplayName>
+      <Description i:nil="true" />
+      <WriteMask>0</WriteMask>
+      <UserWriteMask>0</UserWriteMask>
+      <RolePermissions />
+      <UserRolePermissions />
+      <AccessRestrictions>0</AccessRestrictions>
+      <References>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=46</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>true</IsInverse>
+          <TargetId>
+            <Identifier>ns=1;i=164</Identifier>
+          </TargetId>
+        </ReferenceNode>
+        <ReferenceNode>
+          <ReferenceTypeId>
+            <Identifier>i=40</Identifier>
+          </ReferenceTypeId>
+          <IsInverse>false</IsInverse>
+          <TargetId>
+            <Identifier>i=68</Identifier>
+          </TargetId>
+        </ReferenceNode>
+      </References>
+      <Value>
+        <Value>
+          <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+            <TypeId>
+              <Identifier>i=888</Identifier>
+            </TypeId>
+            <Body>
+              <EUInformation>
+                <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+                <UnitId>5259596</UnitId>
+                <DisplayName>
+                  <Text>Pa</Text>
+                </DisplayName>
+                <Description>
+                  <Text>pascal</Text>
+                </Description>
+              </EUInformation>
+            </Body>
+          </ExtensionObject>
+        </Value>
+      </Value>
+      <DataType>
+        <Identifier>i=887</Identifier>
+      </DataType>
+      <ValueRank>-1</ValueRank>
+      <ArrayDimensions />
+      <AccessLevel>3</AccessLevel>
+      <UserAccessLevel>3</UserAccessLevel>
       <MinimumSamplingInterval>0</MinimumSamplingInterval>
       <Historizing>false</Historizing>
       <AccessLevelEx>0</AccessLevelEx>
@@ -5756,7 +6783,10 @@
         <Locale></Locale>
         <Text>ControlOut</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The control signal used to adjuct the valve on the input pipe.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -5952,7 +6982,10 @@
         <Locale></Locale>
         <Text>SetPoint</Text>
       </DisplayName>
-      <Description i:nil="true" />
+      <Description>
+        <Locale></Locale>
+        <Text>The set point for the level of the water in the drum.</Text>
+      </Description>
       <WriteMask>0</WriteMask>
       <UserWriteMask>0</UserWriteMask>
       <RolePermissions />
@@ -6594,7 +7627,7 @@ aWxlciINCiAgdGFyZ2V0TmFtZXNwYWNlPSJ0YWc6b3BjdWEub3JnLDIwMjMtMTE6aW90LXN0YXJ0
 ZXJraXQ6Ym9pbGVyIg0KICBlbGVtZW50Rm9ybURlZmF1bHQ9InF1YWxpZmllZCINCj4NCiAgPHhz
 OmFubm90YXRpb24+DQogICAgPHhzOmFwcGluZm8+DQogICAgICA8dWE6TW9kZWwgTW9kZWxVcmk9
 InRhZzpvcGN1YS5vcmcsMjAyMy0xMTppb3Qtc3RhcnRlcmtpdDpib2lsZXIiIFZlcnNpb249IjEu
-MC4wIiBQdWJsaWNhdGlvbkRhdGU9IjIwMjMtMTEtMjJUMTk6NDM6MjQuNzU5NjYwMVoiIC8+DQog
+MC4wIiBQdWJsaWNhdGlvbkRhdGU9IjIwMjQtMDItMDlUMTA6NDI6NDQuNDYxOTgyMVoiIC8+DQog
 ICAgPC94czphcHBpbmZvPg0KICA8L3hzOmFubm90YXRpb24+DQogIA0KICA8eHM6aW1wb3J0IG5h
 bWVzcGFjZT0iaHR0cDovL29wY2ZvdW5kYXRpb24ub3JnL1VBLzIwMDgvMDIvVHlwZXMueHNkIiAv
 Pg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJDb250cm9sbGVyRGF0YVR5cGUiPg0KICAgIDx4

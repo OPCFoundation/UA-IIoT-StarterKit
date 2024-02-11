@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2024 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -27,13 +27,17 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml;
 using System.Runtime.Serialization;
 using Opc.Ua;
 
 namespace Quickstarts.Boiler
 {
     #region ControllerDataType Class
-#if (!OPCUA_EXCLUDE_ControllerDataType)
+    #if (!OPCUA_EXCLUDE_ControllerDataType)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -46,13 +50,13 @@ namespace Quickstarts.Boiler
         {
             Initialize();
         }
-
+            
         [OnDeserializing]
         private void Initialize(StreamingContext context)
         {
             Initialize();
         }
-
+            
         private void Initialize()
         {
             m_setpoint = (double)0;
@@ -66,7 +70,7 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "Setpoint", IsRequired = false, Order = 1)]
         public double Setpoint
         {
-            get { return m_setpoint; }
+            get { return m_setpoint;  }
             set { m_setpoint = value; }
         }
 
@@ -74,7 +78,7 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "ControllerOut", IsRequired = false, Order = 2)]
         public double ControllerOut
         {
-            get { return m_controllerOut; }
+            get { return m_controllerOut;  }
             set { m_controllerOut = value; }
         }
 
@@ -82,23 +86,23 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "ProcessVariable", IsRequired = false, Order = 3)]
         public double ProcessVariable
         {
-            get { return m_processVariable; }
+            get { return m_processVariable;  }
             set { m_processVariable = value; }
         }
         #endregion
 
         #region IEncodeable Members
         /// <summary cref="IEncodeable.TypeId" />
-        public virtual ExpandedNodeId TypeId => DataTypeIds.ControllerDataType;
+        public virtual ExpandedNodeId TypeId => DataTypeIds.ControllerDataType; 
 
         /// <summary cref="IEncodeable.BinaryEncodingId" />
         public virtual ExpandedNodeId BinaryEncodingId => ObjectIds.ControllerDataType_Encoding_DefaultBinary;
 
         /// <summary cref="IEncodeable.XmlEncodingId" />
         public virtual ExpandedNodeId XmlEncodingId => ObjectIds.ControllerDataType_Encoding_DefaultXml;
-
+                    
         /// <summary cref="IJsonEncodeable.JsonEncodingId" />
-        public virtual ExpandedNodeId JsonEncodingId => ObjectIds.ControllerDataType_Encoding_DefaultJson;
+        public virtual ExpandedNodeId JsonEncodingId => ObjectIds.ControllerDataType_Encoding_DefaultJson; 
 
         /// <summary cref="IEncodeable.Encode(IEncoder)" />
         public virtual void Encode(IEncoder encoder)
@@ -181,13 +185,13 @@ namespace Quickstarts.Boiler
     {
         #region Constructors
         /// <remarks />
-        public ControllerDataTypeCollection() { }
+        public ControllerDataTypeCollection() {}
 
         /// <remarks />
-        public ControllerDataTypeCollection(int capacity) : base(capacity) { }
+        public ControllerDataTypeCollection(int capacity) : base(capacity) {}
 
         /// <remarks />
-        public ControllerDataTypeCollection(IEnumerable<ControllerDataType> collection) : base(collection) { }
+        public ControllerDataTypeCollection(IEnumerable<ControllerDataType> collection) : base(collection) {}
         #endregion
 
         #region Static Operators
@@ -236,16 +240,15 @@ namespace Quickstarts.Boiler
         }
     }
     #endregion
-#endif
+    #endif
     #endregion
 
     #region SetPointMask Enumeration
-#if (!OPCUA_EXCLUDE_SetPointMask)
+    #if (!OPCUA_EXCLUDE_SetPointMask)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
-    [DataContract(Namespace = Quickstarts.Boiler.Namespaces.Boiler)]
-    [Flags]
+    [DataContract(Namespace = Quickstarts.Boiler.Namespaces.Boiler)][Flags]
     public enum SetPointMask : Byte
     {
         /// <remarks />
@@ -270,13 +273,13 @@ namespace Quickstarts.Boiler
     {
         #region Constructors
         /// <remarks />
-        public SetPointMaskCollection() { }
+        public SetPointMaskCollection() {}
 
         /// <remarks />
-        public SetPointMaskCollection(int capacity) : base(capacity) { }
+        public SetPointMaskCollection(int capacity) : base(capacity) {}
 
         /// <remarks />
-        public SetPointMaskCollection(IEnumerable<SetPointMask> collection) : base(collection) { }
+        public SetPointMaskCollection(IEnumerable<SetPointMask> collection) : base(collection) {}
         #endregion
 
         #region Static Operators
@@ -325,11 +328,11 @@ namespace Quickstarts.Boiler
         }
     }
     #endregion
-#endif
+    #endif
     #endregion
 
     #region ChangeSetPointsRequest Class
-#if (!OPCUA_EXCLUDE_ChangeSetPointsRequest)
+    #if (!OPCUA_EXCLUDE_ChangeSetPointsRequest)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -342,13 +345,13 @@ namespace Quickstarts.Boiler
         {
             Initialize();
         }
-
+            
         [OnDeserializing]
         private void Initialize(StreamingContext context)
         {
             Initialize();
         }
-
+            
         private void Initialize()
         {
             m_selectedValues = 0;
@@ -362,7 +365,7 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "SelectedValues", IsRequired = false, Order = 1)]
         public byte SelectedValues
         {
-            get { return m_selectedValues; }
+            get { return m_selectedValues;  }
             set { m_selectedValues = value; }
         }
 
@@ -370,7 +373,7 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "LevelSetPoint", IsRequired = false, Order = 2)]
         public double LevelSetPoint
         {
-            get { return m_levelSetPoint; }
+            get { return m_levelSetPoint;  }
             set { m_levelSetPoint = value; }
         }
 
@@ -378,23 +381,23 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "FlowSetPoint", IsRequired = false, Order = 3)]
         public double FlowSetPoint
         {
-            get { return m_flowSetPoint; }
+            get { return m_flowSetPoint;  }
             set { m_flowSetPoint = value; }
         }
         #endregion
 
         #region IEncodeable Members
         /// <summary cref="IEncodeable.TypeId" />
-        public virtual ExpandedNodeId TypeId => DataTypeIds.ChangeSetPointsRequest;
+        public virtual ExpandedNodeId TypeId => DataTypeIds.ChangeSetPointsRequest; 
 
         /// <summary cref="IEncodeable.BinaryEncodingId" />
         public virtual ExpandedNodeId BinaryEncodingId => ObjectIds.ChangeSetPointsRequest_Encoding_DefaultBinary;
 
         /// <summary cref="IEncodeable.XmlEncodingId" />
         public virtual ExpandedNodeId XmlEncodingId => ObjectIds.ChangeSetPointsRequest_Encoding_DefaultXml;
-
+                    
         /// <summary cref="IJsonEncodeable.JsonEncodingId" />
-        public virtual ExpandedNodeId JsonEncodingId => ObjectIds.ChangeSetPointsRequest_Encoding_DefaultJson;
+        public virtual ExpandedNodeId JsonEncodingId => ObjectIds.ChangeSetPointsRequest_Encoding_DefaultJson; 
 
         /// <summary cref="IEncodeable.Encode(IEncoder)" />
         public virtual void Encode(IEncoder encoder)
@@ -477,13 +480,13 @@ namespace Quickstarts.Boiler
     {
         #region Constructors
         /// <remarks />
-        public ChangeSetPointsRequestCollection() { }
+        public ChangeSetPointsRequestCollection() {}
 
         /// <remarks />
-        public ChangeSetPointsRequestCollection(int capacity) : base(capacity) { }
+        public ChangeSetPointsRequestCollection(int capacity) : base(capacity) {}
 
         /// <remarks />
-        public ChangeSetPointsRequestCollection(IEnumerable<ChangeSetPointsRequest> collection) : base(collection) { }
+        public ChangeSetPointsRequestCollection(IEnumerable<ChangeSetPointsRequest> collection) : base(collection) {}
         #endregion
 
         #region Static Operators
@@ -532,11 +535,11 @@ namespace Quickstarts.Boiler
         }
     }
     #endregion
-#endif
+    #endif
     #endregion
 
     #region ChangeSetPointsResponse Class
-#if (!OPCUA_EXCLUDE_ChangeSetPointsResponse)
+    #if (!OPCUA_EXCLUDE_ChangeSetPointsResponse)
     /// <remarks />
     /// <exclude />
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Opc.Ua.ModelCompiler", "1.0.0.0")]
@@ -549,13 +552,13 @@ namespace Quickstarts.Boiler
         {
             Initialize();
         }
-
+            
         [OnDeserializing]
         private void Initialize(StreamingContext context)
         {
             Initialize();
         }
-
+            
         private void Initialize()
         {
             m_levelSetPoint = (double)0;
@@ -570,7 +573,7 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "LevelSetPoint", IsRequired = false, Order = 1)]
         public double LevelSetPoint
         {
-            get { return m_levelSetPoint; }
+            get { return m_levelSetPoint;  }
             set { m_levelSetPoint = value; }
         }
 
@@ -578,7 +581,7 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "LevelMeasurement", IsRequired = false, Order = 2)]
         public double LevelMeasurement
         {
-            get { return m_levelMeasurement; }
+            get { return m_levelMeasurement;  }
             set { m_levelMeasurement = value; }
         }
 
@@ -586,7 +589,7 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "FlowSetPoint", IsRequired = false, Order = 3)]
         public double FlowSetPoint
         {
-            get { return m_flowSetPoint; }
+            get { return m_flowSetPoint;  }
             set { m_flowSetPoint = value; }
         }
 
@@ -594,23 +597,23 @@ namespace Quickstarts.Boiler
         [DataMember(Name = "FlowMeasurement", IsRequired = false, Order = 4)]
         public double FlowMeasurement
         {
-            get { return m_flowMeasurement; }
+            get { return m_flowMeasurement;  }
             set { m_flowMeasurement = value; }
         }
         #endregion
 
         #region IEncodeable Members
         /// <summary cref="IEncodeable.TypeId" />
-        public virtual ExpandedNodeId TypeId => DataTypeIds.ChangeSetPointsResponse;
+        public virtual ExpandedNodeId TypeId => DataTypeIds.ChangeSetPointsResponse; 
 
         /// <summary cref="IEncodeable.BinaryEncodingId" />
         public virtual ExpandedNodeId BinaryEncodingId => ObjectIds.ChangeSetPointsResponse_Encoding_DefaultBinary;
 
         /// <summary cref="IEncodeable.XmlEncodingId" />
         public virtual ExpandedNodeId XmlEncodingId => ObjectIds.ChangeSetPointsResponse_Encoding_DefaultXml;
-
+                    
         /// <summary cref="IJsonEncodeable.JsonEncodingId" />
-        public virtual ExpandedNodeId JsonEncodingId => ObjectIds.ChangeSetPointsResponse_Encoding_DefaultJson;
+        public virtual ExpandedNodeId JsonEncodingId => ObjectIds.ChangeSetPointsResponse_Encoding_DefaultJson; 
 
         /// <summary cref="IEncodeable.Encode(IEncoder)" />
         public virtual void Encode(IEncoder encoder)
@@ -698,13 +701,13 @@ namespace Quickstarts.Boiler
     {
         #region Constructors
         /// <remarks />
-        public ChangeSetPointsResponseCollection() { }
+        public ChangeSetPointsResponseCollection() {}
 
         /// <remarks />
-        public ChangeSetPointsResponseCollection(int capacity) : base(capacity) { }
+        public ChangeSetPointsResponseCollection(int capacity) : base(capacity) {}
 
         /// <remarks />
-        public ChangeSetPointsResponseCollection(IEnumerable<ChangeSetPointsResponse> collection) : base(collection) { }
+        public ChangeSetPointsResponseCollection(IEnumerable<ChangeSetPointsResponse> collection) : base(collection) {}
         #endregion
 
         #region Static Operators
@@ -753,6 +756,6 @@ namespace Quickstarts.Boiler
         }
     }
     #endregion
-#endif
+    #endif
     #endregion
 }

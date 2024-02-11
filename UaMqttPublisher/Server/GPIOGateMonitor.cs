@@ -106,7 +106,7 @@ namespace UaMqttPublisher.Server
                     "CycleTime",
                     DataTypeIds.UInt32,
                     ValueRanks.Scalar,
-                    (uint)10,
+                    (uint)3,
                     new Range() { High = 120, Low = 1 },
                     new EUInformation()
                     {

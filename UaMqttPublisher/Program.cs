@@ -44,7 +44,7 @@ try
             "--broker",
             "HiveMQ",
             "--connection",
-            "BoilerServer1",
+            "BoilerServer0",
             "--port",
             "11111"
         };
