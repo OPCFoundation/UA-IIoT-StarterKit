@@ -914,7 +914,7 @@ namespace UaMqttPublisher
             }
             else if (writer.FieldMasks == FieldMasks.Value)
             {
-                using (var encoder = new JsonEncoder(MessageContext, true))
+                using (var encoder = new JsonEncoder(MessageContext, false))
                 {
                     if (StatusCode.IsBad(dv.StatusCode))
                     {
@@ -930,7 +930,7 @@ namespace UaMqttPublisher
             }
             else
             {
-                using (var encoder = new JsonEncoder(MessageContext, true))
+                using (var encoder = new JsonEncoder(MessageContext, false))
                 {
                     if (writer.FieldMasks == FieldMasks.ValueStatusTimestamp)
                     {

@@ -136,7 +136,6 @@ internal class Publisher
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
             .WithPayload(json)
-            .WithMessageExpiryInterval(7200)
             .WithRetainFlag(true)
             .Build();
 

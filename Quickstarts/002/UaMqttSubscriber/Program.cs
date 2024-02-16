@@ -249,6 +249,11 @@ internal class Subscriber
                             m_writers[writerId] = writer;
                         }
 
+                        if (metadata?.MetaData != null)
+                        {
+                            writer.DataSetMetaData = metadata?.MetaData;
+                        }
+
                         Dictionary<string, string> fields = writer.EngineeringUnits;
 
                         foreach (var field in source)

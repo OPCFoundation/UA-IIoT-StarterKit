@@ -516,7 +516,7 @@ internal class Publisher
                     {
                         if (count % KeyFrameCount == 0 || value.IsDirty)
                         {
-                            using (var encoder = new JsonEncoder(MessageContext, true))
+                            using (var encoder = new JsonEncoder(MessageContext, false))
                             {
                                 encoder.WriteDataValue(null, new DataValue()
                                 {

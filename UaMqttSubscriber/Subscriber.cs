@@ -411,6 +411,13 @@ namespace UaMqttSubscriber
             JsonNode value = null;
             BuiltInType builtInType = BuiltInType.Null;
 
+            var fieldMetadata = writer.DataSetMetaData?.Fields?.Where(x => x.Name == name).FirstOrDefault();    
+ 
+            if (fieldMetadata != null)
+            {
+                builtInType = (BuiltInType)fieldMetadata.BuiltInType;
+            }
+
             if (field?.Value is JsonObject @object)
             {
                 if (@object.TryGetPropertyValue("Body", out var body))
@@ -496,12 +503,14 @@ namespace UaMqttSubscriber
                 }
                 else
                 {
-                    sb.Append($"[{builtInType}] {value}");
+                    var bit = (builtInType != BuiltInType.Null) ? $"[{builtInType}] " : " ";
+                    sb.Append($"{bit}{value}");
                 }
             }
             else
             {
-                sb.Append($"[{builtInType}] {value}");
+                var bit = (builtInType != BuiltInType.Null) ? $"[{builtInType}] " : " ";
+                sb.Append($"{bit}{value}");
             }
 
             Log.Info(sb.ToString());
@@ -706,6 +715,11 @@ namespace UaMqttSubscriber
                                 };
 
                                 m_writers[writerId] = writer;
+                            }
+
+                            if (metadata?.MetaData != null)
+                            {
+                                writer.DataSetMetaData = metadata?.MetaData;
                             }
 
                             foreach (var field in source)
