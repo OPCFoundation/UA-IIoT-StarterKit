@@ -43,7 +43,7 @@ The layout of the messages published is set by the HeaderProfile field of the Gr
 |http://opcfoundation.org/UA/PubSub-Layouts/JSON-DataSetMessage|Publishes a message containing a single [DataSetMessage](https://reference.opcfoundation.org/Core/Part14/v105/docs/7.2.5.4).|
 |http://opcfoundation.org/UA/PubSub-Layouts/JSON-NetworkMessage|Publishes a [NetworkMessage](https://reference.opcfoundation.org/Core/Part14/v105/docs/7.2.5.3) containing a multiple [DataSetMessage](https://reference.opcfoundation.org/Core/Part14/v105/docs/7.2.5.4).|
 
-UA PubSub allows Publshers to send messages that only have changes since the last message. These messages are called 'ua-deltaframe' messages. However, Subscribers can come an go at any time so they need a complete set of fields. 'ua-keyframe' messages with all fields are sent periodically for this reason. The KeyFrameCount field specifies the interval between ua-keyframe messages.
+UA PubSub allows Publishers to send messages that only have changes since the last message. These messages are called 'ua-deltaframe' messages. However, Subscribers can come an go at any time so they need a complete set of fields. 'ua-keyframe' messages with all fields are sent periodically for this reason. The KeyFrameCount field specifies the interval between ua-keyframe messages.
 
 The FieldMasks is the numeric value for the [DataSetFieldContentMask](https://reference.opcfoundation.org/Core/Part14/v105/docs/6.2.4.2). This controls how the value of each field is represented. The following are useful values:
 
