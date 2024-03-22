@@ -40,7 +40,7 @@ try
         {
             "publish",
             "--config",
-            "config\\uapublisher-config.json",
+            Path.Combine(new string[] {"config", "uapublisher-config.json"}),
             "--broker",
             "HiveMQ",
             "--connection",
