@@ -72,30 +72,30 @@ git clone --recursive https://github.com/OPCFoundation/UA-IIoT-StarterKit.git
 
 Build code:
 ```
-cd ~/UA-IIoT-StarterKit
-dotnet build UaMqttConsole/UaMqttConsole.csproj 
+dotnet build .\UA-IIoT-StarterKit.sln
 ```
 
 Run code
 ```
-cd ~/UA-IIoT-StarterKit/build/bin/Debug/net6.0/
-dotnet UaMqttConsole.dll --help
+cd ~/UA-IIoT-StarterKit/build/bin/Debug/UaMqttPublisher/net6.0
+dotnet UaMqttPublisher.dll --help
 ```
 
 The following output should be produced:
 ```
-Usage: UaMqttConsole [options] [command]
+An application that produces OPC UA PubSub messages sends them to an MQTT broker.
+
+Usage: UaMqttPublisher [command] [options]
 
 Options:
-  -?|-h|--help  Show help information
+  -?|-h|--help  Show help information.
 
 Commands:
-  discover   Discovers OPC UA publishers.
-  publish    Publishes I/O data to an MQTT broker.
-  subscribe  Subscribes for data from OPC UA publishers.
+  publish       Produces OPC UA PubSub messages sends them to an MQTT broker.
 
-Use "UaMqttConsole [command] --help" for more information about a command.
+Run 'UaMqttPublisher [command] -?|-h|--help' for more information about a command.
 ```
 
-
+[Running the MQTT Publisher](../../../UaMqttPublisher)  
+[Running the MQTT Subscriber](../../../UaMqttSubscriber)
 
