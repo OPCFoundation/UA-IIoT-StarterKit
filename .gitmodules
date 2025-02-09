@@ -1,1 +1,13 @@
 
+[submodule "opcua-webapi/typescript"]
+	path = opcua-webapi/typescript
+	url = https://github.com/OPCFoundation/opcua-webapi-typescript
+[submodule "opcua-webapi/python"]
+	path = opcua-webapi/python
+	url = https://github.com/OPCFoundation/opcua-webapi-python
+[submodule "opcua-webapi/dotnet"]
+	path = opcua-webapi/dotnet
+	url = https://github.com/OPCFoundation/opcua-webapi-dotnet
+[submodule "UaStack"]
+	path = UaStack
+	url = https://github.com/OPCFoundation/UA-.NETStandard.git
