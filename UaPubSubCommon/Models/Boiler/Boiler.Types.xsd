@@ -1,0 +1,79 @@
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  xmlns:tns="urn:opcua.org:2025-01:iiot-starterkit:boiler"
+  targetNamespace="urn:opcua.org:2025-01:iiot-starterkit:boiler"
+  elementFormDefault="qualified"
+>
+  <xs:annotation>
+    <xs:appinfo>
+      <ua:Model ModelUri="urn:opcua.org:2025-01:iiot-starterkit:boiler" Version="1.0.0" PublicationDate="2024-12-22T00:22:04.6816001Z" />
+    </xs:appinfo>
+  </xs:annotation>
+  
+  <xs:import namespace="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+
+  <xs:complexType name="EnergyConsumptionType">
+    <xs:sequence>
+      <xs:element name="Period" type="xs:unsignedInt" minOccurs="0" />
+      <xs:element name="MaxPower" type="xs:double" minOccurs="0" />
+      <xs:element name="AveragePower" type="xs:double" minOccurs="0" />
+      <xs:element name="Consumption" type="xs:double" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnergyConsumptionType" type="tns:EnergyConsumptionType" />
+
+  <xs:complexType name="ListOfEnergyConsumptionType">
+    <xs:sequence>
+      <xs:element name="EnergyConsumptionType" type="tns:EnergyConsumptionType" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfEnergyConsumptionType" type="tns:ListOfEnergyConsumptionType" nillable="true"></xs:element>
+
+  <xs:simpleType  name="SetPointMask">
+    <xs:restriction base="xs:unsignedByte">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SetPointMask" type="tns:SetPointMask" />
+
+  <xs:complexType name="ListOfSetPointMask">
+    <xs:sequence>
+      <xs:element name="SetPointMask" type="tns:SetPointMask" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfSetPointMask" type="tns:ListOfSetPointMask" nillable="true"></xs:element>
+
+  <xs:complexType name="ChangeSetPointsRequest">
+    <xs:sequence>
+      <xs:element name="SelectedValues" type="tns:SetPointMask" minOccurs="0" />
+      <xs:element name="LevelSetPoint" type="xs:double" minOccurs="0" />
+      <xs:element name="FlowSetPoint" type="xs:double" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangeSetPointsRequest" type="tns:ChangeSetPointsRequest" />
+
+  <xs:complexType name="ListOfChangeSetPointsRequest">
+    <xs:sequence>
+      <xs:element name="ChangeSetPointsRequest" type="tns:ChangeSetPointsRequest" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfChangeSetPointsRequest" type="tns:ListOfChangeSetPointsRequest" nillable="true"></xs:element>
+
+  <xs:complexType name="ChangeSetPointsResponse">
+    <xs:sequence>
+      <xs:element name="LevelSetPoint" type="xs:double" minOccurs="0" />
+      <xs:element name="LevelMeasurement" type="xs:double" minOccurs="0" />
+      <xs:element name="FlowSetPoint" type="xs:double" minOccurs="0" />
+      <xs:element name="FlowMeasurement" type="xs:double" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangeSetPointsResponse" type="tns:ChangeSetPointsResponse" />
+
+  <xs:complexType name="ListOfChangeSetPointsResponse">
+    <xs:sequence>
+      <xs:element name="ChangeSetPointsResponse" type="tns:ChangeSetPointsResponse" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfChangeSetPointsResponse" type="tns:ListOfChangeSetPointsResponse" nillable="true"></xs:element>
+
+</xs:schema>

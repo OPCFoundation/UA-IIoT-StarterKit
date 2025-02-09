@@ -1,0 +1,2286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2024-12-22T00:22:04.6816001Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+  <NamespaceUris>
+    <Uri>urn:opcua.org:2025-01:iiot-starterkit:boiler</Uri>
+  </NamespaceUris>
+  <Models>
+    <Model ModelUri="urn:opcua.org:2025-01:iiot-starterkit:boiler" Version="1.0.0" PublicationDate="2024-12-22T00:22:04.6816001Z" ModelVersion="1.0.0">
+      <RequiredModel ModelUri="http://opcfoundation.org/UA/" XmlSchemaUri="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Model>
+  </Models>
+  <Aliases>
+    <Alias Alias="Boolean">i=1</Alias>
+    <Alias Alias="SByte">i=2</Alias>
+    <Alias Alias="Byte">i=3</Alias>
+    <Alias Alias="Int16">i=4</Alias>
+    <Alias Alias="UInt16">i=5</Alias>
+    <Alias Alias="Int32">i=6</Alias>
+    <Alias Alias="UInt32">i=7</Alias>
+    <Alias Alias="Int64">i=8</Alias>
+    <Alias Alias="UInt64">i=9</Alias>
+    <Alias Alias="Float">i=10</Alias>
+    <Alias Alias="Double">i=11</Alias>
+    <Alias Alias="DateTime">i=13</Alias>
+    <Alias Alias="String">i=12</Alias>
+    <Alias Alias="ByteString">i=15</Alias>
+    <Alias Alias="Guid">i=14</Alias>
+    <Alias Alias="XmlElement">i=16</Alias>
+    <Alias Alias="NodeId">i=17</Alias>
+    <Alias Alias="ExpandedNodeId">i=18</Alias>
+    <Alias Alias="QualifiedName">i=20</Alias>
+    <Alias Alias="LocalizedText">i=21</Alias>
+    <Alias Alias="StatusCode">i=19</Alias>
+    <Alias Alias="Structure">i=22</Alias>
+    <Alias Alias="Number">i=26</Alias>
+    <Alias Alias="Integer">i=27</Alias>
+    <Alias Alias="UInteger">i=28</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+    <Alias Alias="HasProperty">i=46</Alias>
+    <Alias Alias="Organizes">i=35</Alias>
+    <Alias Alias="HasEventSource">i=36</Alias>
+    <Alias Alias="HasNotifier">i=48</Alias>
+    <Alias Alias="HasSubtype">i=45</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+    <Alias Alias="HasModellingRule">i=37</Alias>
+    <Alias Alias="HasEncoding">i=38</Alias>
+    <Alias Alias="HasDescription">i=39</Alias>
+    <Alias Alias="HasCause">i=53</Alias>
+    <Alias Alias="ToState">i=52</Alias>
+    <Alias Alias="FromState">i=51</Alias>
+    <Alias Alias="HasEffect">i=54</Alias>
+    <Alias Alias="HasTrueSubState">i=9004</Alias>
+    <Alias Alias="HasFalseSubState">i=9005</Alias>
+    <Alias Alias="HasDictionaryEntry">i=17597</Alias>
+    <Alias Alias="HasCondition">i=9006</Alias>
+    <Alias Alias="HasGuard">i=15112</Alias>
+    <Alias Alias="HasAddIn">i=17604</Alias>
+    <Alias Alias="HasInterface">i=17603</Alias>
+    <Alias Alias="GeneratesEvent">i=41</Alias>
+    <Alias Alias="AlwaysGeneratesEvent">i=3065</Alias>
+    <Alias Alias="HasOrderedComponent">i=49</Alias>
+    <Alias Alias="HasAlarmSuppressionGroup">i=16361</Alias>
+    <Alias Alias="AlarmGroupMember">i=16362</Alias>
+    <Alias Alias="AlarmSuppressionGroupMember">i=32059</Alias>
+  </Aliases>
+  <UADataType NodeId="ns=1;i=27" BrowseName="1:EnergyConsumptionType">
+    <DisplayName>EnergyConsumptionType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=22</Reference>
+    </References>
+    <Definition Name="1:EnergyConsumptionType">
+      <Field Name="Period" DataType="i=7" />
+      <Field Name="MaxPower" DataType="i=11" />
+      <Field Name="AveragePower" DataType="i=11" />
+      <Field Name="Consumption" DataType="i=11" />
+    </Definition>
+  </UADataType>
+  <UAReferenceType NodeId="ns=1;i=1" BrowseName="1:FlowTo">
+    <DisplayName>FlowTo</DisplayName>
+    <Description>A reference that indicates a flow between two objects.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=32</Reference>
+    </References>
+    <InverseName>FlowFrom</InverseName>
+  </UAReferenceType>
+  <UAReferenceType NodeId="ns=1;i=2" BrowseName="1:SignalTo">
+    <DisplayName>SignalTo</DisplayName>
+    <Description>A reference that indicates an electrical signal between two variables.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=32</Reference>
+    </References>
+    <InverseName>SignalFrom</InverseName>
+  </UAReferenceType>
+  <UAObjectType NodeId="ns=1;i=3" BrowseName="1:GenericControllerType">
+    <DisplayName>GenericControllerType</DisplayName>
+    <Description>A generic PID controller</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=4</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=5</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=4" BrowseName="1:Measurement" ParentNodeId="ns=1;i=3" DataType="Double">
+    <DisplayName>Measurement</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=3</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=5" BrowseName="1:SetPoint" ParentNodeId="ns=1;i=3" DataType="Double" AccessLevel="3">
+    <DisplayName>SetPoint</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=3</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=6" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=3" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=3</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=7" BrowseName="1:GenericSensorType">
+    <DisplayName>GenericSensorType</DisplayName>
+    <Description>A generic sensor that read a process value.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=8</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=8" BrowseName="1:Output" ParentNodeId="ns=1;i=7" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=11</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=13</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=7</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=11" BrowseName="EURange" ParentNodeId="ns=1;i=8" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=8</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>100</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=13" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=8" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=8</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5067859</UnitId>
+            <DisplayName>
+              <Text>m/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>metre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=14" BrowseName="1:GenericActuatorType">
+    <DisplayName>GenericActuatorType</DisplayName>
+    <Description>Represents a piece of equipment that causes some action to occur.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=15</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=28</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=15" BrowseName="1:Input" ParentNodeId="ns=1;i=14" DataType="Double" AccessLevel="2">
+    <DisplayName>Input</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=18</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=18" BrowseName="EURange" ParentNodeId="ns=1;i=15" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=15</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=28" BrowseName="1:EnergyConsumption" ParentNodeId="ns=1;i=14" DataType="ns=1;i=27">
+    <DisplayName>EnergyConsumption</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=34</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17497</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=34" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=28" DataType="i=887">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=28</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4937544</UnitId>
+            <DisplayName>
+              <Text>kW·h</Text>
+            </DisplayName>
+            <Description />
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=21" BrowseName="1:CustomControllerType">
+    <DisplayName>CustomControllerType</DisplayName>
+    <Description>A custom PID controller with 3 inputs</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=22</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=23</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=24</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=25</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=22" BrowseName="1:Input1" ParentNodeId="ns=1;i=21" DataType="Double" AccessLevel="2">
+    <DisplayName>Input1</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=21</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=23" BrowseName="1:Input2" ParentNodeId="ns=1;i=21" DataType="Double" AccessLevel="2">
+    <DisplayName>Input2</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=21</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=24" BrowseName="1:Input3" ParentNodeId="ns=1;i=21" DataType="Double" AccessLevel="2">
+    <DisplayName>Input3</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=21</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=25" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=21" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=21</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=26" BrowseName="1:ValveType">
+    <DisplayName>ValveType</DisplayName>
+    <Description>An actuator that controls the flow through a pipe.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=33" BrowseName="1:LevelControllerType">
+    <DisplayName>LevelControllerType</DisplayName>
+    <Description>A controller for the level of a fluid in a drum.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=3</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=37" BrowseName="1:FlowControllerType">
+    <DisplayName>FlowControllerType</DisplayName>
+    <Description>A controller for the flow of a fluid through a pipe.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=3</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=41" BrowseName="1:LevelIndicatorType">
+    <DisplayName>LevelIndicatorType</DisplayName>
+    <Description>A sensor that reports the level of a liquid in a tank.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=7</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=48" BrowseName="1:FlowTransmitterType">
+    <DisplayName>FlowTransmitterType</DisplayName>
+    <Description>A sensor that reports the flow of a liquid through a pipe.</Description>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=7</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=73" BrowseName="1:BoilerInputPipeType">
+    <DisplayName>BoilerInputPipeType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=74</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=81</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=74</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=61</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=74" BrowseName="1:FTX001" SymbolicName="FlowTransmitter1" ParentNodeId="ns=1;i=73" EventNotifier="1">
+    <DisplayName>FTX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=75</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=48</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=75" BrowseName="1:Output" ParentNodeId="ns=1;i=74" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=78</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=80</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=74</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=78" BrowseName="EURange" ParentNodeId="ns=1;i=75" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=75</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>20</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=80" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=75" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=75</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4666673</UnitId>
+            <DisplayName>
+              <Text>l/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>litre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=81" BrowseName="1:ValveX001" SymbolicName="Valve" ParentNodeId="ns=1;i=73" EventNotifier="1">
+    <DisplayName>ValveX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=82</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=35</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=26</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=82" BrowseName="1:Input" ParentNodeId="ns=1;i=81" DataType="Double" AccessLevel="2">
+    <DisplayName>Input</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=81</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=85" BrowseName="EURange" ParentNodeId="ns=1;i=82" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=82</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=35" BrowseName="1:EnergyConsumption" ParentNodeId="ns=1;i=81" DataType="ns=1;i=27">
+    <DisplayName>EnergyConsumption</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=42</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17497</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=81</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=42" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=35" DataType="i=887">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=35</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4937544</UnitId>
+            <DisplayName>
+              <Text>kW·h</Text>
+            </DisplayName>
+            <Description />
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=88" BrowseName="1:BoilerDrumType">
+    <DisplayName>BoilerDrumType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=89</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=89</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=61</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=89" BrowseName="1:LIX001" SymbolicName="LevelIndicator" ParentNodeId="ns=1;i=88" EventNotifier="1">
+    <DisplayName>LIX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=90</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=41</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=88</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=90" BrowseName="1:Output" ParentNodeId="ns=1;i=89" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=93</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=95</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=89</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=93" BrowseName="EURange" ParentNodeId="ns=1;i=90" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=90</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>300</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=95" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=90" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=90</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4410708</UnitId>
+            <DisplayName>
+              <Text>cm</Text>
+            </DisplayName>
+            <Description>
+              <Text>centimetre</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=96" BrowseName="1:BoilerOutputPipeType">
+    <DisplayName>BoilerOutputPipeType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=97</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=97</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=61</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=97" BrowseName="1:FTX002" SymbolicName="FlowTransmitter2" ParentNodeId="ns=1;i=96" EventNotifier="1">
+    <DisplayName>FTX002</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=98</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=48</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=96</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=98" BrowseName="1:Output" ParentNodeId="ns=1;i=97" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=101</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=103</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=97</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=101" BrowseName="EURange" ParentNodeId="ns=1;i=98" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=98</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>100</Low>
+            <High>10000</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=103" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=98" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=98</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Text>pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=218" BrowseName="1:SetPointMask">
+    <DisplayName>SetPointMask</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=219</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=3</Reference>
+    </References>
+    <Definition Name="1:SetPointMask" IsOptionSet="true">
+      <Field Name="Level" Value="0" />
+      <Field Name="Flow" Value="1" />
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId="ns=1;i=219" BrowseName="OptionSetValues" ParentNodeId="ns=1;i=218" DataType="LocalizedText" ValueRank="1" ArrayDimensions="2">
+    <DisplayName>OptionSetValues</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=218</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <LocalizedText>
+          <Text>Level</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Text>Flow</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
+  <UADataType NodeId="ns=1;i=220" BrowseName="1:ChangeSetPointsRequest">
+    <DisplayName>ChangeSetPointsRequest</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=22</Reference>
+    </References>
+    <Definition Name="1:ChangeSetPointsRequest">
+      <Field Name="SelectedValues" DataType="ns=1;i=218" />
+      <Field Name="LevelSetPoint" DataType="i=11" />
+      <Field Name="FlowSetPoint" DataType="i=11" />
+    </Definition>
+  </UADataType>
+  <UADataType NodeId="ns=1;i=221" BrowseName="1:ChangeSetPointsResponse">
+    <DisplayName>ChangeSetPointsResponse</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=22</Reference>
+    </References>
+    <Definition Name="1:ChangeSetPointsResponse">
+      <Field Name="LevelSetPoint" DataType="i=11" />
+      <Field Name="LevelMeasurement" DataType="i=11" />
+      <Field Name="FlowSetPoint" DataType="i=11" />
+      <Field Name="FlowMeasurement" DataType="i=11" />
+    </Definition>
+  </UADataType>
+  <UAObjectType NodeId="ns=1;i=55" BrowseName="1:BoilerType">
+    <DisplayName>BoilerType</DisplayName>
+    <Description>A boiler used to produce steam for a turbine.</Description>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=56</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=57</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=65</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=125</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=129</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=133</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=200</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=203</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=206</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=56</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=57</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=65</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject NodeId="ns=1;i=56" BrowseName="1:PipeX001" SymbolicName="InputPipe" ParentNodeId="ns=1;i=55" EventNotifier="1">
+    <DisplayName>PipeX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=104</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=111</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=104</Reference>
+      <Reference ReferenceType="ns=1;i=1">ns=1;i=57</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=73</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=104" BrowseName="1:FTX001" SymbolicName="FlowTransmitter1" ParentNodeId="ns=1;i=56" EventNotifier="1">
+    <DisplayName>FTX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=105</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=56</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=48</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=56</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=105" BrowseName="1:Output" ParentNodeId="ns=1;i=104" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <Description>The flow of water through the input pipe.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=108</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=110</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=126</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=135</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=104</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=108" BrowseName="EURange" ParentNodeId="ns=1;i=105" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=105</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>20</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=110" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=105" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=105</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4666673</UnitId>
+            <DisplayName>
+              <Text>l/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>litre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=111" BrowseName="1:ValveX001" SymbolicName="Valve" ParentNodeId="ns=1;i=56" EventNotifier="1">
+    <DisplayName>ValveX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=112</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=43</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=26</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=56</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=112" BrowseName="1:Input" ParentNodeId="ns=1;i=111" DataType="Double" AccessLevel="2">
+    <DisplayName>Input</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=115</Reference>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=128</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=111</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=115" BrowseName="EURange" ParentNodeId="ns=1;i=112" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=112</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=43" BrowseName="1:EnergyConsumption" ParentNodeId="ns=1;i=111" DataType="ns=1;i=27">
+    <DisplayName>EnergyConsumption</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=49</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17497</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=111</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=49" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=43" DataType="i=887">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=43</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4937544</UnitId>
+            <DisplayName>
+              <Text>kW·h</Text>
+            </DisplayName>
+            <Description />
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57" BrowseName="1:DrumX001" SymbolicName="Drum" ParentNodeId="ns=1;i=55" EventNotifier="1">
+    <DisplayName>DrumX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=58</Reference>
+      <Reference ReferenceType="ns=1;i=1" IsForward="false">ns=1;i=56</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=58</Reference>
+      <Reference ReferenceType="ns=1;i=1">ns=1;i=65</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=88</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=58" BrowseName="1:LIX001" SymbolicName="LevelIndicator" ParentNodeId="ns=1;i=57" EventNotifier="1">
+    <DisplayName>LIX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=59</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=57</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=41</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=57</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=59" BrowseName="1:Output" ParentNodeId="ns=1;i=58" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <Description>The level of water of in the drum.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=62</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=64</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=130</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=58</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=62" BrowseName="EURange" ParentNodeId="ns=1;i=59" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=59</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>300</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=64" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=59" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=59</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4410708</UnitId>
+            <DisplayName>
+              <Text>cm</Text>
+            </DisplayName>
+            <Description>
+              <Text>centimetre</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=65" BrowseName="1:PipeX002" SymbolicName="OutputPipe" ParentNodeId="ns=1;i=55" EventNotifier="1">
+    <DisplayName>PipeX002</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=118</Reference>
+      <Reference ReferenceType="ns=1;i=1" IsForward="false">ns=1;i=57</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=118</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=96</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=118" BrowseName="1:FTX002" SymbolicName="FlowTransmitter2" ParentNodeId="ns=1;i=65" EventNotifier="1">
+    <DisplayName>FTX002</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=119</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=65</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=48</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=65</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=119" BrowseName="1:Output" ParentNodeId="ns=1;i=118" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <Description>The flow of steam through the output pipe.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=122</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=124</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=136</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=118</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=122" BrowseName="EURange" ParentNodeId="ns=1;i=119" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=119</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>100</Low>
+            <High>10000</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=124" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=119" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=119</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Text>pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=125" BrowseName="1:FCX001" SymbolicName="FlowController" ParentNodeId="ns=1;i=55">
+    <DisplayName>FCX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=126</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=127</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=128</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=37</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=126" BrowseName="1:Measurement" ParentNodeId="ns=1;i=125" DataType="Double">
+    <DisplayName>Measurement</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=105</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=125</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=127" BrowseName="1:SetPoint" ParentNodeId="ns=1;i=125" DataType="Double" AccessLevel="3">
+    <DisplayName>SetPoint</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=137</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=125</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=128" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=125" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <Description>The control signal used to adjuct the valve on the input pipe.</Description>
+    <References>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=112</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=125</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=129" BrowseName="1:LCX001" SymbolicName="LevelController" ParentNodeId="ns=1;i=55">
+    <DisplayName>LCX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=130</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=131</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=132</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=33</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=130" BrowseName="1:Measurement" ParentNodeId="ns=1;i=129" DataType="Double">
+    <DisplayName>Measurement</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=59</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=129</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=131" BrowseName="1:SetPoint" ParentNodeId="ns=1;i=129" DataType="Double" AccessLevel="3">
+    <DisplayName>SetPoint</DisplayName>
+    <Description>The set point for the level of the water in the drum.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=129</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=132" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=129" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=134</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=129</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=133" BrowseName="1:CCX001" SymbolicName="CustomController" ParentNodeId="ns=1;i=55">
+    <DisplayName>CCX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=134</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=135</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=136</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=137</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=21</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=134" BrowseName="1:Input1" ParentNodeId="ns=1;i=133" DataType="Double" AccessLevel="2">
+    <DisplayName>Input1</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=132</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=133</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=135" BrowseName="1:Input2" ParentNodeId="ns=1;i=133" DataType="Double" AccessLevel="2">
+    <DisplayName>Input2</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=105</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=133</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=136" BrowseName="1:Input3" ParentNodeId="ns=1;i=133" DataType="Double" AccessLevel="2">
+    <DisplayName>Input3</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=119</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=133</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=137" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=133" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=127</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=133</Reference>
+    </References>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;i=200" BrowseName="1:ChangeSetPoints" ParentNodeId="ns=1;i=55">
+    <DisplayName>ChangeSetPoints</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=201</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=202</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;i=201" BrowseName="InputArguments" ParentNodeId="ns=1;i=200" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=200</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Changes</Name>
+              <DataType>
+                <Identifier>ns=1;i=220</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=202" BrowseName="OutputArguments" ParentNodeId="ns=1;i=200" DataType="i=296" ValueRank="1" ArrayDimensions="2">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=200</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>OperationResult</Name>
+              <DataType>
+                <Identifier>i=19</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>CurrentValues</Name>
+              <DataType>
+                <Identifier>ns=1;i=221</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;i=203" BrowseName="1:EmergencyShutdown" ParentNodeId="ns=1;i=55">
+    <DisplayName>EmergencyShutdown</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=204</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=205</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;i=204" BrowseName="InputArguments" ParentNodeId="ns=1;i=203" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=203</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Reason</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=205" BrowseName="OutputArguments" ParentNodeId="ns=1;i=203" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=203</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>EstimatedTime</Name>
+              <DataType>
+                <Identifier>i=290</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;i=206" BrowseName="1:Restart" ParentNodeId="ns=1;i=55">
+    <DisplayName>Restart</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=207</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=208</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=55</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;i=207" BrowseName="InputArguments" ParentNodeId="ns=1;i=206" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=206</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Reason</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=208" BrowseName="OutputArguments" ParentNodeId="ns=1;i=206" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=206</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>EstimatedTime</Name>
+              <DataType>
+                <Identifier>i=290</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=138" BrowseName="1:Boiler #1" SymbolicName="Boiler1" EventNotifier="1">
+    <DisplayName>Boiler #1</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=139</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=154</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=162</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=170</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=174</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=178</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=209</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=212</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=215</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=139</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=154</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=162</Reference>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=55</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=139" BrowseName="1:PipeX001" SymbolicName="InputPipe" ParentNodeId="ns=1;i=138" EventNotifier="1">
+    <DisplayName>Pipe1001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=140</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=147</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=138</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=140</Reference>
+      <Reference ReferenceType="ns=1;i=1">ns=1;i=154</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=73</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=140" BrowseName="1:FTX001" SymbolicName="FlowTransmitter1" ParentNodeId="ns=1;i=139" EventNotifier="1">
+    <DisplayName>FTX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=141</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=139</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=48</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=139</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=141" BrowseName="1:Output" ParentNodeId="ns=1;i=140" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <Description>The flow of water through the input pipe.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=144</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=146</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=171</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=180</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=140</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=144" BrowseName="EURange" ParentNodeId="ns=1;i=141" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=141</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>20</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=146" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=141" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=141</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4666673</UnitId>
+            <DisplayName>
+              <Text>l/s</Text>
+            </DisplayName>
+            <Description>
+              <Text>litre per second</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=147" BrowseName="1:ValveX001" SymbolicName="Valve" ParentNodeId="ns=1;i=139" EventNotifier="1">
+    <DisplayName>ValveX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=148</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=50</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=26</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=139</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=148" BrowseName="1:Input" ParentNodeId="ns=1;i=147" DataType="Double" AccessLevel="2">
+    <DisplayName>Input</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=151</Reference>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=173</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=147</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=151" BrowseName="EURange" ParentNodeId="ns=1;i=148" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=148</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>10</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=50" BrowseName="1:EnergyConsumption" ParentNodeId="ns=1;i=147" DataType="ns=1;i=27">
+    <DisplayName>EnergyConsumption</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=240</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17497</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=147</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=240" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=50" DataType="i=887">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=50</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4937544</UnitId>
+            <DisplayName>
+              <Text>kW·h</Text>
+            </DisplayName>
+            <Description />
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=154" BrowseName="1:DrumX001" SymbolicName="Drum" ParentNodeId="ns=1;i=138" EventNotifier="1">
+    <DisplayName>Drum1001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=155</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=138</Reference>
+      <Reference ReferenceType="ns=1;i=1" IsForward="false">ns=1;i=139</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=155</Reference>
+      <Reference ReferenceType="ns=1;i=1">ns=1;i=162</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=88</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=155" BrowseName="1:LIX001" SymbolicName="LevelIndicator" ParentNodeId="ns=1;i=154" EventNotifier="1">
+    <DisplayName>LIX001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=156</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=154</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=41</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=154</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=156" BrowseName="1:Output" ParentNodeId="ns=1;i=155" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <Description>The level of water of in the drum.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=159</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=161</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=175</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=155</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=159" BrowseName="EURange" ParentNodeId="ns=1;i=156" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=156</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>0</Low>
+            <High>300</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=161" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=156" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=156</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>4410708</UnitId>
+            <DisplayName>
+              <Text>cm</Text>
+            </DisplayName>
+            <Description>
+              <Text>centimetre</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=162" BrowseName="1:PipeX002" SymbolicName="OutputPipe" ParentNodeId="ns=1;i=138" EventNotifier="1">
+    <DisplayName>Pipe1002</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=163</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=138</Reference>
+      <Reference ReferenceType="ns=1;i=1" IsForward="false">ns=1;i=154</Reference>
+      <Reference ReferenceType="HasNotifier">ns=1;i=163</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=96</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=163" BrowseName="1:FTX002" SymbolicName="FlowTransmitter2" ParentNodeId="ns=1;i=162" EventNotifier="1">
+    <DisplayName>FTX002</DisplayName>
+    <References>
+      <Reference ReferenceType="HasComponent">ns=1;i=164</Reference>
+      <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;i=162</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=48</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=162</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=164" BrowseName="1:Output" ParentNodeId="ns=1;i=163" DataType="Double">
+    <DisplayName>Output</DisplayName>
+    <Description>The flow of steam through the output pipe.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=167</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=169</Reference>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=181</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=163</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=167" BrowseName="EURange" ParentNodeId="ns=1;i=164" DataType="i=884">
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=164</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=885</Identifier>
+        </TypeId>
+        <Body>
+          <Range>
+            <Low>100</Low>
+            <High>10000</High>
+          </Range>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=169" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=164" DataType="i=887" AccessLevel="3">
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=164</Reference>
+    </References>
+    <Value>
+      <ExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <TypeId>
+          <Identifier>i=888</Identifier>
+        </TypeId>
+        <Body>
+          <EUInformation>
+            <NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</NamespaceUri>
+            <UnitId>5259596</UnitId>
+            <DisplayName>
+              <Text>Pa</Text>
+            </DisplayName>
+            <Description>
+              <Text>pascal</Text>
+            </Description>
+          </EUInformation>
+        </Body>
+      </ExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=170" BrowseName="1:FCX001" SymbolicName="FlowController" ParentNodeId="ns=1;i=138">
+    <DisplayName>FC1001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=171</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=172</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=173</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=37</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=171" BrowseName="1:Measurement" ParentNodeId="ns=1;i=170" DataType="Double">
+    <DisplayName>Measurement</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=141</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=170</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=172" BrowseName="1:SetPoint" ParentNodeId="ns=1;i=170" DataType="Double" AccessLevel="3">
+    <DisplayName>SetPoint</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=182</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=170</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=173" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=170" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <Description>The control signal used to adjuct the valve on the input pipe.</Description>
+    <References>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=148</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=170</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=174" BrowseName="1:LCX001" SymbolicName="LevelController" ParentNodeId="ns=1;i=138">
+    <DisplayName>LC1001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=175</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=176</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=177</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=33</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=175" BrowseName="1:Measurement" ParentNodeId="ns=1;i=174" DataType="Double">
+    <DisplayName>Measurement</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=156</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=174</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=176" BrowseName="1:SetPoint" ParentNodeId="ns=1;i=174" DataType="Double" AccessLevel="3">
+    <DisplayName>SetPoint</DisplayName>
+    <Description>The set point for the level of the water in the drum.</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=174</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=177" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=174" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=179</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=174</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=178" BrowseName="1:CCX001" SymbolicName="CustomController" ParentNodeId="ns=1;i=138">
+    <DisplayName>CC1001</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=179</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=180</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=181</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=182</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=21</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=179" BrowseName="1:Input1" ParentNodeId="ns=1;i=178" DataType="Double" AccessLevel="2">
+    <DisplayName>Input1</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=177</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=178</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=180" BrowseName="1:Input2" ParentNodeId="ns=1;i=178" DataType="Double" AccessLevel="2">
+    <DisplayName>Input2</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=141</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=178</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=181" BrowseName="1:Input3" ParentNodeId="ns=1;i=178" DataType="Double" AccessLevel="2">
+    <DisplayName>Input3</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2" IsForward="false">ns=1;i=164</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=178</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=182" BrowseName="1:ControlOut" ParentNodeId="ns=1;i=178" DataType="Double">
+    <DisplayName>ControlOut</DisplayName>
+    <References>
+      <Reference ReferenceType="ns=1;i=2">ns=1;i=172</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=178</Reference>
+    </References>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;i=209" BrowseName="1:ChangeSetPoints" ParentNodeId="ns=1;i=138" MethodDeclarationId="ns=1;i=200">
+    <DisplayName>ChangeSetPoints</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=210</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=211</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;i=210" BrowseName="InputArguments" ParentNodeId="ns=1;i=209" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=209</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Changes</Name>
+              <DataType>
+                <Identifier>ns=1;i=220</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=211" BrowseName="OutputArguments" ParentNodeId="ns=1;i=209" DataType="i=296" ValueRank="1" ArrayDimensions="2">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=209</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>OperationResult</Name>
+              <DataType>
+                <Identifier>i=19</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>CurrentValues</Name>
+              <DataType>
+                <Identifier>ns=1;i=221</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;i=212" BrowseName="1:EmergencyShutdown" ParentNodeId="ns=1;i=138" MethodDeclarationId="ns=1;i=203">
+    <DisplayName>EmergencyShutdown</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=213</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=214</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;i=213" BrowseName="InputArguments" ParentNodeId="ns=1;i=212" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=212</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Reason</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=214" BrowseName="OutputArguments" ParentNodeId="ns=1;i=212" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=212</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>EstimatedTime</Name>
+              <DataType>
+                <Identifier>i=290</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAMethod NodeId="ns=1;i=215" BrowseName="1:Restart" ParentNodeId="ns=1;i=138" MethodDeclarationId="ns=1;i=206">
+    <DisplayName>Restart</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=216</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=217</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=138</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;i=216" BrowseName="InputArguments" ParentNodeId="ns=1;i=215" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=215</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Reason</Name>
+              <DataType>
+                <Identifier>i=12</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=217" BrowseName="OutputArguments" ParentNodeId="ns=1;i=215" DataType="i=296" ValueRank="1" ArrayDimensions="1">
+    <DisplayName>OutputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=215</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>EstimatedTime</Name>
+              <DataType>
+                <Identifier>i=290</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=241" BrowseName="Default Binary" SymbolicName="DefaultBinary">
+    <DisplayName>Default Binary</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=27</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=242</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=222" BrowseName="Default Binary" SymbolicName="DefaultBinary">
+    <DisplayName>Default Binary</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=220</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=224</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=223" BrowseName="Default Binary" SymbolicName="DefaultBinary">
+    <DisplayName>Default Binary</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=221</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=227</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=192" BrowseName="1:Boiler" SymbolicName="Boiler_BinarySchema" ReleaseStatus="Deprecated" DataType="ByteString">
+    <DisplayName>Boiler</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=194</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15001</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=242</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=224</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=227</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=93</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=72</Reference>
+    </References>
+    <Value>
+      <ByteString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">PG9wYzpUeXBlRGljdGlvbmFyeQ0KICB4bWxuczpvcGM9Imh0dHA6Ly9vcGNmb3VuZGF0aW9uLm9y
+Zy9CaW5hcnlTY2hlbWEvIg0KICB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1M
+U2NoZW1hLWluc3RhbmNlIg0KICB4bWxuczp1YT0iaHR0cDovL29wY2ZvdW5kYXRpb24ub3JnL1VB
+LyINCiAgeG1sbnM6dG5zPSJ1cm46b3BjdWEub3JnOjIwMjUtMDE6aWlvdC1zdGFydGVya2l0OmJv
+aWxlciINCiAgRGVmYXVsdEJ5dGVPcmRlcj0iTGl0dGxlRW5kaWFuIg0KICBUYXJnZXROYW1lc3Bh
+Y2U9InVybjpvcGN1YS5vcmc6MjAyNS0wMTppaW90LXN0YXJ0ZXJraXQ6Ym9pbGVyIg0KPg0KICA8
+b3BjOkltcG9ydCBOYW1lc3BhY2U9Imh0dHA6Ly9vcGNmb3VuZGF0aW9uLm9yZy9VQS8iIExvY2F0
+aW9uPSJPcGMuVWEuQmluYXJ5U2NoZW1hLmJzZCIvPg0KDQogIDxvcGM6U3RydWN0dXJlZFR5cGUg
+TmFtZT0iRW5lcmd5Q29uc3VtcHRpb25UeXBlIiBCYXNlVHlwZT0idWE6RXh0ZW5zaW9uT2JqZWN0
+Ij4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlBlcmlvZCIgVHlwZU5hbWU9Im9wYzpVSW50MzIiIC8+
+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJNYXhQb3dlciIgVHlwZU5hbWU9Im9wYzpEb3VibGUiIC8+
+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJBdmVyYWdlUG93ZXIiIFR5cGVOYW1lPSJvcGM6RG91Ymxl
+IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQ29uc3VtcHRpb24iIFR5cGVOYW1lPSJvcGM6RG91
+YmxlIiAvPg0KICA8L29wYzpTdHJ1Y3R1cmVkVHlwZT4NCg0KICA8b3BjOkVudW1lcmF0ZWRUeXBl
+IE5hbWU9IlNldFBvaW50TWFzayIgTGVuZ3RoSW5CaXRzPSI4IiBJc09wdGlvblNldD0idHJ1ZSI+
+DQogICAgPG9wYzpFbnVtZXJhdGVkVmFsdWUgTmFtZT0iTm9uZSIgVmFsdWU9IjAiIC8+DQogICAg
+PG9wYzpFbnVtZXJhdGVkVmFsdWUgTmFtZT0iTGV2ZWwiIFZhbHVlPSIxIiAvPg0KICAgIDxvcGM6
+RW51bWVyYXRlZFZhbHVlIE5hbWU9IkZsb3ciIFZhbHVlPSIyIiAvPg0KICA8L29wYzpFbnVtZXJh
+dGVkVHlwZT4NCg0KICA8b3BjOlN0cnVjdHVyZWRUeXBlIE5hbWU9IkNoYW5nZVNldFBvaW50c1Jl
+cXVlc3QiIEJhc2VUeXBlPSJ1YTpFeHRlbnNpb25PYmplY3QiPg0KICAgIDxvcGM6RmllbGQgTmFt
+ZT0iU2VsZWN0ZWRWYWx1ZXMiIFR5cGVOYW1lPSJ0bnM6U2V0UG9pbnRNYXNrIiAvPg0KICAgIDxv
+cGM6RmllbGQgTmFtZT0iTGV2ZWxTZXRQb2ludCIgVHlwZU5hbWU9Im9wYzpEb3VibGUiIC8+DQog
+ICAgPG9wYzpGaWVsZCBOYW1lPSJGbG93U2V0UG9pbnQiIFR5cGVOYW1lPSJvcGM6RG91YmxlIiAv
+Pg0KICA8L29wYzpTdHJ1Y3R1cmVkVHlwZT4NCg0KICA8b3BjOlN0cnVjdHVyZWRUeXBlIE5hbWU9
+IkNoYW5nZVNldFBvaW50c1Jlc3BvbnNlIiBCYXNlVHlwZT0idWE6RXh0ZW5zaW9uT2JqZWN0Ij4N
+CiAgICA8b3BjOkZpZWxkIE5hbWU9IkxldmVsU2V0UG9pbnQiIFR5cGVOYW1lPSJvcGM6RG91Ymxl
+IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTGV2ZWxNZWFzdXJlbWVudCIgVHlwZU5hbWU9Im9w
+YzpEb3VibGUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJGbG93U2V0UG9pbnQiIFR5cGVOYW1l
+PSJvcGM6RG91YmxlIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iRmxvd01lYXN1cmVtZW50IiBU
+eXBlTmFtZT0ib3BjOkRvdWJsZSIgLz4NCiAgPC9vcGM6U3RydWN0dXJlZFR5cGU+DQoNCjwvb3Bj
+OlR5cGVEaWN0aW9uYXJ5Pg==</ByteString>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=194" BrowseName="NamespaceUri" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=192" DataType="String">
+    <DisplayName>NamespaceUri</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=192</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">urn:opcua.org:2025-01:iiot-starterkit:boiler</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15001" BrowseName="Deprecated" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=192" DataType="Boolean">
+    <DisplayName>Deprecated</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=192</Reference>
+    </References>
+    <Value>
+      <Boolean xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">true</Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=242" BrowseName="1:EnergyConsumptionType" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=192" DataType="String">
+    <DisplayName>EnergyConsumptionType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=192</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">EnergyConsumptionType</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=224" BrowseName="1:ChangeSetPointsRequest" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=192" DataType="String">
+    <DisplayName>ChangeSetPointsRequest</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=192</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">ChangeSetPointsRequest</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=227" BrowseName="1:ChangeSetPointsResponse" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=192" DataType="String">
+    <DisplayName>ChangeSetPointsResponse</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=192</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">ChangeSetPointsResponse</String>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=245" BrowseName="Default XML" SymbolicName="DefaultXml">
+    <DisplayName>Default XML</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=27</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=246</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=230" BrowseName="Default XML" SymbolicName="DefaultXml">
+    <DisplayName>Default XML</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=220</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=232</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=231" BrowseName="Default XML" SymbolicName="DefaultXml">
+    <DisplayName>Default XML</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=221</Reference>
+      <Reference ReferenceType="HasDescription">ns=1;i=235</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=185" BrowseName="1:Boiler" SymbolicName="Boiler_XmlSchema" ReleaseStatus="Deprecated" DataType="ByteString">
+    <DisplayName>Boiler</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=187</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15002</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=246</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=232</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=235</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=92</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=72</Reference>
+    </References>
+    <Value>
+      <ByteString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">PHhzOnNjaGVtYQ0KICB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEi
+DQogIHhtbG5zOnVhPSJodHRwOi8vb3BjZm91bmRhdGlvbi5vcmcvVUEvMjAwOC8wMi9UeXBlcy54
+c2QiDQogIHhtbG5zOnRucz0idXJuOm9wY3VhLm9yZzoyMDI1LTAxOmlpb3Qtc3RhcnRlcmtpdDpi
+b2lsZXIiDQogIHRhcmdldE5hbWVzcGFjZT0idXJuOm9wY3VhLm9yZzoyMDI1LTAxOmlpb3Qtc3Rh
+cnRlcmtpdDpib2lsZXIiDQogIGVsZW1lbnRGb3JtRGVmYXVsdD0icXVhbGlmaWVkIg0KPg0KICA8
+eHM6YW5ub3RhdGlvbj4NCiAgICA8eHM6YXBwaW5mbz4NCiAgICAgIDx1YTpNb2RlbCBNb2RlbFVy
+aT0idXJuOm9wY3VhLm9yZzoyMDI1LTAxOmlpb3Qtc3RhcnRlcmtpdDpib2lsZXIiIFZlcnNpb249
+IjEuMC4wIiBQdWJsaWNhdGlvbkRhdGU9IjIwMjQtMTItMjJUMDA6MjI6MDQuNjgxNjAwMVoiIC8+
+DQogICAgPC94czphcHBpbmZvPg0KICA8L3hzOmFubm90YXRpb24+DQogIA0KICA8eHM6aW1wb3J0
+IG5hbWVzcGFjZT0iaHR0cDovL29wY2ZvdW5kYXRpb24ub3JnL1VBLzIwMDgvMDIvVHlwZXMueHNk
+IiAvPg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJFbmVyZ3lDb25zdW1wdGlvblR5cGUiPg0K
+ICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlBlcmlvZCIgdHlwZT0i
+eHM6dW5zaWduZWRJbnQiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9
+Ik1heFBvd2VyIiB0eXBlPSJ4czpkb3VibGUiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czpl
+bGVtZW50IG5hbWU9IkF2ZXJhZ2VQb3dlciIgdHlwZT0ieHM6ZG91YmxlIiBtaW5PY2N1cnM9IjAi
+IC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJDb25zdW1wdGlvbiIgdHlwZT0ieHM6ZG91Ymxl
+IiBtaW5PY2N1cnM9IjAiIC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4VHlw
+ZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iRW5lcmd5Q29uc3VtcHRpb25UeXBlIiB0eXBlPSJ0bnM6
+RW5lcmd5Q29uc3VtcHRpb25UeXBlIiAvPg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJMaXN0
+T2ZFbmVyZ3lDb25zdW1wdGlvblR5cGUiPg0KICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czpl
+bGVtZW50IG5hbWU9IkVuZXJneUNvbnN1bXB0aW9uVHlwZSIgdHlwZT0idG5zOkVuZXJneUNvbnN1
+bXB0aW9uVHlwZSIgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCIgbmlsbGFibGU9
+InRydWUiIC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4VHlwZT4NCiAgPHhz
+OmVsZW1lbnQgbmFtZT0iTGlzdE9mRW5lcmd5Q29uc3VtcHRpb25UeXBlIiB0eXBlPSJ0bnM6TGlz
+dE9mRW5lcmd5Q29uc3VtcHRpb25UeXBlIiBuaWxsYWJsZT0idHJ1ZSI+PC94czplbGVtZW50Pg0K
+DQogIDx4czpzaW1wbGVUeXBlICBuYW1lPSJTZXRQb2ludE1hc2siPg0KICAgIDx4czpyZXN0cmlj
+dGlvbiBiYXNlPSJ4czp1bnNpZ25lZEJ5dGUiPg0KICAgIDwveHM6cmVzdHJpY3Rpb24+DQogIDwv
+eHM6c2ltcGxlVHlwZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iU2V0UG9pbnRNYXNrIiB0eXBlPSJ0
+bnM6U2V0UG9pbnRNYXNrIiAvPg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJMaXN0T2ZTZXRQ
+b2ludE1hc2siPg0KICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlNl
+dFBvaW50TWFzayIgdHlwZT0idG5zOlNldFBvaW50TWFzayIgbWluT2NjdXJzPSIwIiBtYXhPY2N1
+cnM9InVuYm91bmRlZCIgLz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBl
+Pg0KICA8eHM6ZWxlbWVudCBuYW1lPSJMaXN0T2ZTZXRQb2ludE1hc2siIHR5cGU9InRuczpMaXN0
+T2ZTZXRQb2ludE1hc2siIG5pbGxhYmxlPSJ0cnVlIj48L3hzOmVsZW1lbnQ+DQoNCiAgPHhzOmNv
+bXBsZXhUeXBlIG5hbWU9IkNoYW5nZVNldFBvaW50c1JlcXVlc3QiPg0KICAgIDx4czpzZXF1ZW5j
+ZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlNlbGVjdGVkVmFsdWVzIiB0eXBlPSJ0bnM6U2V0
+UG9pbnRNYXNrIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJMZXZl
+bFNldFBvaW50IiB0eXBlPSJ4czpkb3VibGUiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czpl
+bGVtZW50IG5hbWU9IkZsb3dTZXRQb2ludCIgdHlwZT0ieHM6ZG91YmxlIiBtaW5PY2N1cnM9IjAi
+IC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4VHlwZT4NCiAgPHhzOmVsZW1l
+bnQgbmFtZT0iQ2hhbmdlU2V0UG9pbnRzUmVxdWVzdCIgdHlwZT0idG5zOkNoYW5nZVNldFBvaW50
+c1JlcXVlc3QiIC8+DQoNCiAgPHhzOmNvbXBsZXhUeXBlIG5hbWU9Ikxpc3RPZkNoYW5nZVNldFBv
+aW50c1JlcXVlc3QiPg0KICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9
+IkNoYW5nZVNldFBvaW50c1JlcXVlc3QiIHR5cGU9InRuczpDaGFuZ2VTZXRQb2ludHNSZXF1ZXN0
+IiBtaW5PY2N1cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJsZT0idHJ1ZSIgLz4N
+CiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBu
+YW1lPSJMaXN0T2ZDaGFuZ2VTZXRQb2ludHNSZXF1ZXN0IiB0eXBlPSJ0bnM6TGlzdE9mQ2hhbmdl
+U2V0UG9pbnRzUmVxdWVzdCIgbmlsbGFibGU9InRydWUiPjwveHM6ZWxlbWVudD4NCg0KICA8eHM6
+Y29tcGxleFR5cGUgbmFtZT0iQ2hhbmdlU2V0UG9pbnRzUmVzcG9uc2UiPg0KICAgIDx4czpzZXF1
+ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkxldmVsU2V0UG9pbnQiIHR5cGU9InhzOmRv
+dWJsZSIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTGV2ZWxNZWFz
+dXJlbWVudCIgdHlwZT0ieHM6ZG91YmxlIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICA8eHM6ZWxl
+bWVudCBuYW1lPSJGbG93U2V0UG9pbnQiIHR5cGU9InhzOmRvdWJsZSIgbWluT2NjdXJzPSIwIiAv
+Pg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iRmxvd01lYXN1cmVtZW50IiB0eXBlPSJ4czpkb3Vi
+bGUiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhU
+eXBlPg0KICA8eHM6ZWxlbWVudCBuYW1lPSJDaGFuZ2VTZXRQb2ludHNSZXNwb25zZSIgdHlwZT0i
+dG5zOkNoYW5nZVNldFBvaW50c1Jlc3BvbnNlIiAvPg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1l
+PSJMaXN0T2ZDaGFuZ2VTZXRQb2ludHNSZXNwb25zZSI+DQogICAgPHhzOnNlcXVlbmNlPg0KICAg
+ICAgPHhzOmVsZW1lbnQgbmFtZT0iQ2hhbmdlU2V0UG9pbnRzUmVzcG9uc2UiIHR5cGU9InRuczpD
+aGFuZ2VTZXRQb2ludHNSZXNwb25zZSIgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRl
+ZCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4
+VHlwZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTGlzdE9mQ2hhbmdlU2V0UG9pbnRzUmVzcG9uc2Ui
+IHR5cGU9InRuczpMaXN0T2ZDaGFuZ2VTZXRQb2ludHNSZXNwb25zZSIgbmlsbGFibGU9InRydWUi
+PjwveHM6ZWxlbWVudD4NCg0KPC94czpzY2hlbWE+</ByteString>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=187" BrowseName="NamespaceUri" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=185" DataType="String">
+    <DisplayName>NamespaceUri</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=185</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">urn:opcua.org:2025-01:iiot-starterkit:boiler</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=15002" BrowseName="Deprecated" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=185" DataType="Boolean">
+    <DisplayName>Deprecated</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=185</Reference>
+    </References>
+    <Value>
+      <Boolean xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">true</Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=246" BrowseName="1:EnergyConsumptionType" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=185" DataType="String">
+    <DisplayName>EnergyConsumptionType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=185</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">//xs:element[@name='EnergyConsumptionType']</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=232" BrowseName="1:ChangeSetPointsRequest" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=185" DataType="String">
+    <DisplayName>ChangeSetPointsRequest</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=185</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">//xs:element[@name='ChangeSetPointsRequest']</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=235" BrowseName="1:ChangeSetPointsResponse" ReleaseStatus="Deprecated" ParentNodeId="ns=1;i=185" DataType="String">
+    <DisplayName>ChangeSetPointsResponse</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=69</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=185</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">//xs:element[@name='ChangeSetPointsResponse']</String>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=249" BrowseName="Default JSON" SymbolicName="DefaultJson">
+    <DisplayName>Default JSON</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=27</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=238" BrowseName="Default JSON" SymbolicName="DefaultJson">
+    <DisplayName>Default JSON</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=220</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=239" BrowseName="Default JSON" SymbolicName="DefaultJson">
+    <DisplayName>Default JSON</DisplayName>
+    <References>
+      <Reference ReferenceType="HasEncoding" IsForward="false">ns=1;i=221</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=76</Reference>
+    </References>
+  </UAObject>
+</UANodeSet>
