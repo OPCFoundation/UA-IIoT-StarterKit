@@ -105,7 +105,7 @@ namespace UaMqttPublisher
                 }
 
                 // check the application certificate.
-                bool haveAppCertificate = await application.CheckApplicationInstanceCertificate(false, minimumKeySize: 0).ConfigureAwait(false);
+                bool haveAppCertificate = await application.CheckApplicationInstanceCertificates(false).ConfigureAwait(false);
 
                 if (!haveAppCertificate)
                 {

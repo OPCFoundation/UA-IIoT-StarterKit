@@ -30,18 +30,29 @@ using System.Security.Authentication;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MQTTnet;
-using MQTTnet.Client;
 using MQTTnet.Formatter;
 using UaMqttCommon;
 using UaMqttPublisher;
+using Opc.Ua.WebApi;
+using Opc.Ua.WebApi.Model;
+using KeyValuePair = Opc.Ua.WebApi.Model.KeyValuePair;
 
 await new Publisher().Connect();
 
 internal class Publisher
 {
-    const string BrokerUrl = "broker.hivemq.com";
-    const string TopicPrefix = "opcua";
-    const string PublisherId = "(Quickstart003)";
+    readonly Configuration m_configuration = new Configuration()
+    {
+        BrokerHost = "broker.hivemq.com",
+        BrokerPort = 1883,
+        TopicPrefix = "opcua-quickstarts",
+        PublisherId = "Quickstart003"
+    };
+
+    string BrokerUrl => m_configuration.BrokerHost;
+    string TopicPrefix => m_configuration.TopicPrefix;
+    string PublisherId => m_configuration.PublisherId;
+
     const string GroupName = "Conveyor";
     const string Writer1Name = "Motor1";
     const string Writer2Name = "Motor2";
@@ -67,26 +78,30 @@ internal class Publisher
         }
     };
 
-    private MqttFactory? m_factory;
+    private MqttClientFactory? m_factory;
     private IMqttClient? m_client;
     private readonly HashSet<string> m_retainedTopics = new();
 
     public async Task Connect()
     {
-        m_factory = new MqttFactory();
+        // cleans up topics. useful when developing/testing. not used for production.
+        await Utils.DeleteAllTopics(m_configuration, 5000, CancellationToken.None);
+
+        m_factory = new MqttClientFactory();
 
         using (m_client = m_factory.CreateMqttClient())
         {
             var willTopic = new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Status,
+                MessageType = TopicTypes.Status,
                 PublisherId = PublisherId
             }.Build();
 
             JsonStatusMessage willPayload = new()
             {
                 MessageId = Guid.NewGuid().ToString(),
+                MessageType = MessageTypes.Status,
                 PublisherId = PublisherId,
                 Status = (int)PubSubState.Error,
                 IsCyclic = false
@@ -137,6 +152,7 @@ internal class Publisher
         }
     }
 
+
     private async Task CleanupRetainedMessages()
     {
         if (m_client == null || m_factory == null) throw new InvalidOperationException();
@@ -162,11 +178,6 @@ internal class Publisher
         }
     }
 
-    private static int GetVersionTime()
-    {
-        return (int)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-    }
-
     private async Task PublishStatus(PubSubState state)
     {
         if (m_client == null || m_factory == null) throw new InvalidOperationException();
@@ -174,19 +185,20 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.Status,
+            MessageType = TopicTypes.Status,
             PublisherId = PublisherId
         }.Build();
 
         JsonStatusMessage payload = new()
         {
             MessageId = Guid.NewGuid().ToString(),
+            MessageType = MessageTypes.Status,
             PublisherId = PublisherId,
             Status = (int)state,
             IsCyclic = false
         };
 
-        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+        var json = Utils.ToJson(payload);
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -218,7 +230,7 @@ internal class Publisher
         {
             Name = DataSetName, // same name appears in the DataSetWriter.
             ConfigurationVersion = version,
-            DataSetClassId = EnergyMetrics.DataSetClassId.ToString(), // Used to indicate that many DataSetWriters report the same data.
+            DataSetClassId = EnergyMetrics.DataSetClassId, // Used to indicate that many DataSetWriters report the same data.
             Description = new LocalizedText() { Text = "A set of energy consumption metrics for a device." },
             Fields = new List<FieldMetaData>()
             {
@@ -226,22 +238,21 @@ internal class Publisher
                 {
                     Name = "Consumption",
                     BuiltInType = (int)BuiltInType.Double,
-                    DataType = new NodeId((int)BuiltInType.Double),
+                    DataType = DataTypeIds.Double,
                     Description = new LocalizedText() { Text = "The energy consumed by the device during the calculation period." },
                     ValueRank = -1,
-                    Properties = new List<UaMqttCommon.KeyValuePair>()
+                    Properties = new List<KeyValuePair>()
                     {
-                        new UaMqttCommon.KeyValuePair()
+                        new KeyValuePair()
                         {
-                            Key = new QualifiedName() { Name = "EngineeringUnits" },
+                            Key = BrowseNames.EngineeringUnits,
                             Value = new Variant()
                             {
-                                Type = (int)BuiltInType.ExtensionObject,
-                                Body = new ExtensionObject<EUInformation>()
-                                {
-                                    TypeId = EUInformation.TypeId,
-                                    Body = unitOfPower
-                                }
+                                UaType = (int)BuiltInType.ExtensionObject,
+                                Value =  Utils.ToObject(
+                                    DataTypeIds.EUInformation,
+                                    unitOfPower
+                                )
                             }
                         }
                     }
@@ -250,28 +261,27 @@ internal class Publisher
                 {
                     Name = "DutyCycle",
                     BuiltInType = (int)BuiltInType.Float,
-                    DataType = new NodeId((int)BuiltInType.Float),
+                    DataType = DataTypeIds.Float,
                     Description = new LocalizedText() { Text = "The fraction of the calulation period where the device is consuming power." },
                     ValueRank = -1,
-                    Properties = new List<UaMqttCommon.KeyValuePair>()
+                    Properties = new List<KeyValuePair>()
                     {
-                        new UaMqttCommon.KeyValuePair()
+                        new KeyValuePair()
                         {
-                            Key = new QualifiedName() { Name = "EngineeringUnits" },
+                            Key = BrowseNames.EngineeringUnits,
                             Value = new Variant()
                             {
-                                Type = (int)BuiltInType.ExtensionObject,
-                                Body = new ExtensionObject<EUInformation>()
-                                {
-                                    TypeId = EUInformation.TypeId,
-                                    Body = new EUInformation()
+                                UaType = (int)BuiltInType.ExtensionObject,
+                                Value =  Utils.ToObject(
+                                    DataTypeIds.EUInformation,
+                                    new EUInformation()
                                     {
                                         NamespaceUri = "http://www.opcfoundation.org/UA/units/un/cefact",
                                         UnitId = 20529,
                                         DisplayName = new LocalizedText() { Text = "%" },
                                         Description = new LocalizedText() { Text = "percent" }
                                     }
-                                }
+                                )
                             }
                         }
                     }
@@ -280,28 +290,27 @@ internal class Publisher
                 {
                     Name = "CalculationPeriod",
                     BuiltInType = (int)BuiltInType.Double,
-                    DataType = new NodeId((int)BuiltInType.Double),
+                    DataType = DataTypeIds.Double,
                     Description = new LocalizedText() { Text = "The period, in ms, over which power calculations are computed." },
                     ValueRank = -1,
-                    Properties = new List<UaMqttCommon.KeyValuePair>()
+                    Properties  = new List<KeyValuePair>()
                     {
-                        new UaMqttCommon.KeyValuePair()
+                        new KeyValuePair()
                         {
-                            Key = new QualifiedName() { Name = "EngineeringUnits" },
+                            Key = BrowseNames.EngineeringUnits,
                             Value = new Variant()
                             {
-                                Type = (int)BuiltInType.ExtensionObject,
-                                Body = new ExtensionObject<EUInformation>()
-                                {
-                                    TypeId = EUInformation.TypeId,
-                                    Body = new EUInformation()
+                                UaType = (int)BuiltInType.ExtensionObject,
+                                Value =  Utils.ToObject(
+                                    DataTypeIds.EUInformation,
+                                    new EUInformation()
                                     {
                                         NamespaceUri = "http://www.opcfoundation.org/UA/units/un/cefact",
                                         UnitId = 4403766,
                                         DisplayName = new LocalizedText() { Text = "ms" },
                                         Description = new LocalizedText() { Text = "millisecond" }
                                     }
-                                }
+                                )
                             }
                         }
                     }
@@ -312,7 +321,7 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.DataSetMetaData,
+            MessageType = TopicTypes.DataSetMetaData,
             PublisherId = PublisherId,
             GroupName = GroupName,
             WriterName = writerName
@@ -321,13 +330,13 @@ internal class Publisher
         var payload = new JsonDataSetMetaDataMessage()
         {
             MessageId = Guid.NewGuid().ToString(),
-            MessageType = "ua-metadata",
+            MessageType = MessageTypes.DataSetMetaData,
             PublisherId = PublisherId,
             DataSetWriterId = dataSetWriterId,
             MetaData = metadata
         };
 
-        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+        var json = Utils.ToJson(payload);
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -355,7 +364,7 @@ internal class Publisher
         var connection = new PubSubConnectionDataType()
         {
             Name = PublisherId,
-            PublisherId = new Variant() { Type = (int)BuiltInType.String, Body = PublisherId }, // Used in the metadata topic names
+            PublisherId = new Variant() { UaType = (int)BuiltInType.String, Value = PublisherId }, // Used in the metadata topic names
             Enabled = true,
             WriterGroups = new List<WriterGroupDataType>()
             {
@@ -364,19 +373,17 @@ internal class Publisher
                     Name = GroupName, // Used in the metadata topic names
                     HeaderLayoutUri = "http://opcfoundation.org/UA/PubSub-Layouts/JSON-NetworkMessage",
                     Enabled = true,
-                    MessageSettings = new ExtensionObject<JsonWriterGroupMessageDataType>()
-                    {
-                        TypeId = JsonWriterGroupMessageDataType.TypeId,
-                        Body = new JsonWriterGroupMessageDataType()
+                    MessageSettings = Utils.ToObject(
+                        DataTypeIds.JsonWriterGroupMessageDataType,
+                        new JsonWriterGroupMessageDataType()
                         {
-                             // NetworkMessageHeader | DataSetMessageHeader | PublisherId 
+                            // NetworkMessageHeader | DataSetMessageHeader | PublisherId 
                             NetworkMessageContentMask = 0x01 | 0x02 | 0x08
                         }
-                    },
-                    TransportSettings = new ExtensionObject<BrokerWriterGroupTransportDataType>()
-                    {
-                        TypeId = BrokerWriterGroupTransportDataType.TypeId,
-                        Body = new BrokerWriterGroupTransportDataType()
+                    ),
+                    TransportSettings = Utils.ToObject(
+                        DataTypeIds.BrokerWriterGroupTransportDataType,
+                        new BrokerWriterGroupTransportDataType()
                         {
                             // have to publish the Data topic name even if the standard topic is used
                             // since the subscriber is expected to use this field to find the data.
@@ -384,12 +391,12 @@ internal class Publisher
                             QueueName = new Topic()
                             {
                                 TopicPrefix = TopicPrefix,
-                                MessageType = MessageTypes.Data,
+                                MessageType = TopicTypes.Data,
                                 PublisherId = PublisherId,
                                 GroupName = GroupName
                             }.Build()
                         }
-                    },
+                    ),
                     DataSetWriters = new List<DataSetWriterDataType>()
                     {
                         new DataSetWriterDataType()
@@ -400,32 +407,30 @@ internal class Publisher
                             Enabled = true,
                             DataSetName = DataSetName,
                             DataSetWriterId = 101, // Unique across all Writers which are part of the Connection.
-                            MessageSettings = new ExtensionObject<JsonDataSetWriterMessageDataType>()
-                            {
-                                TypeId = JsonDataSetWriterMessageDataType.TypeId,
-                                Body = new JsonDataSetWriterMessageDataType()
+                            MessageSettings = Utils.ToObject(
+                                DataTypeIds.JsonDataSetWriterMessageDataType,
+                                new JsonDataSetWriterMessageDataType()
                                 {
-                                     // DataSetWriterId | SequenceNumber | Timestamp | Status | MinorVersion
-                                     DataSetMessageContentMask = 0x01 | 0x04 | 0x08 | 0x10 | 0x400
+                                    // DataSetWriterId | SequenceNumber | Timestamp | Status | MinorVersion
+                                    DataSetMessageContentMask = 0x01 | 0x04 | 0x08 | 0x10 | 0x400
                                 }
-                            },
-                            TransportSettings = new ExtensionObject<BrokerDataSetWriterTransportDataType>()
-                            {
-                                TypeId = BrokerDataSetWriterTransportDataType.TypeId,
-                                Body = new BrokerDataSetWriterTransportDataType()
+                            ),
+                            TransportSettings = Utils.ToObject(
+                                DataTypeIds.BrokerDataSetWriterTransportDataType,
+                                new BrokerDataSetWriterTransportDataType()
                                 {
                                     // have to publish the MetaData topic name even if the standard topic is used
                                     // since the subscriber is expected to use this field to find the metadata. 
                                     MetaDataQueueName = new Topic()
                                     {
                                         TopicPrefix = TopicPrefix,
-                                        MessageType = MessageTypes.DataSetMetaData,
+                                        MessageType = TopicTypes.DataSetMetaData,
                                         PublisherId = PublisherId,
                                         GroupName = GroupName,
                                         WriterName = Writer1Name
                                     }.Build()
                                 }
-                            }
+                            )
                         },
                         new DataSetWriterDataType()
                         {
@@ -435,32 +440,30 @@ internal class Publisher
                             Enabled = true,
                             DataSetName = DataSetName,
                             DataSetWriterId = 201, // Unique across all Writers which are part of the Connection.
-                            MessageSettings = new ExtensionObject<JsonDataSetWriterMessageDataType>()
-                            {
-                                TypeId = JsonDataSetWriterMessageDataType.TypeId,
-                                Body = new JsonDataSetWriterMessageDataType()
+                            MessageSettings = Utils.ToObject(
+                                DataTypeIds.JsonDataSetWriterMessageDataType,
+                                new JsonDataSetWriterMessageDataType()
                                 {
-                                     // DataSetWriterId | SequenceNumber | Timestamp | Status | MinorVersion
-                                     DataSetMessageContentMask = 0x01 | 0x04 | 0x08 | 0x10 | 0x400
+                                    // DataSetWriterId | SequenceNumber | Timestamp | Status | MinorVersion
+                                    DataSetMessageContentMask = 0x01 | 0x04 | 0x08 | 0x10 | 0x400
                                 }
-                            },
-                            TransportSettings = new ExtensionObject<BrokerDataSetWriterTransportDataType>()
-                            {
-                                TypeId = BrokerDataSetWriterTransportDataType.TypeId,
-                                Body = new BrokerDataSetWriterTransportDataType()
+                            ),
+                            TransportSettings = Utils.ToObject(
+                                DataTypeIds.BrokerDataSetWriterTransportDataType,
+                                new BrokerDataSetWriterTransportDataType()
                                 {
                                     // have to publish the MetaData topic name even if the standard topic is used
                                     // since the subscriber is expected to use this field to find the metadata. 
                                     MetaDataQueueName = new Topic()
                                     {
                                         TopicPrefix = TopicPrefix,
-                                        MessageType = MessageTypes.DataSetMetaData,
+                                        MessageType = TopicTypes.DataSetMetaData,
                                         PublisherId = PublisherId,
                                         GroupName = GroupName,
                                         WriterName = Writer2Name
                                     }.Build()
                                 }
-                            }
+                            )
                         }
                     }
                 }
@@ -470,20 +473,20 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.Connection,
+            MessageType = TopicTypes.Connection,
             PublisherId = PublisherId
         }.Build();
 
         JsonPubSubConnectionMessage payload = new()
         {
             MessageId = Guid.NewGuid().ToString(),
-            MessageType = "ua-connection",
+            MessageType = MessageTypes.Connection,
             PublisherId = PublisherId,
             Timestamp = DateTime.UtcNow,
             Connection = connection
         };
 
-        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+        var json = Utils.ToJson(payload);
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -524,13 +527,13 @@ internal class Publisher
             // every 10th message, change the units of power.
             if (count1 % 10 == 0)
             {
-                version.MajorVersion = version.MinorVersion = GetVersionTime();
+                version.MajorVersion = version.MinorVersion = Utils.GetVersionTime();
                 await PublishDataSetMetaData(Writer1Name, DataSetWriter1Id, UnitsOfPower[(unitOfPower++) % 2], version);
             }
 
             if (count2 % 10 == 0)
             {
-                version.MajorVersion = version.MinorVersion = GetVersionTime();
+                version.MajorVersion = version.MinorVersion = Utils.GetVersionTime();
                 await PublishDataSetMetaData(Writer2Name, DataSetWriter2Id, UnitsOfPower[(unitOfPower++) % 2], version);
             }
 
@@ -562,9 +565,10 @@ internal class Publisher
                 }
             };
 
-            NetworkMessage nm = new()
+            JsonNetworkMessage nm = new()
             {
                 MessageId = Guid.NewGuid().ToString(),
+                MessageType = MessageTypes.Data,
                 PublisherId = PublisherId
             };
 
@@ -576,12 +580,12 @@ internal class Publisher
                 case 2: { nm.Messages = new List<JsonDataSetMessage>() { message2 }; count2++; break; }
             }
 
-            var json = JsonSerializer.Serialize(nm, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+            var json = Utils.ToJson(nm);
 
             var topic = new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Data,
+                MessageType = TopicTypes.Data,
                 PublisherId = PublisherId,
                 GroupName = GroupName
             }.Build();

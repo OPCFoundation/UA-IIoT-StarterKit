@@ -26,12 +26,13 @@
  * The complete license agreement can be found here:
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
+using System.Buffers;
 using System.Security.Authentication;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using MQTTnet;
-using MQTTnet.Client;
+using Opc.Ua.WebApi.Model;
 using UaMqttCommon;
 
 await new Subscriber().Connect();
@@ -39,14 +40,14 @@ await new Subscriber().Connect();
 internal class Subscriber
 {
     const string BrokerUrl = "broker.hivemq.com";
-    const string TopicPrefix = "opcua";
+    const string TopicPrefix = "opcua-quickstarts";
 
-    private MqttFactory? m_factory;
+    private MqttClientFactory? m_factory;
     private IMqttClient? m_client;
 
     public async Task Connect()
     {
-        m_factory = new MqttFactory();
+        m_factory = new MqttClientFactory();
 
         using (m_client = m_factory.CreateMqttClient())
         {
@@ -95,14 +96,14 @@ internal class Subscriber
             await Subscribe(new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Status,
+                MessageType = TopicTypes.Status,
                 PublisherId = "#"
             }.Build());
 
             await Subscribe(new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Data,
+                MessageType = TopicTypes.Data,
                 PublisherId = "#"
             }.Build());
 
@@ -137,7 +138,7 @@ internal class Subscriber
 
     private Task HandleData(MqttApplicationMessage message)
     {
-        byte[]? payload = message.PayloadSegment.Array;
+        byte[]? payload = message.Payload.ToArray();
 
         if (payload != null)
         {
@@ -170,7 +171,7 @@ internal class Subscriber
 
     private Task HandleStatus(MqttApplicationMessage message)
     {
-        byte[]? payload = message.PayloadSegment.Array;
+        byte[]? payload = message.Payload.ToArray();
 
         if (payload != null)
         {
@@ -179,7 +180,7 @@ internal class Subscriber
             try
             {
                 var status = (JsonStatusMessage?)JsonSerializer.Deserialize(json, typeof(JsonStatusMessage));
-                Console.WriteLine($"{status?.PublisherId}: Status={((status?.Status != null) ? (PubSubState)status.Status.Value : "")}");
+                Console.WriteLine($"{status?.PublisherId}: Status={((status?.Status != null) ? (PubSubState)status.Status : "")}");
             }
             catch (Exception e)
             {

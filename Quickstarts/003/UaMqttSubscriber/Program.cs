@@ -27,11 +27,10 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 using System.Security.Authentication;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
 using MQTTnet;
-using MQTTnet.Client;
+using Newtonsoft.Json.Linq;
+using Opc.Ua.WebApi;
+using Opc.Ua.WebApi.Model;
 using UaMqttCommon;
 
 await new Subscriber().Connect();
@@ -39,39 +38,39 @@ await new Subscriber().Connect();
 internal class Subscriber
 {
     const string BrokerUrl = "broker.hivemq.com";
-    const string TopicPrefix = "opcua";
+    const string TopicPrefix = "opcua-quickstarts";
 
-    private MqttFactory? m_factory;
-    private IMqttClient? m_client;
+    private MqttClientFactory m_factory;
+    private IMqttClient m_client;
     private readonly Dictionary<string, Writer> m_writers = new();
     private readonly Dictionary<string, Group> m_groups = new();
 
     private class Group
     {
-        public string? PublisherId { get; set; }
-        public string? GroupName { get; set; }
+        public string PublisherId { get; set; }
+        public string GroupName { get; set; }
         public bool HasNetworkMessageHeader { get; set; }
         public bool HasDataSetMessageHeader { get; set; }
         public bool HasMultipleDataSetMessages { get; set; }
-        public string? DataTopic { get; set; }
+        public string DataTopic { get; set; }
         public List<Writer> Writers { get; set; } = new();
     }
 
     private class Writer
     {
-        public string? PublisherId { get; set; }
-        public string? WriterName { get; set; }
+        public string PublisherId { get; set; }
+        public string WriterName { get; set; }
         public int? DataSetWriterId { get; set; }
-        public WriterGroupDataType? WriterGroup { get; set; }
-        public DataSetWriterDataType? DataSetWriter { get; set; }
-        public DataSetMetaDataType? DataSetMetaData { get; set; }
+        public WriterGroupDataType WriterGroup { get; set; }
+        public DataSetWriterDataType DataSetWriter { get; set; }
+        public DataSetMetaDataType DataSetMetaData { get; set; }
         public Dictionary<string, string> EngineeringUnits { get; set; } = new();
-        public string? MetaDataTopic { get; set; }
+        public string MetaDataTopic { get; set; }
     }
 
     public async Task Connect()
     {
-        m_factory = new MqttFactory();
+        m_factory = new MqttClientFactory();
 
         using (m_client = m_factory.CreateMqttClient())
         {
@@ -107,15 +106,15 @@ internal class Subscriber
 
                 Console.WriteLine($"Received on Topic: {topic}");
 
-                if (topic.StartsWith($"{TopicPrefix}/json/{MessageTypes.Status}"))
+                if (topic.StartsWith($"{TopicPrefix}/json/{TopicTypes.Status}"))
                 {
                     await HandleStatus(args.ApplicationMessage);
                 }
-                else if (topic.StartsWith($"{TopicPrefix}/json/{MessageTypes.Connection}"))
+                else if (topic.StartsWith($"{TopicPrefix}/json/{TopicTypes.Connection}"))
                 {
                     await HandleConnection(args.ApplicationMessage);
                 }
-                else if (topic.StartsWith($"{TopicPrefix}/json/{MessageTypes.DataSetMetaData}"))
+                else if (topic.StartsWith($"{TopicPrefix}/json/{TopicTypes.DataSetMetaData}"))
                 {
                     await HandleDataSetMetaData(args.ApplicationMessage);
                 }
@@ -128,7 +127,7 @@ internal class Subscriber
             await Subscribe(new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Status,
+                MessageType = TopicTypes.Status,
                 PublisherId = "#"
             }.Build());
 
@@ -160,6 +159,7 @@ internal class Subscriber
             Console.WriteLine($"Subscribed: '{topic}'.");
         }
     }
+
     private async Task Unsubscribe(string topic)
     {
         if (m_client == null || m_factory == null) throw new InvalidOperationException();
@@ -180,7 +180,7 @@ internal class Subscriber
         }
     }
 
-    private void HandleDataSetMessage(NetworkMessage? nm, JsonDataSetMessage dm)
+    private void HandleDataSetMessage(JsonNetworkMessage nm, JsonDataSetMessage dm)
     {
         var publisherId = $"{dm?.PublisherId ?? nm?.PublisherId}";
 
@@ -192,7 +192,7 @@ internal class Subscriber
         Console.WriteLine($"Timestamp: {dm?.Timestamp:HH:mm:ss.fff}");
         Console.WriteLine(new string('-', 60));
 
-        var data = JsonObject.Parse(((JsonElement)dm?.Payload!).GetRawText());
+        var data = dm?.Payload as JObject;
 
         if (data != null)
         {
@@ -205,7 +205,7 @@ internal class Subscriber
                     Console.WriteLine($"Writer for Data message not found: {writerId}");
                 }
 
-                foreach (var item in data.AsObject())
+                foreach (var item in data)
                 {
                     if (writer != null && writer.EngineeringUnits.TryGetValue(item.Key, out var unit))
                     {
@@ -224,53 +224,47 @@ internal class Subscriber
 
     private Task HandleData(MqttApplicationMessage message)
     {
-        byte[]? payload = message.PayloadSegment.Array;
-
-        if (payload != null)
+        try
         {
-            var json = Encoding.UTF8.GetString(payload);
+            Group group = null;
 
-            try
+            lock (m_writers)
             {
-                Group? group = null;
+                // extract the publisher id and group name from the topic.
+                // if custom topics are used this information need to in NetworkMessage header.
+                var topic = Topic.Parse(message.Topic, TopicPrefix);
+                var groupId = $"{topic.PublisherId}.{topic.GroupName}";
 
-                lock (m_writers)
+                if (!m_groups.TryGetValue(groupId, out group))
                 {
-                    // extract the publisher id and group name from the topic.
-                    // if custom topics are used this information need to in NetworkMessage header.
-                    var topic = Topic.Parse(message.Topic, TopicPrefix);
-                    var groupId = $"{topic.PublisherId}.{topic.GroupName}";
-
-                    if (!m_groups.TryGetValue(groupId, out group))
-                    {
-                        Console.WriteLine($"Writer for Data message not found: {groupId}");
-                        return Task.CompletedTask;
-                    }
+                    Console.WriteLine($"Writer for Data message not found: {groupId}");
+                    return Task.CompletedTask;
                 }
+            }
 
-                // ignore data messages that don't follow the expected profile.
-                if (group.HasNetworkMessageHeader && group.HasMultipleDataSetMessages)
+            // ignore data messages that don't follow the expected profile.
+            if (group.HasNetworkMessageHeader && group.HasMultipleDataSetMessages)
+            {
+                var nm = Utils.FromJson<JsonNetworkMessage>(message.Payload);
+                 
+                if (nm?.Messages != null)
                 {
-                    var nm = NetworkMessage.Parse(json);
+                    var list = nm.Messages as JArray;
 
-                    if (nm?.Messages != null)
+                    if (list != null)
                     {
-                        var list = JsonDataSetMessage.ParseArray(nm.Messages);
-
-                        if (list != null)
+                        foreach (var item in list.OfType<JObject>())
                         {
-                            foreach (var dm in list)
-                            {
-                                HandleDataSetMessage(nm, dm);
-                            }
+                            var dm = Utils.FromJson<JsonDataSetMessage>(item);
+                            HandleDataSetMessage(nm, dm);
                         }
                     }
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Parsing Failed: '{e.Message}' [{json}]");
-            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Parsing Failed: '{e.Message}'");
         }
 
         return Task.CompletedTask;
@@ -278,137 +272,120 @@ internal class Subscriber
 
     private async Task HandleStatus(MqttApplicationMessage message)
     {
-        byte[]? payload = message.PayloadSegment.Array;
-
-        if (payload != null)
+        try
         {
-            var json = Encoding.UTF8.GetString(payload);
+            var status = Utils.FromJson<JsonStatusMessage>(message.Payload);
+            Console.WriteLine($"{status?.PublisherId}: Status={(PubSubState)status.Status}");
 
-            try
+            var connectionTopic = new Topic()
             {
-                var status = (JsonStatusMessage?)JsonSerializer.Deserialize(json, typeof(JsonStatusMessage));
-                Console.WriteLine($"{status?.PublisherId}: Status={((status?.Status != null) ? (PubSubState)status.Status.Value : "")}");
+                TopicPrefix = TopicPrefix,
+                MessageType = TopicTypes.Connection,
+                PublisherId = status?.PublisherId
+            }.Build();
 
-                var connectionTopic = new Topic()
+            if (status?.Status == (int)PubSubState.Operational)
+            {
+                await Subscribe(connectionTopic);
+            }
+            else
+            {
+                await Unsubscribe(connectionTopic);
+
+                // unsubscribe from all data topics for this publisher.
+                List<string> topics = new();
+
+                lock (m_writers)
                 {
-                    TopicPrefix = TopicPrefix,
-                    MessageType = MessageTypes.Connection,
-                    PublisherId = status?.PublisherId
-                }.Build();
-
-                if (status?.Status == (int)PubSubState.Operational)
-                {
-                    await Subscribe(connectionTopic);
-                }
-                else
-                {
-                    await Unsubscribe(connectionTopic);
-
-                    // unsubscribe from all data topics for this publisher.
-                    List<string> topics = new();
-
-                    lock (m_writers)
+                    foreach (var group in m_groups.Values)
                     {
-                        foreach (var group in m_groups.Values)
+                        if (group.PublisherId == status?.PublisherId)
                         {
-                            if (group.PublisherId == status?.PublisherId)
+                            if (group.DataTopic != null)
                             {
-                                if (group.DataTopic != null)
-                                {
-                                    topics.Add(group.DataTopic);
-                                }
+                                topics.Add(group.DataTopic);
+                            }
 
-                                foreach (var writer in group.Writers)
+                            foreach (var writer in group.Writers)
+                            {
+                                if (writer.MetaDataTopic != null)
                                 {
-                                    if (writer.MetaDataTopic != null)
-                                    {
-                                        topics.Add(writer.MetaDataTopic);
-                                    }
+                                    topics.Add(writer.MetaDataTopic);
                                 }
                             }
                         }
                     }
+                }
 
-                    foreach (var topic in topics)
-                    {
-                        await Unsubscribe(topic);
-                    }
+                foreach (var topic in topics)
+                {
+                    await Unsubscribe(topic);
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Parsing Failed: '{e.Message}' [{json}]");
-            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Parsing Failed: '{e.Message}'");
         }
     }
 
     private Task HandleDataSetMetaData(MqttApplicationMessage message)
     {
-        byte[]? payload = message.PayloadSegment.Array;
-
-        if (payload != null)
+        try
         {
-            var json = Encoding.UTF8.GetString(payload);
+            var metadata = Utils.FromJson<JsonDataSetMetaDataMessage>(message.Payload);
+            var writerId = $"{metadata?.PublisherId}.{metadata?.DataSetWriterId}";
+            var source = metadata?.MetaData?.Fields;
 
-            try
+            Console.WriteLine($"DataSetMetaData Message: '{writerId}'");
+
+            if (source != null)
             {
-                var metadata = (JsonDataSetMetaDataMessage?)JsonSerializer.Deserialize(json, typeof(JsonDataSetMetaDataMessage));
-                var writerId = $"{metadata?.PublisherId}.{metadata?.DataSetWriterId}";
-                var source = metadata?.MetaData?.Fields;
-
-                Console.WriteLine($"DataSetMetaData Message: '{writerId}'");
-
-                if (source != null)
+                lock (m_writers)
                 {
-                    lock (m_writers)
+                    if (!m_writers.TryGetValue(writerId, out var writer))
                     {
-                        if (!m_writers.TryGetValue(writerId, out var writer))
+                        writer = new Writer()
                         {
-                            writer = new Writer()
-                            {
-                                PublisherId = metadata?.PublisherId,
-                                DataSetMetaData = metadata?.MetaData
-                            };
+                            PublisherId = metadata?.PublisherId,
+                            DataSetMetaData = metadata?.MetaData
+                        };
 
-                            m_writers[writerId] = writer;
-                        }
-
-                        Dictionary<string, string> fields = writer.EngineeringUnits;
-
-                        foreach (var field in source)
-                        {
-                            if (field.Name == null || field.Properties == null)
-                            {
-                                continue;
-                            }
-
-                            var value = field.Properties
-                                .Where(x => x.Key?.Name == "EngineeringUnits")
-                                .Select(x => x.Value)
-                                .FirstOrDefault();
-
-                            if (value != null)
-                            {
-                                if (value.Type == (int)BuiltInType.ExtensionObject && value.Body != null)
-                                {
-                                    var eu = EUInformation.FromExtensionObject((JsonElement)value.Body);
-
-                                    if (eu != null)
-                                    {
-                                        fields[field.Name] = eu.DisplayName?.Text ?? String.Empty;
-                                    }
-                                }
-                            }
-                        }
-
-                        writer.EngineeringUnits = fields;
+                        m_writers[writerId] = writer;
                     }
+
+                    Dictionary<string, string> fields = writer.EngineeringUnits;
+
+                    foreach (var field in source)
+                    {
+                        if (field.Name == null || field.Properties == null)
+                        {
+                            continue;
+                        }
+
+                        var value = field.Properties
+                            .Where(x => x.Key == BrowseNames.EngineeringUnits)
+                            .Select(x => x.Value)
+                            .FirstOrDefault();
+
+                        if (value?.UaType == (int)BuiltInType.ExtensionObject && value?.Value is JObject element)
+                        {
+                            var eu = ((JObject)value.Value).ToObject<EUInformation>();
+
+                            if (eu != null)
+                            {
+                                fields[field.Name] = eu.DisplayName?.Text ?? String.Empty;
+                            }
+                        }
+                    }
+
+                    writer.EngineeringUnits = fields;
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Parsing Failed: '{e.Message}' [{json}]");
-            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Parsing Failed: '{e.Message}'");
         }
 
         return Task.CompletedTask;
@@ -416,23 +393,15 @@ internal class Subscriber
 
     public async Task HandleConnection(MqttApplicationMessage message)
     {
-        byte[]? payload = message.PayloadSegment.Array;
-
-        if (payload == null)
-        {
-            return;
-        }
-
-        JsonPubSubConnectionMessage? connection;
-        var json = Encoding.UTF8.GetString(payload);
+        JsonPubSubConnectionMessage connection;
 
         try
         {
-            connection = (JsonPubSubConnectionMessage?)JsonSerializer.Deserialize(json, typeof(JsonPubSubConnectionMessage));
+            connection = Utils.FromJson<JsonPubSubConnectionMessage>(message.Payload);
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Parsing Failed: '{e.Message}' [{json}]");
+            Console.WriteLine($"Parsing Failed: '{e.Message}'");
             return;
         }
 
@@ -441,7 +410,7 @@ internal class Subscriber
             foreach (var ii in connection.Connection.WriterGroups)
             {
                 var groupId = $"{connection?.PublisherId}.{ii?.Name}";
-                Group? group = null;
+                Group group = null;
 
                 lock (m_writers)
                 {
@@ -462,27 +431,38 @@ internal class Subscriber
                 group.HasMultipleDataSetMessages = false;
                 group.DataTopic = null;
 
-                if (ii?.MessageSettings?.Body != null)
+                if (ii?.MessageSettings != null)
                 {
-                    var mask = ii?.MessageSettings?.Body?.NetworkMessageContentMask;
-                    group.HasNetworkMessageHeader = (mask & 0x01) != 0;
-                    group.HasDataSetMessageHeader = (mask & 0x02) != 0;
-                    group.HasMultipleDataSetMessages = (mask & 0x04) == 0;
+                    if (ii?.MessageSettings is JObject item)
+                    {
+                        var wgms = Utils.FromJson<JsonWriterGroupMessageDataType>(item);
+                        var mask = wgms?.NetworkMessageContentMask;
+                        group.HasNetworkMessageHeader = (mask & 0x01) != 0;
+                        group.HasDataSetMessageHeader = (mask & 0x02) != 0;
+                        group.HasMultipleDataSetMessages = (mask & 0x04) == 0;
+                    }
                 }
 
                 // this quickstart is only interested in data messages with multiple messages.
                 if (group.HasMultipleDataSetMessages && group.HasNetworkMessageHeader)
                 {
-                    group.DataTopic =
-                        ii?.TransportSettings?.Body?.QueueName
-                        ?? new Topic()
+                    if (ii?.TransportSettings is JObject item)
+                    {
+                        var wgts = Utils.FromJson<BrokerWriterGroupTransportDataType>(item);
+                        group.DataTopic = wgts?.QueueName;
+                    }
+
+                    if (group.DataTopic == null)
+                    {
+                        group.DataTopic = new Topic()
                         {
                             TopicPrefix = TopicPrefix,
-                            MessageType = MessageTypes.Data,
+                            MessageType = TopicTypes.Data,
                             PublisherId = connection?.PublisherId,
                             GroupName = ii?.Name,
                             WriterName = "#"
                         }.Build();
+                    }
 
                     await Subscribe(group.DataTopic);
                 }
@@ -491,16 +471,25 @@ internal class Subscriber
                 {
                     foreach (var jj in ii.DataSetWriters)
                     {
-                        var metadataTopic =
-                            jj?.TransportSettings?.Body?.MetaDataQueueName
-                            ?? new Topic()
+                        string metadataTopic = null;
+
+                        if (ii?.TransportSettings is JObject item)
+                        {
+                            var dswts = Utils.FromJson<BrokerDataSetWriterTransportDataType>(item);
+                            metadataTopic = dswts?.MetaDataQueueName;
+                        }
+
+                        if (metadataTopic == null)
+                        {
+                            metadataTopic = new Topic()
                             {
                                 TopicPrefix = TopicPrefix,
-                                MessageType = MessageTypes.Data,
+                                MessageType = TopicTypes.DataSetMetaData,
                                 PublisherId = connection?.PublisherId,
                                 GroupName = ii?.Name,
                                 WriterName = jj?.Name
                             }.Build();
+                        }
 
                         lock (m_writers)
                         {

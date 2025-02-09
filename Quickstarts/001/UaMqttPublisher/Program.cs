@@ -30,8 +30,8 @@ using System.Security.Authentication;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MQTTnet;
-using MQTTnet.Client;
 using MQTTnet.Formatter;
+using Opc.Ua.WebApi.Model;
 using UaMqttCommon;
 using UaMqttPublisher;
 
@@ -39,31 +39,44 @@ await new Publisher().Connect();
 
 internal class Publisher
 {
-    const string BrokerUrl = "broker.hivemq.com";
-    const string TopicPrefix = "opcua";
-    const string PublisherId = "(Quickstart001)";
+    readonly Configuration m_configuration = new Configuration()
+    {
+        BrokerHost = "broker.hivemq.com",
+        BrokerPort = 1883,
+        TopicPrefix = "opcua-quickstarts",
+        PublisherId = "Quickstart001"
+    };
+
+    string BrokerUrl => m_configuration.BrokerHost;
+    string TopicPrefix => m_configuration.TopicPrefix;
+    string PublisherId => m_configuration.PublisherId;
+    
     const string GroupName = "Conveyor";
     const string WriterName = "Motor";
 
-    private MqttFactory? m_factory;
+    private MqttClientFactory? m_factory;
     private IMqttClient? m_client;
 
     public async Task Connect()
     {
-        m_factory = new MqttFactory();
+        // cleans up topics. useful when developing/testing. not used for production.
+        await Utils.DeleteAllTopics(m_configuration, 5000, CancellationToken.None);
+
+        m_factory = new MqttClientFactory();
 
         using (m_client = m_factory.CreateMqttClient())
         {
             var willTopic = new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Status,
+                MessageType = TopicTypes.Status,
                 PublisherId = PublisherId
             }.Build();
 
             JsonStatusMessage willPayload = new()
             {
                 MessageId = Guid.NewGuid().ToString(),
+                MessageType = MessageTypes.Status,
                 PublisherId = PublisherId,
                 Status = (int)PubSubState.Error,
                 IsCyclic = false
@@ -119,13 +132,14 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.Status,
+            MessageType = TopicTypes.Status,
             PublisherId = PublisherId
         }.Build();
 
         JsonStatusMessage payload = new()
         {
             MessageId = Guid.NewGuid().ToString(),
+            MessageType = MessageTypes.Status,
             PublisherId = PublisherId,
             Status = (int)state,
             IsCyclic = false
@@ -160,7 +174,7 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.Data,
+            MessageType = TopicTypes.Data,
             PublisherId = PublisherId,
             GroupName = GroupName,
             WriterName = WriterName

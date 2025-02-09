@@ -30,7 +30,6 @@ using System.Security.Authentication;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MQTTnet;
-using MQTTnet.Client;
 using MQTTnet.Formatter;
 using Opc.Ua;
 using UaMqttCommon;
@@ -49,14 +48,25 @@ using PubSubConnectionDataType = Opc.Ua.PubSubConnectionDataType;
 using PubSubState = Opc.Ua.PubSubState;
 using QualifiedName = Opc.Ua.QualifiedName;
 using WriterGroupDataType = Opc.Ua.WriterGroupDataType;
+using WebApi = Opc.Ua.WebApi.Model;
+using Utils = UaMqttCommon.Utils;
 
 await new Publisher().Connect();
 
 internal class Publisher
 {
-    const string BrokerUrl = "broker.hivemq.com";
-    const string TopicPrefix = "opcua";
-    const string PublisherId = "(Quickstart004)";
+    readonly Configuration m_configuration = new Configuration()
+    {
+        BrokerHost = "broker.hivemq.com",
+        BrokerPort = 1883,
+        TopicPrefix = "opcua-quickstarts",
+        PublisherId = "Quickstart004"
+    };
+
+    string BrokerUrl => m_configuration.BrokerHost;
+    string TopicPrefix => m_configuration.TopicPrefix;
+    string PublisherId => m_configuration.PublisherId;
+
     const string GroupName = "Conveyor";
     const string WriterName = "Motor";
     const string DataSetName = "EnergyMetrics";
@@ -70,7 +80,7 @@ internal class Publisher
     const int KeepAliveCount = 3;
     const int KeyFrameCount = 12;
 
-    private MqttFactory m_factory;
+    private MqttClientFactory m_factory;
     private IMqttClient m_client;
     private readonly object m_lock = new();
     private Dictionary<string, CachedValue> m_cache;
@@ -82,18 +92,18 @@ internal class Publisher
 
     public async Task Connect()
     {
-        m_factory = new MqttFactory();
+        m_factory = new MqttClientFactory();
 
         using (m_client = m_factory.CreateMqttClient())
         {
             var willTopic = new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Status,
+                MessageType = TopicTypes.Status,
                 PublisherId = PublisherId
             }.Build();
 
-            JsonStatusMessage willPayload = new()
+            Opc.Ua.WebApi.Model.JsonStatusMessage willPayload = new()
             {
                 MessageId = Guid.NewGuid().ToString(),
                 PublisherId = PublisherId,
@@ -101,7 +111,7 @@ internal class Publisher
                 IsCyclic = false
             };
 
-            var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+            var json = Utils.ToJson(willPayload);
 
             var options = new MqttClientOptionsBuilder()
                 .WithProtocolVersion(MqttProtocolVersion.V500)
@@ -236,11 +246,11 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.Status,
+            MessageType = TopicTypes.Status,
             PublisherId = PublisherId
         }.Build();
 
-        JsonStatusMessage payload = new()
+        WebApi.JsonStatusMessage payload = new()
         {
             MessageId = Guid.NewGuid().ToString(),
             PublisherId = PublisherId,
@@ -248,7 +258,7 @@ internal class Publisher
             IsCyclic = false
         };
 
-        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+        var json = Utils.ToJson(payload);
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -336,13 +346,13 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.DataSetMetaData,
+            MessageType = TopicTypes.DataSetMetaData,
             PublisherId = PublisherId,
             GroupName = GroupName,
             WriterName = WriterName
         }.Build();
 
-        JsonEncoder encoder = new(MessageContext, true);
+        JsonEncoder encoder = new(MessageContext, JsonEncodingType.Compact);
 
         encoder.WriteGuid("MessageId", Guid.NewGuid());
         encoder.WriteString("MessageType","ua-metadata");
@@ -405,7 +415,7 @@ internal class Publisher
                             QueueName = new Topic()
                             {
                                 TopicPrefix = TopicPrefix,
-                                MessageType = MessageTypes.Data,
+                                MessageType = TopicTypes.Data,
                                 PublisherId = PublisherId,
                                 GroupName = GroupName
                             }.Build()
@@ -436,7 +446,7 @@ internal class Publisher
                                     MetaDataQueueName = new Topic()
                                     {
                                         TopicPrefix = TopicPrefix,
-                                        MessageType = MessageTypes.DataSetMetaData,
+                                        MessageType = TopicTypes.DataSetMetaData,
                                         PublisherId = PublisherId,
                                         GroupName = GroupName,
                                         WriterName = WriterName
@@ -452,11 +462,11 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.Connection,
+            MessageType = TopicTypes.Connection,
             PublisherId = PublisherId
         }.Build();
 
-        JsonEncoder encoder = new(MessageContext, true);
+        JsonEncoder encoder = new(MessageContext, JsonEncodingType.Compact);
 
         encoder.WriteGuid("MessageId", Guid.NewGuid());
         encoder.WriteString("MessageType", "ua-connection");
@@ -500,7 +510,7 @@ internal class Publisher
         {
             await PublishDataSetMetaData(count);
 
-            JsonEncoder encoder = new(MessageContext, true);
+            JsonEncoder encoder = new(MessageContext, JsonEncodingType.Verbose);
 
             encoder.WriteUInt16("DataSetWriterId", DataSetWriterId);
             encoder.WriteString("PublisherId", PublisherId);
@@ -553,7 +563,7 @@ internal class Publisher
             var topic = new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Data,
+                MessageType = TopicTypes.Data,
                 PublisherId = PublisherId,
                 GroupName = GroupName
             }.Build();

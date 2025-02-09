@@ -27,21 +27,30 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 using System.Security.Authentication;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using MQTTnet;
-using MQTTnet.Client;
 using MQTTnet.Formatter;
+using Opc.Ua.WebApi;
+using Opc.Ua.WebApi.Model;
 using UaMqttCommon;
 using UaMqttPublisher;
+using KeyValuePair = Opc.Ua.WebApi.Model.KeyValuePair;
 
 await new Publisher().Connect();
 
 internal class Publisher
 {
-    const string BrokerUrl = "broker.hivemq.com";
-    const string TopicPrefix = "opcua";
-    const string PublisherId = "(Quickstart002)";
+    readonly Configuration m_configuration = new Configuration()
+    {
+        BrokerHost = "broker.hivemq.com",
+        BrokerPort = 1883,
+        TopicPrefix = "opcua-quickstarts",
+        PublisherId = "Quickstart002"
+    };
+
+    string BrokerUrl => m_configuration.BrokerHost;
+    string TopicPrefix => m_configuration.TopicPrefix;
+    string PublisherId => m_configuration.PublisherId;
+
     const string GroupName = "Conveyor";
     const string WriterName = "Motor";
     const string DataSetName = "EnergyMetrics";
@@ -65,31 +74,35 @@ internal class Publisher
         }
     };
 
-    private MqttFactory? m_factory;
+    private MqttClientFactory? m_factory;
     private IMqttClient? m_client;
 
     public async Task Connect()
     {
-        m_factory = new MqttFactory();
+        // cleans up topics. useful when developing/testing. not used for production.
+        await Utils.DeleteAllTopics(m_configuration, 5000, CancellationToken.None);
+
+        m_factory = new MqttClientFactory();
 
         using (m_client = m_factory.CreateMqttClient())
         {
             var willTopic = new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Status,
+                MessageType = TopicTypes.Status,
                 PublisherId = PublisherId
             }.Build();
 
             JsonStatusMessage willPayload = new()
             {
                 MessageId = Guid.NewGuid().ToString(),
+                MessageType = MessageTypes.Status,
                 PublisherId = PublisherId,
                 Status = (int)PubSubState.Error,
                 IsCyclic = false
             };
 
-            var json = JsonSerializer.Serialize(willPayload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+            var json = Utils.ToJson(willPayload);
 
             var options = new MqttClientOptionsBuilder()
                 .WithProtocolVersion(MqttProtocolVersion.V500)
@@ -134,11 +147,6 @@ internal class Publisher
         }
     }
 
-    private static int GetVersionTime()
-    {
-        return (int)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-    }
-
     private async Task PublishStatus(PubSubState state)
     {
         if (m_client == null || m_factory == null) throw new InvalidOperationException();
@@ -146,19 +154,20 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.Status,
+            MessageType = TopicTypes.Status,
             PublisherId = PublisherId
         }.Build();
 
         JsonStatusMessage payload = new()
         {
             MessageId = Guid.NewGuid().ToString(),
+            MessageType = MessageTypes.Status,
             PublisherId = PublisherId,
             Status = (int)state,
             IsCyclic = false
         };
 
-        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+        var json = Utils.ToJson(payload);
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -185,7 +194,7 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.DataSetMetaData,
+            MessageType = TopicTypes.DataSetMetaData,
             PublisherId = PublisherId,
             GroupName = GroupName,
             WriterName = WriterName
@@ -217,7 +226,7 @@ internal class Publisher
         {
             Name = DataSetName, // same name appears in the DataSetWriter.
             ConfigurationVersion = version,
-            DataSetClassId = EnergyMetrics.DataSetClassId.ToString(), // Used to indicate that many DataSetWriters report the same data.
+            DataSetClassId = EnergyMetrics.DataSetClassId, // Used to indicate that many DataSetWriters report the same data.
             Description = new LocalizedText() { Text = "A set of energy consumption metrics for a device." },
             Fields = new List<FieldMetaData>()
             {
@@ -225,22 +234,21 @@ internal class Publisher
                 {
                     Name = "Consumption",
                     BuiltInType = (int)BuiltInType.Double,
-                    DataType = new NodeId((int)BuiltInType.Double),
+                    DataType = DataTypeIds.Double,
                     Description = new LocalizedText() { Text = "The energy consumed by the device during the calculation period." },
                     ValueRank = -1,
-                    Properties = new List<UaMqttCommon.KeyValuePair>()
+                    Properties = new List<KeyValuePair>()
                     {
-                        new UaMqttCommon.KeyValuePair()
+                        new KeyValuePair()
                         {
-                            Key = new QualifiedName() { Name = "EngineeringUnits" },
+                            Key = BrowseNames.EngineeringUnits,
                             Value = new Variant()
                             {
-                                Type = (int)BuiltInType.ExtensionObject,
-                                Body = new ExtensionObject<EUInformation>()
-                                {
-                                    TypeId = EUInformation.TypeId,
-                                    Body = unitOfPower
-                                }
+                                UaType = (int)BuiltInType.ExtensionObject,
+                                Value = Utils.ToObject(
+                                    DataTypeIds.EUInformation,
+                                    unitOfPower
+                                )
                             }
                         }
                     }
@@ -249,28 +257,26 @@ internal class Publisher
                 {
                     Name = "DutyCycle",
                     BuiltInType = (int)BuiltInType.Float,
-                    DataType = new NodeId((int)BuiltInType.Float),
+                    DataType = DataTypeIds.Float,
                     Description = new LocalizedText() { Text = "The fraction of the calulation period where the device is consuming power." },
                     ValueRank = -1,
-                    Properties = new List<UaMqttCommon.KeyValuePair>()
+                    Properties = new List<KeyValuePair>()
                     {
-                        new UaMqttCommon.KeyValuePair()
+                        new KeyValuePair()
                         {
-                            Key = new QualifiedName() { Name = "EngineeringUnits" },
+                            Key = BrowseNames.EngineeringUnits,
                             Value = new Variant()
                             {
-                                Type = (int)BuiltInType.ExtensionObject,
-                                Body = new ExtensionObject<EUInformation>()
-                                {
-                                    TypeId = EUInformation.TypeId,
-                                    Body = new EUInformation()
-                                    {
+                                UaType = (int)BuiltInType.ExtensionObject,
+                                Value = Utils.ToObject(
+                                    DataTypeIds.EUInformation,
+                                    new EUInformation(){ 
                                         NamespaceUri = "http://www.opcfoundation.org/UA/units/un/cefact",
                                         UnitId = 20529,
                                         DisplayName = new LocalizedText() { Text = "%" },
                                         Description = new LocalizedText() { Text = "percent" }
                                     }
-                                }
+                                )
                             }
                         }
                     }
@@ -279,28 +285,26 @@ internal class Publisher
                 {
                     Name = "CalculationPeriod",
                     BuiltInType = (int)BuiltInType.Double,
-                    DataType = new NodeId((int)BuiltInType.Double),
+                    DataType = DataTypeIds.Double,
                     Description = new LocalizedText() { Text = "The period, in ms, over which power calculations are computed." },
                     ValueRank = -1,
-                    Properties = new List<UaMqttCommon.KeyValuePair>()
+                    Properties = new List<KeyValuePair>()
                     {
-                        new UaMqttCommon.KeyValuePair()
+                        new KeyValuePair()
                         {
-                            Key = new QualifiedName() { Name = "EngineeringUnits" },
+                            Key = BrowseNames.EngineeringUnits,
                             Value = new Variant()
                             {
-                                Type = (int)BuiltInType.ExtensionObject,
-                                Body = new ExtensionObject<EUInformation>()
-                                {
-                                    TypeId = EUInformation.TypeId,
-                                    Body = new EUInformation()
-                                    {
+                                UaType = (int)BuiltInType.ExtensionObject,
+                                Value = Utils.ToObject(
+                                    DataTypeIds.EUInformation,
+                                    new EUInformation(){
                                         NamespaceUri = "http://www.opcfoundation.org/UA/units/un/cefact",
                                         UnitId = 4403766,
                                         DisplayName = new LocalizedText() { Text = "ms" },
                                         Description = new LocalizedText() { Text = "millisecond" }
                                     }
-                                }
+                                )
                             }
                         }
                     }
@@ -311,7 +315,7 @@ internal class Publisher
         var topic = new Topic()
         {
             TopicPrefix = TopicPrefix,
-            MessageType = MessageTypes.DataSetMetaData,
+            MessageType = TopicTypes.DataSetMetaData,
             PublisherId = PublisherId,
             GroupName = GroupName,
             WriterName = WriterName
@@ -320,12 +324,13 @@ internal class Publisher
         var payload = new JsonDataSetMetaDataMessage()
         {
             MessageId = Guid.NewGuid().ToString(),
+            MessageType = MessageTypes.DataSetMetaData,
             PublisherId = PublisherId,
             DataSetWriterId = DataSetWriterId,
             MetaData = metadata
         };
 
-        var json = JsonSerializer.Serialize(payload, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+        var json = Utils.ToJson(payload);
 
         var applicationMessage = new MqttApplicationMessageBuilder()
             .WithTopic(topic)
@@ -363,7 +368,7 @@ internal class Publisher
             // every 10th message, change the units of power.
             if (count % 10 == 0)
             {
-                version.MajorVersion = version.MinorVersion = GetVersionTime();
+                version.MajorVersion = version.MinorVersion = Utils.GetVersionTime();
                 await PublishDataSetMetaData(UnitsOfPower[(unitOfPower++) % 2], version);
             }
 
@@ -384,12 +389,12 @@ internal class Publisher
                 Payload = data
             };
 
-            var json = JsonSerializer.Serialize(message, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault });
+            var json = Utils.ToJson(message);
 
             var topic = new Topic()
             {
                 TopicPrefix = TopicPrefix,
-                MessageType = MessageTypes.Data,
+                MessageType = TopicTypes.Data,
                 PublisherId = PublisherId,
                 GroupName = GroupName,
                 WriterName = WriterName
