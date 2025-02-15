@@ -15,6 +15,7 @@ namespace UaPubSubCommon
         public string TopicPrefix { get; set; }
         public string PublisherId { get; set; }
         public bool UseNewEncodings { get; set; }
+        public bool EnableCompression { get; set; }
         public ApplicationDescription ApplicationDescription { get; set; }
         
         public static string GetPrivateHostName()

@@ -203,6 +203,14 @@ namespace UaSubscriber
 
             if (writer.MetaData?.ConfigurationVersion == null || !writer.MetaData.ConfigurationVersion.Equals(message.MetaData.ConfigurationVersion))
             {
+                if (message.MetaData.Namespaces != null)
+                {
+                    foreach (var ns in message.MetaData.Namespaces)
+                    {
+                        m_messageContext.NamespaceUris.GetIndexOrAppend(ns);
+                    }
+                }
+
                 writer.Fields = new();
 
                 if (message.MetaData?.Fields != null)
@@ -303,11 +311,11 @@ namespace UaSubscriber
                         writer2.Name = writer.Name;
                         writer2.GroupName = group.Name;
                         writer2.DataSetName = writer.DataSetName;
-                        writer2.DataTopic = writerSettings?.QueueName ?? groupSettings?.QueueName;
+                        writer2.DataTopic = (!String.IsNullOrWhiteSpace(writerSettings.QueueName)) ? writerSettings?.QueueName : groupSettings?.QueueName;
                         writer2.MetaDataTopic = writerSettings?.MetaDataQueueName;
 
-                        m_topics[writer2.DataTopic] = true;
-                        m_topics[writer2.MetaDataTopic] = true;
+                        m_topics[writer2.DataTopic] = !String.IsNullOrEmpty(writer2.DataTopic);
+                        m_topics[writer2.MetaDataTopic] = !String.IsNullOrEmpty(writer2.MetaDataTopic);
 
                         sb.AppendLine($"   {writer2.GroupName}.{writer2.Name}");
                     }

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text;
 
 namespace UaPubSubCommon
 {
@@ -8,7 +9,7 @@ namespace UaPubSubCommon
         private static bool m_enableBuffering = false;
 
         public static LogLevel LogLevel = LogLevel.Debug;
-        
+
         public static bool EnableBuffering
         {
             get { return m_enableBuffering; }
@@ -62,36 +63,41 @@ namespace UaPubSubCommon
 
         private static void InternalOut(LogLevel level, string message, params string[] args)
         {
-            var text = message;
+            Console.OutputEncoding = Encoding.UTF8;
 
-            if (args?.Length > 0)
+            lock (m_buffer)
             {
-                text = String.Format(CultureInfo.InvariantCulture, message, args);
-            }
+                var text = message;
 
-            var color = Console.ForegroundColor;
-
-            try
-            {
-                switch (level)
+                if (args?.Length > 0)
                 {
-                    default:
-                    case LogLevel.Debug: { Console.ForegroundColor = ConsoleColor.Gray; break; }
-                    case LogLevel.Verbose: { Console.ForegroundColor = ConsoleColor.DarkYellow; break; }
-                    case LogLevel.Info: { Console.ForegroundColor = ConsoleColor.Green; break; }
-                    case LogLevel.System: { Console.ForegroundColor = ConsoleColor.Cyan; break; }
-                    case LogLevel.Warning: { Console.ForegroundColor = ConsoleColor.Yellow; break; }
-                    case LogLevel.Error: { Console.ForegroundColor = ConsoleColor.Red; break; }
+                    text = String.Format(CultureInfo.InvariantCulture, message, args);
                 }
 
-                if (LogLevel >= level)
+                var color = Console.ForegroundColor;
+
+                try
                 {
-                    Console.WriteLine(text);
+                    switch (level)
+                    {
+                        default:
+                        case LogLevel.Debug: { Console.ForegroundColor = ConsoleColor.Gray; break; }
+                        case LogLevel.Verbose: { Console.ForegroundColor = ConsoleColor.DarkYellow; break; }
+                        case LogLevel.Info: { Console.ForegroundColor = ConsoleColor.Green; break; }
+                        case LogLevel.System: { Console.ForegroundColor = ConsoleColor.Cyan; break; }
+                        case LogLevel.Warning: { Console.ForegroundColor = ConsoleColor.Yellow; break; }
+                        case LogLevel.Error: { Console.ForegroundColor = ConsoleColor.Red; break; }
+                    }
+
+                    if (LogLevel >= level)
+                    {
+                        Console.WriteLine(text);
+                    }
                 }
-            }
-            finally
-            {
-                Console.ForegroundColor = color;
+                finally
+                {
+                    Console.ForegroundColor = color;
+                }
             }
         }
     }

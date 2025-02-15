@@ -16,16 +16,34 @@ try
     var configuration = new Configuration()
     {
         BrokerHost = "iop-gateway-germany.opcfoundation.org",
-        BrokerPort = 1883,
+        BrokerPort = 8883,
+        UseTls = true,
         UserName = "iopuser",
         Password = "iop-opc",
-        TopicPrefix = "opcua-test",
+        TopicPrefix = "opcua",
         PublisherId = "opcf-iiot-kit-requestor",
         UseNewEncodings = true
     };
 
     Log.System("Use Ctrl-C or Ctrl-Break or exit program.");
-    await new Subscriber(configuration, false).Connect(token);
+
+    bool isResponder = false;
+    string targetPublisherId = "unified-cpp-md";
+
+    for (int ii = 0; ii < args.Length; ii++)
+    {
+        switch (args[ii])
+        {
+            case "--responder": { isResponder = true; break; }
+            case "--target": { targetPublisherId = (ii + 1 < args.Length) ? args[ii + 1] : null; break; }
+        }
+    }
+
+    await new Subscriber(
+        configuration, 
+        isResponder, 
+        targetPublisherId
+    ).Connect(token);
 }
 catch (AggregateException e)
 {

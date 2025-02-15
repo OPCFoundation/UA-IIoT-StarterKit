@@ -18,9 +18,10 @@ var configuration = new Configuration()
     UseTls = true,
     UserName = "iopuser",
     Password = "iop-opc",
-    TopicPrefix = "opcua-test",
+    TopicPrefix = "opcua",
     PublisherId = "opcf-iiot-kit-dotnet",
     UseNewEncodings = true,
+    EnableCompression = true
 };
 
 configuration.ApplicationDescription = new()

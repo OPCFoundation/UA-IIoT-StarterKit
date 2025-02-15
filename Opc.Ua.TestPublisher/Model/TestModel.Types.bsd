@@ -1,0 +1,228 @@
+<opc:TypeDictionary
+  xmlns:opc="http://opcfoundation.org/BinarySchema/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ua="http://opcfoundation.org/UA/"
+  xmlns:tns="urn:opcfoundation.org:2024-01:TestModel"
+  DefaultByteOrder="LittleEndian"
+  TargetNamespace="urn:opcfoundation.org:2024-01:TestModel"
+>
+  <opc:Import Namespace="http://opcfoundation.org/UA/" Location="Opc.Ua.BinarySchema.bsd"/>
+
+  <opc:StructuredType Name="AbstractStructure" BaseType="ua:ExtensionObject">
+    <opc:Field Name="A" TypeName="opc:Int16" />
+    <opc:Field Name="B" TypeName="opc:Double" />
+    <opc:Field Name="C" TypeName="opc:String" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="ConcreteStructure" BaseType="tns:AbstractStructure">
+    <opc:Field Name="A" TypeName="opc:Int16" SourceType="tns:AbstractStructure" />
+    <opc:Field Name="B" TypeName="opc:Double" SourceType="tns:AbstractStructure" />
+    <opc:Field Name="C" TypeName="opc:String" SourceType="tns:AbstractStructure" />
+    <opc:Field Name="D" TypeName="opc:Int16" />
+    <opc:Field Name="E" TypeName="opc:Double" />
+    <opc:Field Name="F" TypeName="opc:String" />
+  </opc:StructuredType>
+
+  <opc:EnumeratedType Name="EnumerationWithGaps" LengthInBits="32">
+    <opc:EnumeratedValue Name="Invalid" Value="0" />
+    <opc:EnumeratedValue Name="Red" Value="1" />
+    <opc:EnumeratedValue Name="Green" Value="2" />
+    <opc:EnumeratedValue Name="Blue" Value="6" />
+  </opc:EnumeratedType>
+
+  <opc:StructuredType Name="ScalarStructure" BaseType="ua:ExtensionObject">
+    <opc:Field Name="A" TypeName="opc:Boolean" />
+    <opc:Field Name="B" TypeName="opc:SByte" />
+    <opc:Field Name="C" TypeName="opc:Byte" />
+    <opc:Field Name="D" TypeName="opc:Int16" />
+    <opc:Field Name="E" TypeName="opc:UInt16" />
+    <opc:Field Name="F" TypeName="opc:Int32" />
+    <opc:Field Name="G" TypeName="opc:UInt32" />
+    <opc:Field Name="H" TypeName="opc:Int64" />
+    <opc:Field Name="I" TypeName="opc:UInt64" />
+    <opc:Field Name="J" TypeName="opc:Float" />
+    <opc:Field Name="K" TypeName="opc:Double" />
+    <opc:Field Name="L" TypeName="opc:Guid" />
+    <opc:Field Name="M" TypeName="opc:DateTime" />
+    <opc:Field Name="N" TypeName="opc:String" />
+    <opc:Field Name="O" TypeName="opc:ByteString" />
+    <opc:Field Name="P" TypeName="ua:NodeId" />
+    <opc:Field Name="Q" TypeName="ua:ExpandedNodeId" />
+    <opc:Field Name="R" TypeName="ua:QualifiedName" />
+    <opc:Field Name="S" TypeName="ua:LocalizedText" />
+    <opc:Field Name="T" TypeName="ua:StatusCode" />
+    <opc:Field Name="U" TypeName="ua:XmlElement" />
+    <opc:Field Name="V" TypeName="tns:ConcreteStructure" />
+    <opc:Field Name="W" TypeName="tns:EnumerationWithGaps" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="ScalarStructureWithAllowSubtypes" BaseType="tns:ScalarStructure">
+    <opc:Field Name="A" TypeName="opc:Boolean" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="B" TypeName="opc:SByte" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="C" TypeName="opc:Byte" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="D" TypeName="opc:Int16" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="E" TypeName="opc:UInt16" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="F" TypeName="opc:Int32" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="G" TypeName="opc:UInt32" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="H" TypeName="opc:Int64" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="I" TypeName="opc:UInt64" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="J" TypeName="opc:Float" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="K" TypeName="opc:Double" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="L" TypeName="opc:Guid" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="M" TypeName="opc:DateTime" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="N" TypeName="opc:String" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="O" TypeName="opc:ByteString" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="P" TypeName="ua:NodeId" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="Q" TypeName="ua:ExpandedNodeId" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="R" TypeName="ua:QualifiedName" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="S" TypeName="ua:LocalizedText" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="T" TypeName="ua:StatusCode" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="U" TypeName="ua:XmlElement" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="V" TypeName="tns:ConcreteStructure" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="W" TypeName="tns:EnumerationWithGaps" SourceType="tns:ScalarStructure" />
+    <opc:Field Name="X" TypeName="ua:DataValue" />
+    <opc:Field Name="Y" TypeName="ua:Variant" />
+    <opc:Field Name="Z" TypeName="ua:ExtensionObject" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="ArrayStructure" BaseType="ua:ExtensionObject">
+    <opc:Field Name="NoOfA" TypeName="opc:Int32" />
+    <opc:Field Name="A" TypeName="opc:Boolean" LengthField="NoOfA" />
+    <opc:Field Name="NoOfB" TypeName="opc:Int32" />
+    <opc:Field Name="B" TypeName="opc:SByte" LengthField="NoOfB" />
+    <opc:Field Name="NoOfC" TypeName="opc:Int32" />
+    <opc:Field Name="C" TypeName="opc:Byte" LengthField="NoOfC" />
+    <opc:Field Name="NoOfD" TypeName="opc:Int32" />
+    <opc:Field Name="D" TypeName="opc:Int16" LengthField="NoOfD" />
+    <opc:Field Name="NoOfE" TypeName="opc:Int32" />
+    <opc:Field Name="E" TypeName="opc:UInt16" LengthField="NoOfE" />
+    <opc:Field Name="NoOfF" TypeName="opc:Int32" />
+    <opc:Field Name="F" TypeName="opc:Int32" LengthField="NoOfF" />
+    <opc:Field Name="NoOfG" TypeName="opc:Int32" />
+    <opc:Field Name="G" TypeName="opc:UInt32" LengthField="NoOfG" />
+    <opc:Field Name="NoOfH" TypeName="opc:Int32" />
+    <opc:Field Name="H" TypeName="opc:Int64" LengthField="NoOfH" />
+    <opc:Field Name="NoOfI" TypeName="opc:Int32" />
+    <opc:Field Name="I" TypeName="opc:UInt64" LengthField="NoOfI" />
+    <opc:Field Name="NoOfJ" TypeName="opc:Int32" />
+    <opc:Field Name="J" TypeName="opc:Float" LengthField="NoOfJ" />
+    <opc:Field Name="NoOfK" TypeName="opc:Int32" />
+    <opc:Field Name="K" TypeName="opc:Double" LengthField="NoOfK" />
+    <opc:Field Name="NoOfL" TypeName="opc:Int32" />
+    <opc:Field Name="L" TypeName="opc:Guid" LengthField="NoOfL" />
+    <opc:Field Name="NoOfM" TypeName="opc:Int32" />
+    <opc:Field Name="M" TypeName="opc:DateTime" LengthField="NoOfM" />
+    <opc:Field Name="NoOfN" TypeName="opc:Int32" />
+    <opc:Field Name="N" TypeName="opc:String" LengthField="NoOfN" />
+    <opc:Field Name="NoOfO" TypeName="opc:Int32" />
+    <opc:Field Name="O" TypeName="opc:ByteString" LengthField="NoOfO" />
+    <opc:Field Name="NoOfP" TypeName="opc:Int32" />
+    <opc:Field Name="P" TypeName="ua:NodeId" LengthField="NoOfP" />
+    <opc:Field Name="NoOfQ" TypeName="opc:Int32" />
+    <opc:Field Name="Q" TypeName="ua:ExpandedNodeId" LengthField="NoOfQ" />
+    <opc:Field Name="NoOfR" TypeName="opc:Int32" />
+    <opc:Field Name="R" TypeName="ua:QualifiedName" LengthField="NoOfR" />
+    <opc:Field Name="NoOfS" TypeName="opc:Int32" />
+    <opc:Field Name="S" TypeName="ua:LocalizedText" LengthField="NoOfS" />
+    <opc:Field Name="NoOfT" TypeName="opc:Int32" />
+    <opc:Field Name="T" TypeName="ua:StatusCode" LengthField="NoOfT" />
+    <opc:Field Name="NoOfU" TypeName="opc:Int32" />
+    <opc:Field Name="U" TypeName="ua:XmlElement" LengthField="NoOfU" />
+    <opc:Field Name="NoOfV" TypeName="opc:Int32" />
+    <opc:Field Name="V" TypeName="tns:ConcreteStructure" LengthField="NoOfV" />
+    <opc:Field Name="NoOfW" TypeName="opc:Int32" />
+    <opc:Field Name="W" TypeName="tns:EnumerationWithGaps" LengthField="NoOfW" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="ArrayStructureWithAllowSubtypes" BaseType="tns:ArrayStructure">
+    <opc:Field Name="NoOfA" TypeName="opc:Int32" />
+    <opc:Field Name="A" TypeName="opc:Boolean" LengthField="NoOfA" />
+    <opc:Field Name="NoOfB" TypeName="opc:Int32" />
+    <opc:Field Name="B" TypeName="opc:SByte" LengthField="NoOfB" />
+    <opc:Field Name="NoOfC" TypeName="opc:Int32" />
+    <opc:Field Name="C" TypeName="opc:Byte" LengthField="NoOfC" />
+    <opc:Field Name="NoOfD" TypeName="opc:Int32" />
+    <opc:Field Name="D" TypeName="opc:Int16" LengthField="NoOfD" />
+    <opc:Field Name="NoOfE" TypeName="opc:Int32" />
+    <opc:Field Name="E" TypeName="opc:UInt16" LengthField="NoOfE" />
+    <opc:Field Name="NoOfF" TypeName="opc:Int32" />
+    <opc:Field Name="F" TypeName="opc:Int32" LengthField="NoOfF" />
+    <opc:Field Name="NoOfG" TypeName="opc:Int32" />
+    <opc:Field Name="G" TypeName="opc:UInt32" LengthField="NoOfG" />
+    <opc:Field Name="NoOfH" TypeName="opc:Int32" />
+    <opc:Field Name="H" TypeName="opc:Int64" LengthField="NoOfH" />
+    <opc:Field Name="NoOfI" TypeName="opc:Int32" />
+    <opc:Field Name="I" TypeName="opc:UInt64" LengthField="NoOfI" />
+    <opc:Field Name="NoOfJ" TypeName="opc:Int32" />
+    <opc:Field Name="J" TypeName="opc:Float" LengthField="NoOfJ" />
+    <opc:Field Name="NoOfK" TypeName="opc:Int32" />
+    <opc:Field Name="K" TypeName="opc:Double" LengthField="NoOfK" />
+    <opc:Field Name="NoOfL" TypeName="opc:Int32" />
+    <opc:Field Name="L" TypeName="opc:Guid" LengthField="NoOfL" />
+    <opc:Field Name="NoOfM" TypeName="opc:Int32" />
+    <opc:Field Name="M" TypeName="opc:DateTime" LengthField="NoOfM" />
+    <opc:Field Name="NoOfN" TypeName="opc:Int32" />
+    <opc:Field Name="N" TypeName="opc:String" LengthField="NoOfN" />
+    <opc:Field Name="NoOfO" TypeName="opc:Int32" />
+    <opc:Field Name="O" TypeName="opc:ByteString" LengthField="NoOfO" />
+    <opc:Field Name="NoOfP" TypeName="opc:Int32" />
+    <opc:Field Name="P" TypeName="ua:NodeId" LengthField="NoOfP" />
+    <opc:Field Name="NoOfQ" TypeName="opc:Int32" />
+    <opc:Field Name="Q" TypeName="ua:ExpandedNodeId" LengthField="NoOfQ" />
+    <opc:Field Name="NoOfR" TypeName="opc:Int32" />
+    <opc:Field Name="R" TypeName="ua:QualifiedName" LengthField="NoOfR" />
+    <opc:Field Name="NoOfS" TypeName="opc:Int32" />
+    <opc:Field Name="S" TypeName="ua:LocalizedText" LengthField="NoOfS" />
+    <opc:Field Name="NoOfT" TypeName="opc:Int32" />
+    <opc:Field Name="T" TypeName="ua:StatusCode" LengthField="NoOfT" />
+    <opc:Field Name="NoOfU" TypeName="opc:Int32" />
+    <opc:Field Name="U" TypeName="ua:XmlElement" LengthField="NoOfU" />
+    <opc:Field Name="NoOfV" TypeName="opc:Int32" />
+    <opc:Field Name="V" TypeName="tns:ConcreteStructure" LengthField="NoOfV" />
+    <opc:Field Name="NoOfW" TypeName="opc:Int32" />
+    <opc:Field Name="W" TypeName="tns:EnumerationWithGaps" LengthField="NoOfW" />
+    <opc:Field Name="NoOfX" TypeName="opc:Int32" />
+    <opc:Field Name="X" TypeName="ua:DataValue" LengthField="NoOfX" />
+    <opc:Field Name="NoOfY" TypeName="opc:Int32" />
+    <opc:Field Name="Y" TypeName="ua:Variant" LengthField="NoOfY" />
+    <opc:Field Name="NoOfZ" TypeName="opc:Int32" />
+    <opc:Field Name="Z" TypeName="ua:ExtensionObject" LengthField="NoOfZ" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="NestedStructure" BaseType="ua:ExtensionObject">
+    <opc:Field Name="A" TypeName="tns:ScalarStructure" />
+    <opc:Field Name="B" TypeName="tns:ArrayStructure" />
+    <opc:Field Name="NoOfC" TypeName="opc:Int32" />
+    <opc:Field Name="C" TypeName="tns:ScalarStructure" LengthField="NoOfC" />
+    <opc:Field Name="NoOfD" TypeName="opc:Int32" />
+    <opc:Field Name="D" TypeName="tns:ArrayStructure" LengthField="NoOfD" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="NestedStructureWithAllowSubtypes" BaseType="ua:ExtensionObject">
+    <opc:Field Name="A" TypeName="tns:ScalarStructureWithAllowSubtypes" />
+    <opc:Field Name="B" TypeName="tns:ArrayStructureWithAllowSubtypes" />
+    <opc:Field Name="NoOfC" TypeName="opc:Int32" />
+    <opc:Field Name="C" TypeName="tns:ScalarStructureWithAllowSubtypes" LengthField="NoOfC" />
+    <opc:Field Name="NoOfD" TypeName="opc:Int32" />
+    <opc:Field Name="D" TypeName="tns:ArrayStructureWithAllowSubtypes" LengthField="NoOfD" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="BasicUnion" BaseType="ua:Union">
+    <opc:Field Name="A" TypeName="opc:UInt32" />
+    <opc:Field Name="NoOfB" TypeName="opc:Int32" />
+    <opc:Field Name="B" TypeName="opc:String" LengthField="NoOfB" />
+    <opc:Field Name="C" TypeName="opc:ByteString" />
+    <opc:Field Name="D" TypeName="tns:ConcreteStructure" />
+    <opc:Field Name="E" TypeName="tns:EnumerationWithGaps" />
+  </opc:StructuredType>
+
+  <opc:StructuredType Name="StructureWithOptionalFields" BaseType="ua:ExtensionObject">
+    <opc:Field Name="A" TypeName="opc:UInt32" />
+    <opc:Field Name="NoOfB" TypeName="opc:Int32" />
+    <opc:Field Name="B" TypeName="opc:String" LengthField="NoOfB" />
+    <opc:Field Name="C" TypeName="opc:ByteString" />
+    <opc:Field Name="D" TypeName="tns:ConcreteStructure" />
+    <opc:Field Name="E" TypeName="tns:EnumerationWithGaps" />
+  </opc:StructuredType>
+
+</opc:TypeDictionary>

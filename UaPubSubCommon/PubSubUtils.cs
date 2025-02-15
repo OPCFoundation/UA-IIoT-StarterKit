@@ -23,7 +23,31 @@ namespace UaPubSubCommon
     {
         private static readonly DateTime kBaseDateTime = new DateTime(2000, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
-        private static readonly UTF8Encoding UTF8 = new UTF8Encoding(false);
+        public static readonly UTF8Encoding UTF8 = new UTF8Encoding(false);
+
+        public static async Task<byte[]> Compress(MemoryStream istrm)
+        {
+            using (var ostrm = new MemoryStream())
+            {
+                using (var zstrm = new GZipStream(ostrm, CompressionMode.Compress))
+                {
+                    await istrm.CopyToAsync(zstrm);
+                    zstrm.Close();
+                    return ostrm.ToArray();
+                }
+            }
+        }
+
+        public static async Task<MemoryStream> Decompress(Stream istrm)
+        {
+            using (var zstrm = new GZipStream(istrm, CompressionMode.Decompress))
+            {
+                var ostrm = new MemoryStream();
+                await zstrm.CopyToAsync(ostrm);
+                ostrm.Position = 0;
+                return ostrm;
+            }
+        }
 
         public static async Task<Variant> ReadValue(FieldMetaData field, CancellationToken ct)
         {
@@ -226,6 +250,8 @@ namespace UaPubSubCommon
 
         public static bool IsDataValue(JObject jobject)
         {
+            if (jobject.Count == 0) return false;
+
             foreach (var x in jobject)
             {
                 switch (x.Key)
@@ -327,7 +353,17 @@ namespace UaPubSubCommon
                 }
                 else
                 {
-                    dv.WrappedValue = await ReadTypedValue(context, reader, field, ct);
+                    var value = await ReadTypedValue(context, reader, field, ct);
+
+                    if (value.TypeInfo.BuiltInType == BuiltInType.StatusCode && field.BuiltInType != BuiltInType.StatusCode)
+                    {
+                        dv.StatusCode = (StatusCode)value.Value;
+                        dv.WrappedValue = Variant.Null;
+                    }
+                    else
+                    {
+                        dv.WrappedValue = value; 
+                    }
                 }
             }
 
@@ -337,9 +373,20 @@ namespace UaPubSubCommon
         public static async Task<Variant> ReadTypedValue(IServiceMessageContext context, JsonReader reader, PubSubField field, CancellationToken ct)
         {
             var jtoken = await JToken.LoadAsync(reader, ct);
+
+            // check for a StatusCode.
+            if (
+                jtoken is JObject status && 
+                status.Count <= 2 && 
+                status.TryGetValue(nameof(StatusCode.Code), out var code) &&
+                code.Type == JTokenType.Integer)
+            {
+                return new Variant(new StatusCode((uint)code));
+            }
+
             const string placeholder = "X";
 
-            using (var decoder = new JsonDecoder($"{{\"{placeholder}\": {jtoken}}}", context))
+            using (var decoder = new JsonDecoder($"{{\"{placeholder}\": {jtoken.ToString(Formatting.None)}}}", context))
             {
                 if (field.ValueRank == ValueRanks.Scalar)
                 {
@@ -489,7 +536,7 @@ namespace UaPubSubCommon
 
             try
             {
-                if (message.ContentType == null || message.ContentType == "application/gzip")
+                if (message.ContentType == null || message.ContentType == "application/json+gzip")
                 {
                     // these bytes are well-known start to GZIP encoded data.
                     // this is a sanity check and deals with a missing or incorrect ContentType.

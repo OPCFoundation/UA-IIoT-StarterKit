@@ -2,6 +2,7 @@
 using MQTTnet.Formatter;
 using MQTTnet.Protocol;
 using Opc.Ua;
+using System.Buffers;
 using System.Diagnostics;
 using System.Reflection;
 using System.Security.Authentication;
@@ -21,7 +22,7 @@ namespace UaPublisher
         private ActionRequestProcessor m_requestProcessor;
         private List<PublisherSource> m_sources = new();
 
-        private bool m_deleteAllTopicsOnStart = true;
+        private bool m_deleteAllTopicsOnStart = false;
         private Dictionary<string, uint> m_sequenceNumbers = new();
 
         private int m_counterDelayTime = 1000;
@@ -48,7 +49,7 @@ namespace UaPublisher
             m_messageContext.Factory.AddEncodeableTypes(Assembly.GetExecutingAssembly());
         }
 
-        private byte[] Encode(IEncodeable message, bool compress = false)
+        private async Task<ArraySegment<byte>> Encode(IEncodeable message, bool compress = false)
         {
             using (var istrm = new MemoryStream())
             {
@@ -59,6 +60,13 @@ namespace UaPublisher
                     leaveOpen: true))
                 {
                     message.Encode(encoder);
+                }
+
+                istrm.Position = 0;
+
+                if (compress)
+                {
+                    return await PubSubUtils.Compress(istrm);
                 }
 
                 istrm.Close();
@@ -97,6 +105,16 @@ namespace UaPublisher
                     break;
                 }
             }
+        }
+
+        private string GetContentType(bool useCompression = false)
+        {
+            if (useCompression)
+            {
+                return "application/json+gzip";
+            }
+
+            return "application/json";
         }
 
         private void BuildResponder()
@@ -299,7 +317,7 @@ namespace UaPublisher
                     IsCyclic = false
                 };
 
-                var willPayload = Encode(willMessage);
+                var willPayload = await Encode(willMessage);
 
                 var options = new MqttClientOptionsBuilder()
                     .WithProtocolVersion(MqttProtocolVersion.V500)
@@ -393,7 +411,7 @@ namespace UaPublisher
                     .WithTopic(topic)
                     .WithPayload("")
                     .WithRetainFlag(true)
-                    .WithQualityOfServiceLevel(MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce)
+                    .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                     .Build();
 
                 await m_client.PublishAsync(applicationMessage);
@@ -514,13 +532,13 @@ namespace UaPublisher
                 IsCyclic = false
             };
 
-            var message = Encode(payload);
+            var message = await Encode(payload);
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
                 .WithPayload(message)
                 .WithRetainFlag(true)
-                .WithContentType("application/json")
+                .WithContentType(GetContentType())
                 .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                 .Build();
 
@@ -555,13 +573,13 @@ namespace UaPublisher
                 Description = application
             };
 
-            var message = Encode(payload);
+            var message = await Encode(payload);
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
                 .WithPayload(message)
                 .WithRetainFlag(true)
-                .WithContentType("application/json")
+                .WithContentType(GetContentType())
                 .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                 .Build();
 
@@ -597,13 +615,13 @@ namespace UaPublisher
                 Connection = m_connection.Connection
             };
 
-            var message = Encode(payload);
+            var message = await Encode(payload, m_configuration.EnableCompression);
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
                 .WithPayload(message)
                 .WithRetainFlag(true)
-                .WithContentType("application/json")
+                .WithContentType(GetContentType(m_configuration.EnableCompression))
                 .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                 .Build();
 
@@ -639,13 +657,13 @@ namespace UaPublisher
                 Connection = m_responder.Connection
             };
 
-            var message = Encode(payload);
+            var message = await Encode(payload, m_configuration.EnableCompression);
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
                 .WithPayload(message)
                 .WithRetainFlag(true)
-                .WithContentType("application/json")
+                .WithContentType(GetContentType(m_configuration.EnableCompression))
                 .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                 .Build();
 
@@ -665,13 +683,13 @@ namespace UaPublisher
         {
             if (m_client == null || m_factory == null) throw new InvalidOperationException();
 
-            var message = Encode(metadata);
+            var message = await Encode(metadata, m_configuration.EnableCompression);
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
                 .WithPayload(message)
                 .WithRetainFlag(true)
-                .WithContentType("application/json")
+                .WithContentType(GetContentType(m_configuration.EnableCompression))
                 .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                 .Build();
 
@@ -691,13 +709,13 @@ namespace UaPublisher
         {
             if (m_client == null || m_factory == null) throw new InvalidOperationException();
 
-            var message = Encode(metadata);
+            var message = await Encode(metadata, m_configuration.EnableCompression);
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
                 .WithPayload(message)
                 .WithRetainFlag(true)
-                .WithContentType("application/json")
+                .WithContentType(GetContentType(m_configuration.EnableCompression))
                 .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
                 .Build();
 
@@ -716,12 +734,16 @@ namespace UaPublisher
         private async Task PublishData(string topic, string message, MqttQualityOfServiceLevel qos, CancellationToken ct)
         {
             if (m_client == null || m_factory == null) throw new InvalidOperationException();
+            
+            var utf8 = PubSubUtils.UTF8.GetBytes(message, 0, message.Length);
+            using var strm = new MemoryStream(utf8);
+            var payload = await PubSubUtils.Compress(strm);
 
             var applicationMessage = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
-                .WithPayload(message)
+                .WithPayload(payload)
                 .WithRetainFlag(true)
-                .WithContentType("application/json")
+                .WithContentType(GetContentType(m_configuration.EnableCompression))
                 .WithQualityOfServiceLevel(qos)
                 .Build();
 

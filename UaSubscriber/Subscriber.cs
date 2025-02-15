@@ -16,6 +16,7 @@ namespace UaSubscriber
         private IMqttClient m_client;
         private ServiceMessageContext m_messageContext;
         private bool m_useResponder;
+        private string m_targetPublisherId;
 
         private Dictionary<string, IRemotePublisher> m_topics = new();
         private Dictionary<string, RemotePublisher> m_publishers = new();
@@ -30,12 +31,16 @@ namespace UaSubscriber
         internal string PublisherId => m_configuration?.PublisherId;
         internal bool UseNewEncodings => m_configuration?.UseNewEncodings ?? true;
 
-        public Subscriber(Configuration configuration, bool useResponder)
+        public Subscriber(
+            Configuration configuration,
+            bool useResponder,
+            string targetPublisherId)
         {
             m_configuration = configuration;
             m_messageContext = new ServiceMessageContext();
             m_messageContext.Factory.AddEncodeableTypes(Assembly.GetExecutingAssembly());
             m_useResponder = useResponder;
+            m_targetPublisherId = targetPublisherId;
         }
 
         public async Task Connect(CancellationToken ct)
@@ -79,11 +84,14 @@ namespace UaSubscriber
                     .WithProtocolVersion(MqttProtocolVersion.V500)
                     .WithTcpServer(BrokerHost, BrokerPort)
                     .WithCredentials(UserName, Password)
-                    .WithClientId($"{TopicPrefix}.{PublisherId}")
+                    .WithClientId($"{TopicPrefix}.{PublisherId}.{DateTime.Now.Ticks}")
+                    .WithCleanStart()
+                    .WithTimeout(TimeSpan.FromSeconds(120))
+                    .WithKeepAlivePeriod(TimeSpan.FromSeconds(120))
                     .WithTlsOptions(
                         o =>
                         {
-                            o.UseTls(false);
+                            o.UseTls(m_configuration.UseTls);
 
                             o.WithCertificateValidationHandler(e =>
                             {
@@ -110,45 +118,73 @@ namespace UaSubscriber
                     {
                         m_client.ApplicationMessageReceivedAsync += async delegate (MqttApplicationMessageReceivedEventArgs args)
                         {
-                            if (m_topics.TryGetValue(args.ApplicationMessage.Topic, out var publisher))
+                            try
                             {
-                                var json = await PubSubUtils.ParseMessage(args.ApplicationMessage, ct);
+                                Log.Info($"{args.ApplicationMessage.Topic}: {args.ApplicationMessage.Payload.Length} bytes");
 
-                                if (String.IsNullOrEmpty(json))
+                                if (m_topics.TryGetValue(args.ApplicationMessage.Topic, out var publisher) && publisher != null)
                                 {
-                                    Log.Warning($"Ignoring empty message set to {args.ApplicationMessage.Topic}.");
+                                    var json = await PubSubUtils.ParseMessage(args.ApplicationMessage, ct);
+
+                                    if (String.IsNullOrEmpty(json))
+                                    {
+                                        Log.Warning($"Ignoring empty message set to {args.ApplicationMessage.Topic}.");
+                                        return;
+                                    }
+
+                                    if (await publisher.ProcessMessage(args.ApplicationMessage.Topic, json, ct))
+                                    {
+                                        var topics = publisher.GetTopics();
+
+                                        foreach (var ii in topics)
+                                        {
+                                            if (ii.Value) await Subscribe(ii.Key, publisher, ct);
+                                            else await Unsubscribe(ii.Key, ct);
+                                        }
+                                    }
+
                                     return;
                                 }
 
-                                if (await publisher.ProcessMessage(args.ApplicationMessage.Topic, json, ct))
-                                {
-                                    var topics = publisher.GetTopics();
+                                string prefix = $"{TopicPrefix}/json/";
 
-                                    foreach (var ii in topics)
+                                if (args.ApplicationMessage.Topic.StartsWith(prefix))
+                                {
+                                    var topic = Topic.Parse(args.ApplicationMessage.Topic, TopicPrefix);
+
+                                    if (topic.MessageType == TopicTypes.Status)
                                     {
-                                        if (ii.Value) await Subscribe(ii.Key, publisher, ct);
-                                        else await Unsubscribe(ii.Key, ct);
+                                        await ProcessStatus(args.ApplicationMessage, ct);
+                                        return;
                                     }
                                 }
-
-                                return;
                             }
-
-                            string prefix = $"{TopicPrefix}/json/";
-
-                            if (args.ApplicationMessage.Topic.StartsWith(prefix))
+                            catch (Exception e)
                             {
-                                var topic = Topic.Parse(args.ApplicationMessage.Topic, TopicPrefix);
-
-                                if (topic.MessageType == TopicTypes.Status)
-                                {
-                                    await ProcessStatus(args.ApplicationMessage, ct);
-                                    return;
-                                }
+                                Log.Error($"Parsing Error [{e.GetType().Name}] {e.Message}");
                             }
                         };
 
-                        await Subscribe($"{TopicPrefix}/json/{TopicTypes.Status}/#", null, ct);
+                        var topic = $"{TopicPrefix}/json/{TopicTypes.Status}/";
+                        RemotePublisher publisher = null;
+
+                        if (!String.IsNullOrEmpty(m_targetPublisherId))
+                        {
+                            topic += m_targetPublisherId;
+
+                            publisher = m_publishers[m_targetPublisherId] = new RemotePublisher(m_messageContext, TopicPrefix)
+                            {
+                                PublisherId = m_targetPublisherId
+                            };
+
+                            await Subscribe($"{TopicPrefix}/json/{TopicTypes.PubSubConnection}/{m_targetPublisherId}", publisher, ct);
+                        }
+                        else
+                        {
+                            topic += "#";
+                        }
+
+                        await Subscribe($"{topic}", null, ct);
 
                         try
                         {

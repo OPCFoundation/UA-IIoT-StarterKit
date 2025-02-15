@@ -1,0 +1,3911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<uax:ListOfNodeState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd">
+  <uax:NamespaceUris>
+    <uax:NamespaceUri>urn:opcfoundation.org:2024-01:TestModel</uax:NamespaceUri>
+  </uax:NamespaceUris>
+  <AbstractStructure xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=61</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>AbstractStructure</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=22</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:IsAbstract>true</uax:IsAbstract>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>i=22</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>Structure_0</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=4</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=11</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </AbstractStructure>
+  <ConcreteStructure xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=62</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>ConcreteStructure</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>ns=1;i=61</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>ns=1;i=61</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>Structure_0</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=4</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=11</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=4</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>E</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=11</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>F</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </ConcreteStructure>
+  <EnumerationWithGaps xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=63</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>EnumerationWithGaps</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=29</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14799</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:EnumDefinition>
+          <uax:Fields>
+            <uax:EnumField>
+              <uax:Value>0</uax:Value>
+              <uax:DisplayName>
+                <uax:Text>Invalid</uax:Text>
+              </uax:DisplayName>
+              <uax:Name>Invalid</uax:Name>
+            </uax:EnumField>
+            <uax:EnumField>
+              <uax:Value>1</uax:Value>
+              <uax:DisplayName>
+                <uax:Text>Red</uax:Text>
+              </uax:DisplayName>
+              <uax:Name>Red</uax:Name>
+            </uax:EnumField>
+            <uax:EnumField>
+              <uax:Value>2</uax:Value>
+              <uax:DisplayName>
+                <uax:Text>Green</uax:Text>
+              </uax:DisplayName>
+              <uax:Name>Green</uax:Name>
+            </uax:EnumField>
+            <uax:EnumField>
+              <uax:Value>6</uax:Value>
+              <uax:DisplayName>
+                <uax:Text>Blue</uax:Text>
+              </uax:DisplayName>
+              <uax:Name>Blue</uax:Name>
+            </uax:EnumField>
+          </uax:Fields>
+        </uax:EnumDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+    <EnumValues xmlns="http://opcfoundation.org/UA/">
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=64</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>0</uax:NamespaceIndex>
+        <uax:Name>EnumValues</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>64</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:ListOfExtensionObject>
+            <uax:ExtensionObject>
+              <uax:TypeId>
+                <uax:Identifier>i=7616</uax:Identifier>
+              </uax:TypeId>
+              <uax:Body>
+                <uax:EnumValueType>
+                  <uax:Value>0</uax:Value>
+                  <uax:DisplayName>
+                    <uax:Text>Something is not right</uax:Text>
+                  </uax:DisplayName>
+                </uax:EnumValueType>
+              </uax:Body>
+            </uax:ExtensionObject>
+            <uax:ExtensionObject>
+              <uax:TypeId>
+                <uax:Identifier>i=7616</uax:Identifier>
+              </uax:TypeId>
+              <uax:Body>
+                <uax:EnumValueType>
+                  <uax:Value>1</uax:Value>
+                  <uax:DisplayName>
+                    <uax:Text>Hold up!</uax:Text>
+                  </uax:DisplayName>
+                </uax:EnumValueType>
+              </uax:Body>
+            </uax:ExtensionObject>
+            <uax:ExtensionObject>
+              <uax:TypeId>
+                <uax:Identifier>i=7616</uax:Identifier>
+              </uax:TypeId>
+              <uax:Body>
+                <uax:EnumValueType>
+                  <uax:Value>2</uax:Value>
+                  <uax:DisplayName>
+                    <uax:Text>Good to go.</uax:Text>
+                  </uax:DisplayName>
+                </uax:EnumValueType>
+              </uax:Body>
+            </uax:ExtensionObject>
+            <uax:ExtensionObject>
+              <uax:TypeId>
+                <uax:Identifier>i=7616</uax:Identifier>
+              </uax:TypeId>
+              <uax:Body>
+                <uax:EnumValueType>
+                  <uax:Value>6</uax:Value>
+                  <uax:DisplayName>
+                    <uax:Text>Is that a sky or an ocean?</uax:Text>
+                  </uax:DisplayName>
+                </uax:EnumValueType>
+              </uax:Body>
+            </uax:ExtensionObject>
+          </uax:ListOfExtensionObject>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=7594</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>1</uax:ValueRank>
+      <uax:ArrayDimensions>4</uax:ArrayDimensions>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </EnumValues>
+  </EnumerationWithGaps>
+  <ScalarStructure xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=65</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>ScalarStructure</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=22</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>i=22</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>Structure_0</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=1</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=2</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=3</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=4</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>E</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=5</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>F</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=6</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>G</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=7</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>H</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=8</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>I</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=9</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>J</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=10</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>K</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=11</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>L</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=14</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>M</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=13</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>N</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>O</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=15</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>P</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=17</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Q</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=18</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>R</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=20</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>S</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=21</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>T</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=19</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>U</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=16</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>V</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=62</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>W</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=63</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </ScalarStructure>
+  <ScalarStructureWithAllowSubtypes xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=66</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>ScalarStructureWithAllowSubtypes</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>ns=1;i=65</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>ns=1;i=65</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>StructureWithSubtypedValues_3</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=1</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=2</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=3</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=4</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>E</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=5</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>F</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=6</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>G</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=7</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>H</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=8</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>I</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=9</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>J</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=10</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>K</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=11</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>L</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=14</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>M</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=13</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>N</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>O</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=15</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>P</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=17</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Q</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=18</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>R</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=20</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>S</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=21</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>T</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=19</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>U</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=16</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>V</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=62</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>W</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=63</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>X</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=23</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Y</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=24</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Z</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=61</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>true</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </ScalarStructureWithAllowSubtypes>
+  <ArrayStructure xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=67</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>ArrayStructure</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=22</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>i=22</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>Structure_0</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=1</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=2</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=3</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=4</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>E</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=5</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>F</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=6</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>G</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=7</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>H</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=8</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>I</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=9</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>J</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=10</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>K</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=11</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>L</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=14</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>M</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=13</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>N</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>O</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=15</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>P</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=17</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Q</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=18</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>R</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=20</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>S</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=21</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>T</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=19</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>U</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=16</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>V</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=62</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>W</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=63</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </ArrayStructure>
+  <ArrayStructureWithAllowSubtypes xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=68</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>ArrayStructureWithAllowSubtypes</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>ns=1;i=67</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>ns=1;i=67</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>StructureWithSubtypedValues_3</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=1</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=2</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=3</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=4</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>E</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=5</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>F</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=6</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>G</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=7</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>H</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=8</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>I</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=9</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>J</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=10</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>K</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=11</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>L</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=14</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>M</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=13</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>N</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>O</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=15</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>P</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=17</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Q</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=18</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>R</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=20</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>S</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=21</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>T</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=19</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>U</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=16</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>V</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=62</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>W</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=63</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>X</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=23</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Y</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=24</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>Z</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=61</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>true</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </ArrayStructureWithAllowSubtypes>
+  <NestedStructure xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=69</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>NestedStructure</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=22</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>i=22</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>Structure_0</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=65</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=67</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=65</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=67</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </NestedStructure>
+  <NestedStructureWithAllowSubtypes xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=70</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>NestedStructureWithAllowSubtypes</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=22</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>i=22</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>Structure_0</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=66</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=68</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=66</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=68</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </NestedStructureWithAllowSubtypes>
+  <BasicUnion xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=143</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>BasicUnion</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=12756</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>i=12756</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>Union_2</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=7</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=15</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=62</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>E</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=63</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>false</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </BasicUnion>
+  <StructureWithOptionalFields xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>DataType_64</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=144</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>StructureWithOptionalFields</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=22</uax:Identifier>
+    </uax:SuperTypeId>
+    <uax:DataTypeDefinition>
+      <uax:TypeId>
+        <uax:Identifier>i=14798</uax:Identifier>
+      </uax:TypeId>
+      <uax:Body>
+        <uax:StructureDefinition>
+          <uax:BaseDataType>
+            <uax:Identifier>i=22</uax:Identifier>
+          </uax:BaseDataType>
+          <uax:StructureType>StructureWithOptionalFields_1</uax:StructureType>
+          <uax:Fields>
+            <uax:StructureField>
+              <uax:Name>A</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=7</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>true</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>B</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=12</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>1</uax:ValueRank>
+              <uax:ArrayDimensions>
+                <uax:UInt32>0</uax:UInt32>
+              </uax:ArrayDimensions>
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>true</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>C</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>i=15</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>true</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>D</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=62</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>true</uax:IsOptional>
+            </uax:StructureField>
+            <uax:StructureField>
+              <uax:Name>E</uax:Name>
+              <uax:DataType>
+                <uax:Identifier>ns=1;i=63</uax:Identifier>
+              </uax:DataType>
+              <uax:ValueRank>-1</uax:ValueRank>
+              <uax:ArrayDimensions />
+              <uax:MaxStringLength>0</uax:MaxStringLength>
+              <uax:IsOptional>true</uax:IsOptional>
+            </uax:StructureField>
+          </uax:Fields>
+        </uax:StructureDefinition>
+      </uax:Body>
+    </uax:DataTypeDefinition>
+  </StructureWithOptionalFields>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=71</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>71</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=61</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=79</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=72</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>72</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=62</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=82</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=73</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>73</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=65</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=85</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=74</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>74</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=66</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=88</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=75</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>75</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=67</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=91</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=76</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>76</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=68</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=94</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=77</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>77</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=69</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=97</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=78</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>78</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=70</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=100</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=145</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>145</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=143</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=147</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <DefaultBinary xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=146</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default Binary</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>146</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=144</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=150</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultBinary>
+  <TestModel_BinarySchema xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>Variable_2</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=13</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>TestModel</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=72</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>13</uax:NumericId>
+    <uax:Value>
+      <uax:Value>
+        <uax:ByteString>PG9wYzpUeXBlRGljdGlvbmFyeQ0KICB4bWxuczpvcGM9Imh0dHA6Ly9vcGNmb3VuZGF0aW9uLm9y
+Zy9CaW5hcnlTY2hlbWEvIg0KICB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1M
+U2NoZW1hLWluc3RhbmNlIg0KICB4bWxuczp1YT0iaHR0cDovL29wY2ZvdW5kYXRpb24ub3JnL1VB
+LyINCiAgeG1sbnM6dG5zPSJ1cm46b3BjZm91bmRhdGlvbi5vcmc6MjAyNC0wMTpUZXN0TW9kZWwi
+DQogIERlZmF1bHRCeXRlT3JkZXI9IkxpdHRsZUVuZGlhbiINCiAgVGFyZ2V0TmFtZXNwYWNlPSJ1
+cm46b3BjZm91bmRhdGlvbi5vcmc6MjAyNC0wMTpUZXN0TW9kZWwiDQo+DQogIDxvcGM6SW1wb3J0
+IE5hbWVzcGFjZT0iaHR0cDovL29wY2ZvdW5kYXRpb24ub3JnL1VBLyIgTG9jYXRpb249Ik9wYy5V
+YS5CaW5hcnlTY2hlbWEuYnNkIi8+DQoNCiAgPG9wYzpTdHJ1Y3R1cmVkVHlwZSBOYW1lPSJBYnN0
+cmFjdFN0cnVjdHVyZSIgQmFzZVR5cGU9InVhOkV4dGVuc2lvbk9iamVjdCI+DQogICAgPG9wYzpG
+aWVsZCBOYW1lPSJBIiBUeXBlTmFtZT0ib3BjOkludDE2IiAvPg0KICAgIDxvcGM6RmllbGQgTmFt
+ZT0iQiIgVHlwZU5hbWU9Im9wYzpEb3VibGUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJDIiBU
+eXBlTmFtZT0ib3BjOlN0cmluZyIgLz4NCiAgPC9vcGM6U3RydWN0dXJlZFR5cGU+DQoNCiAgPG9w
+YzpTdHJ1Y3R1cmVkVHlwZSBOYW1lPSJDb25jcmV0ZVN0cnVjdHVyZSIgQmFzZVR5cGU9InRuczpB
+YnN0cmFjdFN0cnVjdHVyZSI+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJBIiBUeXBlTmFtZT0ib3Bj
+OkludDE2IiBTb3VyY2VUeXBlPSJ0bnM6QWJzdHJhY3RTdHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpG
+aWVsZCBOYW1lPSJCIiBUeXBlTmFtZT0ib3BjOkRvdWJsZSIgU291cmNlVHlwZT0idG5zOkFic3Ry
+YWN0U3RydWN0dXJlIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQyIgVHlwZU5hbWU9Im9wYzpT
+dHJpbmciIFNvdXJjZVR5cGU9InRuczpBYnN0cmFjdFN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZp
+ZWxkIE5hbWU9IkQiIFR5cGVOYW1lPSJvcGM6SW50MTYiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1l
+PSJFIiBUeXBlTmFtZT0ib3BjOkRvdWJsZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkYiIFR5
+cGVOYW1lPSJvcGM6U3RyaW5nIiAvPg0KICA8L29wYzpTdHJ1Y3R1cmVkVHlwZT4NCg0KICA8b3Bj
+OkVudW1lcmF0ZWRUeXBlIE5hbWU9IkVudW1lcmF0aW9uV2l0aEdhcHMiIExlbmd0aEluQml0cz0i
+MzIiPg0KICAgIDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9IkludmFsaWQiIFZhbHVlPSIwIiAv
+Pg0KICAgIDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9IlJlZCIgVmFsdWU9IjEiIC8+DQogICAg
+PG9wYzpFbnVtZXJhdGVkVmFsdWUgTmFtZT0iR3JlZW4iIFZhbHVlPSIyIiAvPg0KICAgIDxvcGM6
+RW51bWVyYXRlZFZhbHVlIE5hbWU9IkJsdWUiIFZhbHVlPSI2IiAvPg0KICA8L29wYzpFbnVtZXJh
+dGVkVHlwZT4NCg0KICA8b3BjOlN0cnVjdHVyZWRUeXBlIE5hbWU9IlNjYWxhclN0cnVjdHVyZSIg
+QmFzZVR5cGU9InVhOkV4dGVuc2lvbk9iamVjdCI+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJBIiBU
+eXBlTmFtZT0ib3BjOkJvb2xlYW4iIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJCIiBUeXBlTmFt
+ZT0ib3BjOlNCeXRlIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQyIgVHlwZU5hbWU9Im9wYzpC
+eXRlIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iRCIgVHlwZU5hbWU9Im9wYzpJbnQxNiIgLz4N
+CiAgICA8b3BjOkZpZWxkIE5hbWU9IkUiIFR5cGVOYW1lPSJvcGM6VUludDE2IiAvPg0KICAgIDxv
+cGM6RmllbGQgTmFtZT0iRiIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxk
+IE5hbWU9IkciIFR5cGVOYW1lPSJvcGM6VUludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0i
+SCIgVHlwZU5hbWU9Im9wYzpJbnQ2NCIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkkiIFR5cGVO
+YW1lPSJvcGM6VUludDY0IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iSiIgVHlwZU5hbWU9Im9w
+YzpGbG9hdCIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IksiIFR5cGVOYW1lPSJvcGM6RG91Ymxl
+IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTCIgVHlwZU5hbWU9Im9wYzpHdWlkIiAvPg0KICAg
+IDxvcGM6RmllbGQgTmFtZT0iTSIgVHlwZU5hbWU9Im9wYzpEYXRlVGltZSIgLz4NCiAgICA8b3Bj
+OkZpZWxkIE5hbWU9Ik4iIFR5cGVOYW1lPSJvcGM6U3RyaW5nIiAvPg0KICAgIDxvcGM6RmllbGQg
+TmFtZT0iTyIgVHlwZU5hbWU9Im9wYzpCeXRlU3RyaW5nIiAvPg0KICAgIDxvcGM6RmllbGQgTmFt
+ZT0iUCIgVHlwZU5hbWU9InVhOk5vZGVJZCIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlEiIFR5
+cGVOYW1lPSJ1YTpFeHBhbmRlZE5vZGVJZCIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlIiIFR5
+cGVOYW1lPSJ1YTpRdWFsaWZpZWROYW1lIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iUyIgVHlw
+ZU5hbWU9InVhOkxvY2FsaXplZFRleHQiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJUIiBUeXBl
+TmFtZT0idWE6U3RhdHVzQ29kZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlUiIFR5cGVOYW1l
+PSJ1YTpYbWxFbGVtZW50IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iViIgVHlwZU5hbWU9InRu
+czpDb25jcmV0ZVN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlciIFR5cGVOYW1l
+PSJ0bnM6RW51bWVyYXRpb25XaXRoR2FwcyIgLz4NCiAgPC9vcGM6U3RydWN0dXJlZFR5cGU+DQoN
+CiAgPG9wYzpTdHJ1Y3R1cmVkVHlwZSBOYW1lPSJTY2FsYXJTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0
+eXBlcyIgQmFzZVR5cGU9InRuczpTY2FsYXJTdHJ1Y3R1cmUiPg0KICAgIDxvcGM6RmllbGQgTmFt
+ZT0iQSIgVHlwZU5hbWU9Im9wYzpCb29sZWFuIiBTb3VyY2VUeXBlPSJ0bnM6U2NhbGFyU3RydWN0
+dXJlIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQiIgVHlwZU5hbWU9Im9wYzpTQnl0ZSIgU291
+cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkMi
+IFR5cGVOYW1lPSJvcGM6Qnl0ZSIgU291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4N
+CiAgICA8b3BjOkZpZWxkIE5hbWU9IkQiIFR5cGVOYW1lPSJvcGM6SW50MTYiIFNvdXJjZVR5cGU9
+InRuczpTY2FsYXJTdHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJFIiBUeXBlTmFt
+ZT0ib3BjOlVJbnQxNiIgU291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAgICA8
+b3BjOkZpZWxkIE5hbWU9IkYiIFR5cGVOYW1lPSJvcGM6SW50MzIiIFNvdXJjZVR5cGU9InRuczpT
+Y2FsYXJTdHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJHIiBUeXBlTmFtZT0ib3Bj
+OlVJbnQzMiIgU291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZp
+ZWxkIE5hbWU9IkgiIFR5cGVOYW1lPSJvcGM6SW50NjQiIFNvdXJjZVR5cGU9InRuczpTY2FsYXJT
+dHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJJIiBUeXBlTmFtZT0ib3BjOlVJbnQ2
+NCIgU291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5h
+bWU9IkoiIFR5cGVOYW1lPSJvcGM6RmxvYXQiIFNvdXJjZVR5cGU9InRuczpTY2FsYXJTdHJ1Y3R1
+cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJLIiBUeXBlTmFtZT0ib3BjOkRvdWJsZSIgU291
+cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ikwi
+IFR5cGVOYW1lPSJvcGM6R3VpZCIgU291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4N
+CiAgICA8b3BjOkZpZWxkIE5hbWU9Ik0iIFR5cGVOYW1lPSJvcGM6RGF0ZVRpbWUiIFNvdXJjZVR5
+cGU9InRuczpTY2FsYXJTdHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOIiBUeXBl
+TmFtZT0ib3BjOlN0cmluZyIgU291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAg
+ICA8b3BjOkZpZWxkIE5hbWU9Ik8iIFR5cGVOYW1lPSJvcGM6Qnl0ZVN0cmluZyIgU291cmNlVHlw
+ZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlAiIFR5cGVO
+YW1lPSJ1YTpOb2RlSWQiIFNvdXJjZVR5cGU9InRuczpTY2FsYXJTdHJ1Y3R1cmUiIC8+DQogICAg
+PG9wYzpGaWVsZCBOYW1lPSJRIiBUeXBlTmFtZT0idWE6RXhwYW5kZWROb2RlSWQiIFNvdXJjZVR5
+cGU9InRuczpTY2FsYXJTdHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJSIiBUeXBl
+TmFtZT0idWE6UXVhbGlmaWVkTmFtZSIgU291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIg
+Lz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlMiIFR5cGVOYW1lPSJ1YTpMb2NhbGl6ZWRUZXh0IiBT
+b3VyY2VUeXBlPSJ0bnM6U2NhbGFyU3RydWN0dXJlIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0i
+VCIgVHlwZU5hbWU9InVhOlN0YXR1c0NvZGUiIFNvdXJjZVR5cGU9InRuczpTY2FsYXJTdHJ1Y3R1
+cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJVIiBUeXBlTmFtZT0idWE6WG1sRWxlbWVudCIg
+U291cmNlVHlwZT0idG5zOlNjYWxhclN0cnVjdHVyZSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9
+IlYiIFR5cGVOYW1lPSJ0bnM6Q29uY3JldGVTdHJ1Y3R1cmUiIFNvdXJjZVR5cGU9InRuczpTY2Fs
+YXJTdHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJXIiBUeXBlTmFtZT0idG5zOkVu
+dW1lcmF0aW9uV2l0aEdhcHMiIFNvdXJjZVR5cGU9InRuczpTY2FsYXJTdHJ1Y3R1cmUiIC8+DQog
+ICAgPG9wYzpGaWVsZCBOYW1lPSJYIiBUeXBlTmFtZT0idWE6RGF0YVZhbHVlIiAvPg0KICAgIDxv
+cGM6RmllbGQgTmFtZT0iWSIgVHlwZU5hbWU9InVhOlZhcmlhbnQiIC8+DQogICAgPG9wYzpGaWVs
+ZCBOYW1lPSJaIiBUeXBlTmFtZT0idWE6RXh0ZW5zaW9uT2JqZWN0IiAvPg0KICA8L29wYzpTdHJ1
+Y3R1cmVkVHlwZT4NCg0KICA8b3BjOlN0cnVjdHVyZWRUeXBlIE5hbWU9IkFycmF5U3RydWN0dXJl
+IiBCYXNlVHlwZT0idWE6RXh0ZW5zaW9uT2JqZWN0Ij4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5v
+T2ZBIiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQSIgVHlw
+ZU5hbWU9Im9wYzpCb29sZWFuIiBMZW5ndGhGaWVsZD0iTm9PZkEiIC8+DQogICAgPG9wYzpGaWVs
+ZCBOYW1lPSJOb09mQiIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5h
+bWU9IkIiIFR5cGVOYW1lPSJvcGM6U0J5dGUiIExlbmd0aEZpZWxkPSJOb09mQiIgLz4NCiAgICA8
+b3BjOkZpZWxkIE5hbWU9Ik5vT2ZDIiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0KICAgIDxvcGM6
+RmllbGQgTmFtZT0iQyIgVHlwZU5hbWU9Im9wYzpCeXRlIiBMZW5ndGhGaWVsZD0iTm9PZkMiIC8+
+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mRCIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAg
+ICA8b3BjOkZpZWxkIE5hbWU9IkQiIFR5cGVOYW1lPSJvcGM6SW50MTYiIExlbmd0aEZpZWxkPSJO
+b09mRCIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZFIiBUeXBlTmFtZT0ib3BjOkludDMy
+IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iRSIgVHlwZU5hbWU9Im9wYzpVSW50MTYiIExlbmd0
+aEZpZWxkPSJOb09mRSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZGIiBUeXBlTmFtZT0i
+b3BjOkludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iRiIgVHlwZU5hbWU9Im9wYzpJbnQz
+MiIgTGVuZ3RoRmllbGQ9Ik5vT2ZGIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZkciIFR5
+cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJHIiBUeXBlTmFtZT0i
+b3BjOlVJbnQzMiIgTGVuZ3RoRmllbGQ9Ik5vT2ZHIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0i
+Tm9PZkgiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJIIiBU
+eXBlTmFtZT0ib3BjOkludDY0IiBMZW5ndGhGaWVsZD0iTm9PZkgiIC8+DQogICAgPG9wYzpGaWVs
+ZCBOYW1lPSJOb09mSSIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5h
+bWU9IkkiIFR5cGVOYW1lPSJvcGM6VUludDY0IiBMZW5ndGhGaWVsZD0iTm9PZkkiIC8+DQogICAg
+PG9wYzpGaWVsZCBOYW1lPSJOb09mSiIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3Bj
+OkZpZWxkIE5hbWU9IkoiIFR5cGVOYW1lPSJvcGM6RmxvYXQiIExlbmd0aEZpZWxkPSJOb09mSiIg
+Lz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZLIiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0K
+ICAgIDxvcGM6RmllbGQgTmFtZT0iSyIgVHlwZU5hbWU9Im9wYzpEb3VibGUiIExlbmd0aEZpZWxk
+PSJOb09mSyIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZMIiBUeXBlTmFtZT0ib3BjOklu
+dDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTCIgVHlwZU5hbWU9Im9wYzpHdWlkIiBMZW5n
+dGhGaWVsZD0iTm9PZkwiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mTSIgVHlwZU5hbWU9
+Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik0iIFR5cGVOYW1lPSJvcGM6RGF0
+ZVRpbWUiIExlbmd0aEZpZWxkPSJOb09mTSIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZO
+IiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTiIgVHlwZU5h
+bWU9Im9wYzpTdHJpbmciIExlbmd0aEZpZWxkPSJOb09mTiIgLz4NCiAgICA8b3BjOkZpZWxkIE5h
+bWU9Ik5vT2ZPIiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0i
+TyIgVHlwZU5hbWU9Im9wYzpCeXRlU3RyaW5nIiBMZW5ndGhGaWVsZD0iTm9PZk8iIC8+DQogICAg
+PG9wYzpGaWVsZCBOYW1lPSJOb09mUCIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3Bj
+OkZpZWxkIE5hbWU9IlAiIFR5cGVOYW1lPSJ1YTpOb2RlSWQiIExlbmd0aEZpZWxkPSJOb09mUCIg
+Lz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZRIiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0K
+ICAgIDxvcGM6RmllbGQgTmFtZT0iUSIgVHlwZU5hbWU9InVhOkV4cGFuZGVkTm9kZUlkIiBMZW5n
+dGhGaWVsZD0iTm9PZlEiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mUiIgVHlwZU5hbWU9
+Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlIiIFR5cGVOYW1lPSJ1YTpRdWFs
+aWZpZWROYW1lIiBMZW5ndGhGaWVsZD0iTm9PZlIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJO
+b09mUyIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlMiIFR5
+cGVOYW1lPSJ1YTpMb2NhbGl6ZWRUZXh0IiBMZW5ndGhGaWVsZD0iTm9PZlMiIC8+DQogICAgPG9w
+YzpGaWVsZCBOYW1lPSJOb09mVCIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZp
+ZWxkIE5hbWU9IlQiIFR5cGVOYW1lPSJ1YTpTdGF0dXNDb2RlIiBMZW5ndGhGaWVsZD0iTm9PZlQi
+IC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mVSIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4N
+CiAgICA8b3BjOkZpZWxkIE5hbWU9IlUiIFR5cGVOYW1lPSJ1YTpYbWxFbGVtZW50IiBMZW5ndGhG
+aWVsZD0iTm9PZlUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mViIgVHlwZU5hbWU9Im9w
+YzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlYiIFR5cGVOYW1lPSJ0bnM6Q29uY3Jl
+dGVTdHJ1Y3R1cmUiIExlbmd0aEZpZWxkPSJOb09mViIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9
+Ik5vT2ZXIiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iVyIg
+VHlwZU5hbWU9InRuczpFbnVtZXJhdGlvbldpdGhHYXBzIiBMZW5ndGhGaWVsZD0iTm9PZlciIC8+
+DQogIDwvb3BjOlN0cnVjdHVyZWRUeXBlPg0KDQogIDxvcGM6U3RydWN0dXJlZFR5cGUgTmFtZT0i
+QXJyYXlTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyIgQmFzZVR5cGU9InRuczpBcnJheVN0cnVj
+dHVyZSI+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mQSIgVHlwZU5hbWU9Im9wYzpJbnQzMiIg
+Lz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkEiIFR5cGVOYW1lPSJvcGM6Qm9vbGVhbiIgTGVuZ3Ro
+RmllbGQ9Ik5vT2ZBIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZkIiIFR5cGVOYW1lPSJv
+cGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJCIiBUeXBlTmFtZT0ib3BjOlNCeXRl
+IiBMZW5ndGhGaWVsZD0iTm9PZkIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mQyIgVHlw
+ZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkMiIFR5cGVOYW1lPSJv
+cGM6Qnl0ZSIgTGVuZ3RoRmllbGQ9Ik5vT2ZDIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9P
+ZkQiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJEIiBUeXBl
+TmFtZT0ib3BjOkludDE2IiBMZW5ndGhGaWVsZD0iTm9PZkQiIC8+DQogICAgPG9wYzpGaWVsZCBO
+YW1lPSJOb09mRSIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9
+IkUiIFR5cGVOYW1lPSJvcGM6VUludDE2IiBMZW5ndGhGaWVsZD0iTm9PZkUiIC8+DQogICAgPG9w
+YzpGaWVsZCBOYW1lPSJOb09mRiIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZp
+ZWxkIE5hbWU9IkYiIFR5cGVOYW1lPSJvcGM6SW50MzIiIExlbmd0aEZpZWxkPSJOb09mRiIgLz4N
+CiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZHIiBUeXBlTmFtZT0ib3BjOkludDMyIiAvPg0KICAg
+IDxvcGM6RmllbGQgTmFtZT0iRyIgVHlwZU5hbWU9Im9wYzpVSW50MzIiIExlbmd0aEZpZWxkPSJO
+b09mRyIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZIIiBUeXBlTmFtZT0ib3BjOkludDMy
+IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iSCIgVHlwZU5hbWU9Im9wYzpJbnQ2NCIgTGVuZ3Ro
+RmllbGQ9Ik5vT2ZIIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZkkiIFR5cGVOYW1lPSJv
+cGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJJIiBUeXBlTmFtZT0ib3BjOlVJbnQ2
+NCIgTGVuZ3RoRmllbGQ9Ik5vT2ZJIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZkoiIFR5
+cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJKIiBUeXBlTmFtZT0i
+b3BjOkZsb2F0IiBMZW5ndGhGaWVsZD0iTm9PZkoiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJO
+b09mSyIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IksiIFR5
+cGVOYW1lPSJvcGM6RG91YmxlIiBMZW5ndGhGaWVsZD0iTm9PZksiIC8+DQogICAgPG9wYzpGaWVs
+ZCBOYW1lPSJOb09mTCIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5h
+bWU9IkwiIFR5cGVOYW1lPSJvcGM6R3VpZCIgTGVuZ3RoRmllbGQ9Ik5vT2ZMIiAvPg0KICAgIDxv
+cGM6RmllbGQgTmFtZT0iTm9PZk0iIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpG
+aWVsZCBOYW1lPSJNIiBUeXBlTmFtZT0ib3BjOkRhdGVUaW1lIiBMZW5ndGhGaWVsZD0iTm9PZk0i
+IC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mTiIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4N
+CiAgICA8b3BjOkZpZWxkIE5hbWU9Ik4iIFR5cGVOYW1lPSJvcGM6U3RyaW5nIiBMZW5ndGhGaWVs
+ZD0iTm9PZk4iIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mTyIgVHlwZU5hbWU9Im9wYzpJ
+bnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik8iIFR5cGVOYW1lPSJvcGM6Qnl0ZVN0cmlu
+ZyIgTGVuZ3RoRmllbGQ9Ik5vT2ZPIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZlAiIFR5
+cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJQIiBUeXBlTmFtZT0i
+dWE6Tm9kZUlkIiBMZW5ndGhGaWVsZD0iTm9PZlAiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJO
+b09mUSIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlEiIFR5
+cGVOYW1lPSJ1YTpFeHBhbmRlZE5vZGVJZCIgTGVuZ3RoRmllbGQ9Ik5vT2ZRIiAvPg0KICAgIDxv
+cGM6RmllbGQgTmFtZT0iTm9PZlIiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpG
+aWVsZCBOYW1lPSJSIiBUeXBlTmFtZT0idWE6UXVhbGlmaWVkTmFtZSIgTGVuZ3RoRmllbGQ9Ik5v
+T2ZSIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZlMiIFR5cGVOYW1lPSJvcGM6SW50MzIi
+IC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJTIiBUeXBlTmFtZT0idWE6TG9jYWxpemVkVGV4dCIg
+TGVuZ3RoRmllbGQ9Ik5vT2ZTIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZlQiIFR5cGVO
+YW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJUIiBUeXBlTmFtZT0idWE6
+U3RhdHVzQ29kZSIgTGVuZ3RoRmllbGQ9Ik5vT2ZUIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0i
+Tm9PZlUiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJVIiBU
+eXBlTmFtZT0idWE6WG1sRWxlbWVudCIgTGVuZ3RoRmllbGQ9Ik5vT2ZVIiAvPg0KICAgIDxvcGM6
+RmllbGQgTmFtZT0iTm9PZlYiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVs
+ZCBOYW1lPSJWIiBUeXBlTmFtZT0idG5zOkNvbmNyZXRlU3RydWN0dXJlIiBMZW5ndGhGaWVsZD0i
+Tm9PZlYiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mVyIgVHlwZU5hbWU9Im9wYzpJbnQz
+MiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IlciIFR5cGVOYW1lPSJ0bnM6RW51bWVyYXRpb25X
+aXRoR2FwcyIgTGVuZ3RoRmllbGQ9Ik5vT2ZXIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9P
+ZlgiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJYIiBUeXBl
+TmFtZT0idWE6RGF0YVZhbHVlIiBMZW5ndGhGaWVsZD0iTm9PZlgiIC8+DQogICAgPG9wYzpGaWVs
+ZCBOYW1lPSJOb09mWSIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5h
+bWU9IlkiIFR5cGVOYW1lPSJ1YTpWYXJpYW50IiBMZW5ndGhGaWVsZD0iTm9PZlkiIC8+DQogICAg
+PG9wYzpGaWVsZCBOYW1lPSJOb09mWiIgVHlwZU5hbWU9Im9wYzpJbnQzMiIgLz4NCiAgICA8b3Bj
+OkZpZWxkIE5hbWU9IloiIFR5cGVOYW1lPSJ1YTpFeHRlbnNpb25PYmplY3QiIExlbmd0aEZpZWxk
+PSJOb09mWiIgLz4NCiAgPC9vcGM6U3RydWN0dXJlZFR5cGU+DQoNCiAgPG9wYzpTdHJ1Y3R1cmVk
+VHlwZSBOYW1lPSJOZXN0ZWRTdHJ1Y3R1cmUiIEJhc2VUeXBlPSJ1YTpFeHRlbnNpb25PYmplY3Qi
+Pg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQSIgVHlwZU5hbWU9InRuczpTY2FsYXJTdHJ1Y3R1cmUi
+IC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJCIiBUeXBlTmFtZT0idG5zOkFycmF5U3RydWN0dXJl
+IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZkMiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+
+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJDIiBUeXBlTmFtZT0idG5zOlNjYWxhclN0cnVjdHVyZSIg
+TGVuZ3RoRmllbGQ9Ik5vT2ZDIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZkQiIFR5cGVO
+YW1lPSJvcGM6SW50MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJEIiBUeXBlTmFtZT0idG5z
+OkFycmF5U3RydWN0dXJlIiBMZW5ndGhGaWVsZD0iTm9PZkQiIC8+DQogIDwvb3BjOlN0cnVjdHVy
+ZWRUeXBlPg0KDQogIDxvcGM6U3RydWN0dXJlZFR5cGUgTmFtZT0iTmVzdGVkU3RydWN0dXJlV2l0
+aEFsbG93U3VidHlwZXMiIEJhc2VUeXBlPSJ1YTpFeHRlbnNpb25PYmplY3QiPg0KICAgIDxvcGM6
+RmllbGQgTmFtZT0iQSIgVHlwZU5hbWU9InRuczpTY2FsYXJTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0
+eXBlcyIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkIiIFR5cGVOYW1lPSJ0bnM6QXJyYXlTdHJ1
+Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZDIiBU
+eXBlTmFtZT0ib3BjOkludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQyIgVHlwZU5hbWU9
+InRuczpTY2FsYXJTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyIgTGVuZ3RoRmllbGQ9Ik5vT2ZD
+IiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iTm9PZkQiIFR5cGVOYW1lPSJvcGM6SW50MzIiIC8+
+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJEIiBUeXBlTmFtZT0idG5zOkFycmF5U3RydWN0dXJlV2l0
+aEFsbG93U3VidHlwZXMiIExlbmd0aEZpZWxkPSJOb09mRCIgLz4NCiAgPC9vcGM6U3RydWN0dXJl
+ZFR5cGU+DQoNCiAgPG9wYzpTdHJ1Y3R1cmVkVHlwZSBOYW1lPSJCYXNpY1VuaW9uIiBCYXNlVHlw
+ZT0idWE6VW5pb24iPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQSIgVHlwZU5hbWU9Im9wYzpVSW50
+MzIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJOb09mQiIgVHlwZU5hbWU9Im9wYzpJbnQzMiIg
+Lz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkIiIFR5cGVOYW1lPSJvcGM6U3RyaW5nIiBMZW5ndGhG
+aWVsZD0iTm9PZkIiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJDIiBUeXBlTmFtZT0ib3BjOkJ5
+dGVTdHJpbmciIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJEIiBUeXBlTmFtZT0idG5zOkNvbmNy
+ZXRlU3RydWN0dXJlIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iRSIgVHlwZU5hbWU9InRuczpF
+bnVtZXJhdGlvbldpdGhHYXBzIiAvPg0KICA8L29wYzpTdHJ1Y3R1cmVkVHlwZT4NCg0KICA8b3Bj
+OlN0cnVjdHVyZWRUeXBlIE5hbWU9IlN0cnVjdHVyZVdpdGhPcHRpb25hbEZpZWxkcyIgQmFzZVR5
+cGU9InVhOkV4dGVuc2lvbk9iamVjdCI+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJBIiBUeXBlTmFt
+ZT0ib3BjOlVJbnQzMiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9Ik5vT2ZCIiBUeXBlTmFtZT0i
+b3BjOkludDMyIiAvPg0KICAgIDxvcGM6RmllbGQgTmFtZT0iQiIgVHlwZU5hbWU9Im9wYzpTdHJp
+bmciIExlbmd0aEZpZWxkPSJOb09mQiIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkMiIFR5cGVO
+YW1lPSJvcGM6Qnl0ZVN0cmluZyIgLz4NCiAgICA8b3BjOkZpZWxkIE5hbWU9IkQiIFR5cGVOYW1l
+PSJ0bnM6Q29uY3JldGVTdHJ1Y3R1cmUiIC8+DQogICAgPG9wYzpGaWVsZCBOYW1lPSJFIiBUeXBl
+TmFtZT0idG5zOkVudW1lcmF0aW9uV2l0aEdhcHMiIC8+DQogIDwvb3BjOlN0cnVjdHVyZWRUeXBl
+Pg0KDQo8L29wYzpUeXBlRGljdGlvbmFyeT4=</uax:ByteString>
+      </uax:Value>
+    </uax:Value>
+    <uax:DataType>
+      <uax:Identifier>i=15</uax:Identifier>
+    </uax:DataType>
+    <uax:ValueRank>-1</uax:ValueRank>
+    <uax:AccessLevel>1</uax:AccessLevel>
+    <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=47</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>i=93</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+    <NamespaceUri xmlns="http://opcfoundation.org/UA/">
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=15</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>0</uax:NamespaceIndex>
+        <uax:Name>NamespaceUri</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>15</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>urn:opcfoundation.org:2024-01:TestModel</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </NamespaceUri>
+    <Deprecated xmlns="http://opcfoundation.org/UA/">
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=16</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>0</uax:NamespaceIndex>
+        <uax:Name>Deprecated</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>16</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:Boolean>true</uax:Boolean>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=1</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </Deprecated>
+    <AbstractStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=79</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>AbstractStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>79</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>AbstractStructure</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </AbstractStructure>
+    <ConcreteStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=82</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ConcreteStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>82</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>ConcreteStructure</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ConcreteStructure>
+    <ScalarStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=85</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ScalarStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>85</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>ScalarStructure</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ScalarStructure>
+    <ScalarStructureWithAllowSubtypes>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=88</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ScalarStructureWithAllowSubtypes</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>88</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>ScalarStructureWithAllowSubtypes</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ScalarStructureWithAllowSubtypes>
+    <ArrayStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=91</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArrayStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>91</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>ArrayStructure</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArrayStructure>
+    <ArrayStructureWithAllowSubtypes>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=94</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArrayStructureWithAllowSubtypes</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>94</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>ArrayStructureWithAllowSubtypes</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArrayStructureWithAllowSubtypes>
+    <NestedStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=97</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>NestedStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>97</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>NestedStructure</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </NestedStructure>
+    <NestedStructureWithAllowSubtypes>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=100</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>NestedStructureWithAllowSubtypes</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>100</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>NestedStructureWithAllowSubtypes</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </NestedStructureWithAllowSubtypes>
+    <BasicUnion>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=147</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>BasicUnion</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>147</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>BasicUnion</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </BasicUnion>
+    <StructureWithOptionalFields>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=150</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>StructureWithOptionalFields</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>150</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>StructureWithOptionalFields</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </StructureWithOptionalFields>
+  </TestModel_BinarySchema>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=103</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>103</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=61</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=111</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=104</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>104</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=62</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=114</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=105</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>105</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=65</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=117</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=106</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>106</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=66</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=120</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=107</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>107</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=67</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=123</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=108</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>108</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=68</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=126</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=109</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>109</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=69</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=129</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=110</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>110</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=70</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=132</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=153</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>153</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=143</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=155</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <DefaultXml xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=154</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default XML</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>154</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=144</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=39</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=158</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultXml>
+  <TestModel_XmlSchema xmlns="urn:opcfoundation.org:2024-01:TestModel">
+    <uax:NodeClass>Variable_2</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=37</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>TestModel</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=72</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>37</uax:NumericId>
+    <uax:Value>
+      <uax:Value>
+        <uax:ByteString>PHhzOnNjaGVtYQ0KICB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEi
+DQogIHhtbG5zOnVhPSJodHRwOi8vb3BjZm91bmRhdGlvbi5vcmcvVUEvMjAwOC8wMi9UeXBlcy54
+c2QiDQogIHhtbG5zOnRucz0idXJuOm9wY2ZvdW5kYXRpb24ub3JnOjIwMjQtMDE6VGVzdE1vZGVs
+VHlwZXMueHNkIg0KICB0YXJnZXROYW1lc3BhY2U9InVybjpvcGNmb3VuZGF0aW9uLm9yZzoyMDI0
+LTAxOlRlc3RNb2RlbFR5cGVzLnhzZCINCiAgZWxlbWVudEZvcm1EZWZhdWx0PSJxdWFsaWZpZWQi
+DQo+DQogIDx4czphbm5vdGF0aW9uPg0KICAgIDx4czphcHBpbmZvPg0KICAgICAgPHVhOk1vZGVs
+IE1vZGVsVXJpPSJ1cm46b3BjZm91bmRhdGlvbi5vcmc6MjAyNC0wMTpUZXN0TW9kZWwiIFZlcnNp
+b249IjEuMDUuMDQiIFB1YmxpY2F0aW9uRGF0ZT0iMjAyNC0xMi0xNVQwMDowMDowMFoiIC8+DQog
+ICAgPC94czphcHBpbmZvPg0KICA8L3hzOmFubm90YXRpb24+DQogIA0KICA8eHM6aW1wb3J0IG5h
+bWVzcGFjZT0iaHR0cDovL29wY2ZvdW5kYXRpb24ub3JnL1VBLzIwMDgvMDIvVHlwZXMueHNkIiAv
+Pg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJBYnN0cmFjdFN0cnVjdHVyZSI+DQogICAgPHhz
+OnNlcXVlbmNlPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iQSIgdHlwZT0ieHM6c2hvcnQiIG1p
+bk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkIiIHR5cGU9InhzOmRvdWJs
+ZSIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iQyIgdHlwZT0ieHM6
+c3RyaW5nIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgIDwveHM6c2VxdWVu
+Y2U+DQogIDwveHM6Y29tcGxleFR5cGU+DQogIDx4czplbGVtZW50IG5hbWU9IkFic3RyYWN0U3Ry
+dWN0dXJlIiB0eXBlPSJ0bnM6QWJzdHJhY3RTdHJ1Y3R1cmUiIC8+DQoNCiAgPHhzOmNvbXBsZXhU
+eXBlIG5hbWU9Ikxpc3RPZkFic3RyYWN0U3RydWN0dXJlIj4NCiAgICA8eHM6c2VxdWVuY2U+DQog
+ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJBYnN0cmFjdFN0cnVjdHVyZSIgdHlwZT0idG5zOkFic3Ry
+YWN0U3RydWN0dXJlIiBtaW5PY2N1cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJs
+ZT0idHJ1ZSIgLz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8
+eHM6ZWxlbWVudCBuYW1lPSJMaXN0T2ZBYnN0cmFjdFN0cnVjdHVyZSIgdHlwZT0idG5zOkxpc3RP
+ZkFic3RyYWN0U3RydWN0dXJlIiBuaWxsYWJsZT0idHJ1ZSI+PC94czplbGVtZW50Pg0KDQogIDx4
+czpjb21wbGV4VHlwZSBuYW1lPSJDb25jcmV0ZVN0cnVjdHVyZSI+DQogICAgPHhzOmNvbXBsZXhD
+b250ZW50IG1peGVkPSJmYWxzZSI+DQogICAgICA8eHM6ZXh0ZW5zaW9uIGJhc2U9InRuczpBYnN0
+cmFjdFN0cnVjdHVyZSI+DQogICAgICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgICAgICA8eHM6ZWxl
+bWVudCBuYW1lPSJEIiB0eXBlPSJ4czpzaG9ydCIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
+IDx4czplbGVtZW50IG5hbWU9IkUiIHR5cGU9InhzOmRvdWJsZSIgbWluT2NjdXJzPSIwIiAvPg0K
+ICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkYiIHR5cGU9InhzOnN0cmluZyIgbWluT2NjdXJz
+PSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgICAgPC94czpzZXF1ZW5jZT4NCiAgICAgIDwv
+eHM6ZXh0ZW5zaW9uPg0KICAgIDwveHM6Y29tcGxleENvbnRlbnQ+DQogIDwveHM6Y29tcGxleFR5
+cGU+DQogIDx4czplbGVtZW50IG5hbWU9IkNvbmNyZXRlU3RydWN0dXJlIiB0eXBlPSJ0bnM6Q29u
+Y3JldGVTdHJ1Y3R1cmUiIC8+DQoNCiAgPHhzOmNvbXBsZXhUeXBlIG5hbWU9Ikxpc3RPZkNvbmNy
+ZXRlU3RydWN0dXJlIj4NCiAgICA8eHM6c2VxdWVuY2U+DQogICAgICA8eHM6ZWxlbWVudCBuYW1l
+PSJDb25jcmV0ZVN0cnVjdHVyZSIgdHlwZT0idG5zOkNvbmNyZXRlU3RydWN0dXJlIiBtaW5PY2N1
+cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICA8L3hz
+OnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBuYW1lPSJMaXN0
+T2ZDb25jcmV0ZVN0cnVjdHVyZSIgdHlwZT0idG5zOkxpc3RPZkNvbmNyZXRlU3RydWN0dXJlIiBu
+aWxsYWJsZT0idHJ1ZSI+PC94czplbGVtZW50Pg0KDQogIDx4czpzaW1wbGVUeXBlICBuYW1lPSJF
+bnVtZXJhdGlvbldpdGhHYXBzIj4NCiAgICA8eHM6cmVzdHJpY3Rpb24gYmFzZT0ieHM6c3RyaW5n
+Ij4NCiAgICAgIDx4czplbnVtZXJhdGlvbiB2YWx1ZT0iSW52YWxpZF8wIiAvPg0KICAgICAgPHhz
+OmVudW1lcmF0aW9uIHZhbHVlPSJSZWRfMSIgLz4NCiAgICAgIDx4czplbnVtZXJhdGlvbiB2YWx1
+ZT0iR3JlZW5fMiIgLz4NCiAgICAgIDx4czplbnVtZXJhdGlvbiB2YWx1ZT0iQmx1ZV82IiAvPg0K
+ICAgIDwveHM6cmVzdHJpY3Rpb24+DQogIDwveHM6c2ltcGxlVHlwZT4NCiAgPHhzOmVsZW1lbnQg
+bmFtZT0iRW51bWVyYXRpb25XaXRoR2FwcyIgdHlwZT0idG5zOkVudW1lcmF0aW9uV2l0aEdhcHMi
+IC8+DQoNCiAgPHhzOmNvbXBsZXhUeXBlIG5hbWU9Ikxpc3RPZkVudW1lcmF0aW9uV2l0aEdhcHMi
+Pg0KICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkVudW1lcmF0aW9u
+V2l0aEdhcHMiIHR5cGU9InRuczpFbnVtZXJhdGlvbldpdGhHYXBzIiBtaW5PY2N1cnM9IjAiIG1h
+eE9jY3Vycz0idW5ib3VuZGVkIiAvPg0KICAgIDwveHM6c2VxdWVuY2U+DQogIDwveHM6Y29tcGxl
+eFR5cGU+DQogIDx4czplbGVtZW50IG5hbWU9Ikxpc3RPZkVudW1lcmF0aW9uV2l0aEdhcHMiIHR5
+cGU9InRuczpMaXN0T2ZFbnVtZXJhdGlvbldpdGhHYXBzIiBuaWxsYWJsZT0idHJ1ZSI+PC94czpl
+bGVtZW50Pg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJTY2FsYXJTdHJ1Y3R1cmUiPg0KICAg
+IDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkEiIHR5cGU9InhzOmJvb2xl
+YW4iIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkIiIHR5cGU9Inhz
+OmJ5dGUiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkMiIHR5cGU9
+InhzOnVuc2lnbmVkQnl0ZSIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFt
+ZT0iRCIgdHlwZT0ieHM6c2hvcnQiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50
+IG5hbWU9IkUiIHR5cGU9InhzOnVuc2lnbmVkU2hvcnQiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAg
+IDx4czplbGVtZW50IG5hbWU9IkYiIHR5cGU9InhzOmludCIgbWluT2NjdXJzPSIwIiAvPg0KICAg
+ICAgPHhzOmVsZW1lbnQgbmFtZT0iRyIgdHlwZT0ieHM6dW5zaWduZWRJbnQiIG1pbk9jY3Vycz0i
+MCIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkgiIHR5cGU9InhzOmxvbmciIG1pbk9jY3Vy
+cz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkkiIHR5cGU9InhzOnVuc2lnbmVkTG9u
+ZyIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iSiIgdHlwZT0ieHM6
+ZmxvYXQiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IksiIHR5cGU9
+InhzOmRvdWJsZSIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTCIg
+dHlwZT0idWE6R3VpZCIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0i
+TSIgdHlwZT0ieHM6ZGF0ZVRpbWUiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgIDx4czplbGVtZW50
+IG5hbWU9Ik4iIHR5cGU9InhzOnN0cmluZyIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIg
+Lz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9Ik8iIHR5cGU9InhzOmJhc2U2NEJpbmFyeSIgbWlu
+T2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlAi
+IHR5cGU9InVhOk5vZGVJZCIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAg
+IDx4czplbGVtZW50IG5hbWU9IlEiIHR5cGU9InVhOkV4cGFuZGVkTm9kZUlkIiBtaW5PY2N1cnM9
+IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iUiIgdHlwZT0i
+dWE6UXVhbGlmaWVkTmFtZSIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAg
+IDx4czplbGVtZW50IG5hbWU9IlMiIHR5cGU9InVhOkxvY2FsaXplZFRleHQiIG1pbk9jY3Vycz0i
+MCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJUIiB0eXBlPSJ1
+YTpTdGF0dXNDb2RlIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJV
+IiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIj4NCiAgICAgICAgPHhzOmNvbXBsZXhUeXBl
+Pg0KICAgICAgICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgICAgICAgIDx4czphbnkgbWluT2NjdXJz
+PSIwIiBwcm9jZXNzQ29udGVudHM9ImxheCIgLz4NCiAgICAgICAgICA8L3hzOnNlcXVlbmNlPg0K
+ICAgICAgICA8L3hzOmNvbXBsZXhUeXBlPg0KICAgICAgPC94czplbGVtZW50Pg0KICAgICAgPHhz
+OmVsZW1lbnQgbmFtZT0iViIgdHlwZT0idG5zOkNvbmNyZXRlU3RydWN0dXJlIiBtaW5PY2N1cnM9
+IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iVyIgdHlwZT0i
+dG5zOkVudW1lcmF0aW9uV2l0aEdhcHMiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICA8L3hzOnNlcXVl
+bmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBuYW1lPSJTY2FsYXJTdHJ1
+Y3R1cmUiIHR5cGU9InRuczpTY2FsYXJTdHJ1Y3R1cmUiIC8+DQoNCiAgPHhzOmNvbXBsZXhUeXBl
+IG5hbWU9Ikxpc3RPZlNjYWxhclN0cnVjdHVyZSI+DQogICAgPHhzOnNlcXVlbmNlPg0KICAgICAg
+PHhzOmVsZW1lbnQgbmFtZT0iU2NhbGFyU3RydWN0dXJlIiB0eXBlPSJ0bnM6U2NhbGFyU3RydWN0
+dXJlIiBtaW5PY2N1cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJsZT0idHJ1ZSIg
+Lz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVu
+dCBuYW1lPSJMaXN0T2ZTY2FsYXJTdHJ1Y3R1cmUiIHR5cGU9InRuczpMaXN0T2ZTY2FsYXJTdHJ1
+Y3R1cmUiIG5pbGxhYmxlPSJ0cnVlIj48L3hzOmVsZW1lbnQ+DQoNCiAgPHhzOmNvbXBsZXhUeXBl
+IG5hbWU9IlNjYWxhclN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5cGVzIj4NCiAgICA8eHM6Y29tcGxl
+eENvbnRlbnQgbWl4ZWQ9ImZhbHNlIj4NCiAgICAgIDx4czpleHRlbnNpb24gYmFzZT0idG5zOlNj
+YWxhclN0cnVjdHVyZSI+DQogICAgICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgICAgICA8eHM6ZWxl
+bWVudCBuYW1lPSJYIiB0eXBlPSJ1YTpEYXRhVmFsdWUiIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9
+InRydWUiIC8+DQogICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iWSIgdHlwZT0idWE6VmFyaWFu
+dCIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IloiIHR5cGU9
+InVhOkV4dGVuc2lvbk9iamVjdCIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAg
+ICAgICAgPC94czpzZXF1ZW5jZT4NCiAgICAgIDwveHM6ZXh0ZW5zaW9uPg0KICAgIDwveHM6Y29t
+cGxleENvbnRlbnQ+DQogIDwveHM6Y29tcGxleFR5cGU+DQogIDx4czplbGVtZW50IG5hbWU9IlNj
+YWxhclN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5cGVzIiB0eXBlPSJ0bnM6U2NhbGFyU3RydWN0dXJl
+V2l0aEFsbG93U3VidHlwZXMiIC8+DQoNCiAgPHhzOmNvbXBsZXhUeXBlIG5hbWU9Ikxpc3RPZlNj
+YWxhclN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5cGVzIj4NCiAgICA8eHM6c2VxdWVuY2U+DQogICAg
+ICA8eHM6ZWxlbWVudCBuYW1lPSJTY2FsYXJTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyIgdHlw
+ZT0idG5zOlNjYWxhclN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5cGVzIiBtaW5PY2N1cnM9IjAiIG1h
+eE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICA8L3hzOnNlcXVlbmNl
+Pg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBuYW1lPSJMaXN0T2ZTY2FsYXJT
+dHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyIgdHlwZT0idG5zOkxpc3RPZlNjYWxhclN0cnVjdHVy
+ZVdpdGhBbGxvd1N1YnR5cGVzIiBuaWxsYWJsZT0idHJ1ZSI+PC94czplbGVtZW50Pg0KDQogIDx4
+czpjb21wbGV4VHlwZSBuYW1lPSJBcnJheVN0cnVjdHVyZSI+DQogICAgPHhzOnNlcXVlbmNlPg0K
+ICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iQSIgdHlwZT0idWE6TGlzdE9mQm9vbGVhbiIgbWluT2Nj
+dXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkIiIHR5
+cGU9InVhOkxpc3RPZlNCeXRlIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAg
+ICAgPHhzOmVsZW1lbnQgbmFtZT0iQyIgdHlwZT0idWE6TGlzdE9mQnl0ZSIgbWluT2NjdXJzPSIw
+IiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkQiIHR5cGU9InVh
+Okxpc3RPZkludDE2IiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhz
+OmVsZW1lbnQgbmFtZT0iRSIgdHlwZT0idWE6TGlzdE9mVUludDE2IiBtaW5PY2N1cnM9IjAiIG5p
+bGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iRiIgdHlwZT0idWE6TGlz
+dE9mSW50MzIiIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgICA8eHM6ZWxl
+bWVudCBuYW1lPSJHIiB0eXBlPSJ1YTpMaXN0T2ZVSW50MzIiIG1pbk9jY3Vycz0iMCIgbmlsbGFi
+bGU9InRydWUiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJIIiB0eXBlPSJ1YTpMaXN0T2ZJ
+bnQ2NCIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50
+IG5hbWU9IkkiIHR5cGU9InVhOkxpc3RPZlVJbnQ2NCIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0i
+dHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkoiIHR5cGU9InVhOkxpc3RPZkZsb2F0
+IiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFt
+ZT0iSyIgdHlwZT0idWE6TGlzdE9mRG91YmxlIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVl
+IiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTCIgdHlwZT0idWE6TGlzdE9mR3VpZCIgbWlu
+T2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9Ik0i
+IHR5cGU9InVhOkxpc3RPZkRhdGVUaW1lIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAv
+Pg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTiIgdHlwZT0idWE6TGlzdE9mU3RyaW5nIiBtaW5P
+Y2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTyIg
+dHlwZT0idWE6TGlzdE9mQnl0ZVN0cmluZyIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIg
+Lz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlAiIHR5cGU9InVhOkxpc3RPZk5vZGVJZCIgbWlu
+T2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlEi
+IHR5cGU9InVhOkxpc3RPZkV4cGFuZGVkTm9kZUlkIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0
+cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iUiIgdHlwZT0idWE6TGlzdE9mUXVhbGlm
+aWVkTmFtZSIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVt
+ZW50IG5hbWU9IlMiIHR5cGU9InVhOkxpc3RPZkxvY2FsaXplZFRleHQiIG1pbk9jY3Vycz0iMCIg
+bmlsbGFibGU9InRydWUiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJUIiB0eXBlPSJ1YTpM
+aXN0T2ZTdGF0dXNDb2RlIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAg
+PHhzOmVsZW1lbnQgbmFtZT0iVSIgdHlwZT0idWE6TGlzdE9mWG1sRWxlbWVudCIgbWluT2NjdXJz
+PSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlYiIHR5cGU9
+InRuczpMaXN0T2ZDb25jcmV0ZVN0cnVjdHVyZSIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1
+ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IlciIHR5cGU9InRuczpMaXN0T2ZFbnVtZXJh
+dGlvbldpdGhHYXBzIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgIDwveHM6
+c2VxdWVuY2U+DQogIDwveHM6Y29tcGxleFR5cGU+DQogIDx4czplbGVtZW50IG5hbWU9IkFycmF5
+U3RydWN0dXJlIiB0eXBlPSJ0bnM6QXJyYXlTdHJ1Y3R1cmUiIC8+DQoNCiAgPHhzOmNvbXBsZXhU
+eXBlIG5hbWU9Ikxpc3RPZkFycmF5U3RydWN0dXJlIj4NCiAgICA8eHM6c2VxdWVuY2U+DQogICAg
+ICA8eHM6ZWxlbWVudCBuYW1lPSJBcnJheVN0cnVjdHVyZSIgdHlwZT0idG5zOkFycmF5U3RydWN0
+dXJlIiBtaW5PY2N1cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJsZT0idHJ1ZSIg
+Lz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVu
+dCBuYW1lPSJMaXN0T2ZBcnJheVN0cnVjdHVyZSIgdHlwZT0idG5zOkxpc3RPZkFycmF5U3RydWN0
+dXJlIiBuaWxsYWJsZT0idHJ1ZSI+PC94czplbGVtZW50Pg0KDQogIDx4czpjb21wbGV4VHlwZSBu
+YW1lPSJBcnJheVN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5cGVzIj4NCiAgICA8eHM6Y29tcGxleENv
+bnRlbnQgbWl4ZWQ9ImZhbHNlIj4NCiAgICAgIDx4czpleHRlbnNpb24gYmFzZT0idG5zOkFycmF5
+U3RydWN0dXJlIj4NCiAgICAgICAgPHhzOnNlcXVlbmNlPg0KICAgICAgICAgIDx4czplbGVtZW50
+IG5hbWU9IlgiIHR5cGU9InVhOkxpc3RPZkRhdGFWYWx1ZSIgbWluT2NjdXJzPSIwIiBuaWxsYWJs
+ZT0idHJ1ZSIgLz4NCiAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJZIiB0eXBlPSJ1YTpMaXN0
+T2ZWYXJpYW50IiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgICAgIDx4
+czplbGVtZW50IG5hbWU9IloiIHR5cGU9InVhOkxpc3RPZkV4dGVuc2lvbk9iamVjdCIgbWluT2Nj
+dXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgICAgPC94czpzZXF1ZW5jZT4NCiAgICAg
+IDwveHM6ZXh0ZW5zaW9uPg0KICAgIDwveHM6Y29tcGxleENvbnRlbnQ+DQogIDwveHM6Y29tcGxl
+eFR5cGU+DQogIDx4czplbGVtZW50IG5hbWU9IkFycmF5U3RydWN0dXJlV2l0aEFsbG93U3VidHlw
+ZXMiIHR5cGU9InRuczpBcnJheVN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5cGVzIiAvPg0KDQogIDx4
+czpjb21wbGV4VHlwZSBuYW1lPSJMaXN0T2ZBcnJheVN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5cGVz
+Ij4NCiAgICA8eHM6c2VxdWVuY2U+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJBcnJheVN0cnVj
+dHVyZVdpdGhBbGxvd1N1YnR5cGVzIiB0eXBlPSJ0bnM6QXJyYXlTdHJ1Y3R1cmVXaXRoQWxsb3dT
+dWJ0eXBlcyIgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCIgbmlsbGFibGU9InRy
+dWUiIC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4VHlwZT4NCiAgPHhzOmVs
+ZW1lbnQgbmFtZT0iTGlzdE9mQXJyYXlTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyIgdHlwZT0i
+dG5zOkxpc3RPZkFycmF5U3RydWN0dXJlV2l0aEFsbG93U3VidHlwZXMiIG5pbGxhYmxlPSJ0cnVl
+Ij48L3hzOmVsZW1lbnQ+DQoNCiAgPHhzOmNvbXBsZXhUeXBlIG5hbWU9Ik5lc3RlZFN0cnVjdHVy
+ZSI+DQogICAgPHhzOnNlcXVlbmNlPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iQSIgdHlwZT0i
+dG5zOlNjYWxhclN0cnVjdHVyZSIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAg
+ICAgIDx4czplbGVtZW50IG5hbWU9IkIiIHR5cGU9InRuczpBcnJheVN0cnVjdHVyZSIgbWluT2Nj
+dXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgIDx4czplbGVtZW50IG5hbWU9IkMiIHR5
+cGU9InRuczpMaXN0T2ZTY2FsYXJTdHJ1Y3R1cmUiIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9InRy
+dWUiIC8+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJEIiB0eXBlPSJ0bnM6TGlzdE9mQXJyYXlT
+dHJ1Y3R1cmUiIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgPC94czpzZXF1
+ZW5jZT4NCiAgPC94czpjb21wbGV4VHlwZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTmVzdGVkU3Ry
+dWN0dXJlIiB0eXBlPSJ0bnM6TmVzdGVkU3RydWN0dXJlIiAvPg0KDQogIDx4czpjb21wbGV4VHlw
+ZSBuYW1lPSJMaXN0T2ZOZXN0ZWRTdHJ1Y3R1cmUiPg0KICAgIDx4czpzZXF1ZW5jZT4NCiAgICAg
+IDx4czplbGVtZW50IG5hbWU9Ik5lc3RlZFN0cnVjdHVyZSIgdHlwZT0idG5zOk5lc3RlZFN0cnVj
+dHVyZSIgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCIgbmlsbGFibGU9InRydWUi
+IC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4VHlwZT4NCiAgPHhzOmVsZW1l
+bnQgbmFtZT0iTGlzdE9mTmVzdGVkU3RydWN0dXJlIiB0eXBlPSJ0bnM6TGlzdE9mTmVzdGVkU3Ry
+dWN0dXJlIiBuaWxsYWJsZT0idHJ1ZSI+PC94czplbGVtZW50Pg0KDQogIDx4czpjb21wbGV4VHlw
+ZSBuYW1lPSJOZXN0ZWRTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyI+DQogICAgPHhzOnNlcXVl
+bmNlPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iQSIgdHlwZT0idG5zOlNjYWxhclN0cnVjdHVy
+ZVdpdGhBbGxvd1N1YnR5cGVzIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAg
+ICAgPHhzOmVsZW1lbnQgbmFtZT0iQiIgdHlwZT0idG5zOkFycmF5U3RydWN0dXJlV2l0aEFsbG93
+U3VidHlwZXMiIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgICA8eHM6ZWxl
+bWVudCBuYW1lPSJDIiB0eXBlPSJ0bnM6TGlzdE9mU2NhbGFyU3RydWN0dXJlV2l0aEFsbG93U3Vi
+dHlwZXMiIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgICA8eHM6ZWxlbWVu
+dCBuYW1lPSJEIiB0eXBlPSJ0bnM6TGlzdE9mQXJyYXlTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBl
+cyIgbWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICA8L3hzOnNlcXVlbmNlPg0K
+ICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBuYW1lPSJOZXN0ZWRTdHJ1Y3R1cmVX
+aXRoQWxsb3dTdWJ0eXBlcyIgdHlwZT0idG5zOk5lc3RlZFN0cnVjdHVyZVdpdGhBbGxvd1N1YnR5
+cGVzIiAvPg0KDQogIDx4czpjb21wbGV4VHlwZSBuYW1lPSJMaXN0T2ZOZXN0ZWRTdHJ1Y3R1cmVX
+aXRoQWxsb3dTdWJ0eXBlcyI+DQogICAgPHhzOnNlcXVlbmNlPg0KICAgICAgPHhzOmVsZW1lbnQg
+bmFtZT0iTmVzdGVkU3RydWN0dXJlV2l0aEFsbG93U3VidHlwZXMiIHR5cGU9InRuczpOZXN0ZWRT
+dHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0eXBlcyIgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91
+bmRlZCIgbmlsbGFibGU9InRydWUiIC8+DQogICAgPC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21w
+bGV4VHlwZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0iTGlzdE9mTmVzdGVkU3RydWN0dXJlV2l0aEFs
+bG93U3VidHlwZXMiIHR5cGU9InRuczpMaXN0T2ZOZXN0ZWRTdHJ1Y3R1cmVXaXRoQWxsb3dTdWJ0
+eXBlcyIgbmlsbGFibGU9InRydWUiPjwveHM6ZWxlbWVudD4NCg0KICA8eHM6Y29tcGxleFR5cGUg
+bmFtZT0iQmFzaWNVbmlvbiI+DQogICAgPHhzOnNlcXVlbmNlPg0KICAgICAgPHhzOmVsZW1lbnQg
+bmFtZT0iU3dpdGNoRmllbGQiIHR5cGU9InhzOnVuc2lnbmVkSW50IiBtaW5PY2N1cnM9IjAiIC8+
+DQogICAgICA8eHM6Y2hvaWNlPg0KICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJBIiB0eXBlPSJ4
+czp1bnNpZ25lZEludCIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICA8eHM6ZWxlbWVudCBuYW1l
+PSJCIiB0eXBlPSJ1YTpMaXN0T2ZTdHJpbmciIG1pbk9jY3Vycz0iMCIgbmlsbGFibGU9InRydWUi
+IC8+DQogICAgICAgIDx4czplbGVtZW50IG5hbWU9IkMiIHR5cGU9InhzOmJhc2U2NEJpbmFyeSIg
+bWluT2NjdXJzPSIwIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICAgICAgPHhzOmVsZW1lbnQgbmFt
+ZT0iRCIgdHlwZT0idG5zOkNvbmNyZXRlU3RydWN0dXJlIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxl
+PSJ0cnVlIiAvPg0KICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJFIiB0eXBlPSJ0bnM6RW51bWVy
+YXRpb25XaXRoR2FwcyIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPC94czpjaG9pY2U+DQogICAg
+PC94czpzZXF1ZW5jZT4NCiAgPC94czpjb21wbGV4VHlwZT4NCiAgPHhzOmVsZW1lbnQgbmFtZT0i
+QmFzaWNVbmlvbiIgdHlwZT0idG5zOkJhc2ljVW5pb24iIC8+DQoNCiAgPHhzOmNvbXBsZXhUeXBl
+IG5hbWU9Ikxpc3RPZkJhc2ljVW5pb24iPg0KICAgIDx4czpzZXF1ZW5jZT4NCiAgICAgIDx4czpl
+bGVtZW50IG5hbWU9IkJhc2ljVW5pb24iIHR5cGU9InRuczpCYXNpY1VuaW9uIiBtaW5PY2N1cnM9
+IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAgICA8L3hzOnNl
+cXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBuYW1lPSJMaXN0T2ZC
+YXNpY1VuaW9uIiB0eXBlPSJ0bnM6TGlzdE9mQmFzaWNVbmlvbiIgbmlsbGFibGU9InRydWUiPjwv
+eHM6ZWxlbWVudD4NCg0KICA8eHM6Y29tcGxleFR5cGUgbmFtZT0iU3RydWN0dXJlV2l0aE9wdGlv
+bmFsRmllbGRzIj4NCiAgICA8eHM6c2VxdWVuY2U+DQogICAgICA8eHM6ZWxlbWVudCBuYW1lPSJB
+IiB0eXBlPSJ4czp1bnNpZ25lZEludCIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgPHhzOmVsZW1l
+bnQgbmFtZT0iQiIgdHlwZT0idWE6TGlzdE9mU3RyaW5nIiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxl
+PSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iQyIgdHlwZT0ieHM6YmFzZTY0Qmlu
+YXJ5IiBtaW5PY2N1cnM9IjAiIG5pbGxhYmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQg
+bmFtZT0iRCIgdHlwZT0idG5zOkNvbmNyZXRlU3RydWN0dXJlIiBtaW5PY2N1cnM9IjAiIG5pbGxh
+YmxlPSJ0cnVlIiAvPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iRSIgdHlwZT0idG5zOkVudW1l
+cmF0aW9uV2l0aEdhcHMiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICA8L3hzOnNlcXVlbmNlPg0KICA8
+L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBuYW1lPSJTdHJ1Y3R1cmVXaXRoT3B0aW9u
+YWxGaWVsZHMiIHR5cGU9InRuczpTdHJ1Y3R1cmVXaXRoT3B0aW9uYWxGaWVsZHMiIC8+DQoNCiAg
+PHhzOmNvbXBsZXhUeXBlIG5hbWU9Ikxpc3RPZlN0cnVjdHVyZVdpdGhPcHRpb25hbEZpZWxkcyI+
+DQogICAgPHhzOnNlcXVlbmNlPg0KICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iU3RydWN0dXJlV2l0
+aE9wdGlvbmFsRmllbGRzIiB0eXBlPSJ0bnM6U3RydWN0dXJlV2l0aE9wdGlvbmFsRmllbGRzIiBt
+aW5PY2N1cnM9IjAiIG1heE9jY3Vycz0idW5ib3VuZGVkIiBuaWxsYWJsZT0idHJ1ZSIgLz4NCiAg
+ICA8L3hzOnNlcXVlbmNlPg0KICA8L3hzOmNvbXBsZXhUeXBlPg0KICA8eHM6ZWxlbWVudCBuYW1l
+PSJMaXN0T2ZTdHJ1Y3R1cmVXaXRoT3B0aW9uYWxGaWVsZHMiIHR5cGU9InRuczpMaXN0T2ZTdHJ1
+Y3R1cmVXaXRoT3B0aW9uYWxGaWVsZHMiIG5pbGxhYmxlPSJ0cnVlIj48L3hzOmVsZW1lbnQ+DQoN
+CjwveHM6c2NoZW1hPg==</uax:ByteString>
+      </uax:Value>
+    </uax:Value>
+    <uax:DataType>
+      <uax:Identifier>i=15</uax:Identifier>
+    </uax:DataType>
+    <uax:ValueRank>-1</uax:ValueRank>
+    <uax:AccessLevel>1</uax:AccessLevel>
+    <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=47</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>i=92</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+    <NamespaceUri xmlns="http://opcfoundation.org/UA/">
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=39</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>0</uax:NamespaceIndex>
+        <uax:Name>NamespaceUri</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>39</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>urn:opcfoundation.org:2024-01:TestModelTypes.xsd</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </NamespaceUri>
+    <Deprecated xmlns="http://opcfoundation.org/UA/">
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=40</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>0</uax:NamespaceIndex>
+        <uax:Name>Deprecated</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>40</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:Boolean>true</uax:Boolean>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=1</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </Deprecated>
+    <AbstractStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=111</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>AbstractStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>111</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='AbstractStructure']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </AbstractStructure>
+    <ConcreteStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=114</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ConcreteStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>114</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='ConcreteStructure']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ConcreteStructure>
+    <ScalarStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=117</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ScalarStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>117</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='ScalarStructure']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ScalarStructure>
+    <ScalarStructureWithAllowSubtypes>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=120</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ScalarStructureWithAllowSubtypes</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>120</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='ScalarStructureWithAllowSubtypes']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ScalarStructureWithAllowSubtypes>
+    <ArrayStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=123</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArrayStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>123</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='ArrayStructure']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArrayStructure>
+    <ArrayStructureWithAllowSubtypes>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=126</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArrayStructureWithAllowSubtypes</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>126</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='ArrayStructureWithAllowSubtypes']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArrayStructureWithAllowSubtypes>
+    <NestedStructure>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=129</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>NestedStructure</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>129</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='NestedStructure']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </NestedStructure>
+    <NestedStructureWithAllowSubtypes>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=132</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>NestedStructureWithAllowSubtypes</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>132</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='NestedStructureWithAllowSubtypes']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </NestedStructureWithAllowSubtypes>
+    <BasicUnion>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=155</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>BasicUnion</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>155</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='BasicUnion']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </BasicUnion>
+    <StructureWithOptionalFields>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=158</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>StructureWithOptionalFields</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=69</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:NumericId>158</uax:NumericId>
+      <uax:Value>
+        <uax:Value>
+          <uax:String>//xs:element[@name='StructureWithOptionalFields']</uax:String>
+        </uax:Value>
+      </uax:Value>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </StructureWithOptionalFields>
+  </TestModel_XmlSchema>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=135</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>135</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=61</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=136</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>136</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=62</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=137</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>137</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=65</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=138</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>138</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=66</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=139</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>139</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=67</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=140</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>140</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=68</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=141</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>141</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=69</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=142</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>142</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=70</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=161</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>161</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=143</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+  <DefaultJson xmlns="http://opcfoundation.org/UA/">
+    <uax:NodeClass>Object_1</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=162</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>0</uax:NamespaceIndex>
+      <uax:Name>Default JSON</uax:Name>
+    </uax:BrowseName>
+    <uax:TypeDefinitionId>
+      <uax:Identifier>i=76</uax:Identifier>
+    </uax:TypeDefinitionId>
+    <uax:NumericId>162</uax:NumericId>
+    <uax:References>
+      <uax:Reference>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=38</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:IsInverse>true</uax:IsInverse>
+        <uax:TargetId>
+          <uax:Identifier>ns=1;i=144</uax:Identifier>
+        </uax:TargetId>
+      </uax:Reference>
+    </uax:References>
+  </DefaultJson>
+</uax:ListOfNodeState>

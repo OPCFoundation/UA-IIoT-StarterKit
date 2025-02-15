@@ -1,0 +1,260 @@
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  xmlns:tns="urn:opcfoundation.org:2024-01:TestModelTypes.xsd"
+  targetNamespace="urn:opcfoundation.org:2024-01:TestModelTypes.xsd"
+  elementFormDefault="qualified"
+>
+  <xs:annotation>
+    <xs:appinfo>
+      <ua:Model ModelUri="urn:opcfoundation.org:2024-01:TestModel" Version="1.05.04" PublicationDate="2024-12-15T00:00:00Z" />
+    </xs:appinfo>
+  </xs:annotation>
+  
+  <xs:import namespace="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+
+  <xs:complexType name="AbstractStructure">
+    <xs:sequence>
+      <xs:element name="A" type="xs:short" minOccurs="0" />
+      <xs:element name="B" type="xs:double" minOccurs="0" />
+      <xs:element name="C" type="xs:string" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbstractStructure" type="tns:AbstractStructure" />
+
+  <xs:complexType name="ListOfAbstractStructure">
+    <xs:sequence>
+      <xs:element name="AbstractStructure" type="tns:AbstractStructure" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfAbstractStructure" type="tns:ListOfAbstractStructure" nillable="true"></xs:element>
+
+  <xs:complexType name="ConcreteStructure">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AbstractStructure">
+        <xs:sequence>
+          <xs:element name="D" type="xs:short" minOccurs="0" />
+          <xs:element name="E" type="xs:double" minOccurs="0" />
+          <xs:element name="F" type="xs:string" minOccurs="0" nillable="true" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConcreteStructure" type="tns:ConcreteStructure" />
+
+  <xs:complexType name="ListOfConcreteStructure">
+    <xs:sequence>
+      <xs:element name="ConcreteStructure" type="tns:ConcreteStructure" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfConcreteStructure" type="tns:ListOfConcreteStructure" nillable="true"></xs:element>
+
+  <xs:simpleType  name="EnumerationWithGaps">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Invalid_0" />
+      <xs:enumeration value="Red_1" />
+      <xs:enumeration value="Green_2" />
+      <xs:enumeration value="Blue_6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EnumerationWithGaps" type="tns:EnumerationWithGaps" />
+
+  <xs:complexType name="ListOfEnumerationWithGaps">
+    <xs:sequence>
+      <xs:element name="EnumerationWithGaps" type="tns:EnumerationWithGaps" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfEnumerationWithGaps" type="tns:ListOfEnumerationWithGaps" nillable="true"></xs:element>
+
+  <xs:complexType name="ScalarStructure">
+    <xs:sequence>
+      <xs:element name="A" type="xs:boolean" minOccurs="0" />
+      <xs:element name="B" type="xs:byte" minOccurs="0" />
+      <xs:element name="C" type="xs:unsignedByte" minOccurs="0" />
+      <xs:element name="D" type="xs:short" minOccurs="0" />
+      <xs:element name="E" type="xs:unsignedShort" minOccurs="0" />
+      <xs:element name="F" type="xs:int" minOccurs="0" />
+      <xs:element name="G" type="xs:unsignedInt" minOccurs="0" />
+      <xs:element name="H" type="xs:long" minOccurs="0" />
+      <xs:element name="I" type="xs:unsignedLong" minOccurs="0" />
+      <xs:element name="J" type="xs:float" minOccurs="0" />
+      <xs:element name="K" type="xs:double" minOccurs="0" />
+      <xs:element name="L" type="ua:Guid" minOccurs="0" />
+      <xs:element name="M" type="xs:dateTime" minOccurs="0" />
+      <xs:element name="N" type="xs:string" minOccurs="0" nillable="true" />
+      <xs:element name="O" type="xs:base64Binary" minOccurs="0" nillable="true" />
+      <xs:element name="P" type="ua:NodeId" minOccurs="0" nillable="true" />
+      <xs:element name="Q" type="ua:ExpandedNodeId" minOccurs="0" nillable="true" />
+      <xs:element name="R" type="ua:QualifiedName" minOccurs="0" nillable="true" />
+      <xs:element name="S" type="ua:LocalizedText" minOccurs="0" nillable="true" />
+      <xs:element name="T" type="ua:StatusCode" minOccurs="0" />
+      <xs:element name="U" minOccurs="0" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="V" type="tns:ConcreteStructure" minOccurs="0" nillable="true" />
+      <xs:element name="W" type="tns:EnumerationWithGaps" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScalarStructure" type="tns:ScalarStructure" />
+
+  <xs:complexType name="ListOfScalarStructure">
+    <xs:sequence>
+      <xs:element name="ScalarStructure" type="tns:ScalarStructure" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfScalarStructure" type="tns:ListOfScalarStructure" nillable="true"></xs:element>
+
+  <xs:complexType name="ScalarStructureWithAllowSubtypes">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScalarStructure">
+        <xs:sequence>
+          <xs:element name="X" type="ua:DataValue" minOccurs="0" nillable="true" />
+          <xs:element name="Y" type="ua:Variant" minOccurs="0" />
+          <xs:element name="Z" type="ua:ExtensionObject" minOccurs="0" nillable="true" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ScalarStructureWithAllowSubtypes" type="tns:ScalarStructureWithAllowSubtypes" />
+
+  <xs:complexType name="ListOfScalarStructureWithAllowSubtypes">
+    <xs:sequence>
+      <xs:element name="ScalarStructureWithAllowSubtypes" type="tns:ScalarStructureWithAllowSubtypes" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfScalarStructureWithAllowSubtypes" type="tns:ListOfScalarStructureWithAllowSubtypes" nillable="true"></xs:element>
+
+  <xs:complexType name="ArrayStructure">
+    <xs:sequence>
+      <xs:element name="A" type="ua:ListOfBoolean" minOccurs="0" nillable="true" />
+      <xs:element name="B" type="ua:ListOfSByte" minOccurs="0" nillable="true" />
+      <xs:element name="C" type="ua:ListOfByte" minOccurs="0" nillable="true" />
+      <xs:element name="D" type="ua:ListOfInt16" minOccurs="0" nillable="true" />
+      <xs:element name="E" type="ua:ListOfUInt16" minOccurs="0" nillable="true" />
+      <xs:element name="F" type="ua:ListOfInt32" minOccurs="0" nillable="true" />
+      <xs:element name="G" type="ua:ListOfUInt32" minOccurs="0" nillable="true" />
+      <xs:element name="H" type="ua:ListOfInt64" minOccurs="0" nillable="true" />
+      <xs:element name="I" type="ua:ListOfUInt64" minOccurs="0" nillable="true" />
+      <xs:element name="J" type="ua:ListOfFloat" minOccurs="0" nillable="true" />
+      <xs:element name="K" type="ua:ListOfDouble" minOccurs="0" nillable="true" />
+      <xs:element name="L" type="ua:ListOfGuid" minOccurs="0" nillable="true" />
+      <xs:element name="M" type="ua:ListOfDateTime" minOccurs="0" nillable="true" />
+      <xs:element name="N" type="ua:ListOfString" minOccurs="0" nillable="true" />
+      <xs:element name="O" type="ua:ListOfByteString" minOccurs="0" nillable="true" />
+      <xs:element name="P" type="ua:ListOfNodeId" minOccurs="0" nillable="true" />
+      <xs:element name="Q" type="ua:ListOfExpandedNodeId" minOccurs="0" nillable="true" />
+      <xs:element name="R" type="ua:ListOfQualifiedName" minOccurs="0" nillable="true" />
+      <xs:element name="S" type="ua:ListOfLocalizedText" minOccurs="0" nillable="true" />
+      <xs:element name="T" type="ua:ListOfStatusCode" minOccurs="0" nillable="true" />
+      <xs:element name="U" type="ua:ListOfXmlElement" minOccurs="0" nillable="true" />
+      <xs:element name="V" type="tns:ListOfConcreteStructure" minOccurs="0" nillable="true" />
+      <xs:element name="W" type="tns:ListOfEnumerationWithGaps" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayStructure" type="tns:ArrayStructure" />
+
+  <xs:complexType name="ListOfArrayStructure">
+    <xs:sequence>
+      <xs:element name="ArrayStructure" type="tns:ArrayStructure" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfArrayStructure" type="tns:ListOfArrayStructure" nillable="true"></xs:element>
+
+  <xs:complexType name="ArrayStructureWithAllowSubtypes">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ArrayStructure">
+        <xs:sequence>
+          <xs:element name="X" type="ua:ListOfDataValue" minOccurs="0" nillable="true" />
+          <xs:element name="Y" type="ua:ListOfVariant" minOccurs="0" nillable="true" />
+          <xs:element name="Z" type="ua:ListOfExtensionObject" minOccurs="0" nillable="true" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ArrayStructureWithAllowSubtypes" type="tns:ArrayStructureWithAllowSubtypes" />
+
+  <xs:complexType name="ListOfArrayStructureWithAllowSubtypes">
+    <xs:sequence>
+      <xs:element name="ArrayStructureWithAllowSubtypes" type="tns:ArrayStructureWithAllowSubtypes" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfArrayStructureWithAllowSubtypes" type="tns:ListOfArrayStructureWithAllowSubtypes" nillable="true"></xs:element>
+
+  <xs:complexType name="NestedStructure">
+    <xs:sequence>
+      <xs:element name="A" type="tns:ScalarStructure" minOccurs="0" nillable="true" />
+      <xs:element name="B" type="tns:ArrayStructure" minOccurs="0" nillable="true" />
+      <xs:element name="C" type="tns:ListOfScalarStructure" minOccurs="0" nillable="true" />
+      <xs:element name="D" type="tns:ListOfArrayStructure" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NestedStructure" type="tns:NestedStructure" />
+
+  <xs:complexType name="ListOfNestedStructure">
+    <xs:sequence>
+      <xs:element name="NestedStructure" type="tns:NestedStructure" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfNestedStructure" type="tns:ListOfNestedStructure" nillable="true"></xs:element>
+
+  <xs:complexType name="NestedStructureWithAllowSubtypes">
+    <xs:sequence>
+      <xs:element name="A" type="tns:ScalarStructureWithAllowSubtypes" minOccurs="0" nillable="true" />
+      <xs:element name="B" type="tns:ArrayStructureWithAllowSubtypes" minOccurs="0" nillable="true" />
+      <xs:element name="C" type="tns:ListOfScalarStructureWithAllowSubtypes" minOccurs="0" nillable="true" />
+      <xs:element name="D" type="tns:ListOfArrayStructureWithAllowSubtypes" minOccurs="0" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NestedStructureWithAllowSubtypes" type="tns:NestedStructureWithAllowSubtypes" />
+
+  <xs:complexType name="ListOfNestedStructureWithAllowSubtypes">
+    <xs:sequence>
+      <xs:element name="NestedStructureWithAllowSubtypes" type="tns:NestedStructureWithAllowSubtypes" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfNestedStructureWithAllowSubtypes" type="tns:ListOfNestedStructureWithAllowSubtypes" nillable="true"></xs:element>
+
+  <xs:complexType name="BasicUnion">
+    <xs:sequence>
+      <xs:element name="SwitchField" type="xs:unsignedInt" minOccurs="0" />
+      <xs:choice>
+        <xs:element name="A" type="xs:unsignedInt" minOccurs="0" />
+        <xs:element name="B" type="ua:ListOfString" minOccurs="0" nillable="true" />
+        <xs:element name="C" type="xs:base64Binary" minOccurs="0" nillable="true" />
+        <xs:element name="D" type="tns:ConcreteStructure" minOccurs="0" nillable="true" />
+        <xs:element name="E" type="tns:EnumerationWithGaps" minOccurs="0" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasicUnion" type="tns:BasicUnion" />
+
+  <xs:complexType name="ListOfBasicUnion">
+    <xs:sequence>
+      <xs:element name="BasicUnion" type="tns:BasicUnion" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfBasicUnion" type="tns:ListOfBasicUnion" nillable="true"></xs:element>
+
+  <xs:complexType name="StructureWithOptionalFields">
+    <xs:sequence>
+      <xs:element name="A" type="xs:unsignedInt" minOccurs="0" />
+      <xs:element name="B" type="ua:ListOfString" minOccurs="0" nillable="true" />
+      <xs:element name="C" type="xs:base64Binary" minOccurs="0" nillable="true" />
+      <xs:element name="D" type="tns:ConcreteStructure" minOccurs="0" nillable="true" />
+      <xs:element name="E" type="tns:EnumerationWithGaps" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StructureWithOptionalFields" type="tns:StructureWithOptionalFields" />
+
+  <xs:complexType name="ListOfStructureWithOptionalFields">
+    <xs:sequence>
+      <xs:element name="StructureWithOptionalFields" type="tns:StructureWithOptionalFields" minOccurs="0" maxOccurs="unbounded" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListOfStructureWithOptionalFields" type="tns:ListOfStructureWithOptionalFields" nillable="true"></xs:element>
+
+</xs:schema>
