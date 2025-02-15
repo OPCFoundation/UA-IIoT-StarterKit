@@ -20,7 +20,7 @@ try
         UseTls = true,
         UserName = "iopuser",
         Password = "iop-opc",
-        TopicPrefix = "opcua",
+        TopicPrefix = "opcua-kit",
         PublisherId = "opcf-iiot-kit-requestor",
         UseNewEncodings = true
     };
@@ -28,7 +28,7 @@ try
     Log.System("Use Ctrl-C or Ctrl-Break or exit program.");
 
     bool isResponder = false;
-    string targetPublisherId = "unified-cpp-md";
+    string targetPublisherId = "";
 
     for (int ii = 0; ii < args.Length; ii++)
     {
